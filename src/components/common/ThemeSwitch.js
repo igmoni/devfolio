@@ -8,278 +8,291 @@ import { Sun, Moon } from "lucide-react"
 import { Button } from "../ui/button"
 
 export const useThemeToggle = ({
-    variant = 'circle',
-    start = 'center',
-    blur = 'false'
+  variant = 'circle',
+  start = 'center',
+  blur = 'false'
 }) => {
-    const { theme, setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
-    const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(false)
 
-    useEffect(() => {
-        setIsDark(resolvedTheme === 'dark')
-    }, [resolvedTheme])
+  useEffect(() => {
+    setIsDark(resolvedTheme === 'dark')
+  }, [resolvedTheme])
 
-    const styleId = 'theme-transition-styles'
+  const styleId = 'theme-transition-styles'
 
-    const updateStyles = useCallback((css, name) => {
-        if (typeof window === 'undefined') return
+  const updateStyles = useCallback((css, name) => {
+    if (typeof window === 'undefined') return
 
-        let styleElement = document.getElementById(styleId)
+    let styleElement = document.getElementById(styleId)
 
-        console.log('style Element', styleElement)
-        console.log('name', name)
+    console.log('style Element', styleElement)
+    console.log('name', name)
 
-        if (!styleElement) {
-            styleElement = document.createElement('style')
-            styleElement.id = styleId
-            document.head.appendChild(styleElement)
-        }
-
-        styleElement.textContent = css
-
-        console.log('content updated')
-    }, [])
-
-
-    const toggleTheme = useCallback(() => {
-        setIsDark(!isDark)
-
-        const animation = createAnimation(variant, start, blur)
-
-        updateStyles(animation.css, animation.name)
-
-        if (typeof window === 'undefined') return
-
-        const switchTheme = () => {
-            setTheme(theme === 'light' ? 'dark' : 'light')
-        }
-
-        if (!document.startViewTransition) {
-            switchTheme()
-            return
-        }
-
-        document.startViewTransition(switchTheme)
-    }, [theme, setTheme, variant, start, blur, updateStyles, isDark, setIsDark])
-
-
-    const setCrazyLightTheme = useCallback(() => {
-        setIsDark(false)
-
-        const animation = createAnimation(variant, start, blur)
-
-        updateStyles(animation.css, animation.name)
-
-        if (typeof window === 'undefined') return
-
-        const switchTheme = () => {
-            switchTheme()
-            return
-        }
-
-        document.startViewTransition(switchTheme)
-    }, [setTheme, variant, start, blur, updateStyles, setIsDark])
-
-
-    const setCrazyDarkTheme = useCallback(() => {
-        setIsDark(true)
-
-        const animation = createAnimation(variant, start, blur)
-
-        updateStyles(animation.css, animation.name)
-
-        if (typeof window === 'undefined') return
-
-        const switchTheme = () => {
-            setTheme('dark')
-        }
-
-        if (!document.startViewTransition) {
-            switchTheme()
-            return
-        }
-        document.startViewTransition(switchTheme)
-    }, [setTheme, variant, start, blur, updateStyles, setIsDark])
-
-    return {
-        isDark, setIsDark, toggleTheme, setCrazyLightTheme, setCrazyDarkTheme
+    if (!styleElement) {
+      styleElement = document.createElement('style')
+      styleElement.id = styleId
+      document.head.appendChild(styleElement)
     }
+
+    styleElement.textContent = css
+
+    console.log('content updated')
+  }, [])
+
+
+  const toggleTheme = useCallback(() => {
+    setIsDark(!isDark)
+
+    const animation = createAnimation(variant, start, blur)
+
+    updateStyles(animation.css, animation.name)
+
+    if (typeof window === 'undefined') return
+
+    const switchTheme = () => {
+      setTheme(theme === 'light' ? 'dark' : 'light')
+    }
+
+    if (!document.startViewTransition) {
+      switchTheme()
+      return
+    }
+
+    document.startViewTransition(switchTheme)
+  }, [theme, setTheme, variant, start, blur, updateStyles, isDark, setIsDark])
+
+
+  const setCrazyLightTheme = useCallback(() => {
+    setIsDark(false)
+
+    const animation = createAnimation(variant, start, blur)
+
+    updateStyles(animation.css, animation.name)
+
+    if (typeof window === 'undefined') return
+
+    const switchTheme = () => {
+      switchTheme()
+      return
+    }
+
+    document.startViewTransition(switchTheme)
+  }, [setTheme, variant, start, blur, updateStyles, setIsDark])
+
+
+  const setCrazyDarkTheme = useCallback(() => {
+    setIsDark(true)
+
+    const animation = createAnimation(variant, start, blur)
+
+    updateStyles(animation.css, animation.name)
+
+    if (typeof window === 'undefined') return
+
+    const switchTheme = () => {
+      setTheme('dark')
+    }
+
+    if (!document.startViewTransition) {
+      switchTheme()
+      return
+    }
+    document.startViewTransition(switchTheme)
+  }, [setTheme, variant, start, blur, updateStyles, setIsDark])
+
+  return {
+    isDark, setIsDark, toggleTheme, setCrazyLightTheme, setCrazyDarkTheme
+  }
 }
 
 /////////////////////////////////////////////////
 
 export const ThemeToggleButton = ({ className = '', variant = 'circle', start = 'center', blur = false }) => {
-    const { isDark, toggleTheme } = useThemeToggle({ variant, start, blur })
+  const { isDark, toggleTheme } = useThemeToggle({ variant, start, blur })
 
 
-    return (
-        <Button type='button' variant={'outline'} size='icon' className={cn('size-10 cursor-pointer p-0 transition-all duration-300 active:scale-95', className)}
-            onClick={toggleTheme} aria-label='Toggle theme'>
-            <span className='sr-only'>Toggle theme</span>
-            <AnimatePresence >
-                {isDark ? (
-                    <motion.div
-                        initial={{ rotate: -90,}}
-                        whileTap={{ rotate: 0, color: 'orange' }}
-                        
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                    >
-                        <Sun className="size-4" />
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        initial={{ rotate: -90 }}
-                        whileTap={{ rotate: 0,  color: 'aqua' }}
-                        
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                    >
-                        <Moon className="size-4" />
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </Button>
-    )
+  return (
+   <Button
+  type="button"
+  variant="outline"
+  size="icon"
+  className={cn(
+    "size-10 cursor-pointer p-0 transition-all duration-300 active:scale-95",
+    className
+  )}
+  onClick={toggleTheme}
+  aria-label="Toggle theme"
+>
+  <AnimatePresence mode="wait">
+    {isDark ? (
+      <motion.div
+        key="sun"
+        initial={{ rotate: -90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        exit={{ rotate: 90, opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="flex items-center justify-center hover:text-[aqua]"
+      >
+        <Sun className="size-4" />
+      </motion.div>
+    ) : (
+      <motion.div
+        key="moon"
+        initial={{ rotate: -90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        exit={{ rotate: 90, opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="flex items-center justify-center hover:text-[orange]"
+      >
+        <Moon className="size-4" />
+      </motion.div>
+    )}
+  </AnimatePresence>
+</Button>
+
+  )
 }
 
 ////////////////////////////////////////////
 
 
 const getPositionCoords = (position) => {
-    switch (position) {
-        case 'top-left': return { cx: '0', cy: "0" }
-        case 'top-right': return { cx: '40', cy: '0' }
-        case 'bottom-left': return { cx: '0', cy: '40' }
-        case 'bottom-right': return { cx: '40', cy: '40' }
-        case 'top-center': return { cx: '20', cy: '0' }
-        case 'bottom-center': return { cx: '20', cy: '40' }
+  switch (position) {
+    case 'top-left': return { cx: '0', cy: "0" }
+    case 'top-right': return { cx: '40', cy: '0' }
+    case 'bottom-left': return { cx: '0', cy: '40' }
+    case 'bottom-right': return { cx: '40', cy: '40' }
+    case 'top-center': return { cx: '20', cy: '0' }
+    case 'bottom-center': return { cx: '20', cy: '40' }
 
-        // For directional positions, deafult to center
-        case 'bottom-up':
-        case 'top-down':
-        case 'left-right':
-        case 'right-left':
-            return { cx: '20', cy: '20' }
+    // For directional positions, deafult to center
+    case 'bottom-up':
+    case 'top-down':
+    case 'left-right':
+    case 'right-left':
+      return { cx: '20', cy: '20' }
 
-    }
+  }
 }
 
 
 const generateSVG = (variant, start) => {
-    // circle-blur variant handles center case differently, so check it first
-    if (variant === 'circle-blur') {
-        if (start === 'center') {
-            return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="20" cy="20" r="18" fill="white" filter="url(%23blur)"/></svg>`;
-        }
-        const positionCoords = getPositionCoords(start);
-        if (!positionCoords) {
-            throw new Error(`Invalid start position: ${start}`);
-        }
-        const { cx, cy } = positionCoords;
-        return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="${cx}" cy="${cy}" r="18" fill="white" filter="url(%23blur)"/></svg>`;
+  // circle-blur variant handles center case differently, so check it first
+  if (variant === 'circle-blur') {
+    if (start === 'center') {
+      return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="20" cy="20" r="18" fill="white" filter="url(%23blur)"/></svg>`;
     }
-
-    if (start === 'center') return;
-
-    // Rectangle variant doesn't use SVG masks, so return early
-    if (variant === 'rectangle') return '';
-
     const positionCoords = getPositionCoords(start);
     if (!positionCoords) {
-        throw new Error(`Invalid start position: ${start}`);
+      throw new Error(`Invalid start position: ${start}`);
     }
     const { cx, cy } = positionCoords;
+    return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="${cx}" cy="${cy}" r="18" fill="white" filter="url(%23blur)"/></svg>`;
+  }
 
-    if (variant === 'circle') {
-        return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="${cx}" cy="${cy}" r="20" fill="white"/></svg>`;
-    }
+  if (start === 'center') return;
 
-    return '';
+  // Rectangle variant doesn't use SVG masks, so return early
+  if (variant === 'rectangle') return '';
+
+  const positionCoords = getPositionCoords(start);
+  if (!positionCoords) {
+    throw new Error(`Invalid start position: ${start}`);
+  }
+  const { cx, cy } = positionCoords;
+
+  if (variant === 'circle') {
+    return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="${cx}" cy="${cy}" r="20" fill="white"/></svg>`;
+  }
+
+  return '';
 };
 
 const getTransformOrigin = (start) => {
-    switch (start) {
-        case 'top-left':
-            return 'top left';
-        case 'top-right':
-            return 'top right';
-        case 'bottom-left':
-            return 'bottom left';
-        case 'bottom-right':
-            return 'bottom right';
-        case 'top-center':
-            return 'top center';
-        case 'bottom-center':
-            return 'bottom center';
-        case 'bottom-up':
-        case 'top-down':
-        case 'left-right':
-        case 'right-left':
-            return 'center';
-    }
+  switch (start) {
+    case 'top-left':
+      return 'top left';
+    case 'top-right':
+      return 'top right';
+    case 'bottom-left':
+      return 'bottom left';
+    case 'bottom-right':
+      return 'bottom right';
+    case 'top-center':
+      return 'top center';
+    case 'bottom-center':
+      return 'bottom center';
+    case 'bottom-up':
+    case 'top-down':
+    case 'left-right':
+    case 'right-left':
+      return 'center';
+  }
 };
 
 export const createAnimation = (variant, start = center, blur = false) => {
 
-    const svg = generateSVG(variant, start)
-    const transformOrigin = getTransformOrigin(start)
+  const svg = generateSVG(variant, start)
+  const transformOrigin = getTransformOrigin(start)
 
-    if (variant === 'rectangle') {
-        const getClipPath = (direction) => {
-            switch (direction) {
-                case 'bottom-up':
-                    return {
-                        from: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'top-down':
-                    return {
-                        from: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'left-right':
-                    return {
-                        from: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'right-left':
-                    return {
-                        from: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'top-left':
-                    return {
-                        from: 'polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'top-right':
-                    return {
-                        from: 'polygon(100% 0%, 100% 0%, 100% 0%, 100% 0%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'bottom-left':
-                    return {
-                        from: 'polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                case 'bottom-right':
-                    return {
-                        from: 'polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-                default:
-                    return {
-                        from: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
-                        to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    };
-            }
-        };
+  if (variant === 'rectangle') {
+    const getClipPath = (direction) => {
+      switch (direction) {
+        case 'bottom-up':
+          return {
+            from: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'top-down':
+          return {
+            from: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'left-right':
+          return {
+            from: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'right-left':
+          return {
+            from: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'top-left':
+          return {
+            from: 'polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'top-right':
+          return {
+            from: 'polygon(100% 0%, 100% 0%, 100% 0%, 100% 0%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'bottom-left':
+          return {
+            from: 'polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        case 'bottom-right':
+          return {
+            from: 'polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+        default:
+          return {
+            from: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+            to: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          };
+      }
+    };
 
-        const clipPath = getClipPath(start);
+    const clipPath = getClipPath(start);
 
-        return {
-            name: `${variant}-${start}${blur ? '-blur' : ''}`,
-            css: `
+    return {
+      name: `${variant}-${start}${blur ? '-blur' : ''}`,
+      css: `
        ::view-transition-group(root) {
         animation-duration: 0.7s;
         animation-timing-function: var(--expo-out);
@@ -324,12 +337,12 @@ export const createAnimation = (variant, start = center, blur = false) => {
         }
       }
       `,
-        };
-    }
-    if (variant === 'circle' && start == 'center') {
-        return {
-            name: `${variant}-${start}${blur ? '-blur' : ''}`,
-            css: `
+    };
+  }
+  if (variant === 'circle' && start == 'center') {
+    return {
+      name: `${variant}-${start}${blur ? '-blur' : ''}`,
+      css: `
        ::view-transition-group(root) {
         animation-duration: 0.7s;
         animation-timing-function: var(--expo-out);
@@ -374,14 +387,14 @@ export const createAnimation = (variant, start = center, blur = false) => {
         }
       }
       `,
-        };
-    }
+    };
+  }
 
-    if (variant === 'circle-blur') {
-        if (start === 'center') {
-            return {
-                name: `${variant}-${start}`,
-                css: `
+  if (variant === 'circle-blur') {
+    if (start === 'center') {
+      return {
+        name: `${variant}-${start}`,
+        css: `
         ::view-transition-group(root) {
           animation-timing-function: var(--expo-out);
         }
@@ -406,12 +419,12 @@ export const createAnimation = (variant, start = center, blur = false) => {
           }
         }
         `,
-            };
-        }
+      };
+    }
 
-        return {
-            name: `${variant}-${start}`,
-            css: `
+    return {
+      name: `${variant}-${start}`,
+      css: `
       ::view-transition-group(root) {
         animation-timing-function: var(--expo-out);
       }
@@ -436,42 +449,42 @@ export const createAnimation = (variant, start = center, blur = false) => {
         }
       }
       `,
-        };
-    }
+    };
+  }
 
-    if (variant === 'polygon') {
-        const getPolygonClipPaths = (position) => {
-            switch (position) {
-                case 'top-left':
-                    return {
-                        darkFrom: 'polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%)',
-                        darkTo: 'polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%)',
-                        lightFrom: 'polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%)',
-                        lightTo: 'polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%)',
-                    };
-                case 'top-right':
-                    return {
-                        darkFrom: 'polygon(150% -71%, 250% 71%, 250% 71%, 150% -71%)',
-                        darkTo: 'polygon(150% -71%, 250% 71%, 50% 171%, -71% 50%)',
-                        lightFrom: 'polygon(-71% 50%, 50% 171%, 50% 171%, -71% 50%)',
-                        lightTo: 'polygon(-71% 50%, 50% 171%, 250% 71%, 150% -71%)',
-                    };
-                default:
-                    // Default to top-left behavior
-                    return {
-                        darkFrom: 'polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%)',
-                        darkTo: 'polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%)',
-                        lightFrom: 'polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%)',
-                        lightTo: 'polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%)',
-                    };
-            }
-        };
+  if (variant === 'polygon') {
+    const getPolygonClipPaths = (position) => {
+      switch (position) {
+        case 'top-left':
+          return {
+            darkFrom: 'polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%)',
+            darkTo: 'polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%)',
+            lightFrom: 'polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%)',
+            lightTo: 'polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%)',
+          };
+        case 'top-right':
+          return {
+            darkFrom: 'polygon(150% -71%, 250% 71%, 250% 71%, 150% -71%)',
+            darkTo: 'polygon(150% -71%, 250% 71%, 50% 171%, -71% 50%)',
+            lightFrom: 'polygon(-71% 50%, 50% 171%, 50% 171%, -71% 50%)',
+            lightTo: 'polygon(-71% 50%, 50% 171%, 250% 71%, 150% -71%)',
+          };
+        default:
+          // Default to top-left behavior
+          return {
+            darkFrom: 'polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%)',
+            darkTo: 'polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%)',
+            lightFrom: 'polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%)',
+            lightTo: 'polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%)',
+          };
+      }
+    };
 
-        const clipPaths = getPolygonClipPaths(start);
+    const clipPaths = getPolygonClipPaths(start);
 
-        return {
-            name: `${variant}-${start}${blur ? '-blur' : ''}`,
-            css: `
+    return {
+      name: `${variant}-${start}${blur ? '-blur' : ''}`,
+      css: `
       ::view-transition-group(root) {
         animation-duration: 0.7s;
         animation-timing-function: var(--expo-out);
@@ -516,35 +529,35 @@ export const createAnimation = (variant, start = center, blur = false) => {
         }
       }
       `,
-        };
-    }
+    };
+  }
 
-    // Handle circle variants with start positions using clip-path
-    if (variant === 'circle' && start !== 'center') {
-        const getClipPathPosition = (position) => {
-            switch (position) {
-                case 'top-left':
-                    return '0% 0%';
-                case 'top-right':
-                    return '100% 0%';
-                case 'bottom-left':
-                    return '0% 100%';
-                case 'bottom-right':
-                    return '100% 100%';
-                case 'top-center':
-                    return '50% 0%';
-                case 'bottom-center':
-                    return '50% 100%';
-                default:
-                    return '50% 50%';
-            }
-        };
+  // Handle circle variants with start positions using clip-path
+  if (variant === 'circle' && start !== 'center') {
+    const getClipPathPosition = (position) => {
+      switch (position) {
+        case 'top-left':
+          return '0% 0%';
+        case 'top-right':
+          return '100% 0%';
+        case 'bottom-left':
+          return '0% 100%';
+        case 'bottom-right':
+          return '100% 100%';
+        case 'top-center':
+          return '50% 0%';
+        case 'bottom-center':
+          return '50% 100%';
+        default:
+          return '50% 50%';
+      }
+    };
 
-        const clipPosition = getClipPathPosition(start);
+    const clipPosition = getClipPathPosition(start);
 
-        return {
-            name: `${variant}-${start}${blur ? '-blur' : ''}`,
-            css: `
+    return {
+      name: `${variant}-${start}${blur ? '-blur' : ''}`,
+      css: `
        ::view-transition-group(root) {
         animation-duration: 1s;
         animation-timing-function: var(--expo-out);
@@ -589,12 +602,12 @@ export const createAnimation = (variant, start = center, blur = false) => {
         }
       }
       `,
-        };
-    }
+    };
+  }
 
-    return {
-        name: `${variant}-${start}${blur ? '-blur' : ''}`,
-        css: `
+  return {
+    name: `${variant}-${start}${blur ? '-blur' : ''}`,
+    css: `
       ::view-transition-group(root) {
         animation-timing-function: var(--expo-in);
       }
@@ -622,5 +635,5 @@ export const createAnimation = (variant, start = center, blur = false) => {
         }
       }
     `,
-    };
+  };
 };
