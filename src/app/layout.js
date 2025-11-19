@@ -22,10 +22,10 @@ export default function RootLayout({ children }) {
       <html lang="en" suppressHydrationWarning>
         <body className={`${poppins.className} min-h-[200vh]  antialiased`}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionChange>
-          <Navbar/>
-          {children}
+            <Navbar />
+            {children}
           </ThemeProvider>
-          </body>
+        </body>
       </html>
     </ViewTransitions>
   );

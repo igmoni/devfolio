@@ -1,7 +1,6 @@
 "use client";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
-import Container from "./Container";
 import {
   AnimatePresence,
   motion,
@@ -11,8 +10,7 @@ import {
 } from "motion/react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Button } from "../ui/button";
-import { array } from "zod";
+import { ThemeToggleButton } from "./ThemeSwitch";
 
 const Navbar = () => {
   const navItems = [
@@ -112,7 +110,8 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <div className="w-10 h-10 bg-red-500 rounded-full"></div>
+        {/* <div className="w-10 h-10 bg-red-500 rounded-full"></div> */}
+        <ThemeToggleButton variant="circle" start="top-right" blur className={`shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-300 ${scrolled ? 'rounded-full' : ''}`} />
       </motion.nav>
     </motion.Container>
   );
