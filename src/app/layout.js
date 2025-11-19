@@ -1,9 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
+import Quote from "@/components/common/Quote";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,7 +26,10 @@ export default function RootLayout({ children }) {
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionChange>
             <Navbar />
             {children}
+            <Quote/>
+            <Footer/>
           </ThemeProvider>
+
         </body>
       </html>
     </ViewTransitions>

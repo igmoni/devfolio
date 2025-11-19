@@ -68,7 +68,7 @@ const Navbar = () => {
       >
         <div className="flex gap-2 items-center ">
 
-          <Link href={"/"}>
+          {/* <Link href={"/"}> */}
             <Image
               src={logoSrc}
               height={100}
@@ -76,7 +76,7 @@ const Navbar = () => {
               alt="Avatar"
               className={`h-12 w-12  ${scrolled ? 'rounded-full' : 'rounded-lg'}`}
             />
-          </Link>
+          {/* </Link> */}
           <div className="flex flex-col" >
 
             <h1 className="font-semibold text-[18px] lg:text-[20px] text-shadow-md tracking-tighter  text-primary dark:text-white  ">Mohan</h1>
