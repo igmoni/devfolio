@@ -21,7 +21,7 @@ const Quote = () => {
 
         <Container className={'py-16'}>
             
-            <div className='realtive px-4 py-10 border dark:border-dark-white-50 rounded-xl'>
+            <div className='realtive  px-16 py-10 border dark:border-dark-white-50 rounded-xl'>
 
                 <svg
                     aria-hidden="true"

@@ -58,17 +58,16 @@ const Navbar = () => {
     <motion.Container className="bg-white">
       <motion.nav
         style={{
-          boxShadow: scrolled ? "var(--shadow-acternity) " : "none",
-          boxShadow: scrolled && theme === 'dark' ? 'var(--shadow-acternity-white)' : 'none',
+          boxShadow: scrolled ? theme === 'dark' ? 'var(--shadow-acternity-white)' : 'var(--shadow-acternity)': 'none',
           width,
           y,
         }}
         transition={{ duration: 0.3, ease: "linear" }}
-        className="w-full fixed top-0 inset-x-0 z-50 max-w-6xl mx-auto flex items-center justify-between px-3 py-2 rounded-full"
+        className="w-full fixed top-0 inset-x-0 z-50 max-w-6xl mx-auto shadow-acternity flex items-center justify-between px-3 py-2 rounded-full"
       >
         <div className="flex gap-2 items-center ">
 
-          {/* <Link href={"/"}> */}
+          <Link href={"/"}>
             <Image
               src={logoSrc}
               height={100}
@@ -76,7 +75,7 @@ const Navbar = () => {
               alt="Avatar"
               className={`h-12 w-12  ${scrolled ? 'rounded-full' : 'rounded-lg'}`}
             />
-          {/* </Link> */}
+          </Link>
           <div className="flex flex-col" >
 
             <h1 className="font-semibold text-[18px] lg:text-[20px] text-shadow-md tracking-tighter  text-primary dark:text-white  ">Mohan</h1>
