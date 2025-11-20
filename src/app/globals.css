@@ -158,6 +158,8 @@
   }
 }
 
+.animate-ping { animation: ping 1s cubic-bezier(0, 0, .2, 1) infinite; }
+
 .animate-fade-in-blur {
   animation: fadeInBlur 0.5s ease-out forwards;
   animation-delay: 0.3s;
