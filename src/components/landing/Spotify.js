@@ -3,43 +3,46 @@
 import React, { useEffect, useState } from 'react'
 import Container from '../common/Container'
 import Image from 'next/image'
+import { Link } from 'next-view-transitions'
 
 const Spotify = () => {
-    const [song, setSong] = useState(null)
+  const [song, setSong] = useState(null);
 
-    useEffect(() => {
-        let isMounted = true;
+  useEffect(() => {
+    let isMounted = true;
 
-        const fetchSong = async () => {
-            try {
-                const res = await fetch('/api/spotify')
-                if (!res.ok) {
-                    throw new Error('Failed to fetch Spotify data')
-                };
-                const data = await res.json()
-                if (isMounted) setSong(data)
+    const fetchNowPlaying = async () => {
+      try {
+        const res = await fetch("/api/spotify");
+        if (!res.ok) {
+          throw new Error("Failed to fetch Spotify data")
+        };
+        const data = await res.json();
+        if (isMounted) setSong(data);
+      } catch (error) {
+        console.error("Error fetching Spotify data:", error);
+      }
+    };
 
-            } catch (error) {
-                console.error("Error fetching Spotify data", error)
-            }
-        }
+    // initial call
+    fetchNowPlaying();
 
-        fetchSong()
+    // refresh every 5 seconds
+    const interval = setInterval(fetchNowPlaying, 5000);
 
-        const interval = setInterval(fetchSong, 50000)
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
 
-        return () => {
-            isMounted = false;
-            clearInterval(interval)
-        }
-    }, []);
-
-    const isOffline = !song || !song.isPlaying;
+  const isOffline = !song || !song.isPlaying
+    const conatinerClass = 'flex items-center gap-4 w-full max-w-full  min-w-2xl space-x-3 p-3 rounded-md border transition-all bg-[#fbfbfb] text-primary dark:bg-primary dark:text-white dark:border-2 shadow-[inset_0_0_4px_rgba(0,0,0,0.5)]  dark:shadow-[inset_0_0_4px_rgba(255,255,255,0.5)] hover:shadow-[inset_0_0_6px_rgba(0,0,0,0.3)] dark:hover:shadow-[inset_0_0_6px_rgba(255,255,255,0.5)]'
 
     if (isOffline) {
         return (
-            <Container className={''}>
-                <Image src={'/spotify.svg'} alt='Spotify' width={48} height={48} className='rounded-md shrink-0' />
+            <Container className={conatinerClass} >
+                <Image src={'/assets/spotify.svg'} alt='Spotify' width={48} height={48} className='rounded-md shrink-0' />
 
                 <div className='flex flex-col min-w-0'>
                     <p className='text-secondary font-semibold text-sm truncate'>Offline</p>
@@ -52,9 +55,20 @@ const Spotify = () => {
 
     return (
         <Link href={song.spotifyUrl} target='_blank'>
-            <Container className={''}>
-                <Image src={song.albumImageUrl}/>
+            <Container className={conatinerClass}>
+                <Image src={song.albumImageUrl}
+                    alt={song.album}
+                    width={48}
+                    height={48}
+                    className='rounded-md shrink-0'
+                />
+                <div className="flex flex-col gap-1 min-w-0">
 
+                    <p className="text-gray-400 flex items-center gap-1 text-xs truncate"><span className=''><Image width={15} height={15} src={'/assets/spotify.svg'} alt='Spotify' /></span> Currently listening</p>
+                    <p className="font-semibold text-sm truncate">{song.title}</p>
+                    <p className="text-gray-400 text-xs truncate">by {song.artist}</p>
+
+                </div>
             </Container>
         </Link>
     )

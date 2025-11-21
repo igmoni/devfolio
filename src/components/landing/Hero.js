@@ -10,6 +10,9 @@ import { TooltipContent, Tooltip, TooltipTrigger } from '../ui/tooltip'
 import { useTheme } from 'next-themes'
 import { motion } from 'motion/react'
 import FreelanceText from './FreelanceText'
+import Spotify from './Spotify'
+
+
 
 const Hero = () => {
     const { name, title, button } = heroConfig
@@ -17,51 +20,114 @@ const Hero = () => {
 
     const avatar = theme === 'dark' ? '/assets/mon-y.png' : '/assets/mon-b.png';
 
+
+    const parent = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,   // delay between children
+                delayChildren: 0.1       // delay before staggering starts
+            }
+        }
+    };
+
+
+    const child = {
+        hidden: {
+            opacity: 0,
+            y: 20,
+            filter: "blur(10px)"
+        },
+        show: {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: { duration: 0.4, ease: "easeOut" }
+        }
+    };
+
+
     return (
-        <Container className={'mx-auto  flex-col pt-10 max-w-5xl flex items-center justify-center'}>
-            <Image src={avatar} alt='Avatar' width={100} height={100} className='size-52 rounded-full' />
+        <Container className="mx-auto flex-col pt-15 max-w-5xl flex items-center justify-center">
 
-            <div className='mt-8 flex flex-col items-center gap-5'>
-                <h1 className='tracking-tighter font-bold text-lg lg:text-6xl  text-shadow-md text-primary dark:text-white'>{name}</h1>
-                <FreelanceText />
-                <h1 className='text-secondary tracking-tight font-medium'>{title}</h1>
+            {/* PARENT */}
+            <motion.div
+                variants={parent}
+                initial="hidden"
+                animate="show"
+                className="flex flex-col gap-4 items-center"
+            >
 
-                <Link href={button.href}>
-                    <Button variant={button.variant} className={'bg-primary dark:bg-white'}>
-                        {button.icon}
-                        {button.text}
-                    </Button>
-                </Link>
+                {/* CHILD 1 — Avatar */}
+                <motion.div variants={child}>
+                    <Image
+                        src={avatar}
+                        alt="Avatar"
+                        width={100}
+                        height={100}
+                        className="size-52 rounded-full"
+                    />
+                </motion.div>
 
-                <div className=' flex gap-4'>
+                {/* CHILD 2 — Name */}
+                <motion.h1
+                    variants={child}
+                    className="tracking-tighter font-bold text-lg lg:text-6xl text-primary dark:text-white"
+                >
+                    {name}
+                </motion.h1>
+
+                {/* CHILD 3 — FreelanceText */}
+                <motion.div variants={child}>
+                    <FreelanceText />
+                </motion.div>
+
+                {/* CHILD 4 — Title */}
+                <motion.h1
+                    variants={child}
+                    className="text-secondary tracking-tight font-medium"
+                >
+                    {title}
+                </motion.h1>
+
+                {/* CHILD 5 — Button */}
+                <motion.div variants={child}>
+                    <Link href={button.href}>
+                        <Button variant={button.variant} className="bg-primary dark:bg-white">
+                            {button.icon}
+                            {button.text}
+                        </Button>
+                    </Link>
+                </motion.div>
+
+                {/* CHILD 6 — Social Links */}
+                <motion.div variants={child} className="flex gap-4">
                     {socialLinks.map((link) => (
                         <Tooltip key={link.name} delayDuration={0}>
                             <TooltipTrigger asChild>
-                                <Link href={link.href} key={link.name} className='text-secondary flex items-center gap-2'>
-                                    <span className='size-7'>{link.icon}</span></Link>
+                                <Link href={link.href} className="text-secondary flex items-center gap-2">
+                                    <span className="size-7">{link.icon}</span>
+                                </Link>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>{link.name}</p>
                             </TooltipContent>
                         </Tooltip>
                     ))}
-                </div>
+                </motion.div>
 
+                {/* CHILD 7 — Spotify */}
+                <motion.div variants={child}>
+                    <Spotify />
+                </motion.div>
 
-                <Spotify/>
-
-          
-
-            </div>
-
+            </motion.div>
         </Container>
+
     )
 }
 
 export default Hero
 
 
-
-const Spotify = () => {
-
-}
