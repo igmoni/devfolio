@@ -14,7 +14,7 @@ export const heroConfig = {
 
     button: {
         variant: 'default',
-        text: 'Getin touch',
+        text: 'Get in touch',
         href: '/contact',
         icon:  <svg
               width="100"
@@ -35,7 +35,7 @@ export const socialLinks = [
     {
         name: 'X',
         href: 'https://x.com/_igmoni',
-        icon: <X />,
+        icon: <X/>,
     },
 
     {
@@ -46,7 +46,7 @@ export const socialLinks = [
     {
         name: 'Github',
         href: 'https://github.com/igmoni',
-        icon: <Github />,
+        icon: <Github className={'text-white'} />,
     },
 
     {

@@ -63,7 +63,7 @@ const Navbar = () => {
           y,
         }}
         transition={{ duration: 0.3, ease: "linear" }}
-        className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 max-w-6xl mx-auto shadow-acternity flex items-center justify-between px-3 py-2 rounded-full"
+        className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 max-w-5xl mx-auto shadow-acternity flex items-center justify-between px-3 py-2 rounded-full"
       >
         <div className="flex gap-2 items-center ">
 

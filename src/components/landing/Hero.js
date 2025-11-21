@@ -9,6 +9,7 @@ import { Button } from '../ui/button'
 import { TooltipContent, Tooltip, TooltipTrigger } from '../ui/tooltip'
 import { useTheme } from 'next-themes'
 import { motion } from 'motion/react'
+import FreelanceText from './FreelanceText'
 
 const Hero = () => {
     const { name, title, button } = heroConfig
@@ -20,20 +21,37 @@ const Hero = () => {
         <Container className={'mx-auto  flex-col pt-10 max-w-5xl flex items-center justify-center'}>
             <Image src={avatar} alt='Avatar' width={100} height={100} className='size-52 rounded-full' />
 
-            <div className='mt-8 flex flex-col items-center gap-2'>
+            <div className='mt-8 flex flex-col items-center gap-5'>
                 <h1 className='tracking-tighter font-bold text-lg lg:text-6xl  text-shadow-md text-primary dark:text-white'>{name}</h1>
-                <Freelance />
+                <FreelanceText />
                 <h1 className='text-secondary tracking-tight font-medium'>{title}</h1>
 
-                <Link href={button.href}> 
-                    <Button  variant={button.variant}>
+                <Link href={button.href}>
+                    <Button variant={button.variant} className={'bg-primary dark:bg-white'}>
                         {button.icon}
-                        
                         {button.text}
                     </Button>
                 </Link>
-            
-            
+
+                <div className=' flex gap-4'>
+                    {socialLinks.map((link) => (
+                        <Tooltip key={link.name} delayDuration={0}>
+                            <TooltipTrigger asChild>
+                                <Link href={link.href} key={link.name} className='text-secondary flex items-center gap-2'>
+                                    <span className='size-7'>{link.icon}</span></Link>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>{link.name}</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    ))}
+                </div>
+
+
+                <Spotify/>
+
+          
+
             </div>
 
         </Container>
@@ -42,17 +60,8 @@ const Hero = () => {
 
 export default Hero
 
-const Freelance = () => {
-    return (
-        <div className="bg-[#3a9502]/60 dark:bg-[#3a9502]/20 flex w-[180px] relative text-[12px] items-center p-2 gap-2 text-white font-semibold rounded-[6px] px-3">
 
-            {/* Pulse Animation */}
-            <span className="relative inline-flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[#4ADE80] opacity-75 animate-ping"></span>
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#4ADE80]"></span>
-            </span>
 
-            <span className="absolute left-8 z-20">Available for freelance</span>
-        </div>
-    );
-};
+const Spotify = () => {
+
+}
