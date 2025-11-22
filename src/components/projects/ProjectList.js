@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
+import ProjectCard from './ProjectCard'
 
 const ProjectList = ({ projects, className }) => {
     if (projects.length === 0) {

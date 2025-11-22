@@ -158,6 +158,15 @@
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .animate-ping { animation: ping 1s cubic-bezier(0, 0, .2, 1) infinite; }
 
 .animate-fade-in-blur {
@@ -165,4 +174,8 @@
   animation-delay: 0.3s;
   opacity: 0.4;
   filter: blur(3px);
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

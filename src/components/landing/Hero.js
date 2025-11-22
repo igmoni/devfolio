@@ -94,7 +94,7 @@ const Hero = () => {
                 {/* CHILD 5 — Button */}
                 <motion.div variants={child}>
                     <Link href={button.href}>
-                        <Button variant={button.variant} className="bg-primary dark:bg-white">
+                        <Button variant={button.variant} className="bg-primary cursor-pointer dark:bg-white">
                             {button.icon}
                             {button.text}
                         </Button>

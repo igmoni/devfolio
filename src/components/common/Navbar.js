@@ -55,7 +55,7 @@ const Navbar = () => {
   }, [professions.length])
 
   return (
-    <motion.Container className="">
+    <motion.div className="">
       <motion.nav
         style={{
           boxShadow: scrolled ? theme === 'dark' ? 'var(--shadow-acternity-white)' : 'var(--shadow-acternity)': 'none',
@@ -113,7 +113,7 @@ const Navbar = () => {
         {/* <div className="w-10 h-10 bg-red-500 rounded-full"></div> */}
         <ThemeToggleButton variant="circle" start="top-right" blur className={`shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-300 ${scrolled ? 'rounded-full' : ''}`} />
       </motion.nav>
-    </motion.Container>
+    </motion.div>
   );
 };
 

@@ -30,7 +30,7 @@ export const projects = [
         github: 'https://www.github.com/igmoni/BALC',
         details: true,
         projectsDetailsPageSlug: '/projects/balc',
-        isWorking: true,
+        isWorking: false,
         technologies: [
             { name: 'Next.js', icon: <NextJs /> },
             { name: 'Tailwind CSS', icon: <TailwindCss /> },
@@ -64,7 +64,7 @@ export const projects = [
         github: 'https://www.github.com/igmoni/BALC',
         details: true,
         projectsDetailsPageSlug: '/projects/balc',
-        isWorking: true,
+        isWorking: false,
         technologies: [
             { name: 'Next.js', icon: <NextJs /> },
             { name: 'Tailwind CSS', icon: <TailwindCss /> },
@@ -98,7 +98,7 @@ export const projects = [
         github: 'https://www.github.com/igmoni/BALC',
         details: true,
         projectsDetailsPageSlug: '/projects/balc',
-        isWorking: true,
+        isWorking: false,
         technologies: [
             { name: 'Next.js', icon: <NextJs /> },
             { name: 'Tailwind CSS', icon: <TailwindCss /> },
