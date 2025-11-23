@@ -4,6 +4,7 @@ import Hero from '@/components/landing/Hero'
 import Projects from '@/components/landing/Projects'
 import About from '@/components/landing/About'
 import Github from '@/components/landing/Github'
+import Blog from '@/components/landing/Blog'
 
 const page = () => {
   return (
@@ -12,6 +13,7 @@ const page = () => {
         <Projects/>
         <About/>
         <Github/>
+        <Blog/>
     </Container>
   )
 }

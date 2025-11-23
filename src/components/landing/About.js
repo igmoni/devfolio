@@ -18,12 +18,13 @@ const About = () => {
     <Container className={'mt-20'}>
       <SectionHeading subHeading={'About'} heading={'Me'} />
 
-      <div className='mt-8 flex flex-col gap-4 md:flex-row'>
+      <div className='mt-8 flex flex-col gap-5 md:flex-row'>
         <Image src={avatar} alt='Avatar' width={100} height={100} className='border-secondary size-60 rounded-md border-2 ' />
 
         <div className='mt-4'>
           <h3 className='text-2xl font-bold'>{about.name}</h3>
           <p className='text-secondary mt-4'>{about.desc}</p>
+          <div className='h-px w-full rounded-full bg-secondary mt-7'></div>
           <p className='text-secondary mt-8 font-bold'>Skills</p>
           <div className='flex flex-wrap gap-2'>
             {mySkills.map((skill) => (
