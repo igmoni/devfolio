@@ -1,8 +1,8 @@
 import fs from 'fs'
-import path from 'path'
+import path from 'node:path'
 import matter from 'gray-matter'
 
-const blogDirectory = path.join(process.cwd(), 'ssrc/data/blog')
+const blogDirectory = path.join(process.cwd(), 'src/data/blog')
 
 export function getBlogPostSlug() {
   if (!fs.existsSync(blogDirectory)) {
@@ -33,7 +33,7 @@ export function getBlogPostBySlug(slug) {
       slug, frontmatter, content
     }
   } catch (err) {
-    console.error(`Error reading blog post ${slug}: ${err}`)
+    console.error(`Error reading blog post ${slug}:`, err)
     return null
   }
 }

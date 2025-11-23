@@ -20,7 +20,7 @@ const BlogCard = ({ post }) => {
 
 
   return (
-    <Card className={'group h-full w-full overflow-hidden transition-all p-0 border-gray-100 dark:border-gray-800 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)]'}>
+    <Card className={'group h-full w-full overflow-hidden transition-all p-0 border-gray-100 dark:border-gray-800 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] flex flex-col'}>
       <CardHeader className={'p-0'}>
         <div className="relative aspect-video overflow-hidden">
           <Link href={`/blog/${slug}`}>
@@ -28,7 +28,7 @@ const BlogCard = ({ post }) => {
           </Link>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className={'flex-1'}>
         <div className="space-y-3">
           <Link href={`/blog/${slug}`}>
             <h3 className="line-clamp-2 text-xl font-semibold leading-tight group-hover:text-rpimary">
@@ -38,11 +38,12 @@ const BlogCard = ({ post }) => {
           <p className="line-clamp-3 text-secondary mt-4">{desc}</p>
         </div>
       </CardContent>
-      <CardFooter className={'p-6 pt-0'}>
+      <CardFooter className={'p-6 pt-0 mt-auto'}>
         <div className="flex w-full flex-col space-y-3">
           <div className="flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag) => (
-              <Badge key={tag} variant={'secondary'} className={text - xs}>
+              <Badge key={tag} variant="secondary" className="text-xs rounded-sm">
+
                 {tag}
               </Badge>
             ))}
