@@ -6,10 +6,17 @@ import dynamic from 'next/dynamic'
 import { Link } from 'next-view-transitions'
 import { useEffect, useState } from 'react'
 import Container from '../common/Container'
-import Github from '@/svgs/Github'
+import GithubIcon from '@/svgs/Github'
 import { Button } from '../ui/button'
 
-const ActivityCalendar = dynamic(() => import('react-activity-aclendar').then(mod => mod.default), { ssr: false })
+const ActivityCalendar = dynamic(
+  () =>
+    import("react-activity-calendar").then(
+      (mod) => mod.ActivityCalendar
+    ),
+  { ssr: false }
+);
+
 
 const filterLastYear = (contributions) => {
   const oneYearAgo = new Date()
@@ -24,7 +31,7 @@ const filterLastYear = (contributions) => {
 const Github = () => {
   const [contributions, setContributions] = useState([])
   const [totalContributions, setTotalContributions] = useState(0)
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
   const { theme } = useTheme()
 
@@ -69,7 +76,7 @@ const Github = () => {
             setTotalContributions(total)
 
             const filteredContributions = filterLastYear(validContributions)
-
+            setContributions(filteredContributions)
           } else {
             setHasError(true)
           }
@@ -97,7 +104,7 @@ const Github = () => {
               {githubConfig.title}
             </h2>
             <p className='text-sm text-muted-foreground'>
-              <b>{githubConfig.username}</b>&apo;s {githubConfig.subtitle}
+              <b>{githubConfig.username}</b>'s {githubConfig.subtitle}
             </p>
 
             {isLoading && !hasError && totalContributions > 0 && (
@@ -113,21 +120,56 @@ const Github = () => {
         </div>
 
         {isLoading ? (
-          <div className='flex items-center justify-center py-=16'>
+          <div className='flex items-center justify-center py-16'>
             <div className='text-center'>
               <div className='w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4'></div>
               <p className='text-sm text-muted-foreground'>{githubConfig.loadingState.desc}</p>
             </div>
           </div>
-        ): hasError || contributions.length === 0 ? (
-        <div className='p-8 text-center text-muted-foreground border-2 border-dashed border-border rounded-xl'>
-          <div className='w-16 h-16 mx-auto mb-04 rounded-full bg-muted flex items-center justify-center'>
-            <Github className='w-8 h-8'/>
+        ) : hasError || contributions.length === 0 ? (
+          <div className='p-8 text-center text-muted-foreground border-2 border-dashed border-border rounded-xl'>
+            <div className='w-16 h-16 mx-auto mb-04 rounded-full bg-muted flex items-center justify-center'>
+              <GithubIcon className='w-8 h-8' />
+            </div>
+            <p className='font-medium mb-2'>{githubConfig.errorState.title}</p>
+            <p className='text-sm mb-4'>
+              {githubConfig.errorState.desc}
+            </p>
+            <Button variant='outline' asChild>
+              <Link href={`https://github.com/${githubConfig.username}`} className='inline-flex items-center gap-2'>
+                <GithubIcon className='w-4 h-4' />
+                {githubConfig.errorState.buttontext}
+              </Link>
+            </Button>
           </div>
-          {/* Pending */}
-
-        </div>
-      ): (<div></div>)}
+        ) : (
+          <div className='relative overflow-hidden'>
+            <div className='relative bg-background/50 backdrop-blur-sm rounded-lg border border-dashed dark:border-white/10 border-black/20 p-6'>
+              <div className='w-full overflow-x-auto'>
+                <ActivityCalendar
+                  data={contributions}
+                  blockSize={15}
+                  blockMargin={4}
+                  fontSize={githubConfig.fontSize}
+                  colorScheme={theme === 'dark' ? 'dark' : 'light'}
+                  maxLevel={githubConfig.maxLevel}
+                  hideTotalCount={true}
+                  hideColorLegend={false}
+                  hideMonthLabels={false}
+                  theme={githubConfig.theme}
+                  labels={{
+                    months: githubConfig.months,
+                    weekdays: githubConfig.weekDays,
+                    totalCount: githubConfig.totalCountLabel,
+                  }}
+                  style={{
+                    color: 'rgb(139,148,158)'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </Container>
   )
