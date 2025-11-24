@@ -2,13 +2,12 @@ import Container from "@/components/common/Container";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getAllTags, getPublishedBlogPosts } from "@/lib/blog";
-import { Metadata } from "next";
 import { Suspense } from "react";
-
 import BlogPageClient from "./BlogPageClient";
+import { generateMetaData as getMetaData } from "@/config/Meta";
 
-export const generateMetadata = () => {
-  const metadata = getMetadata("/blog");
+export const generateMetadata = () => {``
+  const metadata = getMetaData("/blog");
   return {
     ...metadata,
   };

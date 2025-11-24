@@ -50,4 +50,86 @@ export const pageMetaData = {
     ogImage: "/assets/mon-y.png",
     twitterCard: "summary",
   },
+  "/projects": {
+    title: "Projects - My Work & Projects Portfolio",
+    description:
+      "Discover my projects & work across different technologies & domains. From web apps to mobile solutions.",
+    keywords: [
+      "projects",
+      "portfolio",
+      "web development",
+      "applications",
+      "software",
+    ],
+    ogImage: "/meta/projects.png",
+    twitterCard: "summary_large_image",
+  },
+
+  "/blog": {
+    title: "Blog - Thoughts & Tutorials",
+    description:
+      "Read my thoughts, tutorials, and insights on engineering, programming, and web development.",
+    keywords: [
+      "blog",
+      "tutorials",
+      "programming",
+      "web development",
+      "technical writing",
+    ],
+    ogImage: "/meta/blogs.png",
+    twitterCard: "summary_large_image",
+  },
 };
+
+export function getPageMetaData(pathName) {
+  return pageMetaData[pathName] || pageMetaData["/"];
+}
+
+export function generateMetaData(pathName) {
+  const pageMeta = getPageMetaData(pathName);
+
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: pageMeta.title,
+    description: pageMeta.description,
+    keywords: pageMeta.keywords?.join(", "),
+    authors: [{ name: siteConfig.author.name }],
+    creator: siteConfig.author.name,
+    openGraph: {
+      type: "website",
+      url: `${siteConfig.url}${pathName}`,
+      title: pageMeta.title,
+      description: pageMeta.description,
+      sitename: siteConfig.title,
+      images: [
+        {
+          url: pageMeta.ogImage || siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: pageMeta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: pageMeta.twitterCard || 'summary_large_image',
+      title: pageMeta.title,
+      description: pageMeta.description,
+      creator: siteConfig.author.twitter,
+      images: [pageMeta.ogImage || siteConfig.ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1
+      }
+    },
+    alternates: {
+      canonical: `${siteConfig.url}${pathName}`
+    }
+  };
+}
