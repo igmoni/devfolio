@@ -6,6 +6,7 @@ import Container from '../common/Container'
 import SectionHeading from '../common/SectionHeading'
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 import { useTheme } from 'next-themes'
+import { Separator } from '../ui/separator'
 
 const About = () => {
 
@@ -24,7 +25,8 @@ const About = () => {
         <div className='mt-4'>
           <h3 className='text-2xl font-bold'>{about.name}</h3>
           <p className='text-secondary mt-4'>{about.desc}</p>
-          <div className='h-px w-full rounded-full bg-secondary mt-7'></div>
+          {/* <div className='h-px w-full rounded-full bg-secondary mt-7'></div> */}
+          <Separator/>
           <p className='text-secondary mt-8 font-bold'>Skills</p>
           <div className='flex flex-wrap gap-2'>
             {mySkills.map((skill) => (

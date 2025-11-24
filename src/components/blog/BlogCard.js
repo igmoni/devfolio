@@ -1,7 +1,7 @@
 import { Badge } from "../ui/badge";
 import {
   Card, CardContent, CardDescription, CardFooter, CardHeader,
-  CardTitle
+
 } from "../ui/card";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
@@ -42,7 +42,7 @@ const BlogCard = ({ post }) => {
         <div className="flex w-full flex-col space-y-3">
           <div className="flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs rounded-sm">
+              <Badge key={tag} variant="primary" className="text-xs rounded-sm">
 
                 {tag}
               </Badge>
