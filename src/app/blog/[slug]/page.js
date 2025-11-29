@@ -10,12 +10,11 @@ import {
   getBlogPostSlug,
 } from "@/lib/blog";
 import { Metadata } from "next";
-// import { Link } from "next-view-transitions";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
+// import Link from "next/link";
 import { notFound } from "next/navigation";
 import BlogContent from "@/components/blog/BlogContent";
 import BackButton from "@/components/blog/BackButton";
-import { MDXRemote } from "next-mdx-remote";
 
 
 export async function generateStaticParams() {
@@ -28,7 +27,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = await getBlogPostBySlug(slug);
+  const post =  getBlogPostBySlug(slug);
 
   if (!post || !post.frontmatter.isPublished) {
     return {
@@ -63,7 +62,7 @@ const page = async ({ params }) => {
   const relatedPosts = await getRelatedPosts(slug, 3);
   return (
     <>
-      <Container className="py-16">
+      <Container className="py-24">
         <div className="space-y-12">
           {/* Back Button */}
             <BackButton/>

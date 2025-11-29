@@ -1,19 +1,30 @@
+"use client";
+
 import { Badge } from "../ui/badge";
-import { Calendar } from "../ui/calendar";
+import Calender from "@/svgs/Calendar";
 import { Separator } from "../ui/separator";
-import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
-import BlogComponents from "./BlogComponents";
-import rehypeHighlight from "@shikijs/rehype";
+import { MDXRemote } from 'next-mdx-remote';
+import { useEffect, useState } from 'react';
 
 const BlogContent = ({ frontmatter, content }) => {
   const { title, desc, image, tags, date } = frontmatter;
+  const [mdxSource, setMdxSource] = useState(null);
 
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+  useEffect(() => {
+    async function compileMDX() {
+      const { serialize } = await import('next-mdx-remote/serialize');
+      const mdx = await serialize(content);
+      setMdxSource(mdx);
+    }
+    compileMDX();
+  }, [content]);
 
   return (
     <article className="mx-auto max-w-6xl">
@@ -44,7 +55,8 @@ const BlogContent = ({ frontmatter, content }) => {
           <p className="text-xl text-muted-foreground">{desc}</p>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Calendar className="size-6" />
+            <Calender className="size-6" />
+            
             <time dateTime={date}>{formattedDate}</time>
           </div>
         </div>
@@ -53,17 +65,7 @@ const BlogContent = ({ frontmatter, content }) => {
       </header>
 
       <div className="prose prose-neutral max-w-none dark:prose-invert">
-        <MDXRemote
-          source={content}
-          components={BlogComponents}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [
-                [rehypeHighlight, { theme: "github-dark" }]
-              ],
-            },
-          }}
-        />
+        {mdxSource ? <MDXRemote {...mdxSource} /> : <p>Loading...</p>}
       </div>
     </article>
   );
