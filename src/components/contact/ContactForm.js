@@ -17,13 +17,14 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import {  Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Chat from "@/svgs/Chat";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -56,34 +57,117 @@ const ContactForm = () => {
   });
 
   const onSubmit = async (data) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-        const result = await response.json()
+      const result = await response.json();
 
-        if(result.ok) {
-            toast.success('Message sent successfully!')
-            form.reset()
-        } else {
-            toast.error(result.error || 'Failed to send message. Please try again')
-        }
+      if (result.ok) {
+        toast.success("Message sent successfully!");
+        form.reset();
+      } else {
+        toast.error(result.error || "Failed to send message. Please try again");
+      }
     } catch (error) {
-        console.error('Error submitting form:',error)
-        toast.error('Something went wrong. Please try again later')
+      console.error("Error submitting form:", error);
+      toast.error("Something went wrong. Please try again later");
     } finally {
-        setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
   return (
-    <Card>
-        
+    <Card className={"border-none shadow-none bg-transparent"}>
+      <CardHeader>
+        <CardTitle>Send me a message</CardTitle>
+        <CardDescription>
+          Fill out the form below and I will get back to yuo as soon as
+          possible!
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Your full name" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone *</FormLabel>
+                    <FormControl>
+                      <Input placeholder="+1 (123) xxx-xxxx" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone *</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="your.email@example.com"
+                      type={"email"}
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Message *</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Tell me about your project or just say hello..."
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <Button type="submit" className={"w-fit"} disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending your message
+                </>
+              ) : (
+                <>
+                  <Chat className="mr-2 h-4 w-4" />
+                  Send Message
+                </>
+              )}
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
     </Card>
   );
 };
