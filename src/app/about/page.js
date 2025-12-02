@@ -1,12 +1,12 @@
-import { Calendar } from '@/components/ui/calendar'
+import HeroHeading from '@/components/about/Hero'
+import Container from '@/components/common/Container'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      ABout
-      <Calendar/>
-    </div>
+    <Container className={'py-16'}>
+      <HeroHeading/>
+    </Container>
   )
 }
 
