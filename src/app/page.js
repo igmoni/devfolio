@@ -5,6 +5,8 @@ import Projects from '@/components/landing/Projects'
 import About from '@/components/landing/About'
 import Github from '@/components/landing/Github'
 import Blog from '@/components/landing/Blog'
+import ContactForm from '@/components/contact/ContactForm'
+import Contact from '@/components/landing/Contact'
 
 const page = () => {
   return (
@@ -14,7 +16,8 @@ const page = () => {
         <About/>
         <Github/>
         <Blog/>
-    </Container>
+        <Contact />
+        </Container>
   )
 }
 

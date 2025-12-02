@@ -54,9 +54,9 @@ const BlogCard = ({ post }) => {
             )}
           </div>
           <div className="flex items-center gap-2 justify-between mt-4">
-            {/* <time className="text-sm text-secondary flex items-center gap-2" dateTime={date}>
+            <time className="text-sm text-secondary flex items-center gap-2" dateTime={date}>
               <Calendar className={'size-4'} />{formattedDate}
-            </time> */}
+            </time>
 
             <Link href={`/blog/${slug}`} className="flex items-center justify-end gap-2 hover:underline underline-offser-4 text-secondary">
               Read More <ArrowRight className={'size-4'} />

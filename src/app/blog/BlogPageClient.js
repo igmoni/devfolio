@@ -64,7 +64,7 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
     <Container className={"py-16"}>
       <div className="space-y-8 mt-20 ">
         <div className="flex flex-col gap-5 text-center">
-          <h1 className="bg-linear-to-t from-primary to-secondary pb-5 dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-bold tracking-tight lg:text-7xl">
+          <h1 className="bg-linear-to-t from-primary to-secondary pb-3 dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-7xl">
             Blogs
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -103,7 +103,7 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
                     <Badge
                       variant={isSelected ? "default" : "outline"}
                       className={
-                        "capitalize cursor-pointer hover:bg-accent hover:text-accent-foreground  tag-inner-shadow"
+                        "capitalize cursor-pointer hover:bg-accent rounded-sm hover:text-accent-foreground  tag-inner-shadow"
                       }
                     >
                       {tag} {postCount}

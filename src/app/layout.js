@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/common/ThemeProvider";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import Quote from "@/components/common/Quote";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionChange
           >
+            <Toaster richColors position="top-center" />
             <Navbar />
             {children}
             <Quote />

@@ -1,4 +1,6 @@
 "use client";
+
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -13,42 +15,28 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Loader2 } from "lucide-react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
-import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Chat from "@/svgs/Chat";
+import { cn } from "@/lib/utils";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
+  email: z.string().email({ message: "Enter a valid email" }),
   phone: z
     .string()
-    .min(10, {
-      message: "Phone number must be at least 10 characters.",
-    })
-    .regex(/^[\+]?[1-9][/d]{0,15}$/, {
-      message: "Please enter a valid phone number.",
-    }),
-  message: z
-    .string()
-    .min(10, {
-      message: "Message must be at least 10 characters",
-    })
-    .max(1000, {
-      message: "Message must not exceeed 1000 characters.",
-    }),
+    .min(10, "Phone must be at least 10 digits")
+    .regex(/^[\+]?[1-9][\d]{0,15}$/, "Invalid phone number"),
+  message: z.string().min(10).max(1000),
 });
-const ContactForm = () => {
+
+const ContactForm = ({ className, showHeader = true }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm({
@@ -61,40 +49,41 @@ const ContactForm = () => {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
       const result = await response.json();
 
-      if (result.ok) {
-        toast.success("Message sent successfully!");
-        form.reset();
-      } else {
-        toast.error(result.error || "Failed to send message. Please try again");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("Something went wrong. Please try again later");
+      if (!response.ok) throw new Error(result?.error || "Send failed");
+
+      toast.success("Message sent!");
+      form.reset();
+    } catch (err) {
+      toast.error(err.message || "Something went wrong");
     } finally {
       setIsSubmitting(false);
     }
   };
+
   return (
-    <Card className={"border-none shadow-none bg-transparent"}>
-      <CardHeader>
-        <CardTitle>Send me a message</CardTitle>
-        <CardDescription>
-          Fill out the form below and I will get back to yuo as soon as
-          possible!
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+    <Card className={cn("border-none shadow-none bg-transparent p-0", className)}>
+      {showHeader && (
+        <CardHeader className="p-0 pb-4">
+          <CardTitle>Send me a message</CardTitle>
+          <CardDescription>
+            Fill out the form and I&apos;ll get back to you quickly.
+          </CardDescription>
+        </CardHeader>
+      )}
+
+      <CardContent className="p-0">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className={cn("space-y-6", !showHeader && "mt-0")}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
                 name="name"
@@ -102,11 +91,12 @@ const ContactForm = () => {
                   <FormItem>
                     <FormLabel>Name *</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your full name" {...field} />
+                      <Input placeholder="Full Name" {...field} />
                     </FormControl>
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="phone"
@@ -114,28 +104,30 @@ const ContactForm = () => {
                   <FormItem>
                     <FormLabel>Phone *</FormLabel>
                     <FormControl>
-                      <Input placeholder="+1 (123) xxx-xxxx" {...field} />
+                      <Input placeholder="+1 234 567 890" {...field} />
                     </FormControl>
                   </FormItem>
                 )}
               />
             </div>
+
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone *</FormLabel>
+                  <FormLabel>Email *</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="your.email@example.com"
-                      type={"email"}
+                      placeholder="example@mail.com"
+                      type="email"
                       {...field}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="message"
@@ -144,7 +136,8 @@ const ContactForm = () => {
                   <FormLabel>Message *</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell me about your project or just say hello..."
+                      placeholder="Tell me about your project..."
+                      className="h-32 resize-none"
                       {...field}
                     />
                   </FormControl>
@@ -152,15 +145,19 @@ const ContactForm = () => {
               )}
             />
 
-            <Button type="submit" className={"w-fit"} disabled={isSubmitting}>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-fit dark:bg-white dark:hover:bg-neutral-200"
+            >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending your message
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Sending...
                 </>
               ) : (
                 <>
-                  <Chat className="mr-2 h-4 w-4" />
+                  <Chat className="w-4 h-4 mr-2" />
                   Send Message
                 </>
               )}
