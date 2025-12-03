@@ -14,7 +14,7 @@ export default function HeroHeading() {
       >
         Building{" "}
         <span className="font-bold ">
-          <span className="dark:text-gray-400/40 text-[rgba(10,10,10,0.5)] blur-md absolute">
+          <span className="dark:text-gray-400/40 text-[rgba(10,10,10,0.4)] blur-sm absolute">
             Solutions
           </span>
           <span className="">Solutions</span>
