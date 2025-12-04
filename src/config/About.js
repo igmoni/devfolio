@@ -5,6 +5,10 @@ import NextJs from "@/components/technologies/NextJs";
 import JavaScript from "@/components/technologies/JavaScript";
 import Figma from "@/components/technologies/Figma";
 import TailwindCss from "@/components/technologies/TailwindCss";
+import Code from "@/svgs/Code";
+import Database from "@/svgs/Database";
+import Mentor from "@/svgs/Mentor";
+import Conversion from "@/svgs/Conversion";
 
 export const mySkills = [
   <ReactIcon key="react" />,
@@ -45,5 +49,32 @@ export const education = [
     period: '2017 - 2021',
     course: 'High School',
     college: 'Isaac Newton High School'
+  }
+]
+
+export const features = [
+  {
+    heading: 'Full-Stack Web Development',
+    subheading: 'Build fast, scalable, and secure websites using modern frameworks and best practices.',
+    iconType: 'code',
+    icon: <Code/>
+  }, 
+  {
+    heading: 'High-Conversion Landing Pages',
+    subheading: 'Create beautiful, conversion-focused pages that turn visitors into customers.',
+    iconType: 'conversion',
+    icon: <Conversion/>
+  },
+  {
+    heading: 'CMS-Powered Websites & Blogs',
+    subheading: 'Manage content effortlessly with powerful, editable, CMS-driven systems.',
+    iconType: 'database',
+    icon: <Database/>
+  },
+  {
+    heading: 'Learning, Mentorship & Training',
+    subheading: 'Learn development the practical way — industry workflows, not classroom theory.',
+    iconType: 'mentor',
+    icon: <Mentor/>
   }
 ]

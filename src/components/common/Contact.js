@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../common/Container";
-import FreelanceText from "./FreelanceText";
+import Container from "./Container";
+import FreelanceText from "../landing/FreelanceText";
 import ContactForm from "../contact/ContactForm";
 
 const Contact = () => {
@@ -16,7 +16,7 @@ const Contact = () => {
           projects.
         </p>
       </div>
-      <ContactForm className={'ml-0 pl-0 '} showHeader={false}/>
+      <ContactForm className={"ml-0 pl-0 "} showHeader={false} />
     </Container>
   );
 };

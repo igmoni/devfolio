@@ -9,7 +9,7 @@ const Education = () => {
       <SectionHeading subHeading={"Featured"} heading={"Education"} />
       <div className="flex flex-col gap-5 pt-10">
         {e.map((item, idx) => (
-          <div className="flex items-baseline lg:flex-row flex-col">
+          <div className="flex items-baseline lg:flex-row flex-col" key={idx}>
             <div className="lg:w-1/4 w-full">
               <p className="text-secondary">{item.period}</p>
             </div>
