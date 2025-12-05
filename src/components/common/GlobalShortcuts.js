@@ -106,17 +106,17 @@ const GlobalShortcuts = () => {
       },
     },
   ]);
-  return( 
-  <>
-  <CommandDialog open={commandOpen} onOpenChange={setCommandOpen}>
-    <CommandInput placeholder="Search ommands or sections" />
-    <CommandList>
-      <CommandEmpty>No results found.</CommandEmpty>
+  return (
+    <>
+      <CommandDialog open={commandOpen} onOpenChange={setCommandOpen}>
+        <CommandInput placeholder="Search ommands or sections" />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
 
-      <COmmandGroup heading="Navigation"></COmmandGroup>
-    </CommandList>
-  </CommandDialog>
-  </>
+          <COmmandGroup heading="Navigation"></COmmandGroup>
+        </CommandList>
+      </CommandDialog>
+    </>
   );
 };
 
