@@ -7,9 +7,9 @@ export default function Eye() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="1.8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path d="M2.5 12C4.5 7.5 8 5 12 5s7.5 2.5 9.5 7c-2 4.5-5.5 7-9.5 7s-7.5-2.5-9.5-7z" />
       <circle cx="12" cy="12" r="3" />
