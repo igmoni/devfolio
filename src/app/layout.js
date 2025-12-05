@@ -6,6 +6,8 @@ import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import Quote from "@/components/common/Quote";
 import { Toaster } from "sonner";
+import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
+import VisitorCount from "@/components/common/VisitorCount";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -37,7 +39,9 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <Quote />
+            <VisitorCount />
             <Footer />
+            <UmamiAnalytics />
           </ThemeProvider>
         </body>
       </html>
