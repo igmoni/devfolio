@@ -20,7 +20,7 @@ const About = () => {
       <SectionHeading subHeading={'About'} heading={'Me'} />
 
       <div className='mt-8 flex flex-col gap-5 md:flex-row'>
-        <Image src={avatar} alt='Avatar' width={100} height={100} className='border-secondary size-60 rounded-md border-2 ' />
+        <Image src={avatar} alt='Avatar' width={100} height={100} className='border-secondary/50 size-60 rounded-md border-2 ' />
 
         <div className='mt-4'>
           <h3 className='text-2xl font-bold'>{about.name}</h3>

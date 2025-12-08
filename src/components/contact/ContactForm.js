@@ -148,7 +148,7 @@ const ContactForm = ({ className, showHeader = true }) => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-fit dark:bg-white dark:hover:bg-neutral-200"
+              className="w-fit dark:bg-white group dark:hover:bg-neutral-200" 
             >
               {isSubmitting ? (
                 <>
@@ -157,7 +157,10 @@ const ContactForm = ({ className, showHeader = true }) => {
                 </>
               ) : (
                 <>
-                  <Chat className="w-4 h-4 mr-2" />
+                <div className="group-hover:rotate-45 group-hover:flex transition-all duration-200">
+
+                  <Chat className="w-4 h-4 " />
+                </div>
                   Send Message
                 </>
               )}

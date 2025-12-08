@@ -8,7 +8,6 @@ import Quote from "@/components/common/Quote";
 import { Toaster } from "sonner";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import VisitorCount from "@/components/common/VisitorCount";
-import { GlobalShortcuts } from "@/components/common/GlobalShortcuts";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -38,7 +37,6 @@ export default function RootLayout({ children }) {
           >
             <Toaster richColors position="top-center" />
             <Navbar />
-            <GlobalShortcuts/>
             {children}
             <Quote />
             <VisitorCount />

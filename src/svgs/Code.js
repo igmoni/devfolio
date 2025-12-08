@@ -9,7 +9,7 @@ export default function Code() {
       height="32"
       fill="none"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     >
       <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
     </svg>

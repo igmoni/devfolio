@@ -9,7 +9,7 @@ export default function Database() {
       height="32"
       fill="none"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     >
       <ellipse cx="12" cy="5" rx="9" ry="3" />
       <path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" />

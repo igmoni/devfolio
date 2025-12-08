@@ -37,6 +37,8 @@ const Navbar = () => {
 
   const width = useTransform(scrollY, [0, 50, 100], ["100%", "70%", "50%"]);
 
+  const blur = useTransform(scrollY, [0, 100], ['0px', '15px'])
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 25) {
       setScrolled(true);
