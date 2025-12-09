@@ -2,6 +2,18 @@ import NextJs from "@/components/technologies/NextJs";
 import ReactIcon from "@/components/technologies/ReactIcon";
 import TailwindCss from "@/components/technologies/TailwindCss";
 
+export const projectDetails = {
+    title: 'Projects',
+    desc: 'Building unique, high-performance solutions fueled by innovation and technical mastery.'
+}
+
+
+
+
+
+
+
+
 export const projects = [
     {
         id: 1,

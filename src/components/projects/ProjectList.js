@@ -1,3 +1,4 @@
+'use client'
 import { cn } from '@/lib/utils'
 import React from 'react'
 import ProjectCard from './ProjectCard'
@@ -14,7 +15,7 @@ const container = {
 }
 
 const ProjectList = ({ projects, className }) => {
-    if (projects.length === 0) {
+    if (projects?.length === 0) {
         return (
             <div className='text-center py-8'>
                 <p className='text-muted-foreground'>No projects found.</p>
@@ -33,7 +34,7 @@ const ProjectList = ({ projects, className }) => {
                 className
             )}
         >
-            {projects.map((project) => (
+            {projects?.map((project) => (
                 <ProjectCard key={project.id} project={project} />
             ))}
         </motion.div>
