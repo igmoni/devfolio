@@ -1,3 +1,5 @@
+// Updated Navbar component with mobile responsiveness and top-right menu dropdown
+
 "use client";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
@@ -11,6 +13,9 @@ import {
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { ThemeToggleButton } from "./ThemeSwitch";
+import Menu from "@/svgs/Menu";
+import React from "react";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   const navItems = [
@@ -20,43 +25,34 @@ const Navbar = () => {
   ];
 
   const { theme } = useTheme();
-
   const logoSrc = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
 
   const professions = ["Web Developer", "UI/UX Designer", "Frontend Developer"];
 
   const [hover, setHover] = useState(null);
-
   const [index, setIndex] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const { scrollY } = useScroll();
 
-  const [scrolled, setScrolled] = useState(false);
-
   const y = useTransform(scrollY, [0, 100], [0, 10]);
-
   const width = useTransform(scrollY, [0, 50, 100], ["100%", "70%", "50%"]);
-
-  const blur = useTransform(scrollY, [0, 100], ['0px', '15px'])
+  const blur = useTransform(scrollY, [0, 100], ["0px", "15px"]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 25) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    setScrolled(latest > 25);
   });
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % professions.length);
     }, 2000);
-
     return () => clearInterval(interval);
   }, [professions.length]);
 
   return (
-    <motion.div className="">
+    <motion.div>
       <motion.nav
         style={{
           boxShadow: scrolled
@@ -70,25 +66,31 @@ const Navbar = () => {
         transition={{ duration: 0.3, ease: "linear" }}
         className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 max-w-5xl mx-auto shadow-acternity flex items-center justify-between px-3 py-2 rounded-full"
       >
-        <div className="flex gap-2 items-center ">
+        {/* LEFT CONTENT */}
+        <div className="flex gap-2 items-center">
           <Link href={"/"}>
             <Image
               src={logoSrc}
               height={100}
               width={100}
               alt="Avatar"
-              className={`h-12 w-12  ${
+              className={`h-12 w-12 ${
                 scrolled ? "rounded-full" : "rounded-lg"
               }`}
             />
           </Link>
+
           <div className="flex flex-col">
-            <h1 className="font-semibold text-[18px] lg:text-[20px] text-shadow-md tracking-tighter  text-primary dark:text-white  ">
+            <h1
+              className={`${
+                scrolled ? "hidden" : "block"
+              } md:block font-semibold text-[18px] lg:text-[20px] tracking-tighter text-primary dark:text-white`}
+            >
               Mohan
             </h1>
 
             <div
-              className="overflow-hidden h-6 w-[150px] transition duration-300"
+              className="overflow-hidden h-6 w-[150px] transition duration-300 hidden md:block"
               style={{ display: scrolled ? "none" : "" }}
             >
               <AnimatePresence mode="wait">
@@ -98,7 +100,7 @@ const Navbar = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -10, opacity: 0 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}
-                  className="text-base tracking-tight text-secondary "
+                  className="text-base tracking-tight text-secondary"
                 >
                   {professions[index]}
                 </motion.p>
@@ -106,7 +108,9 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="flex rounded-md   items-center">
+
+        {/* DESKTOP NAV */}
+        <div className="hidden md:flex rounded-md items-center">
           {navItems.map((item, idx) => (
             <Link
               href={item.href}
@@ -121,13 +125,16 @@ const Navbar = () => {
                   className="h-full w-full absolute inset-0 rounded-md bg-neutral-100 dark:bg-neutral-600"
                 ></motion.span>
               )}
-              <span className=" text-primary text-base dark:text-white  relative z-10 ">
+              <span className="text-primary text-base dark:text-white relative z-10">
                 {item.title}
               </span>
             </Link>
           ))}
         </div>
-        <div className="flex gap-5">
+
+        {/* RIGHT CONTENT */}
+        <div className="flex gap-5 items-center">
+          {/* SEARCH BUTTON (HIDDEN ON MOBILE) */}
           <button
             onClick={() => {
               const event = new KeyboardEvent("keydown", {
@@ -143,6 +150,19 @@ const Navbar = () => {
               Ctrl <span className="text-[10px]">+</span> K
             </span>
           </button>
+
+          {/* MOBILE MENU BUTTON */}
+          <Button
+            type="button"
+            variant={"outline"}
+            size={"icon"}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] flex items-center justify-center rounded-md"
+          >
+            <Menu className={"size-6"} />
+          </Button>
+
+          {/* THEME TOGGLE */}
           <ThemeToggleButton
             variant="circle"
             start="top-right"
@@ -153,6 +173,36 @@ const Navbar = () => {
           />
         </div>
       </motion.nav>
+
+      {/* MOBILE NAV DROPDOWN */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="absolute top-16 -right-32 bg-white dark:bg-primary shadow-acternity border border-secondary/20 rounded-lg p-4 flex flex-col gap-3 md:hidden z-60"
+          >
+            {navItems.map((item, idx) => (
+              <React.Fragment key={item.title}>
+                <Link
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-primary dark:text-white text-base px-2 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
+                >
+                  {item.title}
+                </Link>
+
+                {/* Divider except after last item */}
+                {idx !== navItems.length - 1 && (
+                  <div className="h-px w-full bg-neutral-300 dark:bg-neutral-700 opacity-60" />
+                )}
+              </React.Fragment>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

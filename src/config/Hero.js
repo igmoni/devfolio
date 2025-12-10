@@ -5,6 +5,8 @@ import Mail from "@/svgs/Mail"
 import X from "@/svgs/X"
 import Instagram from "@/svgs/Instagram"
 import YouTube from "@/svgs/YouTube"
+import Pinterest from "@/svgs/Pinterest"
+import Menu from "@/svgs/Menu"
 
 
 export const heroConfig = {
@@ -64,6 +66,11 @@ export const socialLinks = [
         name: 'Email',
         href: 'mailto:mohansp119@gmail.com',
         icon: <Mail />,
+    },
+    {
+        name: 'Pinterest',
+        href: 'https://in.pinterest.com/igmonii/',
+        icon: <Pinterest />
     },
 
 ]

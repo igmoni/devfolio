@@ -145,10 +145,10 @@ const Github = () => {
         ) : (
           <div className='relative overflow-hidden'>
             <div className='relative bg-background/50 backdrop-blur-sm rounded-lg border border-dashed dark:border-white/10 border-black/20 p-6'>
-              <div className='w-full overflow-x-auto'>
+              <div className='w-full overflow-x-auto '>
                 <ActivityCalendar
                   data={contributions}
-                  blockSize={15}
+                  blockSize={14}
                   blockMargin={4}
                   fontSize={githubConfig.fontSize}
                   colorScheme={theme === 'dark' ? 'dark' : 'light'}
@@ -163,7 +163,8 @@ const Github = () => {
                     totalCount: githubConfig.totalCountLabel,
                   }}
                   style={{
-                    color: 'rgb(139,148,158)'
+                    color: 'rgb(139,148,158)',
+                    margin: '0 auto',
                   }}
                 />
               </div>

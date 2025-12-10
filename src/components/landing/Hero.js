@@ -11,11 +11,12 @@ import { useTheme } from "next-themes";
 import { motion } from "motion/react";
 import FreelanceText from "./FreelanceText";
 import Spotify from "./Spotify";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
   const { name, title, button } = heroConfig;
   const { theme } = useTheme();
-
+  
   const avatar = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
 
   const parent = {
@@ -42,6 +43,7 @@ const Hero = () => {
       transition: { duration: 0.4, ease: "easeOut" },
     },
   };
+
 
   return (
     <Container className="mx-auto flex-col pt-15 max-w-5xl flex items-center justify-center">
@@ -90,7 +92,7 @@ const Hero = () => {
               variant={button.variant}
               className="bg-primary  cursor-pointer dark:bg-white"
             >
-                {button.icon}
+              {button.icon}
               {button.text}
             </Button>
           </Link>
