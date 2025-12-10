@@ -19,7 +19,7 @@ const Hero = () => {
   const { theme } = useTheme();
 
   const avatar = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
-  
+
   const parent = {
     hidden: { opacity: 0 },
     show: {
@@ -44,7 +44,7 @@ const Hero = () => {
       transition: { duration: 0.4, ease: "easeOut" },
     },
   };
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -60,7 +60,7 @@ const Hero = () => {
         className="flex flex-col gap-4 items-center"
       >
         {/* CHILD 1 — Avatar */}
-        <motion.div variants={child}>
+        <motion.div variants={child} className="p-[5px] bg-muted rounded-full">
           <Image
             src={avatar}
             alt="Avatar"
@@ -69,7 +69,7 @@ const Hero = () => {
             className="size-52 rounded-full"
           />
         </motion.div>
-
+    
         {/* CHILD 2 — Name */}
         <motion.h1
           variants={child}
@@ -110,6 +110,7 @@ const Hero = () => {
               <TooltipTrigger asChild>
                 <Link
                   href={link.href}
+                  target="_blank"
                   className="text-secondary flex items-center gap-2"
                 >
                   <span className="size-7">{link.icon}</span>
