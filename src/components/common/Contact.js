@@ -5,7 +5,9 @@ import ContactForm from "../contact/ContactForm";
 
 const Contact = () => {
   return (
-    <Container className={"w-3/4 ml-0 py-32 flex flex-col gap-5 "}>
+    <Container
+      className={"w-full md:w-3/4 ml-0 py-10 md:py-32 flex flex-col gap-5 "}
+    >
       <FreelanceText />
       <div className="flex flex-col">
         <h1 className="bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-6xl pb-3">

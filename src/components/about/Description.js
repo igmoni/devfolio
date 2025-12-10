@@ -4,12 +4,12 @@ import Image from "next/image";
 
 const Description = () => {
   return (
-    <Container className={"py-20"}>
-      <div className="flex">
+    <Container className={"py-16 md:py-20"}>
+      <div className="flex flex-col gap-5 md:flex-row items-center justify-center">
         <div
           className="p-2 border-secondary/20 border bg-[#171717]
           shadow-[inset_0_0_5px_1px_rgba(255,255,255,0.1)]
-         rounded-xl"
+         rounded-xl "
         >
           <Image
             src={"/projects/balc.jpg"}
@@ -20,7 +20,7 @@ const Description = () => {
           />
         </div>
 
-        <div className="w-3/4 pl-10 flex flex-col gap-8 text-justify text-lg">
+        <div className="w-full md:w-3/4 md:pl-10 flex flex-col gap-8 text-justify text-lg">
           <p className="text-secondary">
             <span className="text-primary dark:text-white">
               I’m a full-stack developer based in India, focused on building

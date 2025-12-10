@@ -1,5 +1,3 @@
-// Updated Navbar component with mobile responsiveness and top-right menu dropdown
-
 "use client";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
@@ -18,39 +16,59 @@ import React from "react";
 import { Button } from "../ui/button";
 
 const Navbar = () => {
+  // ---------------- HOOKS MUST BE AT TOP ----------------
+  const [mounted, setMounted] = useState(false);
+  const [hover, setHover] = useState(null);
+  const [index, setIndex] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const { theme } = useTheme();
+  const { scrollY } = useScroll();
+
+  // Responsive width based on device
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 768);
+    }
+  }, []);
+
+  const width = useTransform(
+    scrollY,
+    [0, 50, 100],
+    isMobile ? ["100%", "90%", "85%"] : ["100%", "70%", "50%"]
+  );
+
+  const y = useTransform(scrollY, [0, 100], [0, 10]);
+
+  // Scroll shadow toggle
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 25);
+  });
+
+  // Professions auto-rotate
+  const professions = ["Web Developer", "UI/UX Designer", "Frontend Developer"];
+  useEffect(() => {
+    const interval = setInterval(
+      () => setIndex((prev) => (prev + 1) % professions.length),
+      2000
+    );
+    return () => clearInterval(interval);
+  }, []);
+
+  // Mounted fix for hydration
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  const logoSrc = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
   const navItems = [
     { title: "About", href: "/about" },
     { title: "Projects", href: "/projects" },
     { title: "Blog", href: "/blog" },
   ];
 
-  const { theme } = useTheme();
-  const logoSrc = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
-
-  const professions = ["Web Developer", "UI/UX Designer", "Frontend Developer"];
-
-  const [hover, setHover] = useState(null);
-  const [index, setIndex] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const { scrollY } = useScroll();
-
-  const y = useTransform(scrollY, [0, 100], [0, 10]);
-  const width = useTransform(scrollY, [0, 50, 100], ["100%", "70%", "50%"]);
-  const blur = useTransform(scrollY, [0, 100], ["0px", "15px"]);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 25);
-  });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % professions.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [professions.length]);
-
+  // ---------------- RETURN JSX ----------------
   return (
     <motion.div>
       <motion.nav
@@ -64,11 +82,12 @@ const Navbar = () => {
           y,
         }}
         transition={{ duration: 0.3, ease: "linear" }}
-        className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 max-w-5xl mx-auto shadow-acternity flex items-center justify-between px-3 py-2 rounded-full"
+        className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 
+        max-w-5xl mx-auto flex items-center justify-between px-3 py-2 rounded-full"
       >
-        {/* LEFT CONTENT */}
+        {/* LEFT */}
         <div className="flex gap-2 items-center">
-          <Link href={"/"}>
+          <Link href="/">
             <Image
               src={logoSrc}
               height={100}
@@ -84,7 +103,8 @@ const Navbar = () => {
             <h1
               className={`${
                 scrolled ? "hidden" : "block"
-              } md:block font-semibold text-[18px] lg:text-[20px] tracking-tighter text-primary dark:text-white`}
+              } md:block font-semibold text-[18px] lg:text-[20px] tracking-tighter 
+              text-primary dark:text-white`}
             >
               Mohan
             </h1>
@@ -122,9 +142,11 @@ const Navbar = () => {
               {hover === idx && (
                 <motion.span
                   layoutId="hovered-span"
-                  className="h-full w-full absolute inset-0 rounded-md bg-neutral-100 dark:bg-neutral-600"
+                  className="h-full w-full absolute inset-0 rounded-md 
+                  bg-neutral-100 dark:bg-neutral-600"
                 ></motion.span>
               )}
+
               <span className="text-primary text-base dark:text-white relative z-10">
                 {item.title}
               </span>
@@ -132,18 +154,18 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* RIGHT CONTENT */}
+        {/* RIGHT */}
         <div className="flex gap-5 items-center">
-          {/* SEARCH BUTTON (HIDDEN ON MOBILE) */}
+          {/* SEARCH BUTTON */}
           <button
-            onClick={() => {
-              const event = new KeyboardEvent("keydown", {
-                key: "k",
-                ctrlKey: true,
-              });
-              window.dispatchEvent(event);
-            }}
-            className="hidden sm:flex items-center gap-2 text-sm px-3 py-1.5 rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition font-medium"
+            onClick={() =>
+              window.dispatchEvent(
+                new KeyboardEvent("keydown", { key: "k", ctrlKey: true })
+              )
+            }
+            className="hidden sm:flex items-center gap-2 text-sm px-3 py-1.5 
+            rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 
+            dark:hover:bg-neutral-600 transition font-medium"
           >
             <span>Search</span>
             <span className="flex items-center gap-1 border px-1.5 py-0.5 rounded text-[10px]">
@@ -154,15 +176,16 @@ const Navbar = () => {
           {/* MOBILE MENU BUTTON */}
           <Button
             type="button"
-            variant={"outline"}
-            size={"icon"}
+            variant="outline"
+            size="icon"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] flex items-center justify-center rounded-md"
+            className="md:hidden size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] 
+            flex items-center justify-center rounded-md"
           >
-            <Menu className={"size-6"} />
+            <Menu className="size-6" />
           </Button>
 
-          {/* THEME TOGGLE */}
+          {/* THEME SWITCH */}
           <ThemeToggleButton
             variant="circle"
             start="top-right"
@@ -174,27 +197,29 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* MOBILE NAV DROPDOWN */}
+      {/* --------------- MOBILE MENU (FIXED) --------------- */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="absolute top-16 -right-32 bg-white dark:bg-primary shadow-acternity border border-secondary/20 rounded-lg p-4 flex flex-col gap-3 md:hidden z-60"
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+            className="fixed w-40 top-20 right-4 bg-white dark:bg-primary shadow-acternity 
+            border border-secondary/20 rounded-lg p-4 flex flex-col gap-3 
+            md:hidden z-60"
           >
             {navItems.map((item, idx) => (
               <React.Fragment key={item.title}>
                 <Link
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-primary dark:text-white text-base px-2 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
+                  className="text-primary dark:text-white text-base px-2 py-1 
+                  rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
                 >
                   {item.title}
                 </Link>
 
-                {/* Divider except after last item */}
                 {idx !== navItems.length - 1 && (
                   <div className="h-px w-full bg-neutral-300 dark:bg-neutral-700 opacity-60" />
                 )}

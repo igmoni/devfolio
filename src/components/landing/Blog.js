@@ -10,7 +10,7 @@ const Blog = () => {
 
 
   return (
-    <Container className={'mt-20'}>
+    <Container className={'mt-20 px-5'}>
       <SectionHeading subHeading='Featured' heading='Blogs' />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
         {posts.slice(0, 2).map((post) => (

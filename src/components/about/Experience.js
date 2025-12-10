@@ -5,7 +5,7 @@ import { experience as e } from "@/config/About";
 
 const Experience = () => {
   return (
-    <Container className={"py-5"}>
+    <Container className={"md:py-5"}>
       <SectionHeading subHeading={"Featured"} heading={"Experience"} />
 
       <div className="flex lg:flex-row flex-col items-baseline pt-10">

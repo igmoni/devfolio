@@ -23,7 +23,7 @@ export const metadata = {
 };
 const page = () => {
   return (
-    <Container className={"py-16 pt-32"}>
+    <Container className={"py-16 pt-32 px-5"}>
       <div className="space-y-8">
         <div className="space-y-4 text-center">
           <h1 className="bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-7xl">

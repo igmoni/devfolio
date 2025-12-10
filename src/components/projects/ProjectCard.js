@@ -2,7 +2,7 @@
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import Website from "@/svgs/Website";
 import Github from "@/svgs/Github";
@@ -23,6 +23,11 @@ const item = {
 };
 
 const ProjectCard = ({ project }) => {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => setMounted(true), []);
+  
+  if (!mounted) return null;
   return (
     <motion.div variants={item}>
       <Card className="group min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">

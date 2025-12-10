@@ -61,7 +61,7 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
   };
 
   return (
-    <Container className={"py-16"}>
+    <Container className={"py-16 px-5"}>
       <div className="space-y-8 mt-20 ">
         <div className="flex flex-col gap-5 text-center">
           <h1 className="bg-linear-to-t from-primary to-secondary pb-3 dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-7xl">

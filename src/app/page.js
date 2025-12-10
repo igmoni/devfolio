@@ -9,7 +9,7 @@ import Contact from "@/components/common/Contact";
 
 const page = () => {
   return (
-    <Container className={"min-h-screen py-16"}>
+    <Container className={"min-h-screen  py-16"}>
       <Hero />
       <Projects />
       <About />

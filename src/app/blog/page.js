@@ -15,7 +15,7 @@ export const generateMetadata = () => {``
 
 function BlogPageLoading() {
   return (
-    <Container className={"py-16"}>
+    <Container className={"py-16 "}>
       <div className="sapce-y-8">
         <div className="sapce-y-4 text-center">
           <Skeleton className={"h-12 w-32 mx-auto"} />

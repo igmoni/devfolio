@@ -14,11 +14,12 @@ import Spotify from "./Spotify";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [mounted, setMounted] = useState(false);
   const { name, title, button } = heroConfig;
   const { theme } = useTheme();
-  
-  const avatar = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
 
+  const avatar = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
+  
   const parent = {
     hidden: { opacity: 0 },
     show: {
@@ -43,10 +44,14 @@ const Hero = () => {
       transition: { duration: 0.4, ease: "easeOut" },
     },
   };
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-
+  if (!mounted) return null;
   return (
-    <Container className="mx-auto flex-col pt-15 max-w-5xl flex items-center justify-center">
+    <Container className="flex flex-col items-center justify-center pt-16">
       {/* PARENT */}
       <motion.div
         variants={parent}

@@ -5,8 +5,8 @@ import { features } from "@/config/About";
 import { motion } from "motion/react";
 const Features = () => {
   return (
-    <Container className="py-16">
-      <h2 className="min-w-3xl text-7xl font-medium bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent py-5">
+    <Container className="md:py-16">
+      <h2 className="w-full md:min-w-3xl text-4xl sm:text-6xl lg:text-7xl font-medium bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent py-5">
         Services that acclerate your business growth.
       </h2>
 

@@ -8,7 +8,7 @@ import Contact from "@/components/common/Contact";
 
 const page = () => {
   return (
-    <Container className={"py-16"}>
+    <Container className={"md:py-16 px-5"}>
       <HeroHeading />
       <Description />
       <Experience />
