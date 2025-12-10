@@ -4,16 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/Meta";
 import {
-  getProjectCaseStudyBySlug,
-  getProjectCaseStudySlugs,
   getProjectNavigation,
+  getProjectCaseStudySlugs,
+  getProjectCaseStudyBySlug,
   getRelatedProjectCaseStudies,
-} from "@/lib/project";
+} from "@/lib/projects";
 import { Link } from "next-view-transitions";
 import { notFound } from "next/navigation";
+import ProjectNavigation from "@/components/projects/ProjectNavigation";
+import  ProjectContent  from "@/components/projects/ProjectContent";
 
 export async function generateStaticParams() {
-  const slugs = getProjectCaseStudyBySlug();
+  const slugs = getProjectCaseStudySlugs();
   return slugs.map((slug) => ({
     slug,
   }));
@@ -26,27 +28,27 @@ export async function generateMetadata({ params }) {
   if (!caseStudy || !caseStudy.frontmatter.isPublished) {
     return { title: "Project Not Found" };
   }
+
+  const { title, desc, image } = caseStudy.frontmatter;
+
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: `${title} - Project Case Study`,
+    desc,
+    openGraph: {
+      title: `${title} - Project Case Study`,
+      desc,
+      images: [image],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} - Project Case Study`,
+      desc,
+      images: [image],
+    },
+  };
 }
-
-const { title, desc, image } = caseStudy.frontmatter;
-
-return {
-  metadataBase: new URL(siteConfig.url),
-  title: `${title} - Project Case Study`,
-  desc,
-  openGraph: {
-    title: `${title} - Project Case Study`,
-    desc,
-    images: [image],
-    type: "article",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${title} - Project Case Study`,
-    desc,
-    images: [image],
-  },
-};
 
 export default async function ProjectCaseStudyPage({ params }) {
   const { slug } = await params;
