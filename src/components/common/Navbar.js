@@ -14,6 +14,7 @@ import { ThemeToggleButton } from "./ThemeSwitch";
 import Menu from "@/svgs/Menu";
 import React from "react";
 import { Button } from "../ui/button";
+import Coffee from "./Coffee";
 
 const Navbar = () => {
   // ---------------- HOOKS MUST BE AT TOP ----------------
@@ -142,7 +143,7 @@ const Navbar = () => {
               {hover === idx && (
                 <motion.span
                   layoutId="hovered-span"
-                  className="h-full w-full absolute inset-0 rounded-md 
+                  className="h-full w-full shadow-acternity dark:shadow-acternity-white absolute inset-0 rounded-md 
                   bg-neutral-100 dark:bg-neutral-600"
                 ></motion.span>
               )}
@@ -184,6 +185,8 @@ const Navbar = () => {
           >
             <Menu className="size-6" />
           </Button>
+
+          <Coffee className={`${scrolled ? 'rounded-full' : 'rounded-md'} shadow-acternity`}/>
 
           {/* THEME SWITCH */}
           <ThemeToggleButton

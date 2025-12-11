@@ -8,6 +8,7 @@ import Quote from "@/components/common/Quote";
 import { Toaster } from "sonner";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import VisitorCount from "@/components/common/VisitorCount";
+import OnekoCat from "@/components/common/OnekoCat";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -19,15 +20,16 @@ export const metadata = {
   title: "Mohan - A Full Stack Web Developer",
   description:
     "Devfolio is my digital workspace where I build, ship, and showcase modern full-stack web applications.",
-  icons: {
-    icon: "/icon.png",
-  },
+
 };
 
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <link rel="icon" href="/favicon.ico" />
+        </head>
         <body className={`${poppins.className} min-h-[200vh]  antialiased`}>
           <ThemeProvider
             attribute="class"
@@ -38,8 +40,9 @@ export default function RootLayout({ children }) {
             <Toaster richColors position="top-center" />
             <Navbar />
             {children}
-            <Quote />
             <VisitorCount />
+            <OnekoCat/>
+            <Quote />
             <Footer />
             <UmamiAnalytics />
           </ThemeProvider>

@@ -28,7 +28,7 @@ const About = () => {
           alt="Avatar"
           width={100}
           height={100}
-          className="border-secondary/50 size-60 rounded-md border-2 "
+          className="border-muted border-5 size-60 rounded-lg "
         />
 
         <div className="mt-4">
