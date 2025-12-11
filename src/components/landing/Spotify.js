@@ -38,7 +38,7 @@ const Spotify = () => {
 
   const isOffline = !song || !song.isPlaying;
   const conatinerClass =
-    "flex items-center gap-4 w-full md:w-2xl space-x-3 p-3 rounded-md border transition-all bg-[#fbfbfb] text-primary dark:bg-primary dark:text-white shadow-acternity dark:shadow-acternity-white dark:border-2 shadow-[inset_0_0_2px_rgba(0,0,0,0.5)]  dark:shadow-[inset_0_0_4px_rgba(255,255,255,0.5)] hover:shadow-[inset_0_0_2px_rgba(0,0,0,0.3)] dark:hover:shadow-[inset_0_0_6px_rgba(255,255,255,0.5)]";
+    "flex items-center gap-4 w-full md:w-2xl space-x-3 p-3 rounded-md border transition-all bg-[#fbfbfb] text-primary dark:bg-primary dark:text-white shadow-acternity dark:shadow-acternity-white dark:border-2 shadow-[inset_0_0_2px_rgba(0,0,0,0.5)]  dark:shadow-[inset_0_0_4px_rgba(255,255,255,0.5)] ";
 
   if (isOffline) {
     return (

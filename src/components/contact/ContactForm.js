@@ -25,6 +25,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Chat from "@/svgs/Chat";
 import { cn } from "@/lib/utils";
+import Coffee from "../common/Coffee";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -144,7 +145,8 @@ const ContactForm = ({ className, showHeader = true }) => {
                 </FormItem>
               )}
             />
-
+          <div className="flex gap-5 items-start">
+            
             <Button
               type="submit"
               disabled={isSubmitting}
@@ -162,9 +164,13 @@ const ContactForm = ({ className, showHeader = true }) => {
                   <Chat className="w-4 h-4 " />
                 </div>
                   Send Message
+
                 </>
               )}
             </Button>
+              <Coffee className={'size-9 shadow-acternity dark:shadow-acternity-white'}/>
+              
+          </div>
           </form>
         </Form>
       </CardContent>

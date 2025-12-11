@@ -12,6 +12,7 @@ import { motion } from "motion/react";
 import FreelanceText from "./FreelanceText";
 import Spotify from "./Spotify";
 import { useState, useEffect } from "react";
+import Coffee from "../common/Coffee";
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -90,6 +91,7 @@ const Hero = () => {
         >
           {title}
         </motion.h1>
+        <div className="flex gap-5 items-start">
 
         <motion.div variants={child}>
           <Link href={button.href}>
@@ -102,6 +104,10 @@ const Hero = () => {
             </Button>
           </Link>
         </motion.div>
+        <motion.div variants={child}>
+          <Coffee className={'size-9 shadow-acternity dark:shadow-acternity-white'}/>
+        </motion.div>
+        </div>
 
         {/* CHILD 6 — Social Links */}
         <motion.div variants={child} className="flex gap-4">

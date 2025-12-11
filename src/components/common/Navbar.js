@@ -186,7 +186,6 @@ const Navbar = () => {
             <Menu className="size-6" />
           </Button>
 
-          <Coffee className={`${scrolled ? 'rounded-full' : 'rounded-md'} shadow-acternity`}/>
 
           {/* THEME SWITCH */}
           <ThemeToggleButton
