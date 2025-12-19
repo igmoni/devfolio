@@ -7,6 +7,7 @@ import { useHapticFeedback } from "@/hooks/use-haptic-feedback";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion } from 'motion/react'
+
 const getBlogPostsByTagClient = (posts, tag) => {
   return posts.filter((post) =>
     post.frontmatter.tags.some(

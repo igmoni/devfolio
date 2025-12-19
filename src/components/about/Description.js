@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../common/Container";
 import Image from "next/image";
+import { Separator } from "../ui/separator";
 
 const Description = () => {
   return (
@@ -49,6 +50,7 @@ const Description = () => {
           </p>
         </div>
       </div>
+      <Separator className={'mt-5'}/>
       <div className="py-10">
         <h2 className="text-3xl text-primary dark:text-white font-semibold">
           Mohan S P

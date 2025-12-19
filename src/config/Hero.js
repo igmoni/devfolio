@@ -6,7 +6,6 @@ import X from "@/svgs/X"
 import Instagram from "@/svgs/Instagram"
 import YouTube from "@/svgs/YouTube"
 import Pinterest from "@/svgs/Pinterest"
-import Menu from "@/svgs/Menu"
 
 
 export const heroConfig = {
@@ -53,12 +52,12 @@ export const socialLinks = [
 
     {
         name: 'YouTube',
-        href: 'https://youtube.com/@mon.buildz',
+        href: 'https://youtube.com/@igmonii',
         icon: <YouTube />,
     },
     {
         name: 'Instagram',
-        href: 'https://instagram.com/mon.buildz',
+        href: 'https://instagram.com/_igmoni',
         icon: <Instagram />,
     },
 

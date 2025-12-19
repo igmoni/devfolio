@@ -2,11 +2,12 @@ import React from "react";
 import Container from "./Container";
 import FreelanceText from "../landing/FreelanceText";
 import ContactForm from "../contact/ContactForm";
+import { cn } from "@/lib/utils";
 
-const Contact = () => {
+const Contact = ({ className}) => {
   return (
     <Container
-      className={"w-full md:w-3/4 ml-0 py-10 md:py-32 flex flex-col gap-5 "}
+      className={cn("w-full px-5 md:w-3/4 ml-0 py-10 md:py-32 flex flex-col gap-5 ", className)}
     >
       <FreelanceText />
       <div className="flex flex-col">

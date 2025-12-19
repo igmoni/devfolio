@@ -31,14 +31,28 @@
   // GIF OPTIONS FOR POPUP
   // ----------------------------------------
   const gifOptions = [
+    "/oneko/oneko.gif",
     "/oneko/oneko-vaporwave.gif",
-    "/oneko/oneko-purple.gif",
-    "/oneko/oneko-classic.gif",
-    "/oneko/oneko-black.gif",
-    "/oneko/oneko-white.gif",
-    "/oneko/oneko-rainbow.gif",
+    "/oneko/oneko-dog.gif",
+    "/oneko/oneko-tora.gif",
+    "/oneko/oneko-maia.gif",
   ];
 
+  const gifFrontPics= [
+    '/oneko/onekoc.png',
+    '/oneko/onekovw.png',
+    '/oneko/onekod.png',
+    '/oneko/onekot.png',
+    '/oneko/onekom.png',
+  ]
+
+  const gifNames = [
+    'Classic',
+    'Vaporwave',
+    'Dog',
+    'Tora',
+    'Maia'
+  ]
   // ----------------------------------------
   // SPRITE SHEET MAP
   // ----------------------------------------
@@ -164,50 +178,21 @@
   // ----------------------------------------
   // POPUP MENU FOR GIF SELECTION
   // ----------------------------------------
-  function openGifPopup(x, y) {
-    const old = document.getElementById("oneko-popup");
-    if (old) old.remove();
+ function openGifPopup() {
+  nekoEl.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+  createNekoPicker({
+    nekoEl,
+    gifOptions,
+    gifFrontPics,
+    gifNames,
+  });
+});
 
-    const popup = document.createElement("div");
-    popup.id = "oneko-popup";
-    popup.style.position = "fixed";
-    popup.style.left = x + "px";
-    popup.style.top = y + "px";
-    popup.style.background = "#111";
-    popup.style.padding = "8px";
-    popup.style.borderRadius = "8px";
-    popup.style.display = "grid";
-    popup.style.gridTemplateColumns = "repeat(3, 1fr)";
-    popup.style.gap = "6px";
-    popup.style.zIndex = 2147483647;
+}
 
-    gifOptions.forEach((gif) => {
-      const img = document.createElement("img");
-      img.src = gif;
-      img.style.width = "48px";
-      img.style.height = "48px";
-      img.style.cursor = "pointer";
-      img.style.borderRadius = "4px";
 
-      img.onclick = () => {
-        nekoEl.style.backgroundImage = `url(${gif})`;
-        window.localStorage.setItem("oneko-gif", gif);
-        popup.remove();
-      };
 
-      popup.appendChild(img);
-    });
-
-    document.body.appendChild(popup);
-
-    document.addEventListener(
-      "click",
-      () => {
-        popup.remove();
-      },
-      { once: true }
-    );
-  }
 
   // ----------------------------------------
   // ANIMATION + MOVEMENT
@@ -327,3 +312,159 @@
 
   init();
 })();
+
+function createNekoPicker({ nekoEl, gifOptions, gifFrontPics, gifNames }) {
+  // cleanup
+  document.getElementById("oneko-popup")?.remove();
+  document.getElementById("oneko-backdrop")?.remove();
+
+  /* ---------- BACKDROP ---------- */
+  const backdrop = document.createElement("div");
+  backdrop.id = "oneko-backdrop";
+  Object.assign(backdrop.style, {
+    position: "fixed",
+    inset: "0",
+    background: "rgba(0,0,0,0.55)",
+    backdropFilter: "blur(4px)",
+    zIndex: 2147483646,
+    opacity: "0",
+    transition: "opacity 150ms ease",
+  });
+
+  /* ---------- POPUP ---------- */
+  const popup = document.createElement("div");
+  popup.id = "oneko-popup";
+  Object.assign(popup.style, {
+    position: "fixed",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%) scale(0.95)",
+    background: "#0f0f0f",
+    padding: "14px",
+    borderRadius: "12px",
+    zIndex: 2147483647,
+    boxShadow: "0 20px 50px rgba(0,0,0,0.7)",
+    opacity: "0",
+    transition:
+      "opacity 150ms ease, transform 200ms cubic-bezier(0.16, 1, 0.3, 1)",
+  });
+
+  /* ---------- HEADER ---------- */
+  const header = document.createElement("div");
+  Object.assign(header.style, {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "12px",
+  });
+
+  const title = document.createElement("span");
+  title.textContent = "Choose Neko";
+  Object.assign(title.style, {
+    fontWeight: "700",
+    fontSize: "14px",
+    color: "#fff",
+  });
+
+  const closeBtn = document.createElement("span");
+  closeBtn.textContent = "✕";
+  Object.assign(closeBtn.style, {
+    cursor: "pointer",
+    color: "#aaa",
+    fontSize: "14px",
+  });
+
+  closeBtn.onclick = close;
+  header.append(title, closeBtn);
+
+  /* ---------- FLEX GRID (AUTO WIDTH) ---------- */
+  const grid = document.createElement("div");
+  Object.assign(grid.style, {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+    justifyContent: "center", // 👈 THIS CENTERS 2ND ROW
+    maxWidth: "180px",        // 3 * 48 + gaps
+  });
+
+  gifFrontPics.forEach((frontPic, index) => {
+    const wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+
+    const img = document.createElement("img");
+    img.src = frontPic;
+    img.width = 48;
+    img.height = 48;
+
+    Object.assign(img.style, {
+      cursor: "pointer",
+      borderRadius: "6px",
+      transition: "transform 0.15s ease",
+    });
+
+    /* ---------- TOOLTIP ---------- */
+    const tooltip = document.createElement("div");
+    tooltip.textContent = gifNames[index];
+    Object.assign(tooltip.style, {
+      position: "absolute",
+      bottom: "110%",
+      left: "50%",
+      transform: "translateX(-50%) translateY(4px)",
+      background: "#111",
+      color: "#fff",
+      fontSize: "11px",
+      padding: "4px 8px",
+      borderRadius: "6px",
+      whiteSpace: "nowrap",
+      opacity: "0",
+      pointerEvents: "none",
+      transition:
+        "opacity 120ms ease, transform 120ms cubic-bezier(0.16,1,0.3,1)",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.6)",
+    });
+
+    img.onmouseenter = () => {
+      img.style.transform = "scale(1.1)";
+      tooltip.style.opacity = "1";
+      tooltip.style.transform = "translateX(-50%) translateY(0)";
+    };
+
+    img.onmouseleave = () => {
+      img.style.transform = "scale(1)";
+      tooltip.style.opacity = "0";
+      tooltip.style.transform = "translateX(-50%) translateY(4px)";
+    };
+
+    img.onclick = () => {
+      const selectedGif = gifOptions[index];
+      nekoEl.style.backgroundImage = `url(${selectedGif})`;
+      localStorage.setItem("oneko-gif", selectedGif);
+      close();
+    };
+
+    wrapper.append(img, tooltip);
+    grid.appendChild(wrapper);
+  });
+
+  popup.append(header, grid);
+  document.body.append(backdrop, popup);
+
+  /* ---------- OPEN ---------- */
+  requestAnimationFrame(() => {
+    backdrop.style.opacity = "1";
+    popup.style.opacity = "1";
+    popup.style.transform = "translate(-50%, -50%) scale(1)";
+  });
+
+  backdrop.onclick = close;
+
+  function close() {
+    backdrop.style.opacity = "0";
+    popup.style.opacity = "0";
+    popup.style.transform = "translate(-50%, -50%) scale(0.95)";
+    setTimeout(() => {
+      backdrop.remove();
+      popup.remove();
+    }, 150);
+  }
+}

@@ -14,7 +14,7 @@ const page = () => {
       <Experience />
       <Education />
       <Features />
-      <Contact />
+      <Contact className={'px-0'} />
     </Container>
   );
 };

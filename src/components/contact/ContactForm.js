@@ -68,7 +68,7 @@ const ContactForm = ({ className, showHeader = true }) => {
   };
 
   return (
-    <Card className={cn("border-none shadow-none bg-transparent p-0", className)}>
+    <Card className={cn("border-none  shadow-none bg-transparent p-0", className)}>
       {showHeader && (
         <CardHeader className="p-0 pb-4">
           <CardTitle>Send me a message</CardTitle>

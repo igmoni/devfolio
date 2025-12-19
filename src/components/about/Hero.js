@@ -13,8 +13,8 @@ export default function HeroHeading() {
         style={{ filter: "blur(0px)", opacity: 1, transform: "none" }}
       >
         Building{" "}
-        <span className="font-bold ">
-          <span className="dark:text-gray-400/40 text-[rgba(10,10,10,0.4)] blur-sm absolute">
+        <span className="font-extrabold">
+          <span className="dark:text-gray-400/40 text-[rgba(10,10,10,0.4)] blur-sm absolute ">
             Solutions
           </span>
           <span className="">Solutions</span>
