@@ -12,7 +12,7 @@ const About = () => {
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
 
-  const avatar = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
+  const avatar = theme === "dark" ? "/assets/mony.png" : "/assets/monb.png";
 
   useEffect(() => setMounted(true), []);
 

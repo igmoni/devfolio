@@ -23,8 +23,8 @@ export const mySkills = [
 export const about = {
   name: "Mohan S P",
   desc: `I design and build engaging digital experiences focused on performance and visual design, specialized in creating landing page’s and portfolio website’s.`,
-  logoLight: "/assets/mon-b.png",
-  logoDark: "/assets/mon-y.png",
+  logoLight: "/assets/monb.png",
+  logoDark: "/assets/mony.png",
 };
 
 export const experience = {
@@ -41,40 +41,44 @@ export const experience = {
 
 export const education = [
   {
-    period: '2023 - 2026',
+    period: "2023 - 2026",
     course: "Bachelor's of Computer Applications",
-    college: 'Government First Grade College'
+    college: "Government First Grade College",
   },
   {
-    period: '2017 - 2021',
-    course: 'High School',
-    college: 'Isaac Newton High School'
-  }
-]
+    period: "2017 - 2021",
+    course: "High School",
+    college: "Isaac Newton High School",
+  },
+];
 
 export const features = [
   {
-    heading: 'Full-Stack Web Development',
-    subheading: 'Build fast, scalable, and secure websites using modern frameworks and best practices.',
-    iconType: 'code',
-    icon: <Code/>
-  }, 
-  {
-    heading: 'High-Conversion Landing Pages',
-    subheading: 'Create beautiful, conversion-focused pages that turn visitors into customers.',
-    iconType: 'conversion',
-    icon: <Conversion/>
+    heading: "Full-Stack Web Development",
+    subheading:
+      "Build fast, scalable, and secure websites using modern frameworks and best practices.",
+    iconType: "code",
+    icon: <Code />,
   },
   {
-    heading: 'CMS-Powered Websites & Blogs',
-    subheading: 'Manage content effortlessly with powerful, editable, CMS-driven systems.',
-    iconType: 'database',
-    icon: <Database/>
+    heading: "High-Conversion Landing Pages",
+    subheading:
+      "Create beautiful, conversion-focused pages that turn visitors into customers.",
+    iconType: "conversion",
+    icon: <Conversion />,
   },
   {
-    heading: 'Learning, Mentorship & Training',
-    subheading: 'Learn development the practical way — industry workflows, not classroom theory.',
-    iconType: 'mentor',
-    icon: <Mentor/>
-  }
-]
+    heading: "CMS-Powered Websites & Blogs",
+    subheading:
+      "Manage content effortlessly with powerful, editable, CMS-driven systems.",
+    iconType: "database",
+    icon: <Database />,
+  },
+  {
+    heading: "Learning, Mentorship & Training",
+    subheading:
+      "Learn development the practical way — industry workflows, not classroom theory.",
+    iconType: "mentor",
+    icon: <Mentor />,
+  },
+];

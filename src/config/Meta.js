@@ -47,7 +47,7 @@ export const pageMetaData = {
     description:
       "Get in touch with me for collaborations, projects, or opportunities. I'd love to hear from you!",
     keywords: ["contact", "hire", "collaboration", "freelance", "developer"],
-    ogImage: "/assets/mon-y.png",
+    ogImage: "/assets/mony.png",
     twitterCard: "summary",
   },
   "/projects": {
@@ -111,7 +111,7 @@ export function generateMetaData(pathName) {
       ],
     },
     twitter: {
-      card: pageMeta.twitterCard || 'summary_large_image',
+      card: pageMeta.twitterCard || "summary_large_image",
       title: pageMeta.title,
       description: pageMeta.description,
       creator: siteConfig.author.twitter,
@@ -123,13 +123,13 @@ export function generateMetaData(pathName) {
       googleBot: {
         index: true,
         follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1
-      }
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
     alternates: {
-      canonical: `${siteConfig.url}${pathName}`
-    }
+      canonical: `${siteConfig.url}${pathName}`,
+    },
   };
 }

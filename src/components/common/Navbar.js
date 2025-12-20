@@ -62,7 +62,7 @@ const Navbar = () => {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  const logoSrc = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
+  const logoSrc = theme === "dark" ? "/assets/mony.png" : "/assets/monb.png";
   const navItems = [
     { title: "About", href: "/about" },
     { title: "Projects", href: "/projects" },
@@ -185,7 +185,6 @@ const Navbar = () => {
           >
             <Menu className="size-6" />
           </Button>
-
 
           {/* THEME SWITCH */}
           <ThemeToggleButton

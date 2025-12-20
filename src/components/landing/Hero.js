@@ -19,7 +19,7 @@ const Hero = () => {
   const { name, title, button } = heroConfig;
   const { theme } = useTheme();
 
-  const avatar = theme === "dark" ? "/assets/mon-y.png" : "/assets/mon-b.png";
+  const avatar = theme === "dark" ? "/assets/mony.png" : "/assets/monb.png";
 
   const parent = {
     hidden: { opacity: 0 },
@@ -70,7 +70,7 @@ const Hero = () => {
             className="size-52 rounded-full"
           />
         </motion.div>
-    
+
         {/* CHILD 2 — Name */}
         <motion.h1
           variants={child}
@@ -92,21 +92,22 @@ const Hero = () => {
           {title}
         </motion.h1>
         <div className="flex gap-5 items-start">
-
-        <motion.div variants={child}>
-          <Link href={button.href}>
-            <Button
-              variant={button.variant}
-              className="bg-primary  cursor-pointer dark:bg-white"
-            >
-              {button.icon}
-              {button.text}
-            </Button>
-          </Link>
-        </motion.div>
-        <motion.div variants={child}>
-          <Coffee className={'size-9 shadow-acternity dark:shadow-acternity-white'}/>
-        </motion.div>
+          <motion.div variants={child}>
+            <Link href={button.href}>
+              <Button
+                variant={button.variant}
+                className="bg-primary  cursor-pointer dark:bg-white"
+              >
+                {button.icon}
+                {button.text}
+              </Button>
+            </Link>
+          </motion.div>
+          <motion.div variants={child}>
+            <Coffee
+              className={"size-9 shadow-acternity dark:shadow-acternity-white"}
+            />
+          </motion.div>
         </div>
 
         {/* CHILD 6 — Social Links */}
