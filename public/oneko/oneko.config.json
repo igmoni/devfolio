@@ -10,12 +10,6 @@
       "preview": "oneko-classic.png"
     },
     {
-      "id": "sleep",
-      "name": "Sleepy Neko",
-      "file": "sleep.gif",
-      "preview": "oneko-sleep.png"
-    },
-    {
       "id": "vaporwave",
       "name": "Vaporwave Neko",
       "file": "vaporwave.gif",
