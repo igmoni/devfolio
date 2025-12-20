@@ -1,51 +1,49 @@
 {
-  "sprite": {
-    "width": 32,
-    "height": 32,
-    "file": "/oneko/oneko.gif",
-    "imageRendering": "pixelated",
-    "scale": 1
-  },
-
-  "behavior": {
-    "speed": 10,
-    "followDistance": 48,
-    "persistPosition": true,
-    "allowDrag": true,
-    "allowContextMenu": true
-  },
-
-  "movement": {
-    "frameRate": 100,
-    "idleTimeout": 10
-  },
-
-  "style": {
-    "zIndex": 2147483647,
-    "pointerEvents": "auto",
-    "position": "fixed"
-  },
-
-  "spriteSets": {
-    "idle": [[-3, -3]],
-    "alert": [[-7, -3]],
-
-    "N": [[-1, -2], [-1, -3]],
-    "S": [[-6, -3], [-7, -2]],
-    "E": [[-3, 0], [-3, -1]],
-    "W": [[-4, -2], [-4, -3]],
-
-    "NE": [[0, -2], [0, -3]],
-    "NW": [[-1, 0], [-1, -1]],
-    "SE": [[-5, -1], [-5, -2]],
-    "SW": [[-5, -3], [-6, -1]],
-
-    "sleeping": [[-2, 0], [-2, -1]],
-    "scratchSelf": [[-5, 0], [-6, 0], [-7, 0]]
-  },
-
-  "accessibility": {
-    "respectReducedMotion": true,
-    "ariaHidden": true
-  }
+  "defaultSkin": "classic",
+  "idleTime": 3000,
+  "speed": 108,
+  "skins": [
+    {
+      "id": "classic",
+      "name": "Classic Neko",
+      "file": "classic.gif",
+      "preview": "oneko-classic.png"
+    },
+    {
+      "id": "sleep",
+      "name": "Sleepy Neko",
+      "file": "sleep.gif",
+      "preview": "oneko-sleep.png"
+    },
+    {
+      "id": "vaporwave",
+      "name": "Vaporwave Neko",
+      "file": "vaporwave.gif",
+      "preview": "oneko-vaporwave.png"
+    },
+    {
+      "id": "dog",
+      "name": "Dog Neko",
+      "file": "dog.gif",
+      "preview": "oneko-dog.png"
+    },
+    {
+      "id": "tora",
+      "name": "Tora Neko",
+      "file": "tora.gif",
+      "preview": "oneko-tora.png"
+    },
+    {
+      "id": "maia",
+      "name": "Maia Neko",
+      "file": "maia.gif",
+      "preview": "oneko-maia.png"
+    },
+    {
+      "id": "pink",
+      "name": "Pink Neko",
+      "file": "pink.gif",
+      "preview": "oneko-pink.png"
+    }
+  ]
 }

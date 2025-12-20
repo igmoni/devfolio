@@ -1,11 +1,27 @@
-import Script from 'next/script';
-import React from 'react';
-import { catConfig } from '@/config/Cat';
+"use client";
+
+import { useEffect } from "react";
+import { catConfig } from "@/config/Cat";
 
 export default function OnekoCat() {
-  if (!catConfig.enabled) {
-    return null;
-  }
+  useEffect(() => {
+    if (!catConfig.enabled) return;
 
-  return <Script src="/oneko/oneko.js" data-cat="/oneko/oneko-vaporwave.gif"  />;
+    // prevent duplicate loads
+    if (window.__ONEKO_LOADED__) return;
+    window.__ONEKO_LOADED__ = true;
+
+    const script = document.createElement("script");
+    script.src = "/oneko/oneko.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+      window.__ONEKO_LOADED__ = false;
+    };
+  }, []);
+
+  return null;
 }

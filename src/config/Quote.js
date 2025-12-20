@@ -16,7 +16,7 @@ export const quotes = [
         author: 'Naruto Uzumaki'
     },
     {
-        quote: 'Throughout the heavens and earth, I alone am the honored one!',
+        quote: 'Throughout the heaven and earth, I alone am the honored one!',
         author: 'Gojo Satoru'
     }
 ]
