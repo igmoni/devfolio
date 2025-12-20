@@ -228,6 +228,49 @@
       transform: translateX(-50%) scale(1);
     }
 
+    /* ============================= */
+/* ✅ NEXT-THEMES / SHADCN FIX   */
+/* ============================= */
+
+/* 🌞 LIGHT THEME */
+html.light #oneko-overlay .oneko-modal,
+html:not(.dark) #oneko-overlay .oneko-modal {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25) !important;
+}
+
+/* 🌙 DARK THEME */
+html.dark #oneko-overlay .oneko-modal {
+  background: #0f0f0f !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7) !important;
+}
+
+/* 🐱 PREVIEW INNER SHADOW – LIGHT */
+html.light .oneko-preview,
+html:not(.dark) .oneko-preview {
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.15),
+    inset 0 -2px 6px rgba(255,255,255,0.6) !important;
+}
+
+/* 🐱 PREVIEW INNER SHADOW – DARK */
+html.dark .oneko-preview {
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.45),
+    inset 0 -2px 6px rgba(255,255,255,0.05) !important;
+}
+
+html.light #oneko-overlay .oneko-close svg,
+html:not(.dark) #oneko-overlay .oneko-close svg {
+  color: #010101 !important;
+}
+
+/* Dark theme */
+html.dark #oneko-overlay .oneko-close svg {
+  color: #ffffff !important;
+}
 
     
   `;
