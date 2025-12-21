@@ -61,7 +61,7 @@ const Hero = () => {
         className="flex flex-col gap-4 items-center"
       >
         {/* CHILD 1 — Avatar */}
-        <motion.div variants={child} className="p-[5px] bg-muted rounded-full">
+        <motion.div variants={child} className="p-[7px] bg-muted rounded-full">
           <Image
             src={avatar}
             alt="Avatar"
