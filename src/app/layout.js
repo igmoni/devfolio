@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import VisitorCount from "@/components/common/VisitorCount";
 import OnekoCat from "@/components/common/OnekoCat";
+import ShootingStar from "@/components/common/ShootingStar";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
           >
             <Toaster richColors position="top-center" />
             <Navbar />
+            <ShootingStar/>
             {children}
             <VisitorCount />
             <OnekoCat/>

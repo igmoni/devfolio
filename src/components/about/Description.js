@@ -51,6 +51,8 @@ const Description = () => {
         </div>
       </div>
       <Separator className={'mt-5'}/>
+      
+      
       <div className="py-10">
         <h2 className="text-3xl text-primary dark:text-white font-semibold">
           Mohan S P

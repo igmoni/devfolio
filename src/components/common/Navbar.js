@@ -81,10 +81,11 @@ const Navbar = () => {
             : "none",
           width,
           y,
+          borderRadius: scrolled ? "50px" : "0"
         }}
         transition={{ duration: 0.3, ease: "linear" }}
         className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 
-        max-w-5xl mx-auto flex items-center justify-between px-3 py-2 rounded-full"
+        max-w-5xl mx-auto flex items-center justify-between px-3 py-2 "
       >
         {/* LEFT */}
         <div className="flex gap-2 items-center">

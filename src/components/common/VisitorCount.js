@@ -21,10 +21,21 @@ export default function VisitorCount() {
     async function fetchVisitors() {
       try {
         const res = await fetch("/api/visitors", { cache: "no-store" });
+        if (!res.ok) {
+          console.error("Failed to fetch visitors:", res.status);
+          setVisitors(0);
+          return;
+        }
         const data = await res.json();
-        setVisitors(data.visitors);
+        // Ensure we have a valid number
+        const visitorCount =
+          typeof data.visitors === "number"
+            ? data.visitors
+            : parseInt(data.visitors) || 0;
+        setVisitors(visitorCount);
       } catch (error) {
         console.error("Failed to load visitor count", error);
+        setVisitors(0);
       }
     }
 
@@ -43,8 +54,8 @@ export default function VisitorCount() {
       <p className="text-base text-secondary">
         You are the{"  "}
         <span className="text-primary font-semibold dark:text-white">
-          {visitors ?? "..."}
-          <sup>{suffix}</sup>{" "}
+          {visitors !== null ? visitors : "..."}
+          {visitors !== null && <sup>{suffix}</sup>}{" "}
         </span>
         visitor
       </p>

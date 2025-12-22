@@ -143,6 +143,20 @@
 
 }
 
+@keyframes shooting-once {
+  0% {
+    transform: translate(200px, -200px) rotate(-35deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 0) rotate(-35deg);
+    opacity: 0.6;
+  }
+}
+
 
 .dark {
   --color-primary: #fff;
