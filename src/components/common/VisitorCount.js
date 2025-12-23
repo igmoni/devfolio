@@ -1,6 +1,8 @@
 "use client";
+
 import Eye from "@/svgs/Eye";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // ordinal suffix function
 function getOrdinalSuffix(n) {
@@ -15,34 +17,37 @@ function getOrdinalSuffix(n) {
 }
 
 export default function VisitorCount() {
+  const pathname = usePathname();
   const [visitors, setVisitors] = useState(null);
 
   useEffect(() => {
     async function fetchVisitors() {
       try {
-        const res = await fetch("/api/visitors", { cache: "no-store" });
+        const res = await fetch(
+          `/api/visitors?path=${encodeURIComponent(pathname)}`,
+          { cache: "no-store" }
+        );
+
         if (!res.ok) {
-          console.error("Failed to fetch visitors:", res.status);
           setVisitors(0);
           return;
         }
+
         const data = await res.json();
-        // Ensure we have a valid number
-        const visitorCount =
+        const count =
           typeof data.visitors === "number"
             ? data.visitors
             : parseInt(data.visitors) || 0;
-        setVisitors(visitorCount);
-      } catch (error) {
-        console.error("Failed to load visitor count", error);
+
+        setVisitors(count);
+      } catch {
         setVisitors(0);
       }
     }
 
     fetchVisitors();
-  }, []);
+  }, [pathname]);
 
-  // compute suffix only when visitors exist
   const suffix = visitors ? getOrdinalSuffix(visitors) : "th";
 
   return (
@@ -52,11 +57,11 @@ export default function VisitorCount() {
       </div>
 
       <p className="text-base text-secondary">
-        You are the{"  "}
+        You are the{" "}
         <span className="text-primary font-semibold dark:text-white">
           {visitors !== null ? visitors : "..."}
-          {visitors !== null && <sup>{suffix}</sup>}{" "}
-        </span>
+          {visitors !== null && <sup>{suffix}</sup>}
+        </span>{" "}
         visitor
       </p>
     </div>

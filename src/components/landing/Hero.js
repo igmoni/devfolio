@@ -51,7 +51,6 @@ const Hero = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
   return (
     <Container className="flex flex-col items-center justify-center pt-16">
       {/* PARENT */}

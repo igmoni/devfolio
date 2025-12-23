@@ -37,9 +37,10 @@ export default function WakaTimeCard() {
   return (
     <div className="relative group inline-block">
       {/* STATUS CIRCLE */}
+      
       <div className="w-10 h-10 rounded-full border border-neutral-300 dark:border-neutral-700 flex items-center justify-center bg-white dark:bg-neutral-900">
         {data?.status === "online" ? (
-          <img src="/assets/cursor.png" alt="Cursor" className="w-5 h-5" />
+          <img src="/assets/cursor.png" alt="Cursor" className="w-6 h-6" />
         ) : (
           <div className="w-3 h-3 rounded-full bg-neutral-400 dark:bg-neutral-600" />
         )}
@@ -48,7 +49,7 @@ export default function WakaTimeCard() {
       {/* HOVER CARD */}
       {/* HOVER TOOLTIP */}
       <div
-        className="
+  className="
     absolute left-14 top-1/2 -translate-y-1/2
     w-[350px] min-h-[68px]
     opacity-0 scale-95 pointer-events-none
@@ -57,29 +58,31 @@ export default function WakaTimeCard() {
     rounded-md
     border border-neutral-200 dark:border-neutral-800
     bg-white dark:bg-neutral-900
-    shadow-md
+    shadow-acternity dark:shadow-acternity-white
     px-3 py-2
     z-50
+    
   "
-      >
-        {/* Tooltip arrow */}
-        <div
-          className="
+>
+  {/* Tooltip arrow (BEHIND) */}
+  <div
+    className="
       absolute -left-1.5 top-1/2 -translate-y-1/2
       w-3 h-3
       rotate-45
       bg-white dark:bg-neutral-900
       border-l border-b
       border-neutral-200 dark:border-neutral-800
+      shadow-acternity dark:shadow-acternity-white
+      z-[-100]
     "
-        />
+  />
 
         {!data ? (
           <p className="text-md text-neutral-500">Loading…</p>
         ) : data.status === "online" ? (
           <div className="text-sm text-primary dark:text-white space-y-1">
             <p className="flex items-center gap-1">
-              <div className="bg-muted-foreground/10 rounded-full">
                 <Image
                   src="/assets/cursor.png"
                   alt="Cursor"
@@ -87,7 +90,6 @@ export default function WakaTimeCard() {
                   height={18}
                   className="rounded-full"
                 />
-              </div>
               Currently coding in{" "}
               <span className="font-medium">{data.editor}</span> for{" "}
               <span className="font-semibold">

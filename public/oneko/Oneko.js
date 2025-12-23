@@ -277,13 +277,14 @@ html.dark #oneko-overlay .oneko-close svg {
   document.head.appendChild(pickerStyle);
 
   function sleep() {
-    forceSleep = !forceSleep;
     nudge = false;
+    resetIdleAnimation()
+    forceSleep = !forceSleep;
     localStorage.setItem("oneko:forceSleep", forceSleep);
-    if (!forceSleep) {
-      resetIdleAnimation();
-      return;
-    }
+    if (!forceSleep) return
+
+    mousePosX = nekoPosX;
+    mousePosY = nekoPosY;
 
     // If Full App Display is on, sleep on its progress bar instead
     const fullAppDisplay = document.getElementById("fad-progress");
@@ -297,9 +298,12 @@ html.dark #oneko-overlay .oneko-close svg {
     const progressBar = document.querySelector(
       ".main-nowPlayingBar-center .playback-progressbar"
     );
-    if (!progressBar) {
-      forceSleep = false;
-      return;
+
+    if(!progressBar) return
+    if (progressBar) {
+      const rect = progressBar.getBoundingClientRect();
+    mousePosX = rect.right - 16;
+    mousePosY = rect.top - 8;
     }
 
     const progressBarRight = progressBar.getBoundingClientRect().right;
@@ -501,10 +505,7 @@ html.dark #oneko-overlay .oneko-close svg {
 
     switch (idleAnimation) {
       case "sleeping":
-        if (idleAnimationFrame < 8 && nudge && forceSleep) {
-          setSprite("idle", 0);
-          break;
-        } else if (nudge) {
+        if (nudge) {
           nudge = false;
           resetIdleAnimation();
         }
@@ -722,7 +723,6 @@ html.dark #oneko-overlay .oneko-close svg {
       preview.appendChild(tooltip);
       div.appendChild(preview);
 
-
       div.onclick = () => {
         setVariant(variantEnum);
         document
@@ -749,14 +749,23 @@ html.dark #oneko-overlay .oneko-close svg {
   window.addEventListener("keydown", (e) => {
     if (!e.shiftKey) return;
 
+    if (e.key.toLowerCase() === "z") {
+      sleep();
+    }
+
+    if(e.key.toLowerCase() === "z" && sleep) {
+      idle()
+    }
+
     if (e.key.toLowerCase() === "x") {
       pickerOpen ? closePicker() : openPicker();
     }
 
-    if (e.key.toLowerCase() === "z") {
-      sleep();
+    if(e.key === "Escape" && pickerOpen) {
+      closePicker()
     }
   });
+
 
   if (parseLocalStorage("forceSleep", false)) {
     while (

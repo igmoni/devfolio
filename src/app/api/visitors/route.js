@@ -1,38 +1,20 @@
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
+export async function GET(req) {
   try {
-    // 1. Get current count
-    const currentRes = await fetch(`${url}/rest/v1/visitor_counter?id=eq.1`, {
-      headers: {
-        apikey: key,
-        Authorization: `Bearer ${key}`,
-      },
-      cache: "no-store",
-    });
+    const { searchParams } = new URL(req.url);
+    const pathname = searchParams.get("path") || "/";
 
-    const rows = await currentRes.json();
-    const currentCount = rows[0]?.count ?? 0;
+    const res = await fetch(
+      `https://igmoni.goatcounter.com/counter?p=${encodeURIComponent(pathname)}`,
+      { cache: "no-store" }
+    );
 
-    // 2. Increment count
-    const newCount = currentCount + 1;
+    if (!res.ok) {
+      return Response.json({ visitors: 0 });
+    }
 
-    await fetch(`${url}/rest/v1/visitor_counter?id=eq.1`, {
-      method: "PATCH",
-      headers: {
-        apikey: key,
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ count: newCount }),
-    });
-
-    return NextResponse.json({ visitors: newCount });
-  } catch (err) {
-    console.error("Visitor counter error:", err);
-    return NextResponse.json({ visitors: 0 });
+    const data = await res.json();
+    return Response.json({ visitors: data.count || 0 });
+  } catch {
+    return Response.json({ visitors: 0 });
   }
 }

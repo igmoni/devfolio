@@ -18,7 +18,7 @@ export default function ShootingStar() {
             dark:from-white/80 dark:via-white/50
           blur-2xl
           opacity-60
-          shadow-[0_0_30px_10px_rgba(0,0,0,0.25)]
+
           dark:shadow-[0_0_40px_12px_rgba(255,255,255,0.6)]
           animate-[shooting-once_1.6s_ease-out_forwards]
         "
