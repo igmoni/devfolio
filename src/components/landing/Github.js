@@ -8,6 +8,7 @@ import { Link } from 'next-view-transitions'
 import Container from '../common/Container'
 import GithubIcon from '@/svgs/Github'
 import { Button } from '../ui/button'
+import WakaTimeText from './WakaTimeText'
 
 const ActivityCalendar = dynamic(
   () => import('react-activity-calendar').then(mod => mod.ActivityCalendar),
@@ -130,13 +131,17 @@ const Github = () => {
           </p>
 
           {!isLoading && !hasError && totalContributions > 0 && (
-            <p className="text-sm text-primary font-medium mt-1">
+            <div className='flex items-center justify-between'>
+
+            <p className="text-sm text-primary dark:text-white font-medium mt-1">
               Total:{' '}
               <span className="font-black">
                 {totalContributions.toLocaleString()}
               </span>{' '}
               contributions
             </p>
+              <WakaTimeText />
+            </div>
           )}
         </div>
 

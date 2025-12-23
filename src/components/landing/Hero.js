@@ -13,6 +13,7 @@ import FreelanceText from "./FreelanceText";
 import Spotify from "./Spotify";
 import { useState, useEffect } from "react";
 import Coffee from "../common/Coffee";
+import WakaTimeCard from "./WakaTimeCard";
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -61,7 +62,10 @@ const Hero = () => {
         className="flex flex-col gap-4 items-center"
       >
         {/* CHILD 1 — Avatar */}
-        <motion.div variants={child} className="p-[7px] bg-muted rounded-full">
+        <motion.div
+          variants={child}
+          className="relative p-[7px] bg-muted rounded-full inline-block"
+        >
           <Image
             src={avatar}
             alt="Avatar"
@@ -69,6 +73,11 @@ const Hero = () => {
             height={100}
             className="size-52 rounded-full"
           />
+
+          {/* Bottom-right anchored WakaTime indicator */}
+          <div className="absolute bottom-2 right-2">
+            <WakaTimeCard />
+          </div>
         </motion.div>
 
         {/* CHILD 2 — Name */}
