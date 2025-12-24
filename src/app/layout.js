@@ -10,6 +10,7 @@ import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import VisitorCount from "@/components/common/VisitorCount";
 import OnekoCat from "@/components/common/OnekoCat";
 import ShootingStar from "@/components/common/ShootingStar";
+import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
             disableTransitionChange
           >
             <Toaster richColors position="top-center" />
+            <KeyboardShortcutsLayer />
             <Navbar />
             <ShootingStar/>
             {children}
