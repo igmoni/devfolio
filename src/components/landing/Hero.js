@@ -74,7 +74,7 @@ const Hero = () => {
           />
 
           {/* Bottom-right anchored WakaTime indicator */}
-          <div className="absolute bottom-2 right-2">
+          <div className="absolute bottom-5 right-3">
             <WakaTimeCard />
           </div>
         </motion.div>

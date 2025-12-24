@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { parseWakaTime, formatWithSeconds } from "@/lib/wakatimeStats";
+import { parseWakaTime, formatDuration } from "@/lib/wakatimeStats";
 import Image from "next/image";
 
 const STORAGE_KEY = "wakatime-cache";
@@ -85,7 +85,7 @@ export default function WakaTimeText() {
           <span className="font-medium">{data.editor}</span>
           <span>for</span>
           <span className="font-medium">
-            {formatWithSeconds(displaySeconds)}
+            {formatDuration(displaySeconds)}
           </span>
         </div>
 
