@@ -14,7 +14,6 @@ import { ThemeToggleButton } from "./ThemeSwitch";
 import Menu from "@/svgs/Menu";
 import React from "react";
 import { Button } from "../ui/button";
-import Coffee from "./Coffee";
 
 const Navbar = () => {
   // ---------------- HOOKS MUST BE AT TOP ----------------

@@ -131,7 +131,7 @@ const Github = () => {
           </p>
 
           {!isLoading && !hasError && totalContributions > 0 && (
-            <div className='flex items-center justify-between'>
+            <div className='flex md:flex-row flex-col gap-5  md:items-center justify-between'>
 
             <p className="text-sm text-primary dark:text-white font-medium mt-1">
               Total:{' '}

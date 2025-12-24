@@ -183,7 +183,7 @@ export default function KeyboardShortcutsLayer() {
 
       {/* Keyboard Shortcuts Help */}
       <Dialog open={isHelpOpen} onOpenChange={setIsHelpOpen}>
-        <DialogContent className="min-w-2xl p-0">
+        <DialogContent className="w-0 md:min-w-2xl  p-0">
           <div className="flex max-h-[80vh] flex-col">
             <DialogHeader className="space-y-1 px-6 pt-6 pb-3">
               <DialogTitle>Keyboard Shortcuts</DialogTitle>
