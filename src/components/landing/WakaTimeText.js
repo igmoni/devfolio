@@ -91,9 +91,9 @@ export default function WakaTimeText() {
 
         {/* LINE 2 */}
         {data.project && data.file ? (
-          <div className="text-primary dark:text-white text-sm">
+          <div className=" text-muted-foreground  text-sm">
             Working on{" "}
-            <span className="font-medium text-muted-foreground">
+            <span className="font-medium text-primary dark:text-white">
               {data.project} - {data.file}
             </span>
           </div>

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import BlogPageClient from "./BlogPageClient";
 import { generateMetaData as getMetaData } from "@/config/Meta";
 
-export const generateMetadata = () => {``
+export const generateMetadata = () => {
   const metadata = getMetaData("/blog");
   return {
     ...metadata,
@@ -16,8 +16,8 @@ export const generateMetadata = () => {``
 function BlogPageLoading() {
   return (
     <Container className={"py-16 "}>
-      <div className="sapce-y-8">
-        <div className="sapce-y-4 text-center">
+      <div className="space-y-8">
+        <div className="space-y-4 text-center">
           <Skeleton className={"h-12 w-32 mx-auto"} />
           <Skeleton className={"h-6 w-96 mx-auto"} />
         </div>
