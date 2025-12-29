@@ -1,7 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { getBlogPostBySlug } from "./blog";
 
 const projectDirectory = path.join(process.cwd(), "src/data/projects");
 
@@ -19,7 +18,7 @@ export function getProjectPostBySlug(slug) {
   try {
     // makes the file path completely
     const fullPath = path.join(projectDirectory, `${slug}.mdx`);
-
+ 
     if (!fs.existsSync(fullPath)) return null;
     // make the file into readable format
     const fileContents = fs.readFileSync(fullPath, "utf-8");
@@ -28,13 +27,29 @@ export function getProjectPostBySlug(slug) {
 
     const frontmatter = data;
 
+   
     // Validating the frontmatter
     if (!frontmatter.title || !frontmatter.desc) {
       throw new Error(`Invalid frontmatter in ${slug.mdx}`);
     }
     return {
       slug,
-      frontmatter,
+      title: data.title,
+      desc: data.desc,
+      image: data.image,
+      technologies: data.technologies ?? [],
+      github: data.github ?? null,
+      live: data.live ?? null,
+      timeline: data.timeline ?? null,
+      role: data.role ?? null,
+      team: data.team ?? null,
+      status: data.status ?? null,
+      featured: Boolean(data.featured),
+      challenges: data.challenges ?? [],
+      learnings: data.learnings ?? [],
+      isPublished: Boolean(data.isPublished),
+      tags: Array.isArray(data.tags) ? data.tags : [],
+      date: data.date ?? data.timeline ?? null,
       content,
     };
   } catch (err) {
@@ -43,7 +58,7 @@ export function getProjectPostBySlug(slug) {
   }
 }
 
-export async function getAllProjects() {
+export function getAllProjects() {
   const slugs = getProjectPostSlug();
 
   const posts = slugs
@@ -51,7 +66,7 @@ export async function getAllProjects() {
       const post = getProjectPostBySlug(slug);
       if (!post) return null;
 
-      return { slug: post.slug, frontmatter: frontmatter };
+      return { slug: post.slug, frontmatter: { ...post } };
     })
     .filter((post) => post !== null)
     .sort((a, b) => {
@@ -72,41 +87,45 @@ export function getPublishedProjectPosts() {
 // to get the posts on basis of tags (filter)
 export function getProjectPostByTag(tag) {
   const publishedPosts = getPublishedProjectPosts();
-  return publishedPosts.filter((post) =>
-    post.frontmatter.tags.some(
-      (postTag) => postTag.toLowerCase() === tag.toLowerCase()
-    )
-  );
+  return publishedPosts.filter((post) => post.frontmatter.tags.includes(tag));
 }
 
 export function getAllTags() {
-  const publishedPosts = getPublishedProjectPosts()
-  const tagsSet = new Set()
+  const publishedPosts = getPublishedProjectPosts();
+  const tagsSet = new Set();
 
   publishedPosts.forEach((post) => {
     post.frontmatter.tags.forEach((tag) => {
-      tagsSet.add(tag.toLowerCase())
-    })
-  })
-  return Array.from(tagsSet).sort()
+      tagsSet.add(tag);
+    });
+  });
+  return Array.from(tagsSet);
 }
 
 export async function getRelatedPosts(currentSlug, maxPosts = 3) {
-  const currentPost = await getBlogPostBySlug(currentSlug)
-  if(!currentPost || !currentPost.frontmatter.isPublished) {
-    return []
+  const currentPost = await getProjectPostBySlug(currentSlug);
+  if (!currentPost || !currentPost.frontmatter.isPublished) {
+    return [];
   }
 
-  const allPosts = getPublishedProjectPosts()
-  const currentTags = currentPost.frontmatter.tags.map(tag => tag.toLowerCase())
+  const allPosts = getPublishedProjectPosts();
+  const currentTags = currentPost.frontmatter.tags.map((tag) =>
+    tag.toLowerCase()
+  );
 
-  const postWithScore = allPosts.filter((post) => post.slug !== currentSlug).map((post) => {
-    const sharedTags = post.frontmatter.tags.filter((tag) => currentTags.includes(tag.toLowerCase()),)
-    return {
-      post,
-      score: sharedTags.length,
-    }
-  }).filter((item) => item.score > 0).sort((a, b) => b.score - a.score)
+  const postWithScore = allPosts
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      const sharedTags = post.frontmatter.tags.filter((tag) =>
+        currentTags.includes(tag.toLowerCase())
+      );
+      return {
+        post,
+        score: sharedTags.length,
+      };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
 
-  return postWithScore.slice(0, maxPosts).map((item) => item.post)
+  return postWithScore.slice(0, maxPosts).map((item) => item.post);
 }

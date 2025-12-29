@@ -10,31 +10,34 @@ import ProjectList from "@/components/projects/ProjectList";
 
 const getProjectPostsByTagClient = (posts, tag) => {
   return posts.filter((post) =>
-    post.frontmatter.tags.some(
-      (postTag) => postTag.toLowerCase() === tag.toLowerCase()
-    )
+    post.tags.includes(tag)
   );
 };
 
-const ProjectPageClient = ({ intialPosts, intialTags }) => {
+
+const ProjectPageClient = ({ initialPosts, initialTags }) => {
   const searachParams = useSearchParams();
   const router = useRouter();
   const { triggerhaptic, isMobile } = useHapticFeedback();
 
   const [selectedTag, setselectedTag] = useState(null);
-  const [filteredPosts, setFilteredPosts] = useState(intialPosts);
+  const [filteredPosts, setFilteredPosts] = useState(initialPosts);
 
   useEffect(() => {
     const tagParam = searachParams.get("tag");
     if (tagParam) {
       setselectedTag(tagParam);
-      const filtered = getProjectPostsByTagClient(intialPosts, tagParam);
+      const filtered = getProjectPostsByTagClient(initialPosts, tagParam);
       setFilteredPosts(filtered);
     } else {
       setselectedTag(null);
-      setFilteredPosts(intialPosts);
+      setFilteredPosts(initialPosts);
     }
-  }, [searachParams, intialPosts]);
+  }, [searachParams, initialPosts]);
+
+  const filterByStatus = (posts, status) => {
+    return posts.filter((post) => post.tags?.includes(status))
+  } 
 
   const handleTagClick = (tag) => {
     if (isMobile()) {
@@ -43,24 +46,23 @@ const ProjectPageClient = ({ intialPosts, intialTags }) => {
 
     if (selectedTag === tag) {
       setselectedTag(null);
-      setFilteredPosts(intialPosts);
-      router.replace("/blog");
+      setFilteredPosts(initialPosts);
+      router.replace("/projects");
     } else {
       setselectedTag(tag);
-      const filtered = getBlogPostsByTagClient(initialPosts, tag);
+      const filtered = getProjectPostsByTagClient(initialPosts, tag);
       setFilteredPosts(filtered);
-      router.replace(`/blog?tag=${encodeURIComponent(tag)}`);
+      router.replace(`/projects?tag=${encodeURIComponent(tag)}`);
     }
   };
-
   const getTagPostCount = (tag) => {
-    return initialPosts.filter((post) =>
-      post.frontmatter.tags.some(
-        (postTag) => postTag.toLowerCase() === tag.toLowerCase()
-      )
+    return initialPosts.filter(
+      (post) => Array.isArray(post.tags) && post.tags.includes(tag)
     ).length;
   };
+  
 
+  console.log(filteredPosts)
   return (
     <Container className={"py-16 px-5"}>
       <div className="space-y-8 mt-20">
@@ -82,7 +84,7 @@ const ProjectPageClient = ({ intialPosts, intialTags }) => {
           <Separator />
         </motion.div>
 
-        {intialTags.length > 0 && (
+        {initialTags.length > 0 && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold">Filter by status</h2>
@@ -96,16 +98,17 @@ const ProjectPageClient = ({ intialPosts, intialTags }) => {
               )}
             </div>
             <div className="flex flex-wrap gap-2">
-              {intialTags.map((tag) => {
+              {initialTags.map((tag) => {
                 const postCount = getTagPostCount(tag);
                 const isSelected = selectedTag === tag;
                 return (
                   <button
-                    key={() => handleTagClick(tag)}
+                  key={tag}
+                    onClick={() => handleTagClick(tag)}
                     className="transition-colors"
                   >
                     <Badge
-                      variant={isSelected ? "default" : "outline"}
+                      variant={isSelected === tag ? "default" : "outline"}
                       className={
                         "capitalize cursor-pointer hover:bg-accent rounded-sm hover:text-accent-foreground  tag-inner-shadow"
                       }
@@ -122,10 +125,10 @@ const ProjectPageClient = ({ intialPosts, intialTags }) => {
         <div className="sapce-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">
-              {selectedTag === "Working" ? `Active Projects` : "In Development Projects"}
+              {(selectedTag === "Working") ? `Active Projects` : (selectedTag === "Building") ?  "In Development Projects" : "All Projects"}
               {filteredPosts.length > 0 && (
                 <span className="ml-2 text-sm font-normal text-muted-foreground">
-                  ({filteredPosts.lneght}{" "}
+                  ({filteredPosts.length}{" "}
                   {filteredPosts.length === 1 ? "project" : "projects"})
                 </span>
               )}
@@ -137,3 +140,5 @@ const ProjectPageClient = ({ intialPosts, intialTags }) => {
     </Container>
   );
 };
+
+export default ProjectPageClient

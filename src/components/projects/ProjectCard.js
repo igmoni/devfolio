@@ -23,8 +23,7 @@ const item = {
 };
 
 const ProjectCard = ({ project }) => {
-  const { frontmatter } = project;
-  const { title, desc, image, tags, date } = frontmatter;
+  const { title, image, date } = project;
 
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric', month: "long", day: "numeric"
@@ -87,7 +86,6 @@ export default ProjectCard;
 
 const CardCon = ({ project }) => {
   const { slug } = project
-  
   return (
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
@@ -96,13 +94,14 @@ const CardCon = ({ project }) => {
             {project.title}
           </h3>
         </Link>
+
         <div className="flex items-center gap-4">
           {/* Website */}
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
                 className="text-secondary flex size-6 items-center justify-center "
-                href={project.link}
+                href={project.live}
                 target="_blank"
               >
                 <Website />
@@ -140,7 +139,7 @@ const CardCon = ({ project }) => {
           Technologies
         </h4>
         <div className="flex flex-wrap gap-3">
-          {project.technologies.map((tech, idx) => (
+          {project.frontmatter?.technologies?.map((tech, idx) => (
             <Tooltip key={idx}>
               <TooltipTrigger>
                 <div className="size-6 hover:scale-120 transition-all duration-300 hover:cursor-pointer">
