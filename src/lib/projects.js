@@ -1,160 +1,112 @@
-import { projects } from "@/config/Projects";
-
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import { getBlogPostBySlug } from "./blog";
 
-const projectsDirectory = path.join(process.cwd(), "src/data/projects");
+const projectDirectory = path.join(process.cwd(), "src/data/projects");
 
-export function getProjectCaseStudySlugs() {
-  if (!fs.existsSync(projectsDirectory)) {
-    return [];
-  }
+export function getProjectPostSlug() {
+  if (!fs.existsSync(projectDirectory)) return [];
 
-  const files = fs.readdirSync(projectsDirectory);
+  const files = fs.readdirSync(projectDirectory);
   return files
     .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""));
+    .map((file) => file.replace(".mdx", ""));
 }
 
-export function getProjectCaseStudyBySlug(slug) {
+// for the [slug]/page.js
+export function getProjectPostBySlug(slug) {
   try {
-    const fullPath = path.join(projectsDirectory, `${slug}.mdx`);
+    // makes the file path completely
+    const fullPath = path.join(projectDirectory, `${slug}.mdx`);
 
     if (!fs.existsSync(fullPath)) return null;
-
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    // make the file into readable format
+    const fileContents = fs.readFileSync(fullPath, "utf-8");
+    // converting into frontmatter and content of mdx
     const { data, content } = matter(fileContents);
 
     const frontmatter = data;
 
+    // Validating the frontmatter
     if (!frontmatter.title || !frontmatter.desc) {
-      throw new Error(`Invalid frontmatter in ${slug}.mdx`);
+      throw new Error(`Invalid frontmatter in ${slug.mdx}`);
     }
-
     return {
       slug,
       frontmatter,
       content,
     };
   } catch (err) {
-    console.error(`Error reading project case study ${slug}:`, err);
+    console.error(`Error reading project post ${slug}:`, err);
     return null;
   }
 }
 
-export function getAllProjectCaseStudies() {
-  const slugs = getProjectCaseStudySlugs();
-  const caseStudies = slugs
+export async function getAllProjects() {
+  const slugs = getProjectPostSlug();
+
+  const posts = slugs
     .map((slug) => {
-      const caseStudy = getProjectCaseStudyBySlug(slug);
-      if (!caseStudy) return null;
+      const post = getProjectPostBySlug(slug);
+      if (!post) return null;
 
-      return {
-        slug: caseStudy.slug,
-        frontmatter: caseStudy.frontmatter,
-      };
+      return { slug: post.slug, frontmatter: frontmatter };
     })
-    .filter((caseStudy) => caseStudy !== null)
+    .filter((post) => post !== null)
     .sort((a, b) => {
-      if (a.frontmatter.featured && !b.frontmatter.featured) return -1;
-      if (!a.frontmatter.featured && b.frontmatter.featured) return 1;
-      return a.frontmatter.title.localCompare(b.frontmatter.title);
+      return (
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+      );
     });
-
-  return caseStudies;
+  return posts;
 }
 
-export function getPublishedProjectCaseStudies() {
-  const allCaseStudeis = getAllProjectCaseStudies();
-  return allCaseStudeis.filter(
-    (caseStudy) => caseStudy.frontmatter.isPublished
-  );
+// to get posts on the basis of published or not
+export function getPublishedProjectPosts() {
+  const allPosts = getAllProjects();
+  return allPosts.filter((post) => post.frontmatter.isPublished);
 }
 
-export function getProjectCaseStudiesByTechnology(technology) {
-  const publishedCaseStudies = getPublishedProjectCaseStudies();
-  return publishedCaseStudies.filter((caseStudy) =>
-    caseStudy.frontmatter.technologies.some(
-      (tech) => tech.toLowerCase() === technology.toLowerCase()
+// to get the posts on basis of tags (filter)
+export function getProjectPostByTag(tag) {
+  const publishedPosts = getPublishedProjectPosts();
+  return publishedPosts.filter((post) =>
+    post.frontmatter.tags.some(
+      (postTag) => postTag.toLowerCase() === tag.toLowerCase()
     )
   );
 }
 
-export function getAllTechnologies() {
-  const publishedCaseStudies = getPublishedProjectCaseStudies();
-  const technologiesSet = new Set();
+export function getAllTags() {
+  const publishedPosts = getPublishedProjectPosts()
+  const tagsSet = new Set()
 
-  publishedCaseStudies.forEach((caseStudy) => {
-    caseStudy.frontmatter.technologies.forEach((tech) => {
-      technologiesSet.add(tech.toLowerCase());
-    });
-  });
-  return Array.from(technologiesSet).sort();
-}
-
-export function getProjectNavigation(currentSlug) {
-  const currentProjectIndex = projects.findIndex(
-    (project) => project.projectsDetailsPageSlug === `/project/${currentSlug}`
-  );
-
-  if (currentProjectIndex === -1) {
-    return { previous: null, next: null };
-  }
-
-  const previousProject =
-    currentProjectIndex > 0 ? projects[currentProjectIndex - 1] : null;
-
-  const nextProject =
-    currentProjectIndex < projects.length - 1
-      ? projects[currentProjectIndex + 1]
-      : null;
-
-  return {
-    previous: previousProject
-      ? {
-          title: previousProject.projectsDetailsPageSlug.replace(
-            "/projects/",
-            ""
-          ),
-        }
-      : null,
-    next: nextProject
-      ? {
-          title: nextProject.title,
-          slug: nextProject.projectsDetailsPageSlug.replace("/projects/", ""),
-        }
-      : null,
-  };
-}
-
-export function getRelatedProjectCaseStudies(currentSlug, maxProjects = 2) {
-  const currentCaseStudy = getProjectCaseStudyBySlug(currentSlug);
-  if (!currentCaseStudy || !currentCaseStudy.frontmatter.isPublished) {
-    return [];
-  }
-
-  const allCaseStudies = getPublishedProjectCaseStudies();
-  const currentTechnologies = currentCaseStudy.frontmatter.technologies.map(
-    (tech) => tech.toLowerCase()
-  );
-
-  const caseStudeisWithScore = allCaseStudies
-    .filter((caseStudy) => caseStudy.slug !== currentSlug)
-    .map((caseStudy) => {
-      const shareTechnologies = caseStudy.frontmatter.technologies.filter(
-        (tech) => currentTechnologies.includes(tech.toLowerCase())
-      );
-
-      return {
-        caseStudy,
-        score: shareTechnologies.length,
-      };
+  publishedPosts.forEach((post) => {
+    post.frontmatter.tags.forEach((tag) => {
+      tagsSet.add(tag.toLowerCase())
     })
-    .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score);
+  })
+  return Array.from(tagsSet).sort()
+}
 
-  return caseStudeisWithScore
-    .slice(0, maxProjects)
-    .map((item) => item.caseStudy);
+export async function getRelatedPosts(currentSlug, maxPosts = 3) {
+  const currentPost = await getBlogPostBySlug(currentSlug)
+  if(!currentPost || !currentPost.frontmatter.isPublished) {
+    return []
+  }
+
+  const allPosts = getPublishedProjectPosts()
+  const currentTags = currentPost.frontmatter.tags.map(tag => tag.toLowerCase())
+
+  const postWithScore = allPosts.filter((post) => post.slug !== currentSlug).map((post) => {
+    const sharedTags = post.frontmatter.tags.filter((tag) => currentTags.includes(tag.toLowerCase()),)
+    return {
+      post,
+      score: sharedTags.length,
+    }
+  }).filter((item) => item.score > 0).sort((a, b) => b.score - a.score)
+
+  return postWithScore.slice(0, maxPosts).map((item) => item.post)
 }

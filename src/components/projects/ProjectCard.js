@@ -23,10 +23,16 @@ const item = {
 };
 
 const ProjectCard = ({ project }) => {
+  const { frontmatter } = project;
+  const { title, desc, image, tags, date } = frontmatter;
+
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric', month: "long", day: "numeric"
+  })
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => setMounted(true), []);
-  
+
   if (!mounted) return null;
   return (
     <motion.div variants={item}>
@@ -63,8 +69,8 @@ const ProjectCard = ({ project }) => {
             >
               <Image
                 fill
-                src="/projects/balc.jpg"
-                alt="Image"
+                src={image}
+                alt={title}
                 className="object-cover rounded-tl-2xl rounded-br-2xl 
             transition-transform duration-500 
             ease-[cubic-bezier(0.25,0.1,0.25,1)]"
@@ -80,10 +86,12 @@ const ProjectCard = ({ project }) => {
 export default ProjectCard;
 
 const CardCon = ({ project }) => {
+  const { slug } = project
+  
   return (
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
-        <Link href={project.projectsDetailsPageSlug}>
+        <Link href={`/projects/${slug}`}>
           <h3 className="text-xl font-semibold leading-tight  hover:cursor-pointer">
             {project.title}
           </h3>

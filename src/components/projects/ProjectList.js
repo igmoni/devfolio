@@ -18,7 +18,8 @@ const ProjectList = ({ projects, className }) => {
     if (projects?.length === 0) {
         return (
             <div className='text-center py-8'>
-                <p className='text-muted-foreground'>No projects found.</p>
+                <h2 className='text-muted-foreground'>No projects found.</h2>
+                <p className='text-muted-foreground'>Check back leter for new content!</p>
             </div>
         )
     }
