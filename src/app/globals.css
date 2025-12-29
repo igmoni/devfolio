@@ -215,3 +215,28 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+
+.tag-inner-shadow {
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.06),
+    inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.tag-inner-shadow:hover {
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.08),
+    inset 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.dark .tag-inner-shadow {
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.04),
+    inset 0 1px 3px rgba(255, 255, 255, 0.03);
+}
+
+.dark .tag-inner-shadow:hover {
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.06),
+    inset 0 2px 6px rgba(255, 255, 255, 0.04);
+}
