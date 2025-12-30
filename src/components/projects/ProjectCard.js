@@ -8,7 +8,7 @@ import Website from "@/svgs/Website";
 import Github from "@/svgs/Github";
 import ArrowRight from "@/svgs/ArrowRight";
 import { motion } from "motion/react";
-import { projects } from "@/config/Projects";
+import { projects as PROJECTS_CONFIG } from "@/config/Projects";
 
 const item = {
   hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
@@ -23,20 +23,15 @@ const item = {
   },
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, className }) => {
   const { title, image, date } = project;
 
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric', month: "long", day: "numeric"
   })
-  // const [mounted, setMounted] = useState(false);
-
-  // useEffect(() => setMounted(true), []);
-
-  // if (!mounted) return null;
   return (
     <motion.div variants={item}>
-      <Card className="group mt-10 min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
+      <Card className="group min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
         <CardCon project={project} />
         <CardFoo project={project} />
 
@@ -83,7 +78,12 @@ const ProjectCard = ({ project }) => {
 export default ProjectCard;
 
 const CardCon = ({ project }) => {
-  const { slug } = project
+
+  const { slug, title } = project;
+
+  const matchedProject = PROJECTS_CONFIG.find(
+    (p) => p.title === title
+  );
   return (
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
@@ -137,10 +137,8 @@ const CardCon = ({ project }) => {
           Technologies
         </h4>
         <div className="flex flex-wrap gap-3">
-          {projects.map((project) => 
-            project.technologies.map((tech) => {
-              console.log("techno:", tech)
-              return (
+           
+         {matchedProject?.technologies?.map((tech) => (
                 <Tooltip key={tech.name}>
               <TooltipTrigger>
                 <div className="size-6 hover:scale-120 transition-all duration-300 hover:cursor-pointer">
@@ -151,8 +149,8 @@ const CardCon = ({ project }) => {
                 <p>{tech.name}</p>
               </TooltipContent>
             </Tooltip>
-          )})
-        )}
+          ))}
+        
         </div>
       </div>
     </CardContent>
@@ -160,17 +158,19 @@ const CardCon = ({ project }) => {
 };
 
 const CardFoo = ({ project }) => {
+  const { slug } = project
+  const isWorking = project.status === "Working"
   return (
-    project.details && (
+    project.featured && (
       <CardFooter className="p-6 pt-0 flex justify-between">
         <div
           className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs ${
-            project.isWorking
+            isWorking
               ? "border-green-300 bg-green-500/10"
               : "border-red-300 bg-red-500/10"
           }`}
         >
-          {project.isWorking ? (
+          {isWorking ? (
             <>
               <div className="size-2 rounded-full bg-green-500 animate-pulse" />
               All Systems Operational
@@ -184,7 +184,7 @@ const CardFoo = ({ project }) => {
         </div>
 
         <Link
-          href={project.projectsDetailsPageSlug}
+          href={`/projects/${slug}`}
           className="text-secondary flex items-center gap-2 text-sm hover:underline underline-offset-4 "
         >
           View Details <ArrowRight className="size-4" />

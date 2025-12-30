@@ -1,18 +1,12 @@
-"use client";
-import {useState, useEffect} from "react";
 import { Link } from "next-view-transitions";
 import SectionHeading from "../common/SectionHeading";
 import { Button } from "../ui/button";
 import Container from "../common/Container";
-import { projects } from "@/config/Projects";
 import ProjectList from "../projects/ProjectList";
+import { getAllProjects } from "@/lib/projects";
 
 const Projects = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
+  const projects = getAllProjects()
 
   return (
     <Container className={"mt-20 px-5"}>

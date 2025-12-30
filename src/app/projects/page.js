@@ -1,7 +1,7 @@
 import Container from "@/components/common/Container";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllTags, getPublishedProjectPosts } from "@/lib/projects";
+import { getAllProjects, getAllTags, getProjectStatusTags, getPublishedProjectPosts } from "@/lib/projects";
 import { Suspense } from "react";
 import ProjectPageClient from "./ProjectPageClient";
 import { generateMetaData as getMetaData } from "@/config/Meta";
@@ -51,8 +51,8 @@ function ProjectPageLoading() {
 }
 
 const page = () => {
-  const allPosts = getPublishedProjectPosts();
-  const allTags = getAllTags();
+  const allPosts = getAllProjects();
+  const allTags = getProjectStatusTags();
 
   return (
     <Suspense fallback={<ProjectPageLoading />}>
