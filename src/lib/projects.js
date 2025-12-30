@@ -37,10 +37,10 @@ export function getProjectPostBySlug(slug) {
       title: data.title,
       desc: data.desc,
       image: data.image,
-      technologies: data.technologies ?? [],
+      technologies: data.technologies,
       github: data.github ?? null,
-      live: data.live ?? null,
-      timeline: data.timeline ?? null,
+      live: data.live,
+      timeline: data.timeline,
       role: data.role ?? null,
       team: data.team ?? null,
       status: data.status ?? null,
@@ -61,18 +61,19 @@ export function getProjectPostBySlug(slug) {
 export function getAllProjects() {
   const slugs = getProjectPostSlug();
 
-  const posts = slugs
-    .map((slug) => {
-      const post = getProjectPostBySlug(slug);
-      if (!post) return null;
+  // const posts = slugs
+  //   .map((slug) => {
+  //     const post = getProjectPostBySlug(slug);
+  //     if (!post) return null;
 
-      return { slug: post.slug, frontmatter: { ...post } };
-    })
+  //     return { slug: post.slug, frontmatter: { ...post } };
+  //   })
+  return slugs.map(getProjectPostBySlug)
     .filter((post) => post !== null)
     .sort((a, b) => {
       return (
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
+        new Date(b.date).getTime() -
+        new Date(a.date).getTime()
       );
     });
   return posts;
@@ -81,7 +82,7 @@ export function getAllProjects() {
 // to get posts on the basis of published or not
 export function getPublishedProjectPosts() {
   const allPosts = getAllProjects();
-  return allPosts.filter((post) => post.frontmatter.isPublished);
+  return allPosts.filter((post) => post.isPublished);
 }
 
 // to get the posts on basis of tags (filter)
@@ -95,7 +96,7 @@ export function getAllTags() {
   const tagsSet = new Set();
 
   publishedPosts.forEach((post) => {
-    post.frontmatter.tags.forEach((tag) => {
+    post.tags.forEach((tag) => {
       tagsSet.add(tag);
     });
   });

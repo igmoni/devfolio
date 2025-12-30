@@ -8,6 +8,7 @@ import Website from "@/svgs/Website";
 import Github from "@/svgs/Github";
 import ArrowRight from "@/svgs/ArrowRight";
 import { motion } from "motion/react";
+import { projects } from "@/config/Projects";
 
 const item = {
   hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
@@ -28,14 +29,14 @@ const ProjectCard = ({ project }) => {
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric', month: "long", day: "numeric"
   })
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  // useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  // if (!mounted) return null;
   return (
     <motion.div variants={item}>
-      <Card className="group min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
+      <Card className="group mt-10 min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
         <CardCon project={project} />
         <CardFoo project={project} />
 
@@ -55,14 +56,11 @@ const ProjectCard = ({ project }) => {
     h-[200px] lg:h-[250px]
     rounded-tl-2xl rounded-br-2xl
     overflow-hidden
-
     transform-gpu will-change-transform
     transition-all duration-700
     ease-[cubic-bezier(0.16,1,0.3,1)]
-
     origin-bottom
     translate-y-3 
-
     group-hover:translate-y-1
     group-hover:opacity-100"
             >
@@ -101,7 +99,7 @@ const CardCon = ({ project }) => {
             <TooltipTrigger asChild>
               <Link
                 className="text-secondary flex size-6 items-center justify-center "
-                href={project.live}
+                href={String(project.live)}
                 target="_blank"
               >
                 <Website />
@@ -118,7 +116,7 @@ const CardCon = ({ project }) => {
               <TooltipTrigger asChild>
                 <Link
                   className="text-secondary flex size-6 items-center justify-center  "
-                  href={project.github}
+                  href={String(project.github)}
                   target="_blank"
                 >
                   <Github />
@@ -134,13 +132,16 @@ const CardCon = ({ project }) => {
 
       <p className="text-secondary line-clamp-3">{project.desc}</p>
 
-      <div>
+      <div className="mt-3">
         <h4 className="text-sm font-medium mb-2 text-secondary">
           Technologies
         </h4>
         <div className="flex flex-wrap gap-3">
-          {project.frontmatter?.technologies?.map((tech, idx) => (
-            <Tooltip key={idx}>
+          {projects.map((project) => 
+            project.technologies.map((tech) => {
+              console.log("techno:", tech)
+              return (
+                <Tooltip key={tech.name}>
               <TooltipTrigger>
                 <div className="size-6 hover:scale-120 transition-all duration-300 hover:cursor-pointer">
                   {tech.icon}
@@ -150,7 +151,8 @@ const CardCon = ({ project }) => {
                 <p>{tech.name}</p>
               </TooltipContent>
             </Tooltip>
-          ))}
+          )})
+        )}
         </div>
       </div>
     </CardContent>

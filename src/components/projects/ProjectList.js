@@ -15,7 +15,9 @@ const container = {
 };
 
 const ProjectList = ({ projects, className }) => {
+  console.log("project passed to card:", projects)
   if (projects.length === 0) {
+
     return (
       <div className="text-center py-8">
         <h2 className="text-muted-foreground">No projects found.</h2>

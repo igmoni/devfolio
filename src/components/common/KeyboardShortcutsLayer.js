@@ -94,7 +94,7 @@ function ShortcutRow({ shortcut, onRun }) {
           {shortcut.desc}
         </span>
       </div>
-      <CommandShortcut asChild>
+      <CommandShortcut >
         <ShortcutChip label={shortcut.keybind} className="ml-auto" />
       </CommandShortcut>
     </CommandItem>
