@@ -72,10 +72,10 @@
 // }
 
 // // to get posts on the basis of published or not
-// export function getPublishedProjectPosts() {
-//   const allPosts = getAllProjects();
-//   return allPosts.filter((post) => post.isPublished);
-// }
+export function getPublishedProjectPosts() {
+  const allPosts = getAllProjects();
+  return allPosts.filter((post) => post.isPublished);
+}
 
 // // to get the posts on basis of tags (filter)
 // export function getProjectPostByTag(tag) {
@@ -101,10 +101,10 @@
 //     return [];
 //   }
 
-//   const allPosts = getPublishedProjectPosts();
-//   const currentTags = currentPost.frontmatter.tags.map((tag) =>
-//     tag.toLowerCase()
-//   );
+  // const allPosts = getPublishedProjectPosts();
+  // const currentTags = currentPost.frontmatter.tags.map((tag) =>
+  //   tag.toLowerCase()
+  // );
 
 //   const postWithScore = allPosts
 //     .filter((post) => post.slug !== currentSlug)
@@ -123,6 +123,7 @@
 //   return postWithScore.slice(0, maxPosts).map((item) => item.post);
 // }
 
+import { projects } from "@/config/Projects";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -168,7 +169,7 @@ export function getProjectPostBySlug(slug) {
       timeline: frontmatter.timeline ?? null,
       role: frontmatter.role ?? null,
       team: frontmatter.team ?? null,
-
+      isPublished: frontmatter.isPublished,
       // ✅ SOURCE OF TRUTH
       status: frontmatter.status, // "Working" | "Building"
 
@@ -206,4 +207,47 @@ export function getAllProjects() {
 ---------------------------------------- */
 export function getProjectStatusTags() {
   return ["Working", "Building"];
+}
+
+
+export function getProjectNavigation(currentSlug) {
+  // Find current project in config
+  const currentProjectIndex = projects.findIndex((project) => project.projectsDetailsPageSlug === `/projects/${currentSlug}`)
+
+  if(currentProjectIndex === -1) {
+    return { previous: null, next: null }
+  }
+
+  const previousProject = currentProjectIndex > 0 ? projects[currentProjectIndex -1]: null
+  const nextProject = currentProjectIndex < projects.length - 1 ? projects[currentProjectIndex + 1] : null
+
+  return {
+    previous: previousProject ? {
+      title: previousProject.title,
+      slug: previousProject.projectsDetailsPageSlug.replace('/projects/', '')
+    } : null,
+    next: nextProject ? {
+      title: nextProject.title,
+      slug: nextProject.projectsDetailsPageSlug.replace('/projects/', '')
+    } : null,
+  }
+}
+
+export function getRelatedProjectPosts(currentSlug, maxProjects = 2) {
+  const currentPost = getProjectPostBySlug(currentSlug)
+  if(!currentPost || !currentPost.isPublished) return []
+
+  const allPosts = getPublishedProjectPosts()
+  const currentTechnologies = currentPost.technologies.map((tech) => tech.toLowerCase())
+
+  const postWithScore = allPosts.filter((post) => post.slug !== currentSlug).map((post) => {
+    const sharedTechnologies = post.technologies.filter((tech) => currentTechnologies.includes(tech.toLowerCase()))
+
+    return {
+      post, score: sharedTechnologies.length
+    }
+  })
+  .filter((item) => item.score > 0).sort((a,b) => b.score - a.score)
+
+  return postWithScore.slice(0, maxProjects).map((item) => item.post)
 }

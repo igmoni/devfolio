@@ -9,7 +9,8 @@ import GithubIcon from "@/svgs/Github";
 import Website from "@/svgs/Website";
 import { ProjectComponents } from "./ProjectComponents";
 
-export default function ProjectContent({ frontmatter, content }) {
+export default function ProjectContent({ frontmatter , content }) {
+
   const {
     title,
     desc,
@@ -25,6 +26,7 @@ export default function ProjectContent({ frontmatter, content }) {
     learnings,
   } = frontmatter;
 
+
   const statusVariant =
     status === "completed"
       ? "default"
@@ -39,7 +41,8 @@ export default function ProjectContent({ frontmatter, content }) {
           <Image
             src={image}
             alt={title}
-            fill
+            width={1000}
+            height={300}
             className="object-cover"
             priority
           />

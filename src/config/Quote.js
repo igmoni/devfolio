@@ -18,5 +18,9 @@ export const quotes = [
     {
         quote: 'Throughout the heaven and earth, I alone am the honored one!',
         author: 'Gojo Satoru'
+    },
+    {
+        quote: "A person who is established in wisdom is one who has equal vision and sees the same reality in all beings. Such a person is skilled in the perfomance of work.",
+        author: "Bhagavad Gita"
     }
 ]
