@@ -88,8 +88,8 @@ export default function WakaTimeCard() {
             {data.project && data.file ? (
               <p className="text-primary dark:text-neutral-400 text-sm">
                 Working on{" "}
-                <span className="font-medium dark:text-white">
-                  {data.project} – {data.file}
+                <span className="font-semibold dark:text-white">
+                  {data.project} <span className="font-normal"> & editing file: </span> {data.file}
                 </span>
               </p>
             ) : (

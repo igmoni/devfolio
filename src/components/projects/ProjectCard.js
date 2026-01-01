@@ -26,9 +26,11 @@ const item = {
 const ProjectCard = ({ project, className }) => {
   const { title, image, date } = project;
 
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric', month: "long", day: "numeric"
-  })
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   return (
     <motion.div variants={item}>
       <Card className="group min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
@@ -40,8 +42,8 @@ const ProjectCard = ({ project, className }) => {
             {/* Glow */}
             <div
               className="absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl 
-                                opacity-0 group-hover:opacity-80 transition-all duration-500  
-                                bg-linear-to-b from-blue-500/60 via-purple-500/40 to-transparent 
+                                opacity-0 group-hover:opacity-80 transition-all duration-500 from-orange-500/30 via-orange-300/10  
+                                bg-linear-to-b dark:from-blue-500/60 dark:via-purple-500/40 to-transparent 
                                 blur-2xl pointer-events-none"
             />
 
@@ -78,12 +80,9 @@ const ProjectCard = ({ project, className }) => {
 export default ProjectCard;
 
 const CardCon = ({ project }) => {
-
   const { slug, title } = project;
 
-  const matchedProject = PROJECTS_CONFIG.find(
-    (p) => p.title === title
-  );
+  const matchedProject = PROJECTS_CONFIG.find((p) => p.title === title);
   return (
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
@@ -137,9 +136,8 @@ const CardCon = ({ project }) => {
           Technologies
         </h4>
         <div className="flex flex-wrap gap-3">
-           
-         {matchedProject?.technologies?.map((tech) => (
-                <Tooltip key={tech.name}>
+          {matchedProject?.technologies?.map((tech) => (
+            <Tooltip key={tech.name}>
               <TooltipTrigger>
                 <div className="size-6 hover:scale-120 transition-all duration-300 hover:cursor-pointer">
                   {tech.icon}
@@ -150,7 +148,6 @@ const CardCon = ({ project }) => {
               </TooltipContent>
             </Tooltip>
           ))}
-        
         </div>
       </div>
     </CardContent>
@@ -158,8 +155,8 @@ const CardCon = ({ project }) => {
 };
 
 const CardFoo = ({ project }) => {
-  const { slug } = project
-  const isWorking = project.status === "Working"
+  const { slug } = project;
+  const isWorking = project.status === "Working";
   return (
     project.featured && (
       <CardFooter className="p-6 pt-0 flex justify-between">

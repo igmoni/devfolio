@@ -84,7 +84,7 @@ const page = async ({ params }) => {
           {/* Back to Blog CTA */}
           <div className="text-center">
             <Separator className="mb-8" />
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant={"outline"}>
               <Link href="/blog">View All Blogs</Link>
             </Button>
           </div>

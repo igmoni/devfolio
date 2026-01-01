@@ -664,7 +664,15 @@ html.dark #oneko-overlay .oneko-close svg {
     localStorage.setItem("oneko:variant", `"${variant}"`);
     nekoEl.style.backgroundImage = `url('/oneko/skins/oneko-${variant}.gif')`;
   }
-
+  
+  function toggleVariant() {
+    const currentIndex = variants.findIndex(v => v[0] === variant);
+    const nextIndex = (currentIndex + 1) % variants.length;
+    const nextVariant = variants[nextIndex];
+  
+    setVariant(nextVariant);
+  }
+  
   // Popup modal to choose variant
   function pickerModal() {
     const container = document.createElement("div");
@@ -701,6 +709,8 @@ html.dark #oneko-overlay .oneko-close svg {
 
     const [idle, active] = getIdlePreview();
 
+    
+    
     function variantButton(variantEnum) {
       const div = document.createElement("div");
 
@@ -758,7 +768,8 @@ html.dark #oneko-overlay .oneko-close svg {
     }
 
     if (e.key.toLowerCase() === "x") {
-      pickerOpen ? closePicker() : openPicker();
+      // pickerOpen ? closePicker() : openPicker();
+      toggleVariant();
     }
 
     if(e.key === "Escape" && pickerOpen) {

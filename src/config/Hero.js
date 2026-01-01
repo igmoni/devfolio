@@ -11,6 +11,24 @@ export const heroConfig = {
   name: "Mohan S P",
   title: "Full Stack Web Developer • UI/UX Designer",
 
+  skills: [
+    {
+      name: 'Typescript',
+      href: 'https://www.typescriptlang.org/',
+      component: 'TypeScript',
+    },
+    {
+      name: 'React',
+      href: 'https://react.dev/',
+      component: 'ReactIcon',
+    },
+    {
+      name: 'Next.js',
+      href: 'https://nextjs.org/',
+      component: 'NextJs',
+    },
+  ],
+
   button: {
     variant: "default",
     text: "Get in touch",

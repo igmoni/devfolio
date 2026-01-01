@@ -93,8 +93,8 @@ const page = async ({ params }) => {
                   >
                     <Link href={`/projects/${project.slug}`}>
                       <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <h3 className="group-hover:text-primary text-lg font-semibold">
+                        <div className="flex items-end gap-2">
+                          <h3 className="group-hover:text-primary dark:group-hover:text-white text-muted-foreground   text-lg font-semibold">
                             {project.title}
                           </h3>
                           <div className="text-xs">
@@ -144,7 +144,7 @@ const page = async ({ params }) => {
 
         <div className="text-center">
           <Separator className={"mb-8"} />
-          <Button asChild size={"lg"}>
+          <Button asChild size={"lg"} variant={"outline"}>
             <Link href={"/projects"}>View All Projects</Link>
           </Button>
         </div>

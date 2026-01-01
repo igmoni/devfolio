@@ -71,35 +71,39 @@ export default function WakaTimeText() {
   if (data.status === "online") {
     return (
       <div className="text-sm text-primary dark:text-white space-y-1">
-        <div className="flex items-center gap-1">
-          <span>Currently coding in</span>
-          <div className="bg-muted-foreground/10 rounded-full">
-            <Image
-              src="/assets/cursor.png"
-              alt="Cursor"
-              width={20}
-              height={20}
-              className="inline-block rounded-full"
-            />
-          </div>
-          <span className="font-medium">{data.editor}</span>
-          <span>for</span>
-          <span className="font-medium">
-            {formatDuration(displaySeconds)}
-          </span>
-        </div>
+       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+  <span>Currently coding in</span>
+
+  <div className="bg-muted-foreground/10 rounded-full">
+    <Image
+      src="/assets/cursor.png"
+      alt="Cursor"
+      width={20}
+      height={20}
+      className="inline-block rounded-full"
+    />
+  </div>
+
+  <span className="font-medium">{data.editor}</span>
+  <span>for</span>
+
+  <span className="font-medium">
+    {formatDuration(displaySeconds)}
+  </span>
+</div>
+
 
         {/* LINE 2 */}
         {data.project && data.file ? (
           <div className=" text-muted-foreground  text-sm">
             Working on{" "}
             <span className="font-medium text-primary dark:text-white">
-              {data.project} - {data.file}
+              {data.project}<span className="font-normal"> & editing file:</span> {data.file}
             </span>
           </div>
         ) : (
           <div className="text-primary dark:text-white text-sm">
-            Thinking &amp; coding. &nbsp; &amp; editing file:{" "}
+            Thinking &amp; coding. &nbsp; &amp; editing file{" "}
             <span className="font-medium text-accent">Coding</span>
           </div>
         )}
