@@ -23,8 +23,8 @@ export const mySkills = [
 export const about = {
   name: "Mohan S P",
   desc: `I design and build engaging digital experiences focused on performance and visual design, specialized in creating landing page’s and portfolio website’s.`,
-  logoLight: "/assets/monb.png",
-  logoDark: "/assets/mony.png",
+  logoLight: "/assets/monb.jpeg",
+  logoDark: "/assets/mony.jpeg",
 };
 
 export const experience = {

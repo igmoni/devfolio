@@ -61,7 +61,7 @@ const Navbar = () => {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  const logoSrc = theme === "dark" ? "/assets/mony.png" : "/assets/monb.png";
+  const logoSrc = theme === "dark" ? "/assets/mony.jpeg" : "/assets/monb.jpeg";
   const navItems = [
     { title: "About", href: "/about" },
     { title: "Projects", href: "/projects" },
@@ -80,7 +80,7 @@ const Navbar = () => {
             : "none",
           width,
           y,
-          borderRadius: scrolled ? "50px" : "0"
+          borderRadius: scrolled ? "50px" : "0",
         }}
         transition={{ duration: 0.3, ease: "linear" }}
         className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 

@@ -7,7 +7,7 @@ import {
   DialogTrigger,
   DialogContent,
   DialogOverlay,
-  DialogTitle
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -99,7 +99,7 @@ const ChatBubble = () => {
   const handleSuggestionClick = (suggestion) => {
     // Trigger haptic feedback on mobile devices
     if (isMobile()) {
-      triggerHaptic('selection');
+      triggerHaptic("selection");
     }
 
     setNewMessage(suggestion);
@@ -107,10 +107,10 @@ const ChatBubble = () => {
     const userMessage = {
       id: Date.now(),
       text: suggestion,
-      sender: 'user',
+      sender: "user",
       timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
+        hour: "2-digit",
+        minute: "2-digit",
       }),
     };
 
@@ -121,11 +121,11 @@ const ChatBubble = () => {
     const botMessageId = Date.now() + 1;
     const botMessage = {
       id: botMessageId,
-      text: '',
-      sender: 'bot',
+      text: "",
+      sender: "bot",
       timestamp: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
+        hour: "2-digit",
+        minute: "2-digit",
       }),
       isStreaming: true,
     };
@@ -261,7 +261,7 @@ const ChatBubble = () => {
         <div className="border-b px-4 py-3">
           <div className="flex items-center space-x-3">
             <Avatar className="border-primary h-8 w-8 border-2 bg-blue-300 dark:bg-yellow-300">
-              <AvatarImage src="/assets/mony.png" alt="Assistant" />
+              <AvatarImage src="/assets/mony.jpeg" alt="Assistant" />
               <AvatarFallback>AI</AvatarFallback>
             </Avatar>
             <div>
@@ -295,7 +295,7 @@ const ChatBubble = () => {
                   <div className="flex items-start space-x-2">
                     {message.sender === "bot" && (
                       <Avatar className="border-primary h-6 w-6 border-2 bg-blue-300 dark:bg-yellow-300">
-                        <AvatarImage src="/assets/mony.png" alt="Assistant" />
+                        <AvatarImage src="/assets/mony.jpeg" alt="Assistant" />
                         <AvatarFallback>AI</AvatarFallback>
                       </Avatar>
                     )}
@@ -359,7 +359,6 @@ const ChatBubble = () => {
               onChange={(e) => setNewMessage(e.target.value)}
               disabled={isLoading}
               onClick={handleKeyPress}
-              
               className="flex-1"
             />
             <Button

@@ -47,7 +47,7 @@ export const pageMetaData = {
     description:
       "Get in touch with me for collaborations, projects, or opportunities. I'd love to hear from you!",
     keywords: ["contact", "hire", "collaboration", "freelance", "developer"],
-    ogImage: "/assets/mony.png",
+    ogImage: "/assets/mony.jpeg",
     twitterCard: "summary",
   },
   "/projects": {

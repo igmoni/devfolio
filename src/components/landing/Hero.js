@@ -20,7 +20,7 @@ const Hero = () => {
   const { name, title, button } = heroConfig;
   const { theme } = useTheme();
 
-  const avatar = theme === "dark" ? "/assets/mony.png" : "/assets/monb.png";
+  const avatar = theme === "dark" ? "/assets/mony.jpeg" : "/assets/monb.jpeg";
 
   const parent = {
     hidden: { opacity: 0 },
