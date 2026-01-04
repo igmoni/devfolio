@@ -1,0 +1,394 @@
+---
+title: 'HTML in One Day - Everything you need '
+desc: 'Learn HTML in one day by focusing only on what actually matters. This beginner-friendly guide explains HTML structure, elements, semantic tags, accessibility, and common mistakes — without wasting time on unnecessary details.'
+image: '/projects/balc.jpg'
+tags: ['frontend', 'development', 'design']
+date: '2026-01-12'
+isPublished: true
+---
+
+### This is Part 1 of the series "Web Development: From Zero to Production
+
+Most beginners waste **weeks** "learning" HTML.
+
+Not because HTML is hard - but because they're learning **too much of the wrong stuff.**
+
+You don't need 100 tags.
+You don't need to memorize syntax.
+And you definitely don't need to master HTML before moving on.
+
+In this post, I'll show you **exactly what HTML is, what actually matters, **and **what you can safely ignore** - so you can learn HTML in a day and move forward with confidence.
+
+## What HTML Actually Is 
+HTML stands for **Hyper Text Markup Language** - but don't overthink the name.
+
+What matters is this:
+**HTML defines structure, not design.**
+HTML tells the browser:
+- What is a heading
+- What is a paragraph
+- What is navigation
+- What is content
+
+HTML does not decide:
+- Colors
+- Layout
+- Animations
+
+That's CSS and JavaScript's job.
+
+HTML is simply a collection of **elements** that describe the structure of a page.
+
+## Structure
+Every HTML page follows the same basic structure:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <h1>My First Heading</h1>
+  <p>My first paragraph.</p>
+</body>
+</html>
+```
+
+1. _DOCTYPE html_ tells the browser to use modern HTML standards
+2. _html_ is the root element
+3. _head_ contains metadata (not visible on the page)
+4. _title_ defines the browser tab title
+5. _body_ contains everything the user sees
+
+## So What Is an HTML Element?
+An HTML element consists of:
+- A start tag
+- Content
+- An end tag
+
+**Syntax:**
+```
+<tagname>Content goes here...</tagname>
+```
+
+**Example:**
+```
+<h2>My name is Monkey D Luffy </h2>
+```
+some elements don't have closing tags (_img_ , _br_), but **most do** - and skipping them is bad practice.
+
+### Where Do You Write HTML ?
+Use **VS Code** and a live server to preview your HTML.
+
+THe tool doesn't matter.
+Understanding HTML does.
+
+And Start Coding!
+
+## How Browsers Actually Read HTML
+HTML is just plain text.
+
+Browsers don't use HTML directly - they **parse** it and convert it into the **DOM**.
+**DOM (Document Object Model)** is a tree-like, in-memory representation of your HTML.
+
+The DOM is what:
+- CSS styles
+- JavaScript manipulates
+- Screen readers read
+- Browsers render
+
+If you understand the DOM early, CSS and JavaScript stop feeling "magical."
+ You'll know what you're styling and what you're manipulating.
+
+Browsers parse HTML **top to bottom**, not all at once.
+
+```
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+```
+
+![Structure of HTML](/blog/structure.png)
+
+Browser sees:
+1. Heading → create node
+2. Paragraph → create node
+3. Paragraph → create node
+
+### Why Nesting Matters
+Nesting defines relationships
+```
+<article>
+  <h1>Blog Title</h1>
+  <p>Content</p>
+</article>
+```
+
+This tells the browser the heading and paragraph **belong to the article.**
+Structure communicates meaning.
+
+## The Only HTML Tags You Actually Need
+Semantic HTML is the difference between people who **build websites** and people who **understand the web**.
+
+### Core Semantic Elements
+1. _html_ – root element of the document
+2. _head_ -contains metadata
+3. _body_ – visible content in a webpage
+4. _header_ – contains logo, title, navigation
+5. _main_ – primary content (one per page)
+6. _footer_ – secondary info (copyright, links)
+7. _section_ – grouped content with a heading
+8. _article_ – reusable content (blog post, card)
+
+### About `<div>`
+
+_div_ is a generic, non-semantic container.
+
+It means nothing.
+ It's just an empty box.
+
+Using _div_ instead of semantic tags is bad practice.
+
+When you use semantic tags, you're telling:
+- Browsers what the content is
+- Search engines how to rank it
+- Assistive tech how to read it
+
+When you write:
+
+```
+<div class="header">
+```
+The browser guesses.
+
+When you write:
+
+```
+<header>
+```
+There is no guessing
+
+Search engines don't see design.
+They see structure.
+
+## Tags Used for Adding Content
+
+1. _h1-h6_ - headings (use in order)
+2. _p_ - paragraphs
+3. _a_ - links to another webpage(href)
+```<a href="https://www.amazon.in">Visit Amazon</a>```
+
+4. _img_ - display images (src, alt)
+``` <img src="image.png" alt="Image description" /> ```
+
+5. _video_ - video playback
+6. _audio_ - audio playback
+7. _ul_, _ol_, _li_ - list of items
+```
+<!-- Unordered Lists -->
+<ul>
+  <li>Grapes</li>
+  <li>Mango</li>
+</ul>
+<!-- Ordered Lists -->
+<ol>
+  <li>Luffy</li>
+  <li>Zoro</li>
+</ol>
+```
+
+## Tags Used for Forms
+1 _form_ - form container used for contact forms, registration forms.
+2. _input_ - user input
+3. _label_ - input description
+4. _button_ - actions
+5. _textarea_ - long text
+6. _select / option_ - dropdown lists
+
+## Metadata & Utility Tags (Inside `<head>`)
+1. _title_ - page title & SEO
+2. _meta_ - charset, viewport, SEO hints
+3. _link_ - external resources (CSS, icons)
+4. _script_ - JavaScript (behavior layer)
+
+## Table Tags
+1. _table_ - table container
+2. _tr_ - defines a single table row
+3. _th_ - defines a header cell
+4. _td_ - defines a data cell
+5. _thead_ - header group
+
+## Accessibility Basics (Don't Skip This)
+Accessibility is not optional.
+It's part of writing **good HTML.**
+
+- Always use _alt_ for images
+- Always pair _label_ with inputs
+- Use headings correctly
+
+#### Heading hierarchy:
+- h1 - main topic (one per page)
+- h2 - major sections
+- h3 - subsections
+
+## Use Buttons for Actions
+Buttons give you:
+- Keyboard support
+- Focus states
+- Default accessibility
+
+A clickable `<div>` gives you none.
+
+
+## Common Beginner Mistakes
+
+### 1. Div Soup
+```
+<div class="nav">
+<div class="header">
+<div class="content">
+```
+That's not structure - that's avoidance.
+### 2. Skipping Semantics
+"It still works" isn't a standard.
+
+This hurts:
+- Accessibility
+- SEO
+- Maintainability
+
+### 3. Random Nesting
+```
+<div>
+  <div>
+    <div>
+      <section>
+```
+No hierarchy. No intent.
+
+### 4. Thinking HTML Is Too Basic
+This is the most dangerous mistake.
+Easy to write ≠ easy to master.
+
+Real skill shows in:
+- Clean structure
+- Correct semantics
+- Minimal markup
+
+If HTML feels beneath you - you don't understand it yet.
+
+## Brutal Truth (But Fair)
+Every senior developer can spot beginner HTML in seconds.
+Not by how it looks - but by how it's **structured.**
+
+Mastering HTML:
+- Simplifies CSS
+- Cleans JavaScript
+- Improves performance & accessibility
+
+## What You Can Ignore (Yes, Ignore)
+1. Rare tags you'll never use
+2. HTML-only obsession
+3. Memorizing tag lists
+
+HTML mastery comes from **using it**, not studying it.
+
+## What to Do After This
+**Build a full page using only HTML. No CSS.**
+
+Use:
+- Semantic structure
+- Forms
+- Lists
+- Media
+- Accessibility
+
+**Example:**
+
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohan | Beginner Web Developer</title>
+</head>
+<body>
+<header>
+  <h1>Mohan</h1>
+  <p>Beginner Web Developer</p>
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section id="about">
+  <h2>About Me</h2>
+  <article>
+    <img src="profile.png" alt="Portrait of Mohan" width="200" />
+    <p>
+      Hi, I'm Luffy. I'm learning web development with a focus on
+      clean, semantic HTML before moving to frameworks.
+    </p>
+  </article>
+</section>
+<section id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>HTML (Semantic & Accessible)</li>
+    <li>Basic CSS</li>
+    <li>JavaScript Fundamentals</li>
+  </ul>
+</section>
+<section id="projects">
+  <h2>Projects</h2>
+  <article>
+    <h3>Simple Portfolio</h3>
+    <p>Built using only HTML to understand structure.</p>
+  </article>
+  <article>
+    <h3>Form Practice Page</h3>
+    <p>Focused on inputs, labels, and validation.</p>
+  </article>
+</section>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form>
+    <label for="name">Name</label><br />
+    <input id="name" type="text" required /><br /><br />
+    <label for="email">Email</label><br />
+    <input id="email" type="email" required /><br /><br />
+    <label for="message">Message</label><br />
+    <textarea id="message" rows="4"></textarea><br /><br />
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+</main>
+<footer>
+  <p>&copy; 2026 Luffy. All rights reserved.</p>
+</footer>
+</body>
+</html>
+```
+
+**Output:**
+![output](/blog/output.png)
+
+## What's Next?
+HTML gives structure.
+
+CSS gives **life.**
+
+**Next in this series:**
+
+**👉 CSS in 4 Days: The Only Roadmap Beginners Actually Need**
+
+Don't stay stuck. 
+Move.

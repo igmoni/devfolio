@@ -1,6 +1,6 @@
 import { Badge } from "../ui/badge";
 import {
-  Card, CardContent, CardDescription, CardFooter, CardHeader,
+  Card, CardContent, CardFooter, CardHeader,
 
 } from "../ui/card";
 import { Link } from "next-view-transitions";

@@ -6,6 +6,8 @@ import { Separator } from "../ui/separator";
 import Image from "next/image";
 import { MDXRemote } from 'next-mdx-remote';
 import { useEffect, useState } from 'react';
+import Container from "../common/Container";
+
 
 const BlogContent = ({ frontmatter, content }) => {
   const { title, desc, image, tags, date } = frontmatter;
@@ -27,7 +29,7 @@ const BlogContent = ({ frontmatter, content }) => {
   }, [content]);
 
   return (
-    <article className="mx-auto max-w-6xl">
+    <Container className="text-pretty">
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video overflow-hidden rounded-lg">
           <Image
@@ -67,7 +69,7 @@ const BlogContent = ({ frontmatter, content }) => {
       <div className="prose prose-neutral max-w-none dark:prose-invert">
         {mdxSource ? <MDXRemote {...mdxSource} /> : <p>Loading...</p>}
       </div>
-    </article>
+    </Container>
   );
 };
 
