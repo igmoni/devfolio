@@ -50,17 +50,16 @@ export default function ProjectContent({ frontmatter , content }) {
 
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant={statusVariant} className={"text-sm"}></Badge>
             {technologies.slice(0, 3).map((tech) => (
               <Badge key={tech} variant={"outline"} className={"text-xs"}>
                 {tech}
               </Badge>
             ))}
-            {technologies.length > 3 && (
+            {/* {technologies.length > 3 && (
               <Badge variant={"outline"} className={"text-xs"}>
                 +{technologies.length - 3}
               </Badge>
-            )}
+            )} */}
           </div>
 
           <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
