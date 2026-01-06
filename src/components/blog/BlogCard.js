@@ -24,7 +24,7 @@ const BlogCard = ({ post }) => {
       <CardHeader className={'p-0'}>
         <div className="relative aspect-video overflow-hidden">
           <Link href={`/blog/${slug}`}>
-            <Image src={image} alt={title} fill className="object-cover" />
+            <Image src={image} alt={title} fill className="object-cover rounded-t-xl" />
           </Link>
         </div>
       </CardHeader>

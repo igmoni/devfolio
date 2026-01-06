@@ -41,20 +41,12 @@ const ProjectCard = ({ project, className }) => {
           <div className="w-full absolute right-0 bottom-0 pl-5 lg:pl-10">
             {/* Glow */}
             <div
-              className="absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl 
-                                opacity-0 group-hover:opacity-80 transition-all duration-500 from-orange-500/30 via-orange-300/10  
-                                bg-linear-to-b dark:from-blue-500/60 dark:via-purple-500/40 to-transparent 
-                                blur-2xl pointer-events-none"
+              className="absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl opacity-0 group-hover:opacity-80 transition-all duration-500 from-orange-500/30 via-orange-300/10  bg-linear-to-b dark:from-blue-500/60 dark:via-purple-500/40 to-transparent blur-2xl pointer-events-none"
             />
 
             {/* Image */}
             <div
-              className=" relative z-20
-    h-[200px] lg:h-[250px]
-    rounded-tl-2xl rounded-br-2xl
-    overflow-hidden
-    transform-gpu will-change-transform
-    transition-all duration-700
+              className=" relative z-20 h-[200px] lg:h-[250px] rounded-tl-2xl rounded-br-2xl overflow-hidden transform-gpu will-change-transform transition-all duration-700
     ease-[cubic-bezier(0.16,1,0.3,1)]
     origin-bottom
     translate-y-3 
@@ -162,21 +154,12 @@ const CardFoo = ({ project }) => {
 
   return (
     <CardFooter
-      className="
-        p-4 md:px-6 pt-0
-        flex gap-3
-        sm:flex-row sm:items-center justify-between
-      "
+      className="p-4 md:px-6 pt-0 flex gap-3 sm:flex-row sm:items-center justify-between"
     >
       {/* STATUS */}
       <div
         className={`
-          inline-flex items-center gap-2
-          w-fit
-          rounded-md
-          px-2 py-1
-          text-xs
-          border 
+          inline-flex items-center gap-2 w-fit rounded-md px-2 py-1 text-xs border 
           ${
             isWorking
               ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
@@ -197,13 +180,7 @@ const CardFoo = ({ project }) => {
       {/* LINK */}
       <Link
         href={`/projects/${slug}`}
-        className="
-          flex items-center gap-2
-          text-sm
-          text-secondary
-          self-start sm:self-auto
-          hover:underline underline-offset-4
-        "
+        className="flex items-center gap-2 text-sm text-secondary self-start sm:self-auto hover:underline underline-offset-4"
       >
         View Details
         <ArrowRight className="size-4" />

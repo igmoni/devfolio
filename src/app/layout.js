@@ -11,6 +11,7 @@ import VisitorCount from "@/components/common/VisitorCount";
 import OnekoCat from "@/components/common/OnekoCat";
 import ShootingStar from "@/components/common/ShootingStar";
 import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
+import { Analytics } from "@vercel/analytics/next"
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
             <OnekoCat/>
             <Quote />
             <Footer />
+            <Analytics />
             <UmamiAnalytics />
           </ThemeProvider>
         </body>
