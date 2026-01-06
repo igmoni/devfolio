@@ -44,7 +44,7 @@ const BlogContent = ({ frontmatter, content }) => {
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
+              <Badge key={tag} variant="primary">
                 {tag}
               </Badge>
             ))}

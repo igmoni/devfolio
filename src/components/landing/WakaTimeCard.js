@@ -54,7 +54,7 @@ export default function WakaTimeCard() {
       {/* HOVER TOOLTIP */}
       <div
         className="
-    absolute left-12 top-1/2 -translate-y-1/2
+    absolute left-12 top-1/2 -translate-y-1/4
     min-w-[390px] max-w-[420px] min-h-[68px]
     opacity-0 scale-95 pointer-events-none
     group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto

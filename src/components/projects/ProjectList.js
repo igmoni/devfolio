@@ -39,9 +39,9 @@ const ProjectList = ({ projects, className }) => {
         className
       )}
     >
-      {projects.map((project, idx) => (
-        <ProjectCard key={idx} project={project} />
-      ))}
+     {projects.map((project, idx) => (
+  <ProjectCard key={idx} project={project} />
+))}
     </motion.div>
   );
 };

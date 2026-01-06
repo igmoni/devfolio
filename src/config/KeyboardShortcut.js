@@ -11,6 +11,7 @@ export function keyboardShortcuts({
   toggleOnekoSleep,
   toggleOnekoAvatar,
   openHelp,
+  toggleCoverVideo
 }) {
   return {
     navigation: [
@@ -26,6 +27,8 @@ export function keyboardShortcuts({
       { name: "Toggle Chat", desc: "Open or close chat", keybind: "Q", onSelect: toggleChat, icon: "chat" },
       { name: "Command Palette", desc: "Open search panel", keybind: "Ctrl + K", onSelect: openHelp, icon: "code" },
       { name: "Scroll To Top", desc: "Scroll instantly to top", keybind: "Shift + ↑", onSelect: scrollToTop, icon: "arrow-up" },
+      { name: "Toggle Cover Video", desc: "Toggle hero cover video", keybind: "Shift + V",onSelect: toggleCoverVideo }
+      
     ],
 
     actions: [

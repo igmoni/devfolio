@@ -1,23 +1,25 @@
-import React from "react";
+'use client'
 import Container from "../common/Container";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
+import { useTheme } from "next-themes";
 
 const Description = () => {
+  const {theme} = useTheme()
   return (
     <Container className={"py-16 md:py-20"}>
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center">
         <div
-          className="p-2 border-secondary/20 border bg-[#171717]
-          shadow-[inset_0_0_5px_1px_rgba(255,255,255,0.1)]
+          className="p-2 border-secondary/20 border shadow-[inset_0_0_5px_1px_rgba(0,0,0,0.1)] 
+          dark:shadow-[inset_0_0_5px_2px_rgba(255,255,255,0.1)]
          rounded-xl "
         >
           <Image
-            src={"/projects/balc.jpg"}
+            src={'/assets/mohan.jpeg'}
             width={200}
             height={600}
-            alt="Background"
-            className="min-h-[350px] w-2xs rounded-lg"
+            alt="Mohan"
+            className={`min-h-[350px] w-2xs rounded-lg`}
           />
         </div>
 

@@ -38,7 +38,7 @@ const Spotify = () => {
 
   const isOffline = !song || !song.isPlaying;
   const conatinerClass =
-    "flex items-center gap-4 w-full md:w-2xl space-x-3 p-3 rounded-md border transition-all bg-[#fbfbfb] text-primary dark:bg-primary dark:text-white shadow-acternity dark:shadow-acternity-white dark:border-2 shadow-[inset_0_0_2px_rgba(0,0,0,0.5)]  dark:shadow-[inset_0_0_4px_rgba(255,255,255,0.5)] ";
+    "flex items-center gap-4 w-full space-x-3 p-3 rounded-md border transition-all bg-[#fbfbfb] text-primary dark:bg-primary dark:text-white shadow-acternity dark:shadow-acternity-white dark:border-2 shadow-[inset_0_0_2px_rgba(0,0,0,0.5)]  dark:shadow-[inset_0_0_4px_rgba(255,255,255,0.5)] ";
 
   if (isOffline) {
     return (
@@ -72,9 +72,9 @@ const Spotify = () => {
         <Image
           src={song.albumImageUrl}
           alt={song.album}
-          width={48}
-          height={48}
-          className="rounded-md shrink-0"
+          width={50}
+          height={50}
+          className="size-15 rounded-md shrink-0"
         />
         <div className="flex flex-col gap-1 min-w-0">
           <p className="text-gray-400 flex items-center gap-1 text-xs truncate">

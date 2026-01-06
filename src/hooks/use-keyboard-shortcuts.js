@@ -4,8 +4,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { keyboardShortcuts } from "@/config/KeyboardShortcut";
-import { heroConfig, socialLinks } from "@/config/Hero";
+import {coverVideos, heroConfig, socialLinks } from "@/config/Hero";
 import { githubConfig } from "@/config/Github";
+
 
 const EMAIL_LINK =
   socialLinks.find((link) => link.name === "Email")?.href ??
@@ -146,6 +147,11 @@ export function useKeyboardShortcuts() {
       setIsHelpOpen(true);
     };
 
+    const toggleCoverVideo = () => {
+      window.dispatchEvent(new CustomEvent("toggle-cover-video"));
+    };
+    
+
     const groups = keyboardShortcuts({
       goTo,
       toggleTheme,
@@ -159,6 +165,7 @@ export function useKeyboardShortcuts() {
       toggleOnekoSleep,
       toggleOnekoAvatar,
       openHelp,
+      toggleCoverVideo,
     });
 
     // Annotate each shortcut with its category

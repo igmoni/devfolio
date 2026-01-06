@@ -155,38 +155,59 @@ const CardCon = ({ project }) => {
 };
 
 const CardFoo = ({ project }) => {
-  const { slug } = project;
-  const isWorking = project.status === "Working";
-  return (
-    project.featured && (
-      <CardFooter className="p-6 pt-0 flex justify-between">
-        <div
-          className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs ${
-            isWorking
-              ? "border-green-300 bg-green-500/10"
-              : "border-red-300 bg-red-500/10"
-          }`}
-        >
-          {isWorking ? (
-            <>
-              <div className="size-2 rounded-full bg-green-500 animate-pulse" />
-              All Systems Operational
-            </>
-          ) : (
-            <>
-              <div className="size-2 rounded-full bg-red-500 animate-pulse" />
-              Building
-            </>
-          )}
-        </div>
+  const { slug } = project
+  const isWorking = project.status === "Working"
 
-        <Link
-          href={`/projects/${slug}`}
-          className="text-secondary flex items-center gap-2 text-sm hover:underline underline-offset-4 "
-        >
-          View Details <ArrowRight className="size-4" />
-        </Link>
-      </CardFooter>
-    )
-  );
-};
+  if (!project.featured) return null
+
+  return (
+    <CardFooter
+      className="
+        p-4 md:px-6 pt-0
+        flex gap-3
+        sm:flex-row sm:items-center justify-between
+      "
+    >
+      {/* STATUS */}
+      <div
+        className={`
+          inline-flex items-center gap-2
+          w-fit
+          rounded-md
+          px-2 py-1
+          text-xs
+          border 
+          ${
+            isWorking
+              ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
+              : "border-red-300 bg-red-500/10 text-red-700 dark:text-red-400"
+          }
+        `}
+      >
+        <span
+          className={`size-2 rounded-full animate-pulse ${
+            isWorking ? "bg-green-500" : "bg-red-500"
+          }`}
+        />
+        <span className="whitespace-nowrap">
+          {isWorking ? "All Systems Operational" : "Building"}
+        </span>
+      </div>
+
+      {/* LINK */}
+      <Link
+        href={`/projects/${slug}`}
+        className="
+          flex items-center gap-2
+          text-sm
+          text-secondary
+          self-start sm:self-auto
+          hover:underline underline-offset-4
+        "
+      >
+        View Details
+        <ArrowRight className="size-4" />
+      </Link>
+    </CardFooter>
+  )
+}

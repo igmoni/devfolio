@@ -6,6 +6,10 @@ import Instagram from "@/svgs/Instagram";
 import YouTube from "@/svgs/YouTube";
 import Pinterest from "@/svgs/Pinterest";
 import Medium from "@/svgs/Medium";
+import NextJs from "@/components/technologies/NextJs";
+import TypeScript from "@/components/technologies/TypeScript";
+import ReactIcon from "@/components/technologies/ReactIcon";
+import Figma from "@/components/technologies/Figma";
 
 export const heroConfig = {
   name: "Mohan S P",
@@ -93,3 +97,34 @@ export const socialLinks = [
     icon: <Pinterest />,
   },
 ];
+
+export const coverVideos = [
+  '/assets/sukuna.mp4',
+  'assets/onePiece.mp4',
+  'assets/jjk.mp4',
+  'assets/bleach.mp4',
+]
+
+
+export const links = [
+  {
+    name: "Typescript",
+    link: 'https://www.typescriptlang.org/',
+    icon: <TypeScript />
+  },
+  {
+    name: "React",
+    link: 'https://react.dev/',
+    icon: <ReactIcon />
+  },
+  {
+    name: "Next.js",
+    link:  'https://nextjs.org/',
+    icon: <NextJs />
+  },
+  {
+    name: "Figma",
+    link: 'https://www.figma.com/',
+    icon: <Figma />
+  }
+]

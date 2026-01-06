@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
         <head>
           <link rel="icon" href="/favicon.ico" />
         </head>
-        <body className={`${poppins.className} min-h-[200vh]  antialiased`}>
+        <body className={`${poppins.className}  min-h-[200vh]  antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
