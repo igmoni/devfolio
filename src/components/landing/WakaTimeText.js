@@ -71,26 +71,26 @@ export default function WakaTimeText() {
   if (data.status === "online") {
     return (
       <div className="text-sm text-primary dark:text-white space-y-1">
-       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-  <span>Currently coding in</span>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span>Currently coding in</span>
 
-  <div className="bg-muted-foreground/10 rounded-full">
-    <Image
-      src="/assets/cursor.png"
-      alt="Cursor"
-      width={20}
-      height={20}
-      className="inline-block rounded-full"
-    />
-  </div>
+          <div className="bg-muted-foreground/10 rounded-full">
+            <Image
+              src="/assets/cursor.png"
+              alt="Cursor"
+              width={20}
+              height={20}
+              className="inline-block rounded-full"
+            />
+          </div>
 
-  <span className="font-medium">{data.editor}</span>
-  <span>for</span>
+          <span className="font-medium">{data.editor}</span>
+          <span>for</span>
 
-  <span className="font-medium">
-    {formatDuration(displaySeconds)}
-  </span>
-</div>
+          <span className="font-medium">
+            {formatDuration(displaySeconds)}
+          </span>
+        </div>
 
 
         {/* LINE 2 */}
