@@ -78,10 +78,10 @@ const Hero = () => {
         {/* VIDEO */}
         <motion.div variants={child} className="relative">
           <div className="
-            shadow-acternity dark:shadow-acternity-white
+            shadow-xl 
             relative w-full
             h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px]
-            overflow-hidden rounded-3xl bg-black
+            overflow-hidden rounded-3xl bg-black dark:shadow-acternoty-white
           ">
             <video
               key={coverVideos[videoIndex]}
@@ -102,7 +102,7 @@ const Hero = () => {
             left-1/2 -translate-x-1/2
             top-[120px] sm:top-[140px]
             md:left-10 md:translate-x-0 md:top-[200px]
-            rounded-full bg-white p-2 dark:bg-primary
+            rounded-full bg-white p-2 dark:bg-primary shadow-2xl  
           ">
             <Image
               src={avatar}
