@@ -5,7 +5,7 @@ import Features from "@/components/about/Features";
 import HeroHeading from "@/components/about/Hero";
 import Container from "@/components/common/Container";
 import Contact from "@/components/common/Contact";
-import { getPageMetaData } from "@/config/Meta";
+import { generateMetaData as getMetaData } from "@/config/Meta";
 
 export const generateMetadata = () => {
   const metadata = getMetaData("/about");
@@ -13,6 +13,7 @@ export const generateMetadata = () => {
     ...metadata,
   };
 };
+
 
 const page = () => {
   return (

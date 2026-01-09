@@ -42,6 +42,20 @@ export const pageMetaData = {
     twitterCard: "summary_large_image",
   },
 
+  "/about": {
+    title: `About ${heroConfig.name} - ${heroConfig.title}`,
+    description: `About Me`,
+    keywords: [
+      "portfolio",
+      "developer",
+      "full-stack",
+      "web development",
+      "projects",
+    ],
+    ogImage: "/meta/about.png",
+    twitterCard: "summary_large_image",
+  },
+
   "/contact": {
     title: "Contact - Get in Touch",
     description:
