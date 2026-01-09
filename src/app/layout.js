@@ -12,6 +12,7 @@ import OnekoCat from "@/components/common/OnekoCat";
 import ShootingStar from "@/components/common/ShootingStar";
 import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
 import { Analytics } from "@vercel/analytics/next"
+import { Metadata } from "next";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -19,12 +20,19 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
+
 export const metadata = {
-  title: "Mohan - A Full Stack Web Developer",
+  title: {
+    default: "Mohan – Full Stack Web Developer",
+    template: "%s | Mohan",
+  },
   description:
     "Devfolio is my digital workspace where I build, ship, and showcase modern full-stack web applications.",
-
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_URL || "https://monxdev.vercel.app"
+  ),
 };
+
 
 export default function RootLayout({ children }) {
   return (

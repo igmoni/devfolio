@@ -5,7 +5,7 @@ export const siteConfig = {
   name: heroConfig.name,
   title: "Devfolio",
   desc: "Devfolio Template by @igmoni",
-  url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_URL || "http://monxdev.vercel.app",
   ogImage: "/meta/opengraph-img.png",
   author: {
     name: about.name,
@@ -47,7 +47,7 @@ export const pageMetaData = {
     description:
       "Get in touch with me for collaborations, projects, or opportunities. I'd love to hear from you!",
     keywords: ["contact", "hire", "collaboration", "freelance", "developer"],
-    ogImage: "/assets/mony.jpeg",
+    ogImage: "/meta/contact.png",
     twitterCard: "summary",
   },
   "/projects": {
@@ -61,7 +61,7 @@ export const pageMetaData = {
       "applications",
       "software",
     ],
-    ogImage: "/meta/projects.png",
+    ogImage: "/meta/project.png",
     twitterCard: "summary_large_image",
   },
 
