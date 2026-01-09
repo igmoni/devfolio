@@ -15,7 +15,6 @@ const container = {
 };
 
 const ProjectList = ({ projects, className }) => {
-  console.log("project passed to card:", projects)
   if (projects.length === 0) {
 
     return (

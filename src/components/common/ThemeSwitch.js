@@ -27,8 +27,6 @@ export const useThemeToggle = ({
 
     let styleElement = document.getElementById(styleId)
 
-    console.log('style Element', styleElement)
-    console.log('name', name)
 
     if (!styleElement) {
       styleElement = document.createElement('style')
@@ -38,7 +36,6 @@ export const useThemeToggle = ({
 
     styleElement.textContent = css
 
-    console.log('content updated')
   }, [])
 
 

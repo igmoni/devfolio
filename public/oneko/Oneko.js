@@ -658,7 +658,6 @@ html.dark #oneko-overlay .oneko-close svg {
   }
 
   function setVariant(arr) {
-    console.log(arr);
 
     variant = arr[0];
     localStorage.setItem("oneko:variant", `"${variant}"`);
