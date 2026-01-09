@@ -20,6 +20,8 @@ export default function WakaTimeCard() {
       setData(parsed);
       if (parsed.status === "online") {
         setSeconds(parsed.totalSeconds);
+      } else {
+        setSeconds(0);
       }
     };
 
@@ -89,7 +91,10 @@ export default function WakaTimeCard() {
               <p className="text-primary dark:text-neutral-400 text-sm">
                 Working on{" "}
                 <span className="font-semibold dark:text-white">
-                  {data.project} <span className="font-normal"> & editing file: </span> {data.file.length < 15 ? data.file : "Coding" }
+                  {data.project}{" "}
+                  <span className="font-normal"> & editing file: </span>{" "}
+                  {/* {data.file.length < 15 ? data.file : "Coding"} */}
+                  {data.file}
                 </span>
               </p>
             ) : (
@@ -101,7 +106,7 @@ export default function WakaTimeCard() {
           </div>
         ) : (
           <div className="text-sm text-neutral-600 dark:text-neutral-400">
-            <p>Offline</p>
+            <p className="text-primary dark:text-white font-semibold">Offline</p>
             {data.yesterdayTime && (
               <p>
                 Yesterday worked{" "}

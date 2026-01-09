@@ -114,7 +114,8 @@ export default function WakaTimeText() {
   // 🔴 OFFLINE
   return (
     <span className="text-sm text-neutral-500 dark:text-neutral-400">
-      Yesterday worked {data.yesterdayTime}
+      <span className="font-semibold text-primary dark:text-white">Offline</span> <br/>
+      Yesterday worked  <span className="text-primary dark:text-white font-semibold"> {data.yesterdayTime}</span>
     </span>
   );
 }
