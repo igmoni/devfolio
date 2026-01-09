@@ -13,7 +13,10 @@ export async function GET(req) {
     }
 
     const data = await res.json();
-    return Response.json({ visitors: data.count || 0 });
+
+    return Response.json({
+      visitors: Number(data.count) || 0,
+    });
   } catch {
     return Response.json({ visitors: 0 });
   }

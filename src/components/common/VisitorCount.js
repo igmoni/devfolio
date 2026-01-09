@@ -4,7 +4,7 @@ import Eye from "@/svgs/Eye";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-// ordinal suffix function
+// ordinal suffix
 function getOrdinalSuffix(n) {
   const j = n % 10;
   const k = n % 100;
@@ -28,18 +28,10 @@ export default function VisitorCount() {
           { cache: "no-store" }
         );
 
-        if (!res.ok) {
-          setVisitors(0);
-          return;
-        }
+        if (!res.ok) throw new Error("Failed");
 
         const data = await res.json();
-        const count =
-          typeof data.visitors === "number"
-            ? data.visitors
-            : parseInt(data.visitors) || 0;
-
-        setVisitors(count);
+        setVisitors(Number(data.visitors) || 0);
       } catch {
         setVisitors(0);
       }
@@ -48,18 +40,18 @@ export default function VisitorCount() {
     fetchVisitors();
   }, [pathname]);
 
-  const suffix = visitors ? getOrdinalSuffix(visitors) : "th";
+  const suffix = visitors !== null ? getOrdinalSuffix(visitors) : "th";
 
   return (
-    <div className="flex mx-auto w-fit border border-secondary/20 gap-5 items-center bg-[#fbfbfb] shadow-[inset_0_0_3px_1px_rgba(0,0,0,0.1)] dark:bg-[#121212] p-3 rounded-md">
-      <div className="w-10 h-10 bg-[#e3e3e3] dark:bg-[#272727]/70 rounded-md p-2">
+    <div className="flex mx-auto w-fit gap-5 items-center p-3 rounded-md border border-secondary/20">
+      <div className="w-10 h-10 p-2 rounded-md bg-gray-200 dark:bg-gray-800">
         <Eye />
       </div>
 
-      <p className="text-base text-secondary">
+      <p>
         You are the{" "}
-        <span className="text-primary font-semibold dark:text-white">
-          {visitors !== null ? visitors : "..."}
+        <span className="font-semibold">
+          {visitors ?? "..."}
           {visitors !== null && <sup>{suffix}</sup>}
         </span>{" "}
         visitor
