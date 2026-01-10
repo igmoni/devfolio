@@ -1,8 +1,7 @@
 export const githubConfig = {
   username: 'igmoni',
   apiUrl : 'https://github-contributions-api.deno.dev',
-
-  title: 'Github Activity',
+  githubLink: "https://www.github.com/igmoni",
   subtitle: 'coding journey over the past year',
 
   blockSize: 11,

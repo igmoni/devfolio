@@ -9,6 +9,8 @@ import Container from '../common/Container'
 import GithubIcon from '@/svgs/Github'
 import { Button } from '../ui/button'
 import WakaTimeText from './WakaTimeText'
+import { instrumentSerif } from './Hero'
+import ArrowUpRight from '@/svgs/ArrowUpRight'
 
 const ActivityCalendar = dynamic(
   () => import('react-activity-calendar').then(mod => mod.ActivityCalendar),
@@ -123,8 +125,33 @@ const Github = () => {
 
         {/* Header */}
         <div>
-          <h2 className="text-2xl font-bold text-foreground">
-            {githubConfig.title}
+          <h2 className="text-2xl font-bold flex justify-between items-center text-foreground">
+            <p>
+              <span className={`${instrumentSerif.className} italic text-3xl`}>Github</span> Activity
+            </p>
+            {/* <Link href={githubConfig.githubLink} target='_blank' className='text-lg font-medium hover:underline transition-all duration-500 '>View Profile</Link> */}
+            <Link
+              href={githubConfig.githubLink}
+              target="_blank"
+              className="
+    group
+    relative
+    inline-flex
+    items-center
+    gap-1
+    text-lg
+    font-medium
+  "
+            >
+              <span className="relative ">
+                View Profile
+                <span
+                  className="absolute left-0 -bottom-1 h-[2px] w-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"
+                />
+              </span>
+              <ArrowUpRight className="size-4 transform group-hover:scale-150 transition-all duration-300 ease-out group-hover:translate-x-1 " />
+
+            </Link>
           </h2>
           <p className="text-sm text-muted-foreground">
             <b>{githubConfig.username}</b>'s {githubConfig.subtitle}
@@ -133,13 +160,14 @@ const Github = () => {
           {!isLoading && !hasError && totalContributions > 0 && (
             <div className='flex md:flex-row flex-col gap-5  md:items-center justify-between'>
 
-            <p className="text-sm text-primary dark:text-white font-medium mt-1">
-              Total:{' '}
-              <span className="font-black">
-                {totalContributions.toLocaleString()}
-              </span>{' '}
-              contributions
-            </p>
+              <p className="text-sm text-primary dark:text-white font-medium mt-1">
+                Total:{' '}
+                <span className="font-black">
+                  {totalContributions.toLocaleString()}
+                </span>{' '}
+                contributions
+
+              </p>
               <WakaTimeText />
             </div>
           )}

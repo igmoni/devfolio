@@ -13,8 +13,9 @@ import Coffee from "../common/Coffee";
 import WakaTimeCard from "./WakaTimeCard";
 import { Instrument_Serif } from "next/font/google";
 import Image from "next/image";
+import Location from "@/svgs/Location";
 
-const instrumentSerif = Instrument_Serif({
+export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],
@@ -36,18 +37,16 @@ const Hero = () => {
   };
 
   const child = {
-    hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 20, filter: "blur(5px)" },
     show: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.4, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeInOut" },
     },
   };
 
   const [videoIndex, setVideoIndex] = useState(null);
-  const [isLoadng, setIsLoading] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setVideoIndex(Math.floor(Math.random() * coverVideos.length));
@@ -63,7 +62,6 @@ const Hero = () => {
     window.addEventListener("toggle-cover-video", handleToggle);
     return () => window.removeEventListener("toggle-cover-video", handleToggle);
   }, []);
-
 
   if (videoIndex === null) return null;
 
@@ -108,7 +106,7 @@ const Hero = () => {
             left-1/2 -translate-x-1/2
             top-[120px] sm:top-[140px]
             md:left-10 md:translate-x-0 md:top-[200px]
-            rounded-full bg-white p-2 dark:bg-primary shadow-2xl  
+            rounded-full bg-white p-1 dark:bg-primary shadow-2xl  
           "
           >
             <Image
@@ -193,7 +191,9 @@ const Hero = () => {
 
         {/* SOCIALS */}
         <motion.div
-          variants={child}
+          variants={parent}
+          initial="hidden"
+          animate="show"
           className="flex flex-wrap justify-center gap-2 md:gap-4 md:justify-start"
         >
           {socialLinks.map((link) => (
@@ -204,12 +204,25 @@ const Hero = () => {
                   target="_blank"
                   className="flex items-center gap-2 text-secondary"
                 >
-                  <span className="size-7">{link.icon}</span>
+                  {/* 👇 EACH ICON IS A STAGGERED CHILD */}
+                  <motion.span variants={child} className="size-7">
+                    {link.icon}
+                  </motion.span>
                 </Link>
               </TooltipTrigger>
               <TooltipContent>{link.name}</TooltipContent>
             </Tooltip>
           ))}
+        </motion.div>
+
+        <motion.div
+          variants={child}
+          className="tracking-widest text-muted-foreground hover:text-primary dark:hover:text-white  transition-all duration-500"
+        >
+          <Link href={'https://google.com/maps/place/Bengaluru,+India'} target="_blank" className="flex gap-2 items-center">
+          <Location className={"size-5"} />
+          BENGALURU, INDIA
+          </Link>
         </motion.div>
 
         {/* SPOTIFY */}
@@ -268,7 +281,7 @@ const Description = ({ links }) => {
         );
       })}{" "}
       — with a ruthless focus on{" "}
-      <span className="font-semibold text-primary dark:text-white">
+      <span className={" font-semibold  text-primary dark:text-white"}>
         UI clarity
       </span>{" "}
       and experience.

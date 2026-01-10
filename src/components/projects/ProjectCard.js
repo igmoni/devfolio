@@ -9,6 +9,7 @@ import Github from "@/svgs/Github";
 import ArrowRight from "@/svgs/ArrowRight";
 import { motion } from "motion/react";
 import { projects as PROJECTS_CONFIG } from "@/config/Projects";
+import { instrumentSerif } from "../landing/Hero";
 
 const item = {
   hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
@@ -33,11 +34,11 @@ const ProjectCard = ({ project, className }) => {
   });
   return (
     <motion.div variants={item}>
-      <Card className="group min-h-[520px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
+      <Card className="group min-h-[530px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
         <CardCon project={project} />
         <CardFoo project={project} />
 
-        <CardHeader className="p-0 pl-[58px] absolute bottom-0 right-0 w-full h-[200px] lg:h-[250px] lg:group-hover:h-[270px]">
+        <CardHeader className="mt-4 p-0 pl-[58px] absolute bottom-0 right-0 w-full h-[200px] lg:h-[230px] lg:group-hover:h-[250px]">
           <div className="w-full absolute right-0 bottom-0 pl-5 lg:pl-10">
             {/* Glow */}
             <div
@@ -79,7 +80,7 @@ const CardCon = ({ project }) => {
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
         <Link href={`/projects/${slug}`}>
-          <h3 className="text-xl font-semibold leading-tight  hover:cursor-pointer">
+          <h3 className={`${instrumentSerif.className} italic text-3xl font-semibold leading-tight  hover:cursor-pointer`}>
             {project.title}
           </h3>
         </Link>
@@ -127,11 +128,11 @@ const CardCon = ({ project }) => {
         <h4 className="text-sm font-medium mb-2 text-secondary">
           Technologies
         </h4>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex">
           {matchedProject?.technologies?.map((tech) => (
             <Tooltip key={tech.name}>
               <TooltipTrigger>
-                <div className="size-6 hover:scale-120 transition-all duration-300 hover:cursor-pointer">
+                <div className="size-10 hover:scale-110 transition-all duration-300 border-gray-500/30 border group-hover:ml-1 p-2 rounded-full -ml-3 bg-white dark:bg-muted hover:border-gray-500/70   hover:cursor-pointer">
                   {tech.icon}
                 </div>
               </TooltipTrigger>
@@ -141,6 +142,7 @@ const CardCon = ({ project }) => {
             </Tooltip>
           ))}
         </div>
+     
       </div>
     </CardContent>
   );
@@ -160,17 +162,15 @@ const CardFoo = ({ project }) => {
       <div
         className={`
           inline-flex items-center gap-2 w-fit rounded-md px-2 py-1 text-xs border 
-          ${
-            isWorking
-              ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
-              : "border-red-300 bg-red-500/10 text-red-700 dark:text-red-400"
+          ${isWorking
+            ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
+            : "border-red-300 bg-red-500/10 text-red-700 dark:text-red-400"
           }
         `}
       >
         <span
-          className={`size-2 rounded-full animate-pulse ${
-            isWorking ? "bg-green-500" : "bg-red-500"
-          }`}
+          className={`size-2 rounded-full animate-pulse ${isWorking ? "bg-green-500" : "bg-red-500"
+            }`}
         />
         <span className="whitespace-nowrap">
           {isWorking ? "All Systems Operational" : "Building"}
@@ -180,9 +180,12 @@ const CardFoo = ({ project }) => {
       {/* LINK */}
       <Link
         href={`/projects/${slug}`}
-        className="flex items-center gap-2 text-sm text-secondary self-start sm:self-auto hover:underline underline-offset-4"
+        className="relative group inline-flex items-center gap-1 text-muted-foreground"
       >
         View Details
+        <span
+                className="absolute left-0 -bottom-1 h-[2px] w-[98px] rounded-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"
+              />
         <ArrowRight className="size-4" />
       </Link>
     </CardFooter>

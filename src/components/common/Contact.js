@@ -11,7 +11,7 @@ const Contact = ({ className}) => {
     >
       <FreelanceText />
       <div className="flex flex-col">
-        <h1 className="bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-6xl pb-3">
+        <h1  className="bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-6xl pb-3">
           Let's work together!
         </h1>
         <p className="max-w-xl text-base text-muted-foreground">

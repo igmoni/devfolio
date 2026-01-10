@@ -7,6 +7,7 @@ import { Link } from "next-view-transitions";
 import Image from "next/image";
 import ArrowRight from "@/svgs/ArrowRight";
 import Calendar from "@/svgs/Calendar";
+import { instrumentSerif } from "../landing/Hero";
 
 const BlogCard = ({ post }) => {
   const { slug, frontmatter } = post
@@ -31,9 +32,19 @@ const BlogCard = ({ post }) => {
       <CardContent className={'flex-1'}>
         <div className="space-y-3">
           <Link href={`/blog/${slug}`}>
-            <h3 className="line-clamp-2 text-xl font-semibold leading-tight group-hover:text-rpimary">
-              {title}
-            </h3>
+          <h3
+  className={`
+    italic
+    line-clamp-2
+    text-3xl
+    leading-tight
+    group-hover:text-primary
+    ${instrumentSerif.className}
+  `}
+>
+  {title}
+</h3>
+
           </Link>
           <p className="line-clamp-3 text-secondary mt-4">{desc}</p>
         </div>
@@ -58,8 +69,13 @@ const BlogCard = ({ post }) => {
               <Calendar className={'size-4'} />{formattedDate}
             </time>
 
-            <Link href={`/blog/${slug}`} className="flex items-center justify-end gap-2 hover:underline underline-offser-4 text-secondary">
-              Read More <ArrowRight className={'size-4'} />
+            <Link href={`/blog/${slug}`} className="relative group text-muted-foreground inline-flex items-center gap-1">
+
+              Read More
+              <span
+                className="absolute left-0 rounded-full -bottom-1 h-[2px] w-[85px] bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"
+              />
+              <ArrowRight className={'size-4 group-hover:translate-x-1 transition-all duration-200'} />
             </Link>
           </div>
         </div>

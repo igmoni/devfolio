@@ -22,5 +22,9 @@ export const quotes = [
     {
         quote: "A person who is established in wisdom is one who has equal vision and sees the same reality in all beings. Such a person is skilled in the perfomance of work.",
         author: "Bhagavad Gita"
+    },
+    {
+        quote: "The disciplined mind is your best friend. The undisciplined mind is your worst enemy.",
+        author: "Bhagvad Gita"
     }
 ]
