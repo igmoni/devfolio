@@ -27,7 +27,7 @@ export default function VisitorCount() {
 
   return (
     <div className="flex mx-auto w-fit gap-5 items-center p-3 rounded-md border border-secondary/20">
-      <div className="w-10 h-10 p-2 rounded-md bg-gray-200 dark:bg-gray-800">
+      <div className="w-10 h-10 p-2 rounded-md bg-accent dark:bg-accent">
         <Eye />
       </div>
 

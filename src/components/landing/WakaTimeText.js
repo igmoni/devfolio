@@ -87,18 +87,16 @@ export default function WakaTimeText() {
           <span className="font-medium">{data.editor}</span>
           <span>for</span>
 
-          <span className="font-medium">
-            {formatDuration(displaySeconds)}
-          </span>
+          <span className="font-medium">{formatDuration(displaySeconds)}</span>
         </div>
-
 
         {/* LINE 2 */}
         {data.project && data.file ? (
           <div className=" text-muted-foreground  text-sm">
             Working on{" "}
             <span className="font-medium text-primary dark:text-white">
-              {data.project}<span className="font-normal"> & editing file:</span> {data.file}
+              {data.project}
+              <span className="font-normal"> & editing file:</span> {data.file}
             </span>
           </div>
         ) : (
@@ -114,8 +112,23 @@ export default function WakaTimeText() {
   // 🔴 OFFLINE
   return (
     <span className="text-sm text-neutral-500 dark:text-neutral-400">
-      <span className="font-semibold text-primary dark:text-white">Offline</span> <br/>
-      Yesterday worked  <span className="text-primary dark:text-white font-semibold"> {data.yesterdayTime}</span>
+      <span className="font-semibold text-primary dark:text-white flex gap-1">
+        Offline in{" "}
+        <Image
+          src="/assets/cursor.png"
+          alt="Cursor"
+          width={18}
+          height={18}
+          className="rounded-full"
+        />
+        Cursor
+      </span>{" "}
+      
+      Yesterday worked{" "}
+      <span className="text-primary dark:text-white font-semibold">
+        {" "}
+        {data.yesterdayTime}
+      </span>
     </span>
   );
 }

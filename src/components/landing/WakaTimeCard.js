@@ -106,7 +106,17 @@ export default function WakaTimeCard() {
           </div>
         ) : (
           <div className="text-sm text-neutral-600 dark:text-neutral-400">
-            <p className="text-primary dark:text-white font-semibold">Offline</p>
+            <p className="text-primary dark:text-white font-semibold flex gap-1">
+              Offline in{" "}
+              <Image
+                src="/assets/cursor.png"
+                alt="Cursor"
+                width={18}
+                height={18}
+                className="rounded-full"
+              />{" "}
+              Cursor
+            </p>
             {data.yesterdayTime && (
               <p>
                 Yesterday worked{" "}

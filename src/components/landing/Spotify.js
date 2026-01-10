@@ -28,7 +28,7 @@ const Spotify = () => {
     fetchNowPlaying();
 
     // refresh every 5 seconds
-    const interval = setInterval(fetchNowPlaying, 5000);
+    const interval = setInterval(fetchNowPlaying, 15000);
 
     return () => {
       isMounted = false;

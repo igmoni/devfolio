@@ -25,6 +25,7 @@ const About = () => {
       <div className="mt-8 flex flex-col gap-5 md:flex-row">
         <Image
           src={avatar}
+          priority
           alt="Avatar"
           width={100}
           height={100}

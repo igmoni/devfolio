@@ -1,7 +1,6 @@
 "use client";
 import { heroConfig, socialLinks, links, coverVideos } from "@/config/Hero";
 import { Link } from "next-view-transitions";
-import Image from "next/image";
 import Container from "../common/Container";
 import { Button } from "../ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
@@ -13,6 +12,7 @@ import { useState, useEffect } from "react";
 import Coffee from "../common/Coffee";
 import WakaTimeCard from "./WakaTimeCard";
 import { Instrument_Serif } from "next/font/google";
+import Image from "next/image";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -46,6 +46,8 @@ const Hero = () => {
   };
 
   const [videoIndex, setVideoIndex] = useState(null);
+  const [isLoadng, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setVideoIndex(Math.floor(Math.random() * coverVideos.length));
@@ -59,9 +61,9 @@ const Hero = () => {
     };
 
     window.addEventListener("toggle-cover-video", handleToggle);
-    return () =>
-      window.removeEventListener("toggle-cover-video", handleToggle);
+    return () => window.removeEventListener("toggle-cover-video", handleToggle);
   }, []);
+
 
   if (videoIndex === null) return null;
 
@@ -77,12 +79,14 @@ const Hero = () => {
       >
         {/* VIDEO */}
         <motion.div variants={child} className="relative">
-          <div className="
+          <div
+            className="
             shadow-xl 
             relative w-full
             h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px]
             overflow-hidden rounded-3xl bg-black dark:shadow-acternoty-white
-          ">
+          "
+          >
             <video
               key={coverVideos[videoIndex]}
               src={coverVideos[videoIndex]}
@@ -90,6 +94,7 @@ const Hero = () => {
               muted
               loop
               playsInline
+              preload="metadata"
               className={`h-full w-full object-cover ${
                 isBleach ? "object-top" : ""
               }`}
@@ -97,18 +102,21 @@ const Hero = () => {
           </div>
 
           {/* AVATAR */}
-          <div className="
+          <div
+            className="
             absolute z-20
             left-1/2 -translate-x-1/2
             top-[120px] sm:top-[140px]
             md:left-10 md:translate-x-0 md:top-[200px]
             rounded-full bg-white p-2 dark:bg-primary shadow-2xl  
-          ">
+          "
+          >
             <Image
               src={avatar}
               alt="Avatar"
               width={100}
               height={100}
+              priority
               className="
                 size-24 sm:size-28 md:size-36
                 rounded-full
@@ -116,10 +124,12 @@ const Hero = () => {
               "
             />
 
-            <div className="
+            <div
+              className="
               absolute  bottom-2 right-2
               scale-75 sm:scale-90 md:scale-100
-            ">
+            "
+            >
               <WakaTimeCard />
             </div>
           </div>
@@ -157,16 +167,13 @@ const Hero = () => {
           <Description links={links} />
         </motion.div>
 
-
-          {/* FREELANCE TEXT (DESKTOP ONLY) */}
-          <motion.div
-            variants={child}
-            className="flex items-center justify-center md:hidden"
-          >
-            <FreelanceText />
-          </motion.div>
-        
-
+        {/* FREELANCE TEXT (DESKTOP ONLY) */}
+        <motion.div
+          variants={child}
+          className="flex items-center justify-center md:hidden"
+        >
+          <FreelanceText />
+        </motion.div>
 
         {/* CTA */}
         <div className="flex items-center md:justify-start justify-center gap-4 ">
@@ -183,7 +190,6 @@ const Hero = () => {
             <Coffee className="size-9 shadow-acternity dark:shadow-acternity-white" />
           </motion.div>
         </div>
-
 
         {/* SOCIALS */}
         <motion.div
@@ -228,10 +234,9 @@ const Description = ({ links }) => {
       "
     >
       I design and build interactive web applications —{" "}
-
       {links.map((link, index) => {
-        const isLast = index === links.length - 1
-        const isSecondLast = index === links.length - 2
+        const isLast = index === links.length - 1;
+        const isSecondLast = index === links.length - 2;
 
         return (
           <span key={link.name} className="inline">
@@ -260,14 +265,13 @@ const Description = ({ links }) => {
               </span>
             )}
           </span>
-        )
-      })}
-
-      {" "}— with a ruthless focus on{" "}
+        );
+      })}{" "}
+      — with a ruthless focus on{" "}
       <span className="font-semibold text-primary dark:text-white">
         UI clarity
       </span>{" "}
       and experience.
     </p>
-  )
-}
+  );
+};

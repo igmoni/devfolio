@@ -23,8 +23,6 @@ export function formatDuration(totalSeconds = 0) {
 }
 
 
-const ONLINE_THRESHOLD = 2 * 60 * 1000; // 5 minutes
-
 
 export function parseWakaTime(apiData) {
   const heartbeats = apiData?.heartbeats?.data ?? [];
@@ -85,3 +83,4 @@ export function parseWakaTime(apiData) {
     totalSeconds: today?.grand_total?.total_seconds ?? 0,
   };
 }
+
