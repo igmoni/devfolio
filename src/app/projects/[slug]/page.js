@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
     twitter: {
         card: "summary_large_image",
         title: `${title} - Project Case Study`,
-    description,
+    desc,
     images: [image],
   },
 };
@@ -114,7 +114,7 @@ const page = async ({ params }) => {
                           </div>
                         </div>
                         <p className="text-muted-foreground line-clamp-2 text-sm">
-                          {project.description}
+                          {project.desc}
                         </p>
                         <div className="flex flex-wrap gap-1">
                           {project.technologies
