@@ -45,8 +45,7 @@ const BlogCard = ({ post }) => {
     line-clamp-2
     text-3xl
     leading-tight
-    group-hover:text-primary
-    ${instrumentSerif.className}
+      ${instrumentSerif.className}
   `}
 >
   {title}
@@ -80,7 +79,7 @@ const BlogCard = ({ post }) => {
 
               Read More
               <span
-                className="absolute left-0 rounded-full -bottom-1 h-[2px] w-[85px] bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"
+                className="absolute left-0 rounded-full -bottom-1 h-0.5 w-[85px] bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"
               />
               <ArrowRight className={'size-4 group-hover:translate-x-1 transition-all duration-200'} />
             </Link>
