@@ -124,7 +124,7 @@ const Hero = () => {
 
             <div
               className="
-              absolute  bottom-2 right-2
+              absolute  bottom-1 right-1
               scale-75 sm:scale-90 md:scale-100
             "
             >
@@ -217,9 +217,9 @@ const Hero = () => {
 
         <motion.div
           variants={child}
-          className="tracking-widest text-muted-foreground hover:text-primary dark:hover:text-white  transition-all duration-500"
+          className="tracking-widest text-muted-foreground hover:text-primary dark:hover:text-white transition-all duration-500"
         >
-          <Link href={'https://google.com/maps/place/Bengaluru,+India'} target="_blank" className="flex gap-2 items-center">
+          <Link href={'https://google.com/maps/place/Bengaluru,+India'} target="_blank" className="flex gap-2 md:justify-start justify-center items-center">
           <Location className={"size-5"} />
           BENGALURU, INDIA
           </Link>

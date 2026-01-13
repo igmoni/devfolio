@@ -34,7 +34,7 @@ const ProjectCard = ({ project, className }) => {
   });
   return (
     <motion.div variants={item}>
-      <Card className="group min-h-[530px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
+      <Card className="group min-h-[540px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
         <CardCon project={project} />
         <CardFoo project={project} />
 

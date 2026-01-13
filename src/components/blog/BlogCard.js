@@ -7,7 +7,14 @@ import { Link } from "next-view-transitions";
 import Image from "next/image";
 import ArrowRight from "@/svgs/ArrowRight";
 import Calendar from "@/svgs/Calendar";
-import { instrumentSerif } from "../landing/Hero";
+import { Instrument_Serif } from "next/font/google";
+
+ const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
 
 const BlogCard = ({ post }) => {
   const { slug, frontmatter } = post

@@ -77,7 +77,7 @@ export function parseWakaTime(apiData) {
 
   return {
     status: "online",
-    editor: latestHeartbeat.editor ?? "Editor",
+    editor: latestHeartbeat.editor ?? "Cursor",
     project: latestHeartbeat.project ?? null,
     file: fileName,
     totalSeconds: today?.grand_total?.total_seconds ?? 0,
