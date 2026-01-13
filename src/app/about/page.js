@@ -7,12 +7,10 @@ import Container from "@/components/common/Container";
 import Contact from "@/components/common/Contact";
 import { generateMetaData as getMetaData } from "@/config/Meta";
 
-export const generateMetadata = () => {
-  const metadata = getMetaData("/about");
-  return {
-    ...metadata,
-  };
-};
+export async function generateMetadata() {
+  return getMetaData("/about");
+}
+
 
 
 const page = () => {

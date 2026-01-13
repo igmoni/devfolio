@@ -6,12 +6,10 @@ import { Suspense } from "react";
 import BlogPageClient from "./BlogPageClient";
 import { generateMetaData as getMetaData } from "@/config/Meta";
 
-export const generateMetadata = () => {
-  const metadata = getMetaData("/blog");
-  return {
-    ...metadata,
-  };
-};
+export async function generateMetadata() {
+  return getMetaData("/blog");
+}
+
 
 function BlogPageLoading() {
   return (

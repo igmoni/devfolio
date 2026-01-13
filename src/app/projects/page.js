@@ -6,12 +6,9 @@ import { Suspense } from "react";
 import ProjectPageClient from "./ProjectPageClient";
 import { generateMetaData as getMetaData } from "@/config/Meta";
 
-export const generateMetaData = () => {
-  const metadata = getMetaData("/projects");
-  return {
-    ...metadata,
-  };
-};
+export async function generateMetadata() {
+  return getMetaData("/projects");
+}
 
 function ProjectPageLoading() {
   return (

@@ -7,20 +7,10 @@ import { MetaData } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 import { contactConfig } from "@/config/Contact";
 
-export const metadata = {
-  ...getMetaData("/contact"),
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
+export async function generateMetadata() {
+  return getMetaData("/contact");
+}
+
 const page = () => {
   return (
     <Container className={"py-16 pt-32 px-5"}>
