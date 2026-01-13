@@ -44,7 +44,7 @@ export const pageMetaData = {
 
   "/about": {
     title: `About ${heroConfig.name} - ${heroConfig.title}`,
-    description: `About Me`,
+    description: "About Me",
     keywords: [
       "portfolio",
       "developer",

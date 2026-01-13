@@ -29,16 +29,16 @@ export async function generateMetadata({ params }) {
   if (!post || !post.isPublished) {
     return { title: "Project Not Found" };
   }
-  const { title, description, image } = post;
+  const { title, desc, image } = post;
   
   
   return {
   metadataBase: new URL(siteConfig.url),
   title: `${title} - Project Case Study`,
-  description,
+  desc,
   openGraph: {
       title: `${title} - Project Case Study`,
-      description,
+      desc,
       images: [image],
       type: "article",
     },

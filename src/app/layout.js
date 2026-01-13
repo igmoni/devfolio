@@ -12,8 +12,8 @@ import OnekoCat from "@/components/common/OnekoCat";
 import ShootingStar from "@/components/common/ShootingStar";
 import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
 import { Analytics } from "@vercel/analytics/next"
-import { Metadata } from "next";
 
+import { generateMetaData as getMetaData } from "@/config/Meta";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -21,17 +21,9 @@ const poppins = Poppins({
 });
 
 
-export const metadata = {
-  title: {
-    default: "Mohan – Full Stack Web Developer",
-    template: "%s | Mohan",
-  },
-  description:
-    "Devfolio is my digital workspace where I build, ship, and showcase modern full-stack web applications.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_URL || "https://monxdev.vercel.app"
-  ),
-};
+export async function generateMetadata() {
+  return getMetaData("/");
+}
 
 
 export default function RootLayout({ children }) {

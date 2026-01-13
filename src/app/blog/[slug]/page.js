@@ -15,7 +15,6 @@ import { notFound } from "next/navigation";
 import BlogContent from "@/components/blog/BlogContent";
 import BackButton from "@/components/blog/BackButton";
 
-
 export async function generateStaticParams() {
   const slugs = getBlogPostSlug();
 
@@ -26,7 +25,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post =  getBlogPostBySlug(slug);
+  const post = getBlogPostBySlug(slug);
 
   if (!post || !post.frontmatter.isPublished) {
     return {
@@ -52,7 +51,7 @@ export async function generateMetadata({ params }) {
 
 const page = async ({ params }) => {
   const { slug } = await params;
-  const post =  await getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post || !post.frontmatter.isPublished) {
     notFound();
@@ -64,7 +63,7 @@ const page = async ({ params }) => {
       <Container className="py-24 px-5 ">
         <div className="space-y-12">
           {/* Back Button */}
-            <BackButton/>
+          <BackButton />
 
           {/* Blog Content */}
           <BlogContent frontmatter={post.frontmatter} content={post.content} />

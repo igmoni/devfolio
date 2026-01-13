@@ -241,9 +241,9 @@ const Description = ({ links }) => {
     <p
       className="
         text-muted-foreground 
-        text-sm sm:text-base md:text-lg
-        leading-8 sm:leading-7 md:leading-6
-        text-center md:text-left
+        text-sm sm:text-base md:text-xl
+        leading-8 sm:leading-7 md:leading-8
+        text-center md:text-left 
       "
     >
       I design and build interactive web applications —{" "}
@@ -252,13 +252,13 @@ const Description = ({ links }) => {
         const isSecondLast = index === links.length - 2;
 
         return (
-          <span key={link.name} className="inline">
+          <span key={link.name} className="inline ">
             <Link
               href={link.link}
-              className="
+              className="  border-dashed 
                 inline-flex items-center gap-1.5
                 align-baseline
-                rounded-md border bg-muted
+                rounded-md border-2 bg-muted
                 px-1 md:px-2.5 md:py-0.5
                 mx-0.5
                 whitespace-nowrap
@@ -266,7 +266,7 @@ const Description = ({ links }) => {
                 hover:bg-muted/70
               "
             >
-              <span className="flex h-3.5 w-3.5 items-center justify-center">
+              <span className="flex h-4 w-4 items-center justify-center">
                 {link.icon}
               </span>
               <span>{link.name}</span>

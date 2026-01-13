@@ -164,9 +164,8 @@ const Navbar = () => {
                 new KeyboardEvent("keydown", { key: "k", ctrlKey: true })
               )
             }
-            className="hidden sm:flex items-center gap-2 text-sm px-3 py-1.5 
-            rounded-md bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 
-            dark:hover:bg-neutral-600 transition font-medium"
+            className="hidden sm:flex items-center gap-2 text-sm px-3 h-10 
+            rounded-md bg-transparent shadow-[inset_0_1px_4px_0_rgba(0,0,0,0.3)] dark:shadow-[inset_0_2px_4px_0_rgba(255,255,255,0.3)] transition font-medium"
           >
             <span>Search</span>
             <span className="flex items-center gap-1 border px-1.5 py-0.5 rounded text-[10px]">
