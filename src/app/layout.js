@@ -12,8 +12,8 @@ import OnekoCat from "@/components/common/OnekoCat";
 import ShootingStar from "@/components/common/ShootingStar";
 import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
 import { Analytics } from "@vercel/analytics/next"
-
 import { generateMetaData as getMetaData } from "@/config/Meta";
+
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
