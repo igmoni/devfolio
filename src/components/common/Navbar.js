@@ -83,7 +83,7 @@ const Navbar = () => {
           borderRadius: scrolled ? "50px" : "0",
         }}
         transition={{ duration: 0.3, ease: "linear" }}
-        className="w-full bg-white dark:bg-primary fixed top-0 inset-x-0 z-50 
+        className="w-full bg-transparent  backdrop-blur-lg fixed top-0 inset-x-0 z-50 
         max-w-5xl mx-auto flex items-center justify-between px-3 py-2 "
       >
         {/* LEFT */}
@@ -144,7 +144,7 @@ const Navbar = () => {
                 <motion.span
                   layoutId="hovered-span"
                   className="h-full w-full shadow-acternity dark:shadow-acternity-white absolute inset-0 rounded-md 
-                  bg-neutral-100 dark:bg-neutral-600"
+                  bg-neutral-100 dark:bg-primary"
                 ></motion.span>
               )}
 
@@ -190,7 +190,7 @@ const Navbar = () => {
             variant="circle"
             start="top-right"
             blur
-            className={`shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-300 ${
+            className={`shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all bg-transparent duration-300 ${
               scrolled ? "rounded-full" : ""
             }`}
           />
