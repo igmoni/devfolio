@@ -174,20 +174,23 @@ const Hero = () => {
         </motion.div>
 
         {/* CTA */}
-        <div className="flex items-center md:justify-start justify-center gap-4 ">
-          <motion.div variants={child}>
-            <Link href={button.href}>
-              <Button className="bg-primary dark:bg-white">
-                {button.icon}
-                {button.text}
-              </Button>
-            </Link>
-          </motion.div>
+<div className="flex items-center md:justify-start justify-center gap-3">
+  <motion.div variants={child} className="flex cursor-pointer items-center">
+    <Link href={button.href}>
+      <Button className="bg-primary dark:bg-white flex items-center gap-2">
+        {button.icon}
+        {button.text}
+      </Button>
+    </Link>
+  </motion.div>
 
-          <motion.div variants={child}>
-            <Coffee className="size-9 shadow-acternity dark:shadow-acternity-white" />
-          </motion.div>
-        </div>
+  <motion.div
+    variants={child}
+    className="flex items-center justify-center"
+  >
+    <Coffee className="size-9 shadow-acternity dark:shadow-acternity-white" />
+  </motion.div>
+</div>
 
         {/* SOCIALS */}
         <motion.div

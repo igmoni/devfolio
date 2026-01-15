@@ -7,7 +7,7 @@ const SideQuests = () => {
   return (
     <Container
       className="
-        rounded-xl pt-20
+        rounded-xl px-5 pt-20
       "
     >
       <SectionHeading heading={"Side Quests"} subHeading={"Featured"} />
