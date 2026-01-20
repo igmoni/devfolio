@@ -60,7 +60,7 @@ export function parseWakaTime(apiData) {
   const now = Date.now();
 
   // 🔥 GRACE WINDOW (KEY FIX)
-  const ONLINE_THRESHOLD = 5 * 60 * 1000; // 5 minutes
+  const ONLINE_THRESHOLD = 3 * 60 * 1000; // 5 minutes
 
   const isOnline = now - lastBeatTime < ONLINE_THRESHOLD;
 
