@@ -106,7 +106,7 @@ If you understand the DOM early, CSS and JavaScript stop feeling "magical."
 
 Browsers parse HTML **top to bottom**, not all at once.
 
-```
+```html
 <h1>This is a heading</h1>
 <p>This is a paragraph.</p>
 <p>This is another paragraph.</p>
@@ -121,7 +121,7 @@ Browser sees:
 
 ### Why Nesting Matters
 Nesting defines relationships
-```
+```html
 <article>
   <h1>Blog Title</h1>
   <p>Content</p>
@@ -160,14 +160,14 @@ When you use semantic tags, you're telling:
 
 When you write:
 
-```
+```html
 <div class="header">
 ```
 The browser guesses.
 
 When you write:
 
-```
+```html
 <header>
 ```
 There is no guessing
@@ -180,15 +180,17 @@ They see structure.
 1. _h1-h6_ - headings (use in order)
 2. _p_ - paragraphs
 3. _a_ - links to another webpage(href)
-```<a href="https://www.amazon.in">Visit Amazon</a>```
+``` html
+<a href="https://www.amazon.in">Visit Amazon</a>```
 
 4. _img_ - display images (src, alt)
-``` <img src="image.png" alt="Image description" /> ```
+```html
+ <img src="image.png" alt="Image description" /> ```
 
 5. _video_ - video playback
 6. _audio_ - audio playback
 7. _ul_, _ol_, _li_ - list of items
-```
+```html
 <!-- Unordered Lists -->
 <ul>
   <li>Grapes</li>
@@ -247,7 +249,7 @@ A clickable `<div>` gives you none.
 ## Common Beginner Mistakes
 
 ### 1. Div Soup
-```
+```html
 <div class="nav">
 <div class="header">
 <div class="content">
@@ -262,7 +264,7 @@ This hurts:
 - Maintainability
 
 ### 3. Random Nesting
-```
+```html
 <div>
   <div>
     <div>
@@ -279,7 +281,7 @@ Real skill shows in:
 - Correct semantics
 - Minimal markup
 
-If HTML feels beneath you - you don't understand it yet.
+If HTML feels beneath you - you don't understand it yet.
 
 ## Brutal Truth (But Fair)
 Every senior developer can spot beginner HTML in seconds.
@@ -310,7 +312,7 @@ Use:
 **Example:**
 
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
