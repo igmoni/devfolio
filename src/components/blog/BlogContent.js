@@ -30,7 +30,7 @@ const BlogContent = ({ frontmatter, content }) => {
   }, [content]);
 
   return (
-    <Container className="text-pretty">
+    <Container className="text-pretty max-w-4xl">
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video overflow-hidden rounded-lg">
           <Image

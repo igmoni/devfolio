@@ -62,10 +62,10 @@ const page = async ({ params }) => {
   const relatedProjects = await getRelatedProjectPosts(slug, 2);
 
   return (
-    <Container className={"py-20 px-5"}>
-      <div className="space-y-12">
+    <Container className={"py-24 max-w-4xl"}>
+      <div className="space-y-8">
         <div>
-          <Button variant={"ghost"} asChild className={"group"}>
+          <Button variant={"outline"} asChild className={"group"}>
             <Link href={"/projects"} className="flex items-center space-x-2">
               <ArrowLeft className={"size-4"} />
               <span>Back to Projects</span>

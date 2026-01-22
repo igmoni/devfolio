@@ -28,7 +28,7 @@ const BlogCard = ({ post }) => {
 
 
   return (
-    <Card className={'group h-full w-full overflow-hidden transition-all p-0 border-gray-100 dark:border-gray-800 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] flex flex-col'}>
+    <Card className={' h-full w-full overflow-hidden transition-all p-0 border-gray-100 dark:border-gray-800 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] flex flex-col'}>
       <CardHeader className={'p-0'}>
         <div className="relative aspect-video overflow-hidden">
           <Link href={`/blog/${slug}`}>

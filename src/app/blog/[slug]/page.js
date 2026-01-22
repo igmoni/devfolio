@@ -60,7 +60,7 @@ const page = async ({ params }) => {
   const relatedPosts = await getRelatedPosts(slug, 3);
   return (
     <>
-      <Container className="py-24 px-5 ">
+      <Container className="py-24 max-w-4xl">
         <div className="space-y-12">
           {/* Back Button */}
           <BackButton />

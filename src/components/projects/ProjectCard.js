@@ -34,25 +34,26 @@ const ProjectCard = ({ project, className }) => {
   });
   return (
     <motion.div variants={item}>
-      <Card className="group min-h-[540px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
+      {/* Changed from 'group' to 'group/card' for card-level hover */}
+      <Card className="group/card min-h-[540px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
         <CardCon project={project} />
         <CardFoo project={project} />
 
-        <CardHeader className="mt-4 p-0 pl-[58px] absolute bottom-0 right-0 w-full h-[200px] lg:h-[230px] lg:group-hover:h-[250px]">
+        <CardHeader className="mt-4 p-0 pl-[58px] absolute bottom-0 right-0 w-full h-[200px] lg:h-[230px] lg:group-hover/card:h-[250px]">
           <div className="w-full absolute right-0 bottom-0 pl-5 lg:pl-10">
-            {/* Glow */}
+            {/* Glow - responds to card hover */}
             <div
-              className="absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl opacity-0 group-hover:opacity-80 transition-all duration-500 from-orange-500/30 via-orange-300/10  bg-linear-to-b dark:from-blue-500/60 dark:via-purple-500/40 to-transparent blur-2xl pointer-events-none"
+              className="absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl opacity-0 group-hover/card:opacity-80 transition-all duration-500 from-orange-500/30 via-orange-300/10  bg-linear-to-b dark:from-blue-500/60 dark:via-purple-500/40 to-transparent blur-2xl pointer-events-none"
             />
 
-            {/* Image */}
+            {/* Image - responds to card hover */}
             <div
               className=" relative z-20 h-[200px] lg:h-[250px] rounded-tl-2xl rounded-br-2xl overflow-hidden transform-gpu will-change-transform transition-all duration-700
     ease-[cubic-bezier(0.16,1,0.3,1)]
     origin-bottom
     translate-y-3 
-    group-hover:translate-y-1
-    group-hover:opacity-100"
+    group-hover/card:translate-y-1
+    group-hover/card:opacity-100"
             >
               <Image
                 fill
@@ -124,7 +125,8 @@ const CardCon = ({ project }) => {
 
       <p className="text-secondary line-clamp-3">{project.desc}</p>
 
-      <div className="mt-3">
+      {/* Added 'group/tech' for technologies section */}
+      <div className="mt-3 group/tech">
         <h4 className="text-sm font-medium mb-2 text-secondary">
           Technologies
         </h4>
@@ -132,7 +134,8 @@ const CardCon = ({ project }) => {
           {matchedProject?.technologies?.map((tech) => (
             <Tooltip key={tech.name}>
               <TooltipTrigger>
-                <div className="size-10 hover:scale-110 transition-all duration-300 border-gray-500/30 border group-hover:ml-1 p-2 rounded-full -ml-3 bg-white dark:bg-muted hover:border-gray-500/70   hover:cursor-pointer">
+                {/* Changed to respond to tech group hover */}
+                <div className="size-10 hover:scale-110 transition-all duration-300 border-gray-500/30 border group-hover/tech:ml-1.5 p-2 rounded-full -ml-3 bg-white dark:bg-muted hover:border-gray-500/70   hover:cursor-pointer">
                   {tech.icon}
                 </div>
               </TooltipTrigger>
@@ -156,12 +159,12 @@ const CardFoo = ({ project }) => {
 
   return (
     <CardFooter
-      className="p-4 md:px-6 pt-0 flex gap-3 sm:flex-row sm:items-center justify-between"
+      className="p-4 md:px-6 pt-0 flex gap-12 md:gap-3 sm:flex-row sm:items-center justify-between"
     >
       {/* STATUS */}
       <div
         className={`
-          inline-flex items-center gap-2 w-fit rounded-md px-2 py-1 text-xs border 
+          inline-flex items-center gap-3 w-full md:w-fit rounded-md px-2 py-1 text-xs border 
           ${isWorking
             ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
             : "border-red-300 bg-red-500/10 text-red-700 dark:text-red-400"
@@ -169,22 +172,22 @@ const CardFoo = ({ project }) => {
         `}
       >
         <span
-          className={`size-2 rounded-full animate-pulse ${isWorking ? "bg-green-500" : "bg-red-500"
+          className={`min-w-2 min-h-2 md:min-w-2 md:min-h-2 w-2 h-2 md:w-2 md:h-2 rounded-full animate-pulse ${isWorking ? "bg-green-500" : "bg-red-500"
             }`}
         />
-        <span className="whitespace-nowrap">
+        <span className="sm:whitespace-nowrap">
           {isWorking ? "All Systems Operational" : "Building"}
         </span>
       </div>
 
-      {/* LINK */}
+      {/* LINK - Added 'group/link' for independent hover */}
       <Link
         href={`/projects/${slug}`}
-        className="relative group inline-flex items-center gap-1 text-muted-foreground"
+        className="relative group/link inline-flex whitespace-nowrap items-center gap-1 text-muted-foreground"
       >
         View Details
         <span
-                className="absolute left-0 -bottom-1 h-[2px] w-[98px] rounded-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left"
+                className="absolute left-0 -bottom-1 h-[2px] w-[98px] rounded-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover/link:scale-x-100 group-hover/link:origin-left"
               />
         <ArrowRight className="size-4" />
       </Link>
