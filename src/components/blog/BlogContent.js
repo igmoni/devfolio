@@ -7,6 +7,7 @@ import Image from "next/image";
 import { MDXRemote } from 'next-mdx-remote';
 import { useEffect, useState } from 'react';
 import Container from "../common/Container";
+import BlogComponents from "./BlogComponents";
 
 
 const BlogContent = ({ frontmatter, content }) => {
@@ -67,7 +68,7 @@ const BlogContent = ({ frontmatter, content }) => {
       </header>
 
       <div className="prose prose-neutral max-w-none dark:prose-invert">
-        {mdxSource ? <MDXRemote {...mdxSource} /> : <p>Loading...</p>}
+        {mdxSource ? <MDXRemote {...mdxSource} components={BlogComponents}  /> : <p>Loading...</p>}
       </div>
     </Container>
   );

@@ -23,7 +23,7 @@ ChartJS.register(
 const labels = ["Bench", "Squat", "Leg Press", "Shoulder", "Deadlift"];
 
 const rawValues = [35, 45, 65, 25, 80];
-const maxValues = [100, 100, 150, 80, 150];
+const maxValues = [100, 100, 150, 85, 150];
 
 const normalizedValues = rawValues.map(
   (v, i) => (v / maxValues[i]) * 100

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { CodeCopyButton } from "./CodeCopyButton";
+import CodeCopyButton from "./CodeCopyButton";
 
 const BlogComponents = {
   img: ({ src, alt, ...props }) => (
@@ -73,14 +73,17 @@ const BlogComponents = {
     const codeText = getTextContent(children);
 
     return (
-      <div className="group relative mb-4">
-        <pre
-          className="overflow-x-auto rounded-lg border bg-muted/30 p-4 text-sm [&>code]:bg-transparent [&>code]:p-0"
+      <div className="group  relative mb-4">
+        <div className="border p-1 dark:shadow-[inset_0_0_3px_rgba(255,255,255,0.5)] shadow-[inset_0_0_2px_rgba(0,0,0,0.3)] rounded-4xl">
+
+        <pre style={{ margin: 0}}
+          className="overflow-x-auto rounded-[28px] border bg-[#171717] p-4 text-sm [&>code]:bg-transparent [&>code]:p-0 "
           {...props}
-        >
+          >
           {children}
         </pre>
-        <CodeCopyButton code={codeText} />
+        <CodeCopyButton code={codeText}  />
+          </div>
       </div>
     );
   },

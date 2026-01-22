@@ -18,7 +18,7 @@ const CodeCopyButton = ({ code }) => {
   };
   return (
     <form
-      className="absolute top-3 right-3 rounded-md oapcity transition-all duration-200 group-hover:oapcity-10 cursor-pointer"
+      className="absolute top-5 right-5 rounded-md oapcity transition-all duration-200 group-hover:oapcity-10 cursor-pointer"
       title={isCopied ? "Copied!" : "Copy code"}
       action={copyToClipboard}
     >

@@ -3,7 +3,7 @@ const stats = [
   { label: "Squat", value: 45, max: 100, unit: "kg" },
   { label: "Leg Press", value: 65, max: 150, unit: "kg" },
   { label: "Shoulder", value: 25, max: 80, unit: "kg" },
-  { label: "Deadlift", value: 80, max: 150, unit: "kg" },
+  { label: "Deadlift", value: 85, max: 150, unit: "kg" },
 ];
 
 export default function ProgressStats() {
