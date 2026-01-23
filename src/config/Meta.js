@@ -45,6 +45,9 @@ export const pageMetaData = {
   "/about": {
     title: `About ${heroConfig.name} - ${heroConfig.title}`,
     description: "About Me",
+     alternates: {
+    canonical: "https://monxdev.vercel.app/about",
+  },
     keywords: [
       "portfolio",
       "developer",
@@ -58,6 +61,9 @@ export const pageMetaData = {
 
   "/contact": {
     title: "Contact - Get in Touch",
+     alternates: {
+    canonical: "https://monxdev.vercel.app/contact",
+  },
     description:
       "Get in touch with me for collaborations, projects, or opportunities. I'd love to hear from you!",
     keywords: ["contact", "hire", "collaboration", "freelance", "developer"],
@@ -66,6 +72,9 @@ export const pageMetaData = {
   },
   "/projects": {
     title: "Projects - My Work & Projects Portfolio",
+     alternates: {
+    canonical: "https://monxdev.vercel.app/projects",
+  },
     description:
       "Discover my projects & work across different technologies & domains. From web apps to mobile solutions.",
     keywords: [
@@ -81,6 +90,9 @@ export const pageMetaData = {
 
   "/blog": {
     title: "Blog - Thoughts & Tutorials",
+     alternates: {
+    canonical: "https://monxdev.vercel.app/blog",
+  },
     description:
       "Read my thoughts, tutorials, and insights on engineering, programming, and web development.",
     keywords: [

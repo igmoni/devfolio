@@ -9,7 +9,7 @@ const BlogComponents = {
       alt={alt}
       width={800}
       height={400}
-      className="rounded-lg"
+      className="rounded-lg mx-auto"
       {...props}
     />
   ),

@@ -12,7 +12,6 @@ import {
   getRelatedProjectPosts
 } from "@/lib/projects";
 
-import { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { notFound } from "next/navigation";
 
@@ -35,6 +34,9 @@ export async function generateMetadata({ params }) {
   return {
   metadataBase: new URL(siteConfig.url),
   title: `${title} - Project Case Study`,
+  alternates: {
+      canonical: `https://monxdev.vercel.app/projects/${params.slug}`,
+    },
   desc,
   openGraph: {
       title: `${title} - Project Case Study`,
