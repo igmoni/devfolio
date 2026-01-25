@@ -38,7 +38,7 @@ const About = () => {
           <div className="h-px w-full rounded-full bg-secondary mt-7"></div>
           <Separator />
           <p className="text-secondary mt-8 font-bold">Skills</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex items-center flex-wrap gap-2">
             {mySkills.map((skill) => (
               <Tooltip key={skill.key}>
                 <TooltipTrigger>

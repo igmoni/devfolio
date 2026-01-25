@@ -9,6 +9,8 @@ import Code from "@/svgs/Code";
 import Database from "@/svgs/Database";
 import Mentor from "@/svgs/Mentor";
 import Conversion from "@/svgs/Conversion";
+import Python from "@/components/technologies/Python";
+import Java from "@/components/technologies/Java";
 
 export const mySkills = [
   <ReactIcon key="react" />,
@@ -18,6 +20,8 @@ export const mySkills = [
   <JavaScript key="javascript" />,
   <TailwindCss key="tailwindcss" />,
   <Figma key="figma" />,
+  <Python key="python"/>,
+  <Java key="java" />
 ];
 
 export const about = {

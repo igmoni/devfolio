@@ -74,15 +74,15 @@ const ProjectCard = ({ project, className }) => {
 export default ProjectCard;
 
 const CardCon = ({ project }) => {
-  const { slug, title } = project;
+  const { slug, shortTitle } = project;
 
-  const matchedProject = PROJECTS_CONFIG.find((p) => p.title === title);
+  const matchedProject = PROJECTS_CONFIG.find((p) => p.title === shortTitle);
   return (
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
         <Link href={`/projects/${slug}`}>
           <h3 className={`${instrumentSerif.className} italic text-3xl font-semibold leading-tight  hover:cursor-pointer`}>
-            {project.title}
+            {project.shortTitle}
           </h3>
         </Link>
 

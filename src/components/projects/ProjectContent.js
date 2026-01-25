@@ -55,11 +55,6 @@ export default function ProjectContent({ frontmatter , content }) {
                 {tech}
               </Badge>
             ))}
-            {/* {technologies.length > 3 && (
-              <Badge variant={"outline"} className={"text-xs"}>
-                +{technologies.length - 3}
-              </Badge>
-            )} */}
           </div>
 
           <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
@@ -135,7 +130,7 @@ export default function ProjectContent({ frontmatter , content }) {
         <div className="rounded-lg border bg-muted/20 p-4">
           <h3 className="mb-3 text-lg font-semibold">Technology Stack</h3>
           <div className="flex flex-wrap gap-2">
-            {technologies.map((tech) => (
+            {technologies.length > 0 && technologies.map((tech) => (
               <div
                 key={tech}
                 className="inline-flex items-center gap-2 rounded-full  bg-muted/50 px-3 py-1.5 text-sm font-medium"
@@ -148,7 +143,7 @@ export default function ProjectContent({ frontmatter , content }) {
       </div>
 
       {/* Challenges & Learnings */}
-      {(challenges?.length || learnings?.length) && (
+      {(!!challenges?.length || !!learnings?.length) && (
         <div className="mb-8 grid gap-6 md:grid-cols-2">
           {challenges && challenges.length > 0 && (
             <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
