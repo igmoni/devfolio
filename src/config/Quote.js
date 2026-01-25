@@ -26,5 +26,9 @@ export const quotes = [
     {
         quote: "The disciplined mind is your best friend. The undisciplined mind is your worst enemy.",
         author: "Bhagvad Gita"
+    },
+    {
+        quote: "Arise, awake, and stop not till the goal is reached.",
+        author: "Katha Upanishad"
     }
 ]
