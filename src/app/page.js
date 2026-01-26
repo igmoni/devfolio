@@ -7,6 +7,7 @@ import Github from "@/components/landing/Github";
 import Blog from "@/components/landing/Blog";
 import Contact from "@/components/common/Contact";
 import SideQuests from "@/components/landing/SideQuests";
+import Setup from "@/components/landing/Setup";
 
 
 const page = () => {
@@ -20,6 +21,7 @@ const page = () => {
       <Github />
       <SideQuests />
       <Blog />
+      <Setup />
       <Contact />
     </Container>
   );
