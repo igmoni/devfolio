@@ -64,7 +64,7 @@ const page = async ({ params }) => {
   const relatedProjects = await getRelatedProjectPosts(slug, 2);
 
   return (
-    <Container className={"py-24 max-w-4xl"}>
+    <Container className={"py-24 px-5 max-w-4xl"}>
       <div className="space-y-8">
         <div>
           <Button variant={"outline"} asChild className={"group"}>
