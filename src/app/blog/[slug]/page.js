@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title,
       alternates: {
-      canonical: `https://monxdev.vercel.app/blog/${params.slug}`,
+      canonical: `https://monxdev.vercel.app/blog/${slug}`,
     },
       desc,
       images: [image],

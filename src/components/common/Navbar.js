@@ -134,6 +134,7 @@ const Navbar = () => {
         <div className="hidden md:flex rounded-md items-center">
           {navItems.map((item, idx) => (
             <Link
+            
               href={item.href}
               key={item.title}
               className="text-sm relative px-2 py-1"
