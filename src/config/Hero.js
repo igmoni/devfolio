@@ -77,7 +77,7 @@ export const socialLinks = [
   },
   {
     name: "Instagram",
-    href: "https://instagram.com/_igmoni",
+    href: "https://www.instagram.com/mon.buildz",
     icon: <Instagram />,
   },
 

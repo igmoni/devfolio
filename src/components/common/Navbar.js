@@ -96,7 +96,7 @@ const Navbar = () => {
               alt="Avatar"
               className={`h-12 w-12 ${
                 scrolled ? "rounded-full" : "rounded-lg"
-              } hover:scale-95 transition-all duration-100`}
+              } hover:scale-95 transition-all duration-100 shadow-acternity dark:shadow-acternity-white`}
             />
           </Link>
 

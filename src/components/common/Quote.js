@@ -19,7 +19,7 @@ const Quote = () => {
     const { quote, author } = currentQuote
     return (
 
-        <Container className={'py-16'}>
+        <Container className={'px-5 py-16'}>
             
             <div className='realtive  px-16 py-10 border dark:border-dark-white-50 rounded-xl'>
 

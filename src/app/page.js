@@ -12,7 +12,7 @@ import Setup from "@/components/landing/Setup";
 
 const page = () => {
   return (
-    <Container className={"min-h-screen  py-16 "}>
+    <Container className={"min-h-screen  py-16"}>
       <div className="px-5">
         <Hero />
       </div>

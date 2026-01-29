@@ -56,7 +56,7 @@ export default function WakaTimeCard() {
   return (
     <div
       ref={wrapperRef}
-      className="relative inline-block group"
+      className="relative inline-block group shadow-acternity dark:shadow-acternity-white rounded-full"
     >
       {/* STATUS CIRCLE */}
       <button

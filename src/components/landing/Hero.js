@@ -118,14 +118,14 @@ const Hero = () => {
               className="
                 size-24 sm:size-28 md:size-36
                 rounded-full
-                border-3 border-primary dark:border-white
+                border-3 border-primary dark:border-white 
               "
             />
 
             <div
               className="
               absolute  bottom-1 right-1
-              scale-75 sm:scale-90 md:scale-100
+              scale-75   sm:scale-90 md:scale-100
             "
             >
               <WakaTimeCard />
@@ -177,7 +177,7 @@ const Hero = () => {
 <div className="flex items-center md:justify-start justify-center gap-3">
   <motion.div variants={child} className="flex cursor-pointer items-center">
     <Link href={button.href}>
-      <Button className="bg-primary dark:bg-white flex items-center gap-2">
+      <Button className="bg-primary cursor-pointer dark:bg-white flex items-center gap-2">
         {button.icon}
         {button.text}
       </Button>

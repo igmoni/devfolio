@@ -150,7 +150,7 @@ const ContactForm = ({ className, showHeader = true }) => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-fit dark:bg-white group dark:hover:bg-neutral-200" 
+              className="w-fit cursor-pointer dark:bg-white group dark:hover:bg-neutral-200" 
             >
               {isSubmitting ? (
                 <>
