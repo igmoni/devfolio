@@ -55,7 +55,7 @@ const Hero = () => {
   useEffect(() => {
     const handleToggle = () => {
       setVideoIndex((prev) =>
-        prev === null ? 0 : (prev + 1) % coverVideos.length
+        prev === null ? 0 : (prev + 1) % coverVideos.length,
       );
     };
 
@@ -124,7 +124,7 @@ const Hero = () => {
 
             <div
               className="
-              absolute  bottom-1 right-1
+              absolute  bottom-3 right-1.5
               scale-75   sm:scale-90 md:scale-100
             "
             >
@@ -174,23 +174,26 @@ const Hero = () => {
         </motion.div>
 
         {/* CTA */}
-<div className="flex items-center md:justify-start justify-center gap-3">
-  <motion.div variants={child} className="flex cursor-pointer items-center">
-    <Link href={button.href}>
-      <Button className="bg-primary cursor-pointer dark:bg-white flex items-center gap-2">
-        {button.icon}
-        {button.text}
-      </Button>
-    </Link>
-  </motion.div>
+        <div className="flex items-center md:justify-start justify-center gap-3">
+          <motion.div
+            variants={child}
+            className="flex cursor-pointer items-center"
+          >
+            <Link href={button.href}>
+              <Button className="bg-primary cursor-pointer dark:bg-white flex items-center gap-2">
+                {button.icon}
+                {button.text}
+              </Button>
+            </Link>
+          </motion.div>
 
-  <motion.div
-    variants={child}
-    className="flex items-center justify-center"
-  >
-    <Coffee className="size-9 shadow-acternity dark:shadow-acternity-white" />
-  </motion.div>
-</div>
+          <motion.div
+            variants={child}
+            className="flex items-center justify-center"
+          >
+            <Coffee className="size-9 shadow-acternity dark:shadow-acternity-white" />
+          </motion.div>
+        </div>
 
         {/* SOCIALS */}
         <motion.div
@@ -222,9 +225,13 @@ const Hero = () => {
           variants={child}
           className="tracking-widest text-muted-foreground hover:text-primary dark:hover:text-white transition-all duration-500"
         >
-          <Link href={'https://google.com/maps/place/Bengaluru,+India'} target="_blank" className="flex gap-2 md:justify-start justify-center items-center">
-          <Location className={"size-5"} />
-          BENGALURU, INDIA
+          <Link
+            href={"https://google.com/maps/place/Bengaluru,+India"}
+            target="_blank"
+            className="flex gap-2 md:justify-start justify-center items-center"
+          >
+            <Location className={"size-5"} />
+            BENGALURU, INDIA
           </Link>
         </motion.div>
 

@@ -125,22 +125,6 @@ export default function ProjectContent({ frontmatter , content }) {
 
         <Separator />
       </header>
-      {/* Technology Stack */}
-      <div className="mb-8">
-        <div className="rounded-lg border bg-muted/20 p-4">
-          <h3 className="mb-3 text-lg font-semibold">Technology Stack</h3>
-          <div className="flex flex-wrap gap-2">
-            {technologies.length > 0 && technologies.map((tech) => (
-              <div
-                key={tech}
-                className="inline-flex items-center gap-2 rounded-full  bg-muted/50 px-3 py-1.5 text-sm font-medium"
-              >
-                <span>{tech}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Challenges & Learnings */}
       {(!!challenges?.length || !!learnings?.length) && (

@@ -62,20 +62,20 @@ export default function WakaTimeCard() {
       <button
         type="button"
         onClick={() => isMobile && setIsOpen((o) => !o)}
-        className="w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700
+        className="size-7 rounded-full border border-neutral-300 dark:border-neutral-700
         flex items-center justify-center bg-white dark:bg-neutral-900"
       >
         {data?.status === "online" ? (
           <img src="/assets/cursor.png" alt="Cursor" className="w-6 h-6" />
         ) : (
-          <div className="w-3 h-3 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+          <div className="size-3  rounded-full bg-neutral-400 dark:bg-neutral-600" />
         )}
       </button>
 
       {/* CARD */}
       <div
         className={`
-          absolute mx-auto md:left-12 md:top-1/2 md:-translate-y-1/4
+          absolute mx-auto md:left-10 md:top-1/2 md:-translate-y-1/4
           min-w-[390px] top-13 -left-56 
           rounded-md border border-neutral-200 dark:border-neutral-800
           bg-white dark:bg-neutral-900
@@ -83,11 +83,12 @@ export default function WakaTimeCard() {
           px-3 py-2 z-50
           transition-all duration-150 ease-out
 
-          ${isMobile
-            ? isOpen
-              ? "opacity-100 scale-100 pointer-events-auto"
-              : "opacity-0 scale-95 pointer-events-none"
-            : "opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto"
+          ${
+            isMobile
+              ? isOpen
+                ? "opacity-100 scale-100 pointer-events-auto"
+                : "opacity-0 scale-95 pointer-events-none"
+              : "opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto"
           }
         `}
       >
@@ -96,7 +97,12 @@ export default function WakaTimeCard() {
         ) : data.status === "online" ? (
           <div className="text-sm text-primary dark:text-white space-y-1">
             <p className="flex items-center gap-1">
-              <Image src="/assets/cursor.png" alt="Cursor" width={18} height={18} />
+              <Image
+                src="/assets/cursor.png"
+                alt="Cursor"
+                width={18}
+                height={18}
+              />
               Currently coding in
               <span className="font-medium">{data.editor}</span>
               for
@@ -105,7 +111,7 @@ export default function WakaTimeCard() {
 
             {data.project && data.file ? (
               <p className="text-sm font-medium text-neutral-500">
-                Working on{' '}
+                Working on{" "}
                 <span className="font-semibold text-primary dark:text-white">
                   {data.project} — {data.file}
                 </span>
@@ -118,12 +124,17 @@ export default function WakaTimeCard() {
           <div className="text-sm text-primary dark:text-white">
             <p className=" flex items-center font-semibold gap-1">
               Offline in
-              <Image src="/assets/cursor.png" alt="Cursor" width={18} height={18} />
+              <Image
+                src="/assets/cursor.png"
+                alt="Cursor"
+                width={18}
+                height={18}
+              />
               Cursor
             </p>
             {data.yesterdayTime && (
               <p className="text-muted-foreground">
-                Yesterday worked{' '}
+                Yesterday worked{" "}
                 <span className="font-semibold text-primary dark:text-white">
                   {data.yesterdayTime}
                 </span>
