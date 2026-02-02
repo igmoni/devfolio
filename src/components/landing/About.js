@@ -11,7 +11,7 @@ import { Separator } from "../ui/separator";
 const About = () => {
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
-  
+
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
@@ -21,17 +21,16 @@ const About = () => {
       <SectionHeading subHeading={"About"} heading={"Me"} />
 
       <div className="mt-8 flex flex-col gap-5 md:flex-row">
-        <div className="dark:bg-[#EEDA66] w-100 bg-[#8EC0E8] rounded-xl">
-
-        <Image
-          src={"/assets/logo.png"}
-          priority
-          alt="Avatar"
-          width={100}
-          height={100}
-          className="border-muted border-5 size-60 rounded-lg "
+        <div className="dark:bg-[#EEDA66] w-fit  md:w-97 h-59  bg-[#8EC0E8] rounded-xl ">
+          <Image
+            src={"/assets/logo.png"}
+            priority
+            alt="Avatar"
+            width={100}
+            height={100}
+            className="border-muted border-5 size-60 rounded-lg "
           />
-          </div>
+        </div>
 
         <div className="mt-4">
           <h3 className="text-2xl font-bold">{about.name}</h3>
