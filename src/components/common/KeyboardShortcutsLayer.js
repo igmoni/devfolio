@@ -94,8 +94,11 @@ function ShortcutRow({ shortcut, onRun }) {
           {shortcut.desc}
         </span>
       </div>
-      <CommandShortcut >
-        <ShortcutChip label={shortcut.keybind} className="ml-auto" />
+      <CommandShortcut>
+        <ShortcutChip
+          label={shortcut.keybind}
+          className="ml-auto"
+        />
       </CommandShortcut>
     </CommandItem>
   );
@@ -286,25 +289,28 @@ export default function KeyboardShortcutsLayer() {
                 <h3 className="text-sm font-semibold text-foreground">Tips</h3>
 
                 <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
-  <li>
-    <span className="flex items-start gap-2">
-      Press <ShortcutChip label="Ctrl + K" /> to open the command palette and search for any command
-    </span>
-  </li>
+                  <li>
+                    <span className="flex items-start gap-2">
+                      Press <ShortcutChip label="Ctrl + K" /> to open the
+                      command palette and search for any command
+                    </span>
+                  </li>
 
-  <li>
-    <span>
-      Keyboard shortcuts are disabled when typing in input fields
-    </span>
-  </li>
+                  <li>
+                    <span>
+                      Keyboard shortcuts are disabled when typing in input
+                      fields
+                    </span>
+                  </li>
 
-  <li>
-    <span className="flex items-start gap-2">
-      Press <ShortcutChip label="Esc" /> to close any modal or dialog
-    </span>
-  </li>
-</ul>
-</div>
+                  <li>
+                    <span className="flex items-start gap-2">
+                      Press <ShortcutChip label="Esc" /> to close any modal or
+                      dialog
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </DialogContent>

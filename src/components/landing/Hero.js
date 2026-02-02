@@ -26,8 +26,6 @@ const Hero = () => {
   const { name, title, button } = heroConfig;
   const { theme } = useTheme();
 
-  const avatar = theme === "dark" ? "/assets/mony.jpeg" : "/assets/monb.jpeg";
-
   const parent = {
     hidden: { opacity: 0 },
     show: {
@@ -109,18 +107,20 @@ const Hero = () => {
             rounded-full bg-white p-1 dark:bg-primary shadow-2xl  
           "
           >
-            <Image
-              src={avatar}
-              alt="Avatar"
-              width={100}
-              height={100}
-              priority
-              className="
-                size-24 sm:size-28 md:size-36
-                rounded-full
-                border-3 border-primary dark:border-white 
+            <div className="h-full w-full rounded-full dark:bg-[#EEDA66] bg-[#8EC0E8]">
+              <Image
+                src={"/assets/logo.png"}
+                alt="Avatar"
+                width={100}
+                height={100}
+                priority
+                className="
+              size-24 sm:size-28 md:size-36
+              rounded-full
+              border-3 border-primary dark:border-white 
               "
-            />
+              />
+            </div>
 
             <div
               className="

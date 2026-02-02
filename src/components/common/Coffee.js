@@ -26,7 +26,7 @@ export default function Coffee({ className }) {
               height={100}
               className={cn(
                 "size-10 rounded-md dark:shadow-acternity-white",
-                className
+                className,
               )}
             />
           </Link>
