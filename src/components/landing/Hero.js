@@ -124,7 +124,7 @@ const Hero = () => {
 
             <div
               className="
-              absolute  bottom-3 right-1.5
+              absolute bottom-1 right-0.5 md:bottom-2.5 md:right-2
               scale-75   sm:scale-90 md:scale-100
             "
             >
@@ -274,7 +274,22 @@ const Description = ({ links }) => {
                 whitespace-nowrap
                 transition-colors
                 hover:bg-muted/70
+                dark:text-muted
+                text-muted-foreground
               "
+              style={{
+                backgroundColor: link.name === "Typescript" ? "var(--color-sky-100)" : link.name === "React" ? "var(--color-blue-100)" : link.name === "Figma" ? "var(--color-pink-100)" : "var(--color-neutral-100)" ,
+                border: `1px dashed ${
+                  link.name === "Typescript"
+                    ? "var(--color-sky-500)"
+                    : link.name === "React"
+                    ? "var(--color-blue-500)"
+                    : link.name === "Figma"
+                    ? "var(--color-pink-500)"
+                    : "var(--color-neutral-500)"
+                }`,
+                
+              }}
             >
               <span className="flex h-4 w-4 items-center justify-center">
                 {link.icon}

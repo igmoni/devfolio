@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Radar } from "react-chartjs-2";
+import { useInView } from "framer-motion";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -31,8 +32,10 @@ const normalizedValues = rawValues.map(
 
 export default function RadarStats() {
   const [isDark, setIsDark] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
-  // ✅ watch theme changes reliably
+  // ✅ Watch theme changes (unchanged)
   useEffect(() => {
     const root = document.documentElement;
 
@@ -43,7 +46,10 @@ export default function RadarStats() {
     updateTheme();
 
     const observer = new MutationObserver(updateTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
     return () => observer.disconnect();
   }, []);
@@ -97,15 +103,22 @@ export default function RadarStats() {
       },
     },
     animation: {
-      duration: 300,
+      duration: 500,
+      easing: "easeOutQuart",
     },
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div ref={ref} className="flex items-center justify-center">
       <div className="w-full max-w-sm">
-        {/* 🔥 key forces Chart.js to fully redraw */}
-        <Radar key={isDark ? "dark" : "light"} data={data} options={options} />
+        {/* Radar animates ONLY when in view */}
+        {isInView && (
+          <Radar
+            key={isDark ? "dark" : "light"}
+            data={data}
+            options={options}
+          />
+        )}
       </div>
     </div>
   );

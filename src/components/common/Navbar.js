@@ -61,7 +61,6 @@ const Navbar = () => {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  const logoSrc = theme === "dark" ? "/assets/mony.jpeg" : "/assets/monb.jpeg";
   const navItems = [
     { title: "About", href: "/about" },
     { title: "Projects", href: "/projects" },
@@ -88,9 +87,9 @@ const Navbar = () => {
       >
         {/* LEFT */}
         <div className="flex gap-2 items-center">
-          <Link href="/">
+          <Link href="/"  className="h-full w-full rounded-full dark:bg-[#EEDA66] bg-[#8EC0E8]">
             <Image
-              src={logoSrc}
+              src={"/assets/logo.png"}
               height={100}
               width={100}
               alt="Avatar"
@@ -131,7 +130,7 @@ const Navbar = () => {
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex rounded-md items-center">
+        <div className="hidden lg:flex rounded-md items-center">
           {navItems.map((item, idx) => (
             <Link
             
@@ -165,7 +164,7 @@ const Navbar = () => {
                 new KeyboardEvent("keydown", { key: "k", ctrlKey: true })
               )
             }
-            className="hidden cursor-pointer sm:flex items-center gap-2 text-sm px-3 h-10 
+            className="hidden cursor-pointer lg:flex items-center gap-2 text-sm px-3 h-10 
             rounded-md bg-transparent shadow-[inset_0_1px_4px_rgba(0,0,0,0.3)] dark:shadow-[inset_0_2px_4px_0_rgba(255,255,255,0.3)] transition font-medium"
           >
             <span>Search</span>
@@ -180,7 +179,7 @@ const Navbar = () => {
             variant="outline"
             size="icon"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] 
+            className="lg:hidden size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] 
             flex items-center justify-center rounded-md"
           >
             <Menu className="size-6" />
@@ -208,7 +207,7 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
             className="fixed w-40 top-20 right-4 bg-white dark:bg-primary shadow-acternity 
             border border-secondary/20 rounded-lg p-4 flex flex-col gap-3 
-            md:hidden z-60"
+            lg:hidden z-60"
           >
             {navItems.map((item, idx) => (
               <React.Fragment key={item.title}>
