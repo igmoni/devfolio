@@ -23,7 +23,7 @@ ChartJS.register(
 // ---- CONFIG ----
 const labels = ["Bench", "Squat", "Leg Press", "Shoulder", "Deadlift"];
 
-const rawValues = [35, 50, 80, 35, 80];
+const rawValues = [45, 50, 80, 35, 80];
 const maxValues = [100, 100, 150, 85, 150];
 
 const normalizedValues = rawValues.map(

@@ -256,7 +256,7 @@ const Description = ({ links }) => {
         text-center md:text-left 
       "
     >
-      I design and build interactive web applications —{" "}
+      I design and build interactive web applications using {" "}
       {links.map((link, index) => {
         const isLast = index === links.length - 1;
         const isSecondLast = index === links.length - 2;
@@ -279,7 +279,7 @@ const Description = ({ links }) => {
               "
               style={{
                 backgroundColor: link.name === "Typescript" ? "var(--color-sky-100)" : link.name === "React" ? "var(--color-blue-100)" : link.name === "Figma" ? "var(--color-pink-100)" : "var(--color-neutral-100)" ,
-                border: `1px dashed ${
+                border: `2px dashed ${
                   link.name === "Typescript"
                     ? "var(--color-sky-500)"
                     : link.name === "React"

@@ -87,7 +87,7 @@ const Navbar = () => {
       >
         {/* LEFT */}
         <div className="flex gap-2 items-center">
-          <Link href="/"  className="h-full w-full rounded-full dark:bg-[#EEDA66] bg-[#8EC0E8]">
+          <Link href="/"  className={`${scrolled ? "rounded-full" : "rounded-lg"} transition-all duration-200 h-full w-full  dark:bg-[#EEDA66] bg-[#8EC0E8]`}>
             <Image
               src={"/assets/logo.png"}
               height={100}
@@ -95,7 +95,7 @@ const Navbar = () => {
               alt="Avatar"
               className={`h-12 w-12 ${
                 scrolled ? "rounded-full" : "rounded-lg"
-              } hover:scale-95 transition-all duration-100 shadow-acternity dark:shadow-acternity-white`}
+              } hover:scale-95 transition-all duration-200 shadow-acternity dark:shadow-acternity-white`}
             />
           </Link>
 
@@ -179,7 +179,7 @@ const Navbar = () => {
             variant="outline"
             size="icon"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] 
+            className="lg:hidden bg-transparent size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] 
             flex items-center justify-center rounded-md"
           >
             <Menu className="size-6" />

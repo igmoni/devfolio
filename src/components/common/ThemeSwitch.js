@@ -111,43 +111,20 @@ export const ThemeToggleButton = ({ className = '', variant = 'circle', start = 
 
 
   return (
-   <Button
-  type="button"
-  variant="outline"
-  size="icon"
-  className={cn(
-    "size-10 cursor-pointer p-0 transition-all duration-300 active:scale-95",
-    className
-  )}
-  onClick={toggleTheme}
-  aria-label="Toggle theme"
->
-  <AnimatePresence mode="wait">
-    {isDark ? (
-      <motion.div
-        key="sun"
-        initial={{ rotate: -90, opacity: 0 }}
-        animate={{ rotate: 0, opacity: 1 }}
-        exit={{ rotate: 90, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex items-center justify-center hover:text-[aqua]"
-      >
-        <Sun className="size-4" />
-      </motion.div>
-    ) : (
-      <motion.div
-        key="moon"
-        initial={{ rotate: -90, opacity: 0 }}
-        animate={{ rotate: 0, opacity: 1 }}
-        exit={{ rotate: 90, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex items-center justify-center hover:text-[orange]"
-      >
-        <Moon className="size-4" />
-      </motion.div>
-    )}
-  </AnimatePresence>
-</Button>
+    <Button
+      type="button"
+      variant="outline"
+      size="icon"
+      className={cn(
+        "size-10 cursor-pointer group relative p-0 transition-all duration-300 active:scale-95",
+        className
+      )}
+      onClick={toggleTheme}
+      aria-label="Toggle theme"
+    >
+      <Sun className="size-4 absolute inset-0 shrink-0 scale-0 dark:scale-100 dark:rotate-45 transition-transform ease-in-out duration-600 m-auto delay-500 group-hover:text-orange-500" />
+      <Moon className="size-4 absolute inset-0 shrink-0 scale-100 dark:scale-0 rotate-0 dark:rotate-45 transition-transform ease-in-out duration-600 m-auto delay-500 group-hover:text-cyan-500" />
+    </Button>
 
   )
 }

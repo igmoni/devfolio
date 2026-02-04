@@ -37,7 +37,7 @@ import { motion, useMotionValue, useTransform, animate, useInView } from "framer
 import { useEffect, useRef } from "react";
 
 const stats = [
-  { label: "Bench", value: 35, max: 100, unit: "kg" },
+  { label: "Bench", value: 45, max: 100, unit: "kg" },
   { label: "Squat", value: 50, max: 100, unit: "kg" },
   { label: "Leg Press", value: 80, max: 150, unit: "kg" },
   { label: "Shoulder", value: 35, max: 80, unit: "kg" },
