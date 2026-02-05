@@ -12,7 +12,7 @@ import ReactIcon from "@/components/technologies/ReactIcon";
 import Figma from "@/components/technologies/Figma";
 
 export const heroConfig = {
-  name: "Mohan S P",
+  name: "Mohan",
   title: "Full Stack Web Developer • UI/UX Designer",
 
   skills: [
