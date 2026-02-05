@@ -20,16 +20,36 @@ const About = () => {
     <Container className={"mt-20 px-5"}>
       <SectionHeading subHeading={"About"} heading={"Me"} />
 
-      <div className="mt-8 flex flex-col gap-5 md:flex-row">
-        <div className="dark:bg-[#EEDA66] w-fit  md:w-97 h-59  bg-[#8EC0E8] rounded-xl ">
-          <Image
-            src={"/assets/logo.png"}
-            priority
-            alt="Avatar"
-            width={100}
-            height={100}
-            className="border-muted border-5 size-60 rounded-lg "
+      <div className="mt-8  flex flex-col gap-5 md:flex-row">
+        <div className="relative w-97 h-60  rounded-xl p-[2px] overflow-hidden">
+          {/* SPIN GRADIENT 1 */}
+          <div
+            className="absolute inset-0 scale-[1.5] animate-spin overflow-hidden
+    bg-[conic-gradient(at_center,transparent,var(--color-indigo-500)_20%,transparent_30%)]
+    animation-duration-[2s]"
           />
+
+          {/* GRADIENT 2 — 180° PHASE SHIFT */}
+          <div
+            className="absolute inset-0 scale-[1.5] animate-spin overflow-hidden
+    bg-[conic-gradient(at_center,transparent,var(--color-pink-500)_20%,transparent_30%)]
+    animation-duration-[2s] [animation-delay:-1s]"
+          />
+
+          {/* INNER CONTENT CONTAINER */}
+          <div
+            className="relative z-20 w-full h-full bg-[#8EC0E8] dark:bg-[#EEDA66] rounded-[calc(20px-8px)]
+ flex items-center justify-center"
+          >
+            <Image
+              src="/assets/logo.png"
+              priority
+              alt="Avatar"
+              width={100}
+              height={100}
+              className="size-60 rounded-lg object-cover"
+            />
+          </div>
         </div>
 
         <div className="mt-4">

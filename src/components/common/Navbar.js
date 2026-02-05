@@ -22,23 +22,58 @@ const Navbar = () => {
   const [index, setIndex] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [screen, setScreen] = useState("desktop");
 
   const { theme } = useTheme();
   const { scrollY } = useScroll();
 
-  // Responsive width based on device
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsMobile(window.innerWidth < 768);
-    }
+    const handleResize = () => {
+      const width = window.innerWidth;
+  
+      if (width < 480) setScreen("small");
+      else if (width < 768) setScreen("medium");
+      else if (width < 1024) setScreen("tablet");
+      else if (width >= 2560) setScreen("ultrawide"); // ✅ moved up
+      else if (width === 1024) setScreen("small-laptop");
+      else setScreen("desktop");
+    };
+  
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
+
 
   const width = useTransform(
     scrollY,
     [0, 50, 100],
-    isMobile ? ["100%", "90%", "85%"] : ["100%", "70%", "50%"]
+    (() => {
+      switch (screen) {
+        case "small":
+          return ["100%", "97%", "94%"];
+  
+        case "medium":
+          return ["100%", "92%", "85%"];
+  
+        case "tablet":
+          return ["100%", "85%", "75%"];
+  
+        case "small-laptop":
+          return ["100%", "85%", "70%"];
+  
+        case "ultrawide":
+          return ["100%", "70%", "50%"];
+  
+        default:
+          return ["100%", "70%", "50%"];
+      }
+    })()
   );
+  
 
   const y = useTransform(scrollY, [0, 100], [0, 10]);
 
@@ -52,7 +87,7 @@ const Navbar = () => {
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((prev) => (prev + 1) % professions.length),
-      2000
+      2000,
     );
     return () => clearInterval(interval);
   }, []);
@@ -87,15 +122,18 @@ const Navbar = () => {
       >
         {/* LEFT */}
         <div className="flex gap-2 items-center">
-          <Link href="/"  className={`${scrolled ? "rounded-full" : "rounded-lg"} transition-all duration-200 h-full w-full  dark:bg-[#EEDA66] bg-[#8EC0E8]`}>
+          <Link
+            href="/"
+            className={`${scrolled ? "rounded-full" : "rounded-lg"} transition-all duration-200 h-full w-full  dark:bg-[#EEDA66] bg-[#8EC0E8]`}
+          >
             <Image
               src={"/assets/logo.png"}
               height={100}
               width={100}
               alt="Avatar"
-              className={`h-12 w-12 ${
+              className={`h-12 w-12 shrink-0 object-cover aspect-square ${
                 scrolled ? "rounded-full" : "rounded-lg"
-              } hover:scale-95 transition-all duration-200 shadow-acternity dark:shadow-acternity-white`}
+              } hover:scale-95 transition-all duration-200   shadow-acternity dark:shadow-acternity-white`}
             />
           </Link>
 
@@ -103,7 +141,7 @@ const Navbar = () => {
             <h1
               className={`${
                 scrolled ? "hidden" : "block"
-              } md:block font-semibold text-[18px] lg:text-[20px] tracking-tighter 
+              } lg:block font-semibold text-[18px] lg:text-[20px] tracking-tighter 
               text-primary dark:text-white`}
             >
               Mohan
@@ -133,7 +171,6 @@ const Navbar = () => {
         <div className="hidden lg:flex rounded-md items-center">
           {navItems.map((item, idx) => (
             <Link
-            
               href={item.href}
               key={item.title}
               className="text-sm relative px-2 py-1"
@@ -156,12 +193,12 @@ const Navbar = () => {
         </div>
 
         {/* RIGHT */}
-        <div className="flex gap-5 items-center">
+        <div className="flex gap-2 md:gap-5 items-center">
           {/* SEARCH BUTTON */}
           <button
             onClick={() =>
               window.dispatchEvent(
-                new KeyboardEvent("keydown", { key: "k", ctrlKey: true })
+                new KeyboardEvent("keydown", { key: "k", ctrlKey: true }),
               )
             }
             className="hidden cursor-pointer lg:flex items-center gap-2 text-sm px-3 h-10 
