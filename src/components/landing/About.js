@@ -21,7 +21,7 @@ const About = () => {
       <SectionHeading subHeading={"About"} heading={"Me"} />
 
       <div className="mt-8  flex flex-col gap-5 md:flex-row">
-        <div className="relative w-97 h-60  rounded-xl p-[2px] overflow-hidden">
+        <div className="relative size-fit md:w-97 md:h-60  rounded-xl p-[2px] overflow-hidden">
           {/* SPIN GRADIENT 1 */}
           <div
             className="absolute inset-0 scale-[1.5] animate-spin overflow-hidden
