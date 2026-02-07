@@ -236,7 +236,7 @@ const CardFoo = ({ project }) => {
       {/* LINK - Added 'group/link' for independent hover */}
       <Link
         href={`/projects/${slug}`}
-        className="relative group/link inline-flex whitespace-nowrap items-center gap-1 text-muted-foreground"
+        className="relative group/link inline-flex whitespace-nowrap hover:text-primary dark:hover:text-white items-center gap-1 text-muted-foreground"
       >
         View Details
         <span className="absolute left-0 -bottom-1 h-[2px] w-[98px] rounded-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover/link:scale-x-100 group-hover/link:origin-left" />

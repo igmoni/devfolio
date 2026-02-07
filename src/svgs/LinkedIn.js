@@ -1,13 +1,67 @@
-import React from 'react';
+"use client"
+import { motion } from "motion/react"
 
 export default function LinkedIn() {
   return (
-    <svg
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      viewBox="0 0 256 256"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"
+      whileHover="hover"
+      animate="rest"
     >
-      <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path>
-    </svg>
-  );
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+      <motion.path
+        variants={{
+          rest: { opacity: 1, pathLength: 1, stroke: "currentColor" },
+          hover: { opacity: [0, 1], pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+        d="M8 11v5"
+      />
+
+      <motion.path
+        variants={{
+          rest: { stroke: "currentColor" },
+          hover: { stroke: "#fff" },
+        }}
+        d="M8 8v.01"
+      />
+
+      <motion.path
+        variants={{
+          rest: { opacity: 1, pathLength: 1, stroke: "currentColor" },
+          hover: { opacity: [0, 1], pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.3, delay: 0.15 }}
+        d="M12 16v-5"
+      />
+
+      <motion.path
+        variants={{
+          rest: { opacity: 1, pathLength: 1, stroke: "currentColor" },
+          hover: { opacity: [0, 1], pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+        d="M16 16v-3a2 2 0 1 0 -4 0"
+      />
+
+      <motion.path
+        variants={{
+          rest: { opacity: 1, pathLength: 1, stroke: "currentColor" },
+          hover: { opacity: [0, 1], pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.5 }}
+        d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10"
+      />
+    </motion.svg>
+  )
 }

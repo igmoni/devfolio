@@ -75,7 +75,7 @@ const BlogCard = ({ post }) => {
               <Calendar className={'size-4'} />{formattedDate}
             </time>
 
-            <Link href={`/blog/${slug}`} className="relative group text-muted-foreground inline-flex items-center gap-1">
+            <Link href={`/blog/${slug}`} className="relative group hover:text-primary dark:hover:text-white text-muted-foreground inline-flex items-center gap-1">
 
               Read More
               <span

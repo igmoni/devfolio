@@ -1,13 +1,53 @@
-import React from "react";
+"use client"
+import { motion } from "motion/react"
 
 export default function Pinterest() {
   return (
-    <svg
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      viewBox="0 0 256 256"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline  icon-tabler-brand-pinterest"
+      whileHover="hover"
+      animate="rest"
     >
-      <path d="M224,112c0,22.57-7.9,43.2-22.23,58.11C188.39,184,170.25,192,152,192c-17.88,0-29.82-5.86-37.43-12l-10.78,45.82A8,8,0,0,1,96,232a8.24,8.24,0,0,1-1.84-.21,8,8,0,0,1-6-9.62l32-136a8,8,0,0,1,15.58,3.66l-16.9,71.8C122,166,131.3,176,152,176c27.53,0,56-23.94,56-64A72,72,0,1,0,73.63,148a8,8,0,0,1-13.85,8A88,88,0,1,1,224,112Z"></path>
-    </svg>  
-  );
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+      {/* Pin line */}
+      <motion.path
+        variants={{
+          rest: { pathLength: 1, stroke: "currentColor" },
+          hover: { pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.25 }}
+        d="M8 20l4 -9"
+      />
+
+      {/* Curve */}
+      <motion.path
+        variants={{
+          rest: { pathLength: 1, stroke: "currentColor" },
+          hover: { pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.3, delay: 0.05 }}
+        d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7"
+      />
+
+      {/* Circle */}
+      <motion.path
+        variants={{
+          rest: { pathLength: 1, stroke: "currentColor" },
+          hover: { pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.35, delay: 0.1 }}
+        d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"
+      />
+    </motion.svg>
+  )
 }

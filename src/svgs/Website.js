@@ -1,14 +1,99 @@
-import React from 'react';
+"use client"
+import { motion } from "motion/react"
 
 export default function Website({ className }) {
   return (
-    <svg
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
+      width="32"
+      height="32"
       viewBox="0 0 256 256"
-      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`icon icon-tabler icons-tabler-outline icon-tabler-world ${className}`}
+      whileHover="hover"
+      animate="rest"
+      style={{
+        transformOrigin: "50% 50%",
+        transformBox: "fill-box",
+      }}
     >
-      <path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm87.62,96H175.79C174,83.49,159.94,57.67,148.41,42.4A88.19,88.19,0,0,1,215.63,120ZM96.23,136h63.54c-2.31,41.61-22.23,67.11-31.77,77C118.45,203.1,98.54,177.6,96.23,136Zm0-16C98.54,78.39,118.46,52.89,128,43c9.55,9.93,29.46,35.43,31.77,77Zm11.36-77.6C96.06,57.67,82,83.49,80.21,120H40.37A88.19,88.19,0,0,1,107.59,42.4ZM40.37,136H80.21c1.82,36.51,15.85,62.33,27.38,77.6A88.19,88.19,0,0,1,40.37,136Zm108,77.6c11.53-15.27,25.56-41.09,27.38-77.6h39.84A88.19,88.19,0,0,1,148.41,213.6Z"></path>
-    </svg>
-  );
+      <g transform="scale(10.6667)">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+        <motion.path
+          variants={{
+            rest: { scale: 1, stroke: "currentColor" },
+            hover: {  scale: 1.20, stroke: "#fff" },
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 14,
+            mass: 0.6,
+          }}
+          d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"
+        />
+
+        <motion.path
+          variants={{
+            rest: {  scale: 1, stroke: "currentColor" },
+            hover: {  scale: 1.20, stroke: "#fff" },
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 14,
+            mass: 0.6,
+          }}
+          d="M3.6 9h16.8"
+        />
+
+        <motion.path
+          variants={{
+            rest: {  scale: 1, stroke: "currentColor" },
+            hover: {  scale: 1.20, stroke: "#fff" },
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 14,
+            mass: 0.6,
+          }}
+          d="M3.6 15h16.8"
+        />
+
+        <motion.path
+          variants={{
+            rest: {  scale: 1, stroke: "currentColor" },
+            hover: {  scale: 1.20, stroke: "#fff" },
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 14,
+            mass: 0.6,
+          }}
+          d="M11.20 3a17 17 0 0 0 0 18"
+        />
+
+        <motion.path
+          variants={{
+            rest: {  scale: 1, stroke: "currentColor" },
+            hover: {  scale: 1.20, stroke: "#fff" },
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 14,
+            mass: 0.6,
+          }}
+          d="M12.5 3a17 17 0 0 1 0 18"
+        />
+      </g>
+    </motion.svg>
+  )
 }
