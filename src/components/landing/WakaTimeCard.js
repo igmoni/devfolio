@@ -63,7 +63,7 @@ export default function WakaTimeCard() {
         type="button"
         onClick={() => isMobile && setIsOpen((o) => !o)}
         className="size-7 rounded-full border border-neutral-300 dark:border-neutral-700
-        flex items-center justify-center bg-white dark:bg-neutral-900"
+        flex items-center justify-center bg-neutral-200 dark:bg-muted"
       >
         {data?.status === "online" ? (
           <img src="/assets/cursor.png" alt="Cursor" className="w-6 h-6" />

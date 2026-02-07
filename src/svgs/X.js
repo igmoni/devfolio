@@ -1,12 +1,41 @@
+"use client"
+import { motion } from "motion/react"
 
 export default function X() {
   return (
-    <svg
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      viewBox="0 0 256 256"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+      whileHover="hover"
+      animate="rest"
     >
-      <path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L143.24,99.34,102.75,35.71A8,8,0,0,0,96,32H48a8,8,0,0,0-6.75,12.3l62.6,98.37-61.77,68a8,8,0,1,0,11.84,10.76l58.84-64.72,40.49,63.63A8,8,0,0,0,160,224h48a8,8,0,0,0,6.75-12.29ZM164.39,208,62.57,48h29L193.43,208Z"></path>
-    </svg>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+      <motion.path
+        variants={{
+          rest: { pathLength: 1, stroke: "currentColor" },
+          hover: { pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.3 }}
+        d="M4 4l11.733 16h4.267l-11.733 -16l-4.267 0"
+      />
+
+      <motion.path
+        variants={{
+          rest: { opacity: 1, pathLength: 1, stroke: "currentColor" },
+          hover: { opacity: [0, 1], pathLength: [0, 1], stroke: "#fff" },
+        }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+        d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"
+      />
+    </motion.svg>
   );
 }

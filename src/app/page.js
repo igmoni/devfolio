@@ -8,7 +8,7 @@ import Blog from "@/components/landing/Blog";
 import Contact from "@/components/common/Contact";
 import SideQuests from "@/components/landing/SideQuests";
 import Setup from "@/components/landing/Setup";
-
+import Avatar from "@/components/common/Avatar";
 
 const page = () => {
   return (

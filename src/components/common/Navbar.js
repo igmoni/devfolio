@@ -83,7 +83,7 @@ const Navbar = () => {
   });
 
   // Professions auto-rotate
-  const professions = ["Web Developer", "UI/UX Designer", "Frontend Developer"];
+  const professions = ["Full Stack Developer", "UI/UX Designer", "Freelancer"];
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((prev) => (prev + 1) % professions.length),
@@ -148,7 +148,7 @@ const Navbar = () => {
             </h1>
 
             <div
-              className="overflow-hidden h-6 w-[150px] transition duration-300 hidden md:block"
+              className="overflow-hidden h-6 w-[170px] transition duration-300 hidden md:block"
               style={{ display: scrolled ? "none" : "" }}
             >
               <AnimatePresence mode="wait">
@@ -225,7 +225,7 @@ const Navbar = () => {
           {/* THEME SWITCH */}
           <ThemeToggleButton
             variant="circle"
-            start="top-right"
+            start="center"
             blur
             className={`shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all bg-transparent duration-300 ${
               scrolled ? "rounded-full" : ""

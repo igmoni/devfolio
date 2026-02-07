@@ -14,6 +14,7 @@ import WakaTimeCard from "./WakaTimeCard";
 import { Instrument_Serif } from "next/font/google";
 import Image from "next/image";
 import Location from "@/svgs/Location";
+import Avatar from "../common/Avatar";
 
 export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export const instrumentSerif = Instrument_Serif({
 });
 
 const Hero = () => {
+  const [image, setImage] = useState("/assets/logo.png");
   const { name, title, button } = heroConfig;
   const { theme } = useTheme();
 
@@ -107,20 +109,7 @@ const Hero = () => {
             rounded-full bg-white p-1 dark:bg-primary shadow-2xl  
           "
           >
-            <div className="h-full w-full rounded-full dark:bg-[#EEDA66] bg-[#8EC0E8]">
-              <Image
-                src={"/assets/logo.png"}
-                alt="Avatar"
-                width={100}
-                height={100}
-                priority
-                className="
-              size-24 sm:size-28 md:size-36
-              rounded-full
-              border-3 border-primary dark:border-white 
-              "
-              />
-            </div>
+            <Avatar />
 
             <div
               className="
@@ -205,16 +194,18 @@ const Hero = () => {
           {socialLinks.map((link) => (
             <Tooltip key={link.name}>
               <TooltipTrigger asChild>
-                <Link
-                  href={link.href}
-                  target="_blank"
-                  className="flex items-center gap-2 text-secondary"
-                >
-                  {/* 👇 EACH ICON IS A STAGGERED CHILD */}
-                  <motion.span variants={child} className="size-7">
-                    {link.icon}
-                  </motion.span>
-                </Link>
+                <motion.div whileHover={"animate"} whileTap={"animate"}>
+                  <Link
+                    href={link.href}
+                    target="_blank"
+                    className="flex items-center gap-2 text-secondary"
+                  >
+                    {/* 👇 EACH ICON IS A STAGGERED CHILD */}
+                    <motion.span variants={child} className="size-7">
+                      {link.icon}
+                    </motion.span>
+                  </Link>
+                </motion.div>
               </TooltipTrigger>
               <TooltipContent>{link.name}</TooltipContent>
             </Tooltip>
@@ -256,7 +247,7 @@ const Description = ({ links }) => {
         text-center md:text-left 
       "
     >
-      I design and build interactive web applications using {" "}
+      I design and build interactive web applications using{" "}
       {links.map((link, index) => {
         const isLast = index === links.length - 1;
         const isSecondLast = index === links.length - 2;
@@ -278,17 +269,23 @@ const Description = ({ links }) => {
                 text-muted-foreground
               "
               style={{
-                backgroundColor: link.name === "Typescript" ? "var(--color-sky-100)" : link.name === "React" ? "var(--color-blue-100)" : link.name === "Figma" ? "var(--color-pink-100)" : "var(--color-neutral-100)" ,
+                backgroundColor:
+                  link.name === "Typescript"
+                    ? "var(--color-sky-100)"
+                    : link.name === "React"
+                      ? "var(--color-blue-100)"
+                      : link.name === "Figma"
+                        ? "var(--color-pink-100)"
+                        : "var(--color-neutral-100)",
                 border: `2px dashed ${
                   link.name === "Typescript"
                     ? "var(--color-sky-500)"
                     : link.name === "React"
-                    ? "var(--color-blue-500)"
-                    : link.name === "Figma"
-                    ? "var(--color-pink-500)"
-                    : "var(--color-neutral-500)"
+                      ? "var(--color-blue-500)"
+                      : link.name === "Figma"
+                        ? "var(--color-pink-500)"
+                        : "var(--color-neutral-500)"
                 }`,
-                
               }}
             >
               <span className="flex h-4 w-4 items-center justify-center">

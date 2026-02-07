@@ -1,13 +1,42 @@
-import React from 'react';
+"use client"
+import React from "react"
+import { motion } from "motion/react"
 
 export default function Mail() {
   return (
-    <svg
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
+      width="32"
+      height="32"
       viewBox="0 0 256 256"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      whileHover="hover"
+      animate="rest"
     >
-      <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path>
-    </svg>
-  );
+      <g transform="scale(10.6667)">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+        <motion.path
+          variants={{
+            rest: { stroke: "currentColor" },
+            hover: { stroke: "#fff" },
+          }}
+          d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"
+        />
+
+        <motion.path
+          variants={{
+            rest: { pathLength: 1, stroke: "currentColor" },
+            hover: { pathLength: [0, 1], stroke: "#fff" },
+          }}
+          transition={{ duration: 0.3 }}
+          d="M3 7l9 6l9 -6"
+        />
+      </g>
+    </motion.svg>
+  )
 }
