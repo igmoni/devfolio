@@ -4,7 +4,7 @@ import { Badge } from "../ui/badge";
 import Calender from "@/svgs/Calendar";
 import { Separator } from "../ui/separator";
 import Image from "next/image";
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXRemote } from 'next-mdx-remote';
 import { useEffect, useState } from 'react';
 import Container from "../common/Container";
 import BlogComponents from "./BlogComponents";
