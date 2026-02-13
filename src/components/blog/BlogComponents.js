@@ -73,7 +73,7 @@ const BlogComponents = {
     const codeText = getTextContent(children);
 
     return (
-      <div className="group  relative mb-4">
+      <div className="group relative mb-4">
         <div className="border p-1 dark:shadow-[inset_0_0_3px_rgba(255,255,255,0.5)] shadow-[inset_0_0_2px_rgba(0,0,0,0.3)] rounded-3xl">
 
         <pre style={{ margin: 0}}
@@ -82,7 +82,7 @@ const BlogComponents = {
           >
           {children}
         </pre>
-        <CodeCopyButton code={codeText}  />
+        <CodeCopyButton code={codeText} />
           </div>
       </div>
     );

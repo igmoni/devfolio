@@ -10,7 +10,7 @@ import {
 } from "@/lib/blog";
 import { Metadata } from "next";
 import { Link } from "next-view-transitions";
-// import Link from "next/link";
+
 import { notFound } from "next/navigation";
 import BlogContent from "@/components/blog/BlogContent";
 import BackButton from "@/components/blog/BackButton";
@@ -42,8 +42,8 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title,
       alternates: {
-      canonical: `https://monxdev.vercel.app/blog/${slug}`,
-    },
+        canonical: `https://monxdev.vercel.app/blog/${slug}`,
+      },
       desc,
       images: [image],
       type: "article",

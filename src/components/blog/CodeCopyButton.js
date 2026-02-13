@@ -4,23 +4,27 @@ import Copied from "@/svgs/Copied";
 import Copy from "@/svgs/Copy";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
-const CodeCopyButton = ({ code }) => {
+const CodeCopyButton = ({ code, className }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(code);
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false, 2000));
+
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
     } catch (err) {
       console.error("Failed to copy text:", err);
     }
   };
+
   return (
-    <form
-      className="absolute top-5 right-5 rounded-md oapcity transition-all duration-200 group-hover:oapcity-10 cursor-pointer"
-      title={isCopied ? "Copied!" : "Copy code"}
-      action={copyToClipboard}
+    <button
+      type="button"
+      onClick={copyToClipboard}
+      className="absolute top-5 right-5 rounded-md opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
     >
       {isCopied ? (
         <Tooltip>
@@ -37,7 +41,7 @@ const CodeCopyButton = ({ code }) => {
           <TooltipContent>Copy to clipboard</TooltipContent>
         </Tooltip>
       )}
-    </form>
+    </button>
   );
 };
 
