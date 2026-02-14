@@ -9,6 +9,8 @@ isPublished: false
 
 **This is Part 3 of the series Web Development: From Zero to Production**
 
+If you haven't read my HTML & CSS blog read it out here:-**[HTML](/blog/html-in-one-day)**, **[CSS](/blog/css-in-four-days)**.
+
 HTML builds the page.
 
 CSS makes it look good.
@@ -58,7 +60,7 @@ JavaScript is the language of the web.
 
 Let’s start with some basics:-
 
-```jsx
+```js
 // This is a comment - the computer ignores this text
 
 // Printing to the console
@@ -84,7 +86,7 @@ Everything else builds on this.
 
 Variables are containers to store the data. In JS we have different ways to declare variables and we have different types of data to store:
 
-```jsx
+```js
 // Declaring variables
 let name = "Luffy"; // Use let when the value may change later
 const age = 19; // Use const when the value won't change
@@ -124,7 +126,7 @@ We have different types in Operators:-
 
 - Assignment Operator: These store values inside variables.
 
-```jsx
+```js
 let score = 10;
 ```
 
@@ -136,19 +138,19 @@ It means → **put the value on the right into the variable on the left.**
 
 A very common professional pattern.
 
-```jsx
+```js
 score = score + 10;
 ```
 
 can be written as:
 
-```jsx
+```js
 score += 10;
 ```
 
 Other versions are:-
 
-```jsx
+```js
 score -= 5;  // subtract
 score *= 2;  // multiply
 score /= 3;  // divide
@@ -183,7 +185,7 @@ Used to compare 2 or more values together:-
 - **Less than (`<`)** – True if the left value is smaller than the right.
 - **Less than or equal to (`<=`)** – True if the left value is smaller than or equal to the right.
 
-```jsx
+```js
 
 console.log(5 == "5");        // true
 console.log(5 != "5");        // false
@@ -201,7 +203,7 @@ console.log(5 <= 5);          // true
 
 Functions are reusable block of code. Think of them sub-tasks to complete major task.
 
-```jsx
+```js
 // Basic function declaration
 function greetings(name) {
   return 'Hello, ' + name + '!';
@@ -225,7 +227,7 @@ Functions help avoid repeating code and make your program more organized. They c
 
 Arrow functions are a newer, shorter way to define functions. They’re especially useful for short & simple operations:
 
-```jsx
+```js
 // Regular function
 function double(num) {
   return num * 2;
@@ -254,7 +256,7 @@ Arrow functions are not just shorter - they also handle the `this`  keyword diff
 
 Scope determines the accessibility of the variables. JS has 3 types of scope.
 
-```jsx
+```js
 // global scope
 const x = 1; 
 
@@ -285,7 +287,7 @@ Arrays & Objects are 2 ways to organize multiple data in a variable in JavaScrip
 
 Arrays are ordered collections of values. Whose index starts from 0.
 
-```jsx
+```js
 // Creating an array
 const fruits = ['apple', 'banana', 'orange'];
 
@@ -313,7 +315,7 @@ console.log(evenNumbers); // Output: [2, 4]
 
 Objects store data in key-value pairs.
 
-```jsx
+```js
 // Creating an object
 const person = {
   firstName: 'Emma',
@@ -345,7 +347,7 @@ Control Flow statements are conditional logics.
 
 Conditional logics let your code make decisions.
 
-```jsx
+```js
 const age = 20;
 
 // Basic if statement
@@ -396,7 +398,7 @@ if (isMember || hasFreeTrial) {
 
 Loops are used to repeat the same process again and again until the condition satisfies. Once condition is false the loop stops.
 
-```jsx
+```js
 // while loop - pre-tested loop
 let i = 0;
 while(i <= 10) {
@@ -442,7 +444,7 @@ for (const car of cars) {
 
 The ternary operator is a shorter way (shorthand) of writing if/else statements.
 
-```jsx
+```js
 const age = 20;
 
 // Traditional if/else
@@ -474,7 +476,7 @@ Destructuring is a coinvent way to extract values from arrays or objects.
 
 ### Array Destructuring
 
-```jsx
+```js
 const colors = ['red', 'green', 'blue'];
 
 // Without destructuring
@@ -499,7 +501,7 @@ console.log(rest); // Output: [4, 5]
 
 ### Object Destructuring
 
-```jsx
+```js
 const user = {
   name: "Alex",
   age: 32,
@@ -537,7 +539,7 @@ Template literals are a better way to work with string in JS. It’s a easier wa
 
  
 
-```jsx
+```js
 const name = 'Luffy';
 const age = 30;
 
@@ -583,7 +585,7 @@ The `...` operator is one the most versatile features in modern JS.
 
 The rest operator collects multiple elements into single array:
 
-```jsx
+```js
 // Rest in function parameters
 function sum(...numbers) {
   return numbers.reduce((total, num) => total + num, 0);
@@ -611,7 +613,7 @@ console.log(otherDetails); // Output: { city: "Paris", job: "Developer" }
 
 The spread operator expands array or object elements:
 
-```jsx
+```js
 // Spreading arrays
 const numbers1 = [1, 2, 3];
 const numbers2 = [4, 5, 6];
@@ -645,7 +647,7 @@ The spread operator is especially useful in React when you need to create new ar
 
 Optional Chaining helps prevent errors when accessing nested properties that might not exist:
 
-```jsx
+```js
 const user = {
   name: 'Alex',
   details: {
@@ -831,13 +833,13 @@ Others give a list
 
 Example:
 
-```jsx
+```js
 const paras = document.getElementsByClassName("para");
 ```
 
 You must pick:
 
-```jsx
+```js
 paras[0]
 paras[1]
 ```
@@ -850,8 +852,9 @@ Forgetting this is a classic beginner bug.
 
 Modern development mostly prefers:
 
-```jsx
-document.querySelector()document.querySelectorAll()
+```js
+document.querySelector()
+document.querySelectorAll()
 ```
 
 Because they are flexible and work like CSS.
@@ -941,7 +944,7 @@ User does something → event fires → handler runs → UI updates.
 
 Sometimes you need details. You can get that from this.
 
-```jsx
+```js
 btn.addEventListener("click", (event) => {
   console.log(event.target);
 });
@@ -967,7 +970,7 @@ We place risky code inside `try`
 
 If something fails, controls moves to `catch` 
 
-```jsx
+```js
 try {
   riskyOperation();
 } catch (error) {
@@ -1016,7 +1019,7 @@ This makes async code look simple and step-by-step.
 
 Look at this:
 
-```jsx
+```js
 const data = fetch("/api/user");
 console.log(data);
 ```
@@ -1041,7 +1044,7 @@ Think of ordering food. You receive a token, not the dish immediately.
 
 ### Creating a Promise
 
-```jsx
+```js
 const promise = new Promise((resolve, reject) => {
   const success = true;
 
@@ -1061,7 +1064,7 @@ You rarely create them manually in UI work, but knowing the structure matters.
 
 Before async/await existed, this was the main way.
 
-```jsx
+```js
 fetch("/api/user")
   .then(res => res.json())
   .then(data => {
@@ -1080,7 +1083,7 @@ It works. But chains grow. Readability drops. (Not preferred)
 
 This lets asynchronous code look **synchronous**.
 
-```jsx
+```js
 // Basic structure
 async function loadUser() {
   const res = await fetch("/api/user");
@@ -1100,7 +1103,7 @@ Networks fail. Servers crash. User lose internet.
 
 We must plan for failure.
 
-```jsx
+```js
 async function loadUser() {
   try {
     const res = await fetch("/api/user");
@@ -1124,7 +1127,7 @@ Click again → hidden.
 Simple interaction.
 Excellent fundamentals.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>

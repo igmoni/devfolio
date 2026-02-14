@@ -19,16 +19,29 @@ const BlogContent = ({ frontmatter, content }) => {
     month: "long",
     day: "numeric",
   });
-
   useEffect(() => {
     async function compileMDX() {
-      const { serialize } = await import('next-mdx-remote/serialize');
-      const mdx = await serialize(content);
+      const { serialize } = await import("next-mdx-remote/serialize");
+      const rehypePrettyCode = (await import("rehype-pretty-code")).default;
+  
+      const mdx = await serialize(content, {
+        mdxOptions: {
+          rehypePlugins: [
+            [
+              rehypePrettyCode,
+              {
+                theme: "github-dark",
+              },
+            ],
+          ],
+        },
+      });
+  
       setMdxSource(mdx);
     }
+  
     compileMDX();
   }, [content]);
-
   return (
     <Container className="text-pretty max-w-4xl">
       <header className="mb-8 space-y-6">
@@ -67,7 +80,7 @@ const BlogContent = ({ frontmatter, content }) => {
         <Separator />
       </header>
 
-      <div className="prose prose-neutral max-w-none dark:prose-invert">
+      <div className="prose prose-neutral max-w-none dark:prose-invert prose-pre:my-0">
         {mdxSource ? <MDXRemote {...mdxSource} components={BlogComponents}  /> : <p>Loading...</p>}
       </div>
     </Container>

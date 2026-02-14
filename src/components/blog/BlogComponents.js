@@ -76,8 +76,8 @@ const BlogComponents = {
       <div className="group relative mb-4">
         <div className="border p-1 dark:shadow-[inset_0_0_3px_rgba(255,255,255,0.5)] shadow-[inset_0_0_2px_rgba(0,0,0,0.3)] rounded-3xl">
 
-        <pre style={{ margin: 0}}
-          className="overflow-x-auto rounded-[18px] border bg-[#171717] p-4 text-sm [&>code]:bg-transparent [&>code]:p-0 "
+        <pre style={{ margin: 0 }}
+          className="overflow-x-auto rounded-[18px] border bg-[#171717] p-4 text-sm [&>code]:bg-transparent [&>code]:p-0 my-0"
           {...props}
           >
           {children}
