@@ -1,14 +1,16 @@
 "use client";
 
-import { Badge } from "../ui/badge";
-import Calender from "@/svgs/Calendar";
-import { Separator } from "../ui/separator";
-import Image from "next/image";
-import { MDXRemote } from 'next-mdx-remote';
-import { useEffect, useState } from 'react';
-import Container from "../common/Container";
-import BlogComponents from "./BlogComponents";
+import { useEffect, useState } from "react";
 
+import { MDXRemote } from "next-mdx-remote";
+import Image from "next/image";
+
+import Calender from "@/svgs/Calendar";
+
+import Container from "../common/Container";
+import { Badge } from "../ui/badge";
+import { Separator } from "../ui/separator";
+import BlogComponents from "./BlogComponents";
 
 const BlogContent = ({ frontmatter, content }) => {
   const { title, desc, image, tags, date } = frontmatter;
@@ -23,7 +25,7 @@ const BlogContent = ({ frontmatter, content }) => {
     async function compileMDX() {
       const { serialize } = await import("next-mdx-remote/serialize");
       const rehypePrettyCode = (await import("rehype-pretty-code")).default;
-  
+
       const mdx = await serialize(content, {
         mdxOptions: {
           rehypePlugins: [
@@ -36,14 +38,14 @@ const BlogContent = ({ frontmatter, content }) => {
           ],
         },
       });
-  
+
       setMdxSource(mdx);
     }
-  
+
     compileMDX();
   }, [content]);
   return (
-    <Container className="text-pretty max-w-4xl">
+    <Container className="max-w-4xl text-pretty">
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video overflow-hidden rounded-lg">
           <Image
@@ -64,15 +66,15 @@ const BlogContent = ({ frontmatter, content }) => {
             ))}
           </div>
 
-          <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
+          <h1 className="text-4xl leading-tight font-bold lg:text-5xl">
             {title}
           </h1>
 
-          <p className="text-xl text-muted-foreground">{desc}</p>
+          <p className="text-muted-foreground text-xl">{desc}</p>
 
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="text-muted-foreground flex items-center gap-2 text-sm">
             <Calender className="size-6" />
-            
+
             <time dateTime={date}>{formattedDate}</time>
           </div>
         </div>
@@ -80,8 +82,12 @@ const BlogContent = ({ frontmatter, content }) => {
         <Separator />
       </header>
 
-      <div className="prose prose-neutral max-w-none dark:prose-invert prose-pre:my-0">
-        {mdxSource ? <MDXRemote {...mdxSource} components={BlogComponents}  /> : <p>Loading...</p>}
+      <div className="prose prose-neutral dark:prose-invert prose-pre:my-0 max-w-none">
+        {mdxSource ? (
+          <MDXRemote {...mdxSource} components={BlogComponents} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </Container>
   );

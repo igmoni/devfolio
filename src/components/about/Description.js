@@ -1,21 +1,18 @@
-'use client'
-import Container from "../common/Container";
-import Image from "next/image";
-import { Separator } from "../ui/separator";
+"use client";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+
+import Container from "../common/Container";
+import { Separator } from "../ui/separator";
 
 const Description = () => {
-  const {theme} = useTheme()
+  const { theme } = useTheme();
   return (
     <Container className={"py-16 md:py-20"}>
-      <div className="flex flex-col gap-5 md:flex-row items-center justify-center">
-        <div
-          className="p-2 border-secondary/20 border shadow-[inset_0_0_5px_1px_rgba(0,0,0,0.1)] 
-          dark:shadow-[inset_0_0_5px_2px_rgba(255,255,255,0.1)]
-         rounded-xl "
-        >
+      <div className="flex flex-col items-center justify-center gap-5 md:flex-row">
+        <div className="border-secondary/20 rounded-xl border p-2 shadow-[inset_0_0_5px_1px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_5px_2px_rgba(255,255,255,0.1)]">
           <Image
-            src={'/assets/mohan.jpeg'}
+            src={"/assets/mohan.jpeg"}
             width={200}
             height={600}
             alt="Mohan"
@@ -23,7 +20,7 @@ const Description = () => {
           />
         </div>
 
-        <div className="w-full md:w-3/4 md:pl-10 flex flex-col gap-8 text-justify text-lg">
+        <div className="flex w-full flex-col gap-8 text-justify text-lg md:w-3/4 md:pl-10">
           <p className="text-secondary">
             <span className="text-primary dark:text-white">
               I’m a full-stack developer based in India, focused on building
@@ -52,11 +49,10 @@ const Description = () => {
           </p>
         </div>
       </div>
-      <Separator className={'mt-5'}/>
-      
-      
+      <Separator className={"mt-5"} />
+
       <div className="py-10">
-        <h2 className="text-3xl text-primary dark:text-white font-semibold">
+        <h2 className="text-primary text-3xl font-semibold dark:text-white">
           Mohan S P
         </h2>
         <p className="text-secondary text-sm">

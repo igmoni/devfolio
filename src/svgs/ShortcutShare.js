@@ -33,6 +33,3 @@ export default function ShortcutShare(props) {
     </svg>
   );
 }
-
-
-

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Shadcn({ className }: { className?: string }) {
+export default function Shadcn({ className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

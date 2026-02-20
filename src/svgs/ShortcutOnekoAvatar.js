@@ -37,7 +37,3 @@ export default function ShortcutOnekoAvatar(props) {
     </svg>
   );
 }
-
-
-
-

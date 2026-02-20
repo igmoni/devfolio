@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
+
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Avatar() {
   const [image, setImage] = useState("/assets/logo.png");
@@ -22,9 +24,7 @@ export default function Avatar() {
     // swap image during glitch
     setTimeout(() => {
       setImage((prev) =>
-        prev === "/assets/logo.png"
-          ? "/assets/gojo.jpg"
-          : "/assets/logo.png"
+        prev === "/assets/logo.png" ? "/assets/gojo.jpg" : "/assets/logo.png"
       );
     }, 120);
 
@@ -38,7 +38,7 @@ export default function Avatar() {
     <div className="relative">
       <div
         onClick={handleClick}
-        className="h-full w-full rounded-full dark:bg-[#EEDA66] bg-[#8EC0E8] cursor-pointer"
+        className="h-full w-full cursor-pointer rounded-full bg-[#8EC0E8] dark:bg-[#EEDA66]"
       >
         <Image
           src={image}
@@ -46,7 +46,7 @@ export default function Avatar() {
           width={100}
           height={100}
           priority
-          className="size-24 sm:size-28 md:size-36 rounded-full border-3 border-primary dark:border-white"
+          className="border-primary size-24 rounded-full border-3 sm:size-28 md:size-36 dark:border-white"
         />
       </div>
 
@@ -56,7 +56,7 @@ export default function Avatar() {
           <>
             {/* red layer */}
             <motion.div
-              className="absolute inset-0 rounded-full overflow-hidden mix-blend-screen pointer-events-none"
+              className="pointer-events-none absolute inset-0 overflow-hidden rounded-full mix-blend-screen"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, x: [-6, 6, -3, 0] }}
               exit={{ opacity: 0 }}
@@ -67,7 +67,7 @@ export default function Avatar() {
 
             {/* blue layer */}
             <motion.div
-              className="absolute inset-0 rounded-full overflow-hidden mix-blend-screen pointer-events-none"
+              className="pointer-events-none absolute inset-0 overflow-hidden rounded-full mix-blend-screen"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, x: [6, -6, 3, 0] }}
               exit={{ opacity: 0 }}
@@ -78,7 +78,7 @@ export default function Avatar() {
 
             {/* shake */}
             <motion.div
-              className="absolute inset-0 rounded-full border-3 border-white pointer-events-none"
+              className="pointer-events-none absolute inset-0 rounded-full border-3 border-white"
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 1, 0], rotate: [0, 1, -1, 0] }}
               transition={{ duration: 0.3 }}

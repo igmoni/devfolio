@@ -1,8 +1,10 @@
 "use client";
 
-import Eye from "@/svgs/Eye";
 import { useEffect, useState } from "react";
+
 import { usePathname } from "next/navigation";
+
+import Eye from "@/svgs/Eye";
 
 function getOrdinalSuffix(n) {
   const j = n % 10;
@@ -26,8 +28,8 @@ export default function VisitorCount() {
   }, [pathname]);
 
   return (
-    <div className="flex mx-auto w-fit gap-5 items-center p-3 rounded-md border border-secondary/20">
-      <div className="w-10 h-10 p-2 rounded-md bg-accent dark:bg-accent">
+    <div className="border-secondary/20 mx-auto flex w-fit items-center gap-5 rounded-md border p-3">
+      <div className="bg-accent dark:bg-accent h-10 w-10 rounded-md p-2">
         <Eye />
       </div>
 

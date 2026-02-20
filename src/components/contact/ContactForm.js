@@ -1,6 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
+
+import { cn } from "@/lib/utils";
+import Chat from "@/svgs/Chat";
+
+import Coffee from "../common/Coffee";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -9,23 +20,9 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { Loader2 } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Chat from "@/svgs/Chat";
-import { cn } from "@/lib/utils";
-import Coffee from "../common/Coffee";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -68,7 +65,9 @@ const ContactForm = ({ className, showHeader = true }) => {
   };
 
   return (
-    <Card className={cn("border-none  shadow-none bg-transparent p-0", className)}>
+    <Card
+      className={cn("border-none bg-transparent p-0 shadow-none", className)}
+    >
       {showHeader && (
         <CardHeader className="p-0 pb-4">
           <CardTitle>Send me a message</CardTitle>
@@ -84,7 +83,7 @@ const ContactForm = ({ className, showHeader = true }) => {
             onSubmit={form.handleSubmit(onSubmit)}
             className={cn("space-y-6", !showHeader && "mt-0")}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <FormField
                 control={form.control}
                 name="name"
@@ -145,32 +144,32 @@ const ContactForm = ({ className, showHeader = true }) => {
                 </FormItem>
               )}
             />
-          <div className="flex gap-5 items-start">
-            
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-fit cursor-pointer dark:bg-white group dark:hover:bg-neutral-200" 
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                <div className="group-hover:rotate-45 group-hover:flex transition-all duration-200">
-
-                  <Chat className="w-4 h-4 " />
-                </div>
-                  Send Message
-
-                </>
-              )}
-            </Button>
-              <Coffee className={'size-9 shadow-acternity dark:shadow-acternity-white'}/>
-              
-          </div>
+            <div className="flex items-start gap-5">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="group w-fit cursor-pointer dark:bg-white dark:hover:bg-neutral-200"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <div className="transition-all duration-200 group-hover:flex group-hover:rotate-45">
+                      <Chat className="h-4 w-4" />
+                    </div>
+                    Send Message
+                  </>
+                )}
+              </Button>
+              <Coffee
+                className={
+                  "shadow-acternity dark:shadow-acternity-white size-9"
+                }
+              />
+            </div>
           </form>
         </Form>
       </CardContent>

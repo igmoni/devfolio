@@ -1,16 +1,18 @@
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
-import rehypeHighlight from "rehype-highlight";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+
+import rehypeHighlight from "rehype-highlight";
+
 import GithubIcon from "@/svgs/Github";
 import Website from "@/svgs/Website";
+
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 import { ProjectComponents } from "./ProjectComponents";
 
-export default function ProjectContent({ frontmatter , content }) {
-
+export default function ProjectContent({ frontmatter, content }) {
   const {
     title,
     desc,
@@ -26,13 +28,12 @@ export default function ProjectContent({ frontmatter , content }) {
     learnings,
   } = frontmatter;
 
-
   const statusVariant =
     status === "completed"
       ? "default"
       : status === "in-progress"
-      ? "secondary"
-      : "outline";
+        ? "secondary"
+        : "outline";
 
   return (
     <article className="mx-auto max-w-4xl">
@@ -57,33 +58,33 @@ export default function ProjectContent({ frontmatter , content }) {
             ))}
           </div>
 
-          <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
+          <h1 className="text-4xl leading-tight font-bold lg:text-5xl">
             {title}
           </h1>
-          <p className="text-xl text-muted-foreground">{desc}</p>
-          <div className="grid gap-4 rounded-lg border bg-muted/20 p-4 sm:grid-cols-2 lg:grid-cols-4">
+          <p className="text-muted-foreground text-xl">{desc}</p>
+          <div className="bg-muted/20 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <h5 className="text-sm font-semibold text-muted-foreground">
+              <h5 className="text-muted-foreground text-sm font-semibold">
                 Timeline
               </h5>
               <p className="text-sm">{timeline}</p>
             </div>
             <div>
-              <h5 className="text-sm font-semibold text-muted-foreground">
+              <h5 className="text-muted-foreground text-sm font-semibold">
                 Role
               </h5>
               <p className="text-sm">{role}</p>
             </div>
             {team && (
               <div>
-                <h5 className="text-sm font-semibold text-muted-foreground">
+                <h5 className="text-muted-foreground text-sm font-semibold">
                   Team
                 </h5>
                 <p className="text-sm">{team}</p>
               </div>
             )}
             <div>
-              <h5 className="text-sm font-semibold text-muted-foreground">
+              <h5 className="text-muted-foreground text-sm font-semibold">
                 Status
               </h5>
               <Badge variant={statusVariant} className={"text-xs"}>
@@ -138,9 +139,9 @@ export default function ProjectContent({ frontmatter , content }) {
                 {challenges.map((challenge, idx) => (
                   <li
                     key={idx}
-                    className="flex item-start gap-2 text-sm text-yellow-700 dark:text-yellow-300"
+                    className="item-start flex gap-2 text-sm text-yellow-700 dark:text-yellow-300"
                   >
-                    <span className="mt-1 block size-1.5 rounded-full  bg-yellow-500 darkLbg-yellow-400" />
+                    <span className="darkLbg-yellow-400 mt-1 block size-1.5 rounded-full bg-yellow-500" />
                     {challenge}
                   </li>
                 ))}
@@ -150,7 +151,7 @@ export default function ProjectContent({ frontmatter , content }) {
 
           {learnings && learnings.length > 0 && (
             <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
-              <h3 className="mb-3 text-lg font-semibold text-green-800 darkLtext-green-200">
+              <h3 className="darkLtext-green-200 mb-3 text-lg font-semibold text-green-800">
                 Key Learnings
               </h3>
               <ul className="space-y02">
@@ -169,7 +170,7 @@ export default function ProjectContent({ frontmatter , content }) {
         </div>
       )}
       {/* Content */}
-      <div className="prose prose-neutral max-w-none dark:prose-invert">
+      <div className="prose prose-neutral dark:prose-invert max-w-none">
         <MDXRemote
           source={content}
           components={ProjectComponents}

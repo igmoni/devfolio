@@ -1,17 +1,18 @@
 ---
-title: 'CSS in Four Days: The Only Roadmap You Need'
-desc: 'Learn CSS in just 4 days with a clear, beginner-friendly roadmap. Master layouts, spacing, responsiveness, and real-world CSS essentials without confusion or unnecessary theory.'
-image: '/blog/css.png'
-tags: ['frontend', 'web development', 'design']
-date: '2026-02-01'
+title: "CSS in Four Days: The Only Roadmap You Need"
+desc: "Learn CSS in just 4 days with a clear, beginner-friendly roadmap. Master layouts, spacing, responsiveness, and real-world CSS essentials without confusion or unnecessary theory."
+image: "/blog/css.png"
+tags: ["frontend", "web development", "design"]
+date: "2026-02-01"
 isPublished: true
 ---
 
-**This is Part 2 of the series *Web Development: From Zero to Production*.**
+**This is Part 2 of the series _Web Development: From Zero to Production_.**
 
 If you haven’t learned HTML yet, read **[HTML in One Day](/blog/html-in-one-day)** first — this post assumes you know basic HTML structure.
 
 ---
+
 Most beginners don’t hate CSS because it’s hard.
 
 They hate it because they’re learning it **out of order**.
@@ -36,11 +37,11 @@ If HTML is the structure of a web page, CSS controls **how that structure looks 
 
 CSS decides:
 
-* Spacing
-* Colors
-* Fonts
-* Layout
-* Responsiveness
+- Spacing
+- Colors
+- Fonts
+- Layout
+- Responsiveness
 
 HTML creates elements.
 
@@ -83,9 +84,12 @@ A selector tells CSS **which HTML element to style**.
 Basic selectors you need right now:
 
 ```css
-h1 { }      /* element selector */
-.heading { }/* class selector */
-#section { }/* id selector */
+h1 {
+} /* element selector */
+.heading {
+} /* class selector */
+#section {
+} /* id selector */
 ```
 
 Classes and IDs are added in HTML:
@@ -103,9 +107,9 @@ That’s enough selectors for now. Don’t overlearn.
 
 There are three ways to apply CSS:
 
-* **External CSS (recommended)** — styles in a `.css` file
-* **Internal CSS** — styles inside a `<style>` tag in `<head>`
-* **Inline CSS** — styles inside the `style` attribute
+- **External CSS (recommended)** — styles in a `.css` file
+- **Internal CSS** — styles inside a `<style>` tag in `<head>`
+- **Inline CSS** — styles inside the `style` attribute
 
 Example (inline):
 
@@ -123,11 +127,10 @@ Every HTML element is a **box**.
 
 The box model has four parts:
 
-* **Content** — text or image
-* **Padding** — space inside the box
-* **Border** — wraps padding + content
-* **Margin** — space outside the box
-
+- **Content** — text or image
+- **Padding** — space inside the box
+- **Border** — wraps padding + content
+- **Margin** — space outside the box
 
 ![Box Model of Element](/blog/box-model.png)
 
@@ -156,9 +159,9 @@ That’s why layouts look bigger than expected.
 
 What this does:
 
-* Padding and border stay **inside** width & height
-* Layouts become predictable
-* You stop doing spacing math
+- Padding and border stay **inside** width & height
+- Layouts become predictable
+- You stop doing spacing math
 
 If you write CSS without this, you’re choosing pain.
 
@@ -166,8 +169,8 @@ If you write CSS without this, you’re choosing pain.
 
 ### Spacing: Margin vs Padding
 
-* **Padding** → space *inside* an element
-* **Margin** → space *outside* an element
+- **Padding** → space _inside_ an element
+- **Margin** → space _outside_ an element
 
 Bad habit:
 
@@ -196,24 +199,32 @@ The `display` property controls layout behavior.
 
 Common values:
 
-* `block`
-* `inline`
-* `inline-block`
-* `none`
+- `block`
+- `inline`
+- `inline-block`
+- `none`
 
 ```css
-div { display: none; }
-span { display: block; }
-h1 { display: inline; }
-button { display: inline-block; }
+div {
+  display: none;
+}
+span {
+  display: block;
+}
+h1 {
+  display: inline;
+}
+button {
+  display: inline-block;
+}
 ```
 
 Quick understanding:
 
-* `inline` → no width/height
-* `block` → full width, new line
-* `inline-block` → best for buttons
-* `none` → removed from layout
+- `inline` → no width/height
+- `block` → full width, new line
+- `inline-block` → best for buttons
+- `none` → removed from layout
 
 ---
 
@@ -221,15 +232,15 @@ Quick understanding:
 
 Build a simple HTML page with:
 
-* Header
-* Two content sections
-* Footer
+- Header
+- Two content sections
+- Footer
 
 Goals:
 
-* Use padding inside sections
-* Use margin to separate sections
-* No random numbers
+- Use padding inside sections
+- Use margin to separate sections
+- No random numbers
 
 If spacing feels off, inspect the box model in DevTools.
 
@@ -240,6 +251,7 @@ If spacing feels off, inspect the box model in DevTools.
 ### CSS Colors (Keep This Simple)
 
 You can define colors using:
+
 - Names
 - RGB / RGBA
 - HEX
@@ -286,15 +298,15 @@ Flexbox exists to solve **alignment problems**.
 
 ### Main Axis vs Cross Axis
 
-* `flex-direction: row` → main axis horizontal
-* `flex-direction: column` → main axis vertical
+- `flex-direction: row` → main axis horizontal
+- `flex-direction: column` → main axis vertical
 
 Controls:
 
-* `justify-content` → main axis
-* `align-items` → cross axis
+- `justify-content` → main axis
+- `align-items` → cross axis
 
---- 
+---
 
 **`justify-content` (Main Axis Control)**
 
@@ -302,7 +314,7 @@ This decides **how items are distributed along the main axis**.
 
 ```css
 .container {
-justify-content: value;
+  justify-content: value;
 }
 ```
 
@@ -312,8 +324,8 @@ Core values:
 - **center -** Items are centered
 - **flex-end -** Items stick to the end
 - **space-between -** First item at start, last at end, space in between (no space on edges)
-- **space-around -** Equal space *around* each item (edges get half-space)
-- **space-evenly -** Equal space *everywhere* (including edges)
+- **space-around -** Equal space _around_ each item (edges get half-space)
+- **space-evenly -** Equal space _everywhere_ (including edges)
 
 ---
 
@@ -323,7 +335,7 @@ This decides **how items align perpendicular to the main axis**.
 
 ```css
 .container {
-align-items: value;
+  align-items: value;
 }
 ```
 
@@ -336,7 +348,6 @@ Core values:
 - **baseline -** Text inside items aligns by baseline (useful for mixed font sizes)
 
 Most beginners mix these up and start “fighting” flexbox.
-
 
 ---
 
@@ -358,41 +369,41 @@ Most beginners mix these up and start “fighting” flexbox.
   flex-wrap: wrap;
 }
 ```
+
 Without this, items will overflow. With this layout gets space.
 
 ---
 
 ```css
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-	flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 ```
-
 
 ### Day 2 Practice Tasks
 
 **1) Navbar**
 
-* Logo left, links right
-* `justify-content: space-between`
-* No fixed heights
-* Use padding, not height
+- Logo left, links right
+- `justify-content: space-between`
+- No fixed heights
+- Use padding, not height
 
 **2) Card Layout**
 
-* 3 cards in a row
-* Wrap on small screens
-* Use `gap`
+- 3 cards in a row
+- Wrap on small screens
+- Use `gap`
 
 **3) Centered Hero**
 
-* Column layout
-* Perfect centering
-* No hacks
+- Column layout
+- Perfect centering
+- No hacks
 
 If you need hacks to center something, you don’t understand flex yet.
 
@@ -464,7 +475,7 @@ But remember this:
 
 These features are **signals**, not decoration.
 
-They tell users *what’s clickable*, *what’s active*, and *what’s important*.
+They tell users _what’s clickable_, _what’s active_, and _what’s important_.
 
 ### Border Radius
 
@@ -483,10 +494,10 @@ Rounded corners softern interfaces and improve visual flow.
 - `12–16px` → modals, sections
 - `999px` → pills, badges, buttons
 
-
 ### Gradients
 
 Gradients let you create smooth color transitions instead of flat colors.
+
 - **Linear Gradient** - colors transition in a straight line
 
 Gradients have 3 types & in projects, you'll use linear gradient 90% of time.
@@ -496,13 +507,13 @@ Learn the others later.
 ### Linear Gradient Syntax
 
 ```css
-background:linear-gradient(direction, color1, color2, ...);
+background: linear-gradient(direction, color1, color2, ...);
 ```
 
 **Example:**
 
 ```css
-background:linear-gradient(to bottom, red, yellow);
+background: linear-gradient(to bottom, red, yellow);
 ```
 
 This creates a top → bottom color transition.
@@ -544,11 +555,16 @@ You’ll use these everywhere in real projects.
 - `:first-child` / `:last-child` (Layout Cleanup)
 
 ```css
-.button:hover {}
-.button:active {}
-.input:focus {}
-.button:disabled {}
-.list-item:first-child {}
+.button:hover {
+}
+.button:active {
+}
+.input:focus {
+}
+.button:disabled {
+}
+.list-item:first-child {
+}
 ```
 
 Never remove focus styles without replacing them.
@@ -561,9 +577,12 @@ Transitions make state changes feel natural.
 
 ```css
 .button {
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 ```
+
 Best properties to transition:
 
 - `color`
@@ -579,20 +598,20 @@ Avoid animating layout properties.
 
 ```css
 @keyframes fadeIn {
-from {
-opacity:0;
-transform:translateY(10px);
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-to {
-opacity:1;
-transform:translateY(0);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 ```
 
 ```css
 .section {
-animation: fadeIn0.4s ease-out;
+  animation: fadeIn0.4s ease-out;
 }
 ```
 
@@ -604,14 +623,13 @@ Animations are for:
 
 Not for showing off.
 
-
 ---
 
 ### Day 4 Practice
 
-* Interactive cards
-* Button states
-* Focus styles on inputs
+- Interactive cards
+- Button states
+- Focus styles on inputs
 
 ---
 
@@ -624,7 +642,6 @@ The more specific your selector, the harder it is to override later.
 Prefer classes.
 
 Avoid chaining selectors unless necessary.
-
 
 ---
 
@@ -661,7 +678,6 @@ Let’s be blunt.
 And the most important truth:
 
 > If you don’t understand why a style works, you don’t own it.
-
 
 ---
 

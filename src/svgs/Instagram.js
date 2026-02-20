@@ -1,5 +1,5 @@
-"use client"
-import { motion } from "motion/react"
+"use client";
+import { motion } from "motion/react";
 
 export default function Instagram() {
   return (
@@ -52,5 +52,5 @@ export default function Instagram() {
         d="M16.5 7.5v.01"
       />
     </motion.svg>
-  )
+  );
 }

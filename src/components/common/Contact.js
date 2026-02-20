@@ -1,25 +1,30 @@
 import React from "react";
-import Container from "./Container";
-import FreelanceText from "../landing/FreelanceText";
-import ContactForm from "../contact/ContactForm";
+
 import { cn } from "@/lib/utils";
 
-const Contact = ({ className}) => {
+import ContactForm from "../contact/ContactForm";
+import FreelanceText from "../landing/FreelanceText";
+import Container from "./Container";
+
+const Contact = ({ className }) => {
   return (
     <Container
-      className={cn("w-full px-5 md:w-3/4 ml-0 py-10 md:py-32 flex flex-col gap-5 ", className)}
+      className={cn(
+        "ml-0 flex w-full flex-col gap-5 px-5 py-10 md:w-3/4 md:py-32",
+        className
+      )}
     >
       <FreelanceText />
       <div className="flex flex-col">
-        <h1  className="bg-linear-to-t from-primary to-secondary dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-6xl pb-3">
+        <h1 className="from-primary to-secondary bg-linear-to-t bg-clip-text pb-3 text-4xl font-semibold tracking-tight text-transparent lg:text-6xl dark:from-neutral-600 dark:to-white">
           Let's work together!
         </h1>
-        <p className="max-w-xl text-base text-muted-foreground">
+        <p className="text-muted-foreground max-w-xl text-base">
           Always thrilled to collabrate with passioante minds on impactful tech
           projects.
         </p>
       </div>
-      <ContactForm className={"ml-0 pl-0 "} showHeader={false} />
+      <ContactForm className={"ml-0 pl-0"} showHeader={false} />
     </Container>
   );
 };

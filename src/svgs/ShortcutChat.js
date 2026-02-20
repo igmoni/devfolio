@@ -19,5 +19,3 @@ export default function ShortcutChat(props) {
     </svg>
   );
 }
-
-

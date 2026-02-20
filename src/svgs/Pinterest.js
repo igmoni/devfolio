@@ -1,5 +1,5 @@
-"use client"
-import { motion } from "motion/react"
+"use client";
+import { motion } from "motion/react";
 
 export default function Pinterest() {
   return (
@@ -13,7 +13,7 @@ export default function Pinterest() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline  icon-tabler-brand-pinterest"
+      className="icon icon-tabler icons-tabler-outline icon-tabler-brand-pinterest"
       whileHover="hover"
       animate="rest"
     >
@@ -49,5 +49,5 @@ export default function Pinterest() {
         d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"
       />
     </motion.svg>
-  )
+  );
 }

@@ -1,16 +1,20 @@
 "use client";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import { useEffect, useState } from "react";
+
 import { Link } from "next-view-transitions";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import Website from "@/svgs/Website";
-import Github from "@/svgs/Github";
-import ArrowRight from "@/svgs/ArrowRight";
+
 import { motion } from "motion/react";
+
 import { projects as PROJECTS_CONFIG } from "@/config/Projects";
-import { instrumentSerif } from "../landing/Hero";
 import { cn } from "@/lib/utils";
+import ArrowRight from "@/svgs/ArrowRight";
+import Github from "@/svgs/Github";
+import Website from "@/svgs/Website";
+
+import { instrumentSerif } from "../landing/Hero";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const item = {
   hidden: { opacity: 0, y: 40, filter: "blur(4px)" },
@@ -31,31 +35,22 @@ const ProjectCard = ({ project }) => {
   return (
     <motion.div variants={item}>
       {/* Changed from 'group' to 'group/card' for card-level hover */}
-      <Card className="group/card min-h-[540px] w-full overflow-hidden transition-all p-4 pt-8 pb-0 border-gray-100 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] dark:border-gray-800 relative">
+      <Card className="group/card relative min-h-[540px] w-full overflow-hidden border-gray-100 p-4 pt-8 pb-0 shadow-[inset_0_1px_5px_rgba(0,0,0,0.2)] transition-all dark:border-gray-800">
         <CardCon project={project} />
         <CardFoo project={project} />
 
-        <CardHeader className="mt-4 p-0 pl-[58px] absolute bottom-0 right-0 w-full h-[200px] lg:h-[230px] lg:group-hover/card:h-[250px]">
-          <div className="w-full absolute right-0 bottom-0 pl-5 lg:pl-10">
+        <CardHeader className="absolute right-0 bottom-0 mt-4 h-[200px] w-full p-0 pl-[58px] lg:h-[230px] lg:group-hover/card:h-[250px]">
+          <div className="absolute right-0 bottom-0 w-full pl-5 lg:pl-10">
             {/* Glow - responds to card hover */}
-            <div className="absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl opacity-0 group-hover/card:opacity-80 transition-all duration-500 from-orange-500/30 via-orange-300/10  bg-linear-to-b dark:from-blue-500/60 dark:via-purple-500/40 to-transparent blur-2xl pointer-events-none" />
+            <div className="pointer-events-none absolute inset-0 z-10 rounded-tl-2xl rounded-br-2xl bg-linear-to-b from-orange-500/30 via-orange-300/10 to-transparent opacity-0 blur-2xl transition-all duration-500 group-hover/card:opacity-80 dark:from-blue-500/60 dark:via-purple-500/40" />
 
             {/* Image - responds to card hover */}
-            <div
-              className=" relative z-20 h-[200px] lg:h-[250px] rounded-tl-2xl rounded-br-2xl overflow-hidden transform-gpu will-change-transform transition-all duration-700
-    ease-[cubic-bezier(0.16,1,0.3,1)]
-    origin-bottom
-    translate-y-3 
-    group-hover/card:translate-y-1
-    group-hover/card:opacity-100"
-            >
+            <div className="relative z-20 h-[200px] origin-bottom translate-y-3 transform-gpu overflow-hidden rounded-tl-2xl rounded-br-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform group-hover/card:translate-y-1 group-hover/card:opacity-100 lg:h-[250px]">
               <Image
                 fill
                 src={image}
                 alt={title}
-                className="object-cover rounded-tl-2xl rounded-br-2xl 
-            transition-transform duration-500 
-            ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                className="rounded-tl-2xl rounded-br-2xl object-cover transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
               />
             </div>
           </div>
@@ -76,7 +71,7 @@ const CardCon = ({ project }) => {
       <div className="flex items-center justify-between gap-4">
         <Link href={`/projects/${slug}`}>
           <h3
-            className={`${instrumentSerif.className} italic text-3xl font-semibold leading-tight  hover:cursor-pointer`}
+            className={`${instrumentSerif.className} text-3xl leading-tight font-semibold italic hover:cursor-pointer`}
           >
             {project.shortTitle}
           </h3>
@@ -87,7 +82,7 @@ const CardCon = ({ project }) => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                className="text-secondary flex size-6 items-center justify-center "
+                className="text-secondary flex size-6 items-center justify-center"
                 href={String(project.live)}
                 target="_blank"
               >
@@ -104,7 +99,7 @@ const CardCon = ({ project }) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className="text-secondary flex size-6 items-center justify-center  "
+                  className="text-secondary flex size-6 items-center justify-center"
                   href={String(project.github)}
                   target="_blank"
                 >
@@ -122,12 +117,12 @@ const CardCon = ({ project }) => {
       <p className="text-secondary line-clamp-3">{project.desc}</p>
 
       {/* Added 'group/tech' for technologies section */}
-      <div className="mt-3 group/tech">
-        <h4 className="text-sm font-medium mb-2 text-secondary">
+      <div className="group/tech mt-3">
+        <h4 className="text-secondary mb-2 text-sm font-medium">
           Technologies
         </h4>
 
-        <div className="flex pl-3 hover:pl-5 items-center">
+        <div className="flex items-center pl-3 hover:pl-5">
           {matchedProject?.technologies?.map((tech, index) => (
             <motion.div
               key={index}
@@ -165,13 +160,13 @@ const CardCon = ({ project }) => {
                   duration: 0.2,
                   ease: "easeOut",
                 }}
-                className="flex items-center h-10 rounded-full border bg-muted dark:bg-accent overflow-hidden"
+                className="bg-muted dark:bg-accent flex h-10 items-center overflow-hidden rounded-full border"
               >
                 {/* ICON */}
                 <motion.span
                   variants={{ animate: { paddingRight: 8 } }}
                   transition={{ type: "spring" }}
-                  className="flex h-10 w-10 items-center justify-center shrink-0"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center"
                 >
                   <span className="flex h-7 w-7 items-center justify-center">
                     {tech.icon}
@@ -191,7 +186,7 @@ const CardCon = ({ project }) => {
                     damping: 25,
                     mass: 0.5,
                   }}
-                  className="overflow-hidden opacity-100 text-primary dark:text-white whitespace-nowrap text-xs"
+                  className="text-primary overflow-hidden text-xs whitespace-nowrap opacity-100 dark:text-white"
                 >
                   {tech.name}
                 </motion.span>
@@ -211,20 +206,17 @@ const CardFoo = ({ project }) => {
   if (!project.featured) return null;
 
   return (
-    <CardFooter className="p-4 md:px-6 pt-0 flex gap-12 md:gap-3 sm:flex-row sm:items-center justify-between">
+    <CardFooter className="flex justify-between gap-12 p-4 pt-0 sm:flex-row sm:items-center md:gap-3 md:px-6">
       {/* STATUS */}
       <div
-        className={`
-          inline-flex items-center gap-3 w-full md:w-fit rounded-md px-2 py-1 text-xs border 
-          ${
-            isWorking
-              ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
-              : "border-red-300 bg-red-500/10 text-red-700 dark:text-red-400"
-          }
-        `}
+        className={`inline-flex w-full items-center gap-3 rounded-md border px-2 py-1 text-xs md:w-fit ${
+          isWorking
+            ? "border-green-300 bg-green-500/10 text-green-700 dark:text-green-400"
+            : "border-red-300 bg-red-500/10 text-red-700 dark:text-red-400"
+        } `}
       >
         <span
-          className={`min-w-2 min-h-2 md:min-w-2 md:min-h-2 w-2 h-2 md:w-2 md:h-2 rounded-full animate-pulse ${
+          className={`h-2 min-h-2 w-2 min-w-2 animate-pulse rounded-full md:h-2 md:min-h-2 md:w-2 md:min-w-2 ${
             isWorking ? "bg-green-500" : "bg-red-500"
           }`}
         />
@@ -236,10 +228,10 @@ const CardFoo = ({ project }) => {
       {/* LINK - Added 'group/link' for independent hover */}
       <Link
         href={`/projects/${slug}`}
-        className="relative group/link inline-flex whitespace-nowrap hover:text-primary dark:hover:text-white items-center gap-1 text-muted-foreground"
+        className="group/link hover:text-primary text-muted-foreground relative inline-flex items-center gap-1 whitespace-nowrap dark:hover:text-white"
       >
         View Details
-        <span className="absolute left-0 -bottom-1 h-[2px] w-[98px] rounded-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover/link:scale-x-100 group-hover/link:origin-left" />
+        <span className="absolute -bottom-1 left-0 h-[2px] w-[98px] origin-right scale-x-0 rounded-full bg-current transition-all duration-200 ease-out group-hover/link:origin-left group-hover/link:scale-x-100" />
         <ArrowRight className="size-4" />
       </Link>
     </CardFooter>

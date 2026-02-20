@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+
 import Copied from "@/svgs/Copied";
 import Copy from "@/svgs/Copy";
+
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const CodeCopyButton = ({ code, className }) => {
@@ -23,7 +25,7 @@ const CodeCopyButton = ({ code, className }) => {
   return (
     <button
       onClick={copyToClipboard}
-      className="absolute top-5 right-5 rounded-md opacity-0 transition-all duration-200 group-hover:opacity-100 cursor-pointer"
+      className="absolute top-5 right-5 cursor-pointer rounded-md opacity-0 transition-all duration-200 group-hover:opacity-100"
     >
       {isCopied ? (
         <Tooltip>
@@ -35,7 +37,7 @@ const CodeCopyButton = ({ code, className }) => {
       ) : (
         <Tooltip>
           <TooltipTrigger className="cursor-pointer" asChild>
-            <Copy className="h-4 w-4 text-secondary" />
+            <Copy className="text-secondary h-4 w-4" />
           </TooltipTrigger>
           <TooltipContent>Copy to clipboard</TooltipContent>
         </Tooltip>

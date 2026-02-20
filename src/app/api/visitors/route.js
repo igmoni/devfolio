@@ -1,5 +1,6 @@
-import { Redis } from "@upstash/redis";
 import { NextResponse } from "next/server";
+
+import { Redis } from "@upstash/redis";
 import crypto from "crypto";
 
 const redis = Redis.fromEnv();

@@ -1,8 +1,11 @@
 "use client";
-import { cn } from "@/lib/utils";
 import React from "react";
-import ProjectCard from "./ProjectCard";
+
 import { motion } from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+import ProjectCard from "./ProjectCard";
 
 const container = {
   hidden: { opacity: 0 },
@@ -16,9 +19,8 @@ const container = {
 
 const ProjectList = ({ projects, className }) => {
   if (projects.length === 0) {
-
     return (
-      <div className="text-center py-8">
+      <div className="py-8 text-center">
         <h2 className="text-muted-foreground">No projects found.</h2>
         <p className="text-muted-foreground">
           Check back leter for new content!
@@ -38,9 +40,9 @@ const ProjectList = ({ projects, className }) => {
         className
       )}
     >
-     {projects.map((project, idx) => (
-  <ProjectCard key={idx} project={project} />
-))}
+      {projects.map((project, idx) => (
+        <ProjectCard key={idx} project={project} />
+      ))}
     </motion.div>
   );
 };

@@ -1,9 +1,8 @@
 // 'use client'
 // import { motion } from "motion/react"
 
-
 // export default function ProgressStats() {
-  //   return (
+//   return (
 //     <div className="space-y-5">
 //       {stats.map((s) => {
 //         const percent = (s.value / s.max) * 100;
@@ -33,8 +32,15 @@
 // }
 "use client";
 
-import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 
 const stats = [
   { label: "Bench", value: 45, max: 100, unit: "kg" },
@@ -61,11 +67,7 @@ function AnimatedNumber({ value }) {
     return controls.stop;
   }, [isInView, value]);
 
-  return (
-    <motion.span ref={ref}>
-      {rounded}
-    </motion.span>
-  );
+  return <motion.span ref={ref}>{rounded}</motion.span>;
 }
 
 export default function ProgressStats() {
@@ -106,7 +108,7 @@ export default function ProgressStats() {
             </div>
 
             {/* Progress Bar */}
-            <div className="h-1.5 w-full rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
               <motion.div
                 className="h-full rounded-full bg-sky-500"
                 initial={{ width: 0 }}

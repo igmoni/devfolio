@@ -1,23 +1,24 @@
+import { Suspense } from "react";
+
 import Container from "@/components/common/Container";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllTags, getPublishedBlogPosts } from "@/lib/blog";
-import { Suspense } from "react";
-import BlogPageClient from "./BlogPageClient";
 import { generateMetaData as getMetaData } from "@/config/Meta";
+import { getAllTags, getPublishedBlogPosts } from "@/lib/blog";
+
+import BlogPageClient from "./BlogPageClient";
 
 export async function generateMetadata() {
   return getMetaData("/blog");
 }
 
-
 function BlogPageLoading() {
   return (
-    <Container className={"py-16 "}>
+    <Container className={"py-16"}>
       <div className="space-y-8">
         <div className="space-y-4 text-center">
-          <Skeleton className={"h-12 w-32 mx-auto"} />
-          <Skeleton className={"h-6 w-96 mx-auto"} />
+          <Skeleton className={"mx-auto h-12 w-32"} />
+          <Skeleton className={"mx-auto h-6 w-96"} />
         </div>
 
         <Separator />

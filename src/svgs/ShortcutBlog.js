@@ -2,11 +2,7 @@
 
 export default function ShortcutBlog(props) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <rect
         x="4"
         y="4.75"
@@ -25,5 +21,3 @@ export default function ShortcutBlog(props) {
     </svg>
   );
 }
-
-

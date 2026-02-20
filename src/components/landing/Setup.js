@@ -1,19 +1,20 @@
+import { Link } from "next-view-transitions";
+
+import ArrowRight from "@/svgs/ArrowRight";
+import Gear from "@/svgs/Gears";
+
+import Container from "../common/Container";
 import SectionHeading from "../common/SectionHeading";
 import { Card } from "../ui/card";
-import Gear from "@/svgs/Gears";
-import Container from "../common/Container";
-import { Link } from "next-view-transitions";
-import ArrowRight from "@/svgs/ArrowRight";
 
 const setup = [
   {
-    name: 'Gears Used',
-    description: 'Productivity Tools, Gears i use to get my work done.',
+    name: "Gears Used",
+    description: "Productivity Tools, Gears i use to get my work done.",
     icon: <Gear className="size-4" />,
-    href: '/gears',
-  }
-]
-
+    href: "/gears",
+  },
+];
 
 export default function Setup() {
   return (

@@ -1,20 +1,24 @@
 "use client";
-import { heroConfig, socialLinks, links, coverVideos } from "@/config/Hero";
+import { useEffect, useState } from "react";
+
+import { useTheme } from "next-themes";
 import { Link } from "next-view-transitions";
+import { Instrument_Serif } from "next/font/google";
+import Image from "next/image";
+
+import { motion } from "motion/react";
+
+import { coverVideos, heroConfig, links, socialLinks } from "@/config/Hero";
+import Location from "@/svgs/Location";
+
+import Avatar from "../common/Avatar";
+import Coffee from "../common/Coffee";
 import Container from "../common/Container";
 import { Button } from "../ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { useTheme } from "next-themes";
-import { motion } from "motion/react";
 import FreelanceText from "./FreelanceText";
 import Spotify from "./Spotify";
-import { useState, useEffect } from "react";
-import Coffee from "../common/Coffee";
 import WakaTimeCard from "./WakaTimeCard";
-import { Instrument_Serif } from "next/font/google";
-import Image from "next/image";
-import Location from "@/svgs/Location";
-import Avatar from "../common/Avatar";
 
 export const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -55,7 +59,7 @@ const Hero = () => {
   useEffect(() => {
     const handleToggle = () => {
       setVideoIndex((prev) =>
-        prev === null ? 0 : (prev + 1) % coverVideos.length,
+        prev === null ? 0 : (prev + 1) % coverVideos.length
       );
     };
 
@@ -77,14 +81,7 @@ const Hero = () => {
       >
         {/* VIDEO */}
         <motion.div variants={child} className="relative">
-          <div
-            className="
-            shadow-xl 
-            relative w-full
-            h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px]
-            overflow-hidden rounded-3xl bg-black dark:shadow-acternoty-white
-          "
-          >
+          <div className="dark:shadow-acternoty-white relative h-[180px] w-full overflow-hidden rounded-3xl bg-black shadow-xl sm:h-[220px] md:h-[260px] lg:h-[300px]">
             <video
               key={coverVideos[videoIndex]}
               src={coverVideos[videoIndex]}
@@ -100,23 +97,10 @@ const Hero = () => {
           </div>
 
           {/* AVATAR */}
-          <div
-            className="
-            absolute z-20
-            left-1/2 -translate-x-1/2
-            top-[120px] sm:top-[140px]
-            md:left-10 md:translate-x-0 md:top-[200px]
-            rounded-full bg-white p-1 dark:bg-primary shadow-2xl  
-          "
-          >
+          <div className="dark:bg-primary absolute top-[120px] left-1/2 z-20 -translate-x-1/2 rounded-full bg-white p-1 shadow-2xl sm:top-[140px] md:top-[200px] md:left-10 md:translate-x-0">
             <Avatar />
 
-            <div
-              className="
-              absolute bottom-1 right-0.5 md:bottom-2.5 md:right-2
-              scale-75   sm:scale-90 md:scale-100
-            "
-            >
+            <div className="absolute right-0.5 bottom-1 scale-75 sm:scale-90 md:right-2 md:bottom-2.5 md:scale-100">
               <WakaTimeCard />
             </div>
           </div>
@@ -124,7 +108,7 @@ const Hero = () => {
           {/* FREELANCE TEXT (DESKTOP ONLY) */}
           <motion.div
             variants={child}
-            className="absolute right-0 -bottom-10 hidden  md:block"
+            className="absolute right-0 -bottom-10 hidden md:block"
           >
             <FreelanceText />
           </motion.div>
@@ -133,17 +117,11 @@ const Hero = () => {
         {/* TITLE */}
         <motion.h1
           variants={child}
-          className="
-            mt-20 sm:mt-24 md:mt-20
-            text-center md:text-left
-            font-bold tracking-tighter
-            text-2xl flex flex-wrap justify-center md:block md:text-[44px]
-            text-primary dark:text-white
-          "
+          className="text-primary mt-20 flex flex-wrap justify-center text-center text-2xl font-bold tracking-tighter sm:mt-24 md:mt-20 md:block md:text-left md:text-[44px] dark:text-white"
         >
           Hi, Am {name} —{" "}
           <span
-            className={`${instrumentSerif.className} italic text-muted-foreground`}
+            className={`${instrumentSerif.className} text-muted-foreground italic`}
           >
             {title}
           </span>
@@ -163,13 +141,13 @@ const Hero = () => {
         </motion.div>
 
         {/* CTA */}
-        <div className="flex items-center md:justify-start justify-center gap-3">
+        <div className="flex items-center justify-center gap-3 md:justify-start">
           <motion.div
             variants={child}
             className="flex cursor-pointer items-center"
           >
             <Link href={button.href}>
-              <Button className="bg-primary cursor-pointer dark:bg-white flex items-center gap-2">
+              <Button className="bg-primary flex cursor-pointer items-center gap-2 dark:bg-white">
                 {button.icon}
                 {button.text}
               </Button>
@@ -180,7 +158,7 @@ const Hero = () => {
             variants={child}
             className="flex items-center justify-center"
           >
-            <Coffee className="size-9 shadow-acternity dark:shadow-acternity-white" />
+            <Coffee className="shadow-acternity dark:shadow-acternity-white size-9" />
           </motion.div>
         </div>
 
@@ -189,7 +167,7 @@ const Hero = () => {
           variants={parent}
           initial="hidden"
           animate="show"
-          className="flex flex-wrap justify-center gap-2 md:gap-4 md:justify-start"
+          className="flex flex-wrap justify-center gap-2 md:justify-start md:gap-4"
         >
           {socialLinks.map((link) => (
             <Tooltip key={link.name}>
@@ -198,7 +176,7 @@ const Hero = () => {
                   <Link
                     href={link.href}
                     target="_blank"
-                    className="flex items-center gap-2 text-secondary"
+                    className="text-secondary flex items-center gap-2"
                   >
                     {/* 👇 EACH ICON IS A STAGGERED CHILD */}
                     <motion.span variants={child} className="size-7">
@@ -214,12 +192,12 @@ const Hero = () => {
 
         <motion.div
           variants={child}
-          className="tracking-widest text-muted-foreground hover:text-primary dark:hover:text-white transition-all duration-500"
+          className="text-muted-foreground hover:text-primary tracking-widest transition-all duration-500 dark:hover:text-white"
         >
           <Link
             href={"https://google.com/maps/place/Bengaluru,+India"}
             target="_blank"
-            className="flex gap-2 md:justify-start justify-center items-center"
+            className="flex items-center justify-center gap-2 md:justify-start"
           >
             <Location className={"size-5"} />
             BENGALURU, INDIA
@@ -239,35 +217,17 @@ export default Hero;
 
 const Description = ({ links }) => {
   return (
-    <p
-      className="
-        text-muted-foreground 
-        text-sm sm:text-base md:text-xl
-        leading-8 sm:leading-7 md:leading-8
-        text-center md:text-left 
-      "
-    >
+    <p className="text-muted-foreground text-center text-sm leading-8 sm:text-base sm:leading-7 md:text-left md:text-xl md:leading-8">
       I design and build interactive web applications using{" "}
       {links.map((link, index) => {
         const isLast = index === links.length - 1;
         const isSecondLast = index === links.length - 2;
 
         return (
-          <span key={link.name} className="inline ">
+          <span key={link.name} className="inline">
             <Link
               href={link.link}
-              className="  border-dashed 
-                inline-flex items-center gap-1.5
-                align-baseline
-                rounded-md border-2 bg-muted
-                px-1 md:px-2.5 md:py-0.5
-                mx-0.5
-                whitespace-nowrap
-                transition-colors
-                hover:bg-muted/70
-                dark:text-muted
-                text-muted-foreground
-              "
+              className="bg-muted hover:bg-muted/70 dark:text-muted text-muted-foreground mx-0.5 inline-flex items-center gap-1.5 rounded-md border-2 border-dashed px-1 align-baseline whitespace-nowrap transition-colors md:px-2.5 md:py-0.5"
               style={{
                 backgroundColor:
                   link.name === "Typescript"
@@ -303,7 +263,7 @@ const Description = ({ links }) => {
         );
       })}{" "}
       — with a ruthless focus on{" "}
-      <span className={" font-semibold  text-primary dark:text-white"}>
+      <span className={"text-primary font-semibold dark:text-white"}>
         UI clarity
       </span>{" "}
       and experience.

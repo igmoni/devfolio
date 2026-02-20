@@ -1,13 +1,14 @@
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+
+import { projects } from "@/config/Projects";
+
 // // to get posts on the basis of published or not
 export function getPublishedProjectPosts() {
   const allPosts = getAllProjects();
   return allPosts.filter((post) => post.isPublished);
 }
-
-import { projects } from "@/config/Projects";
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
 
 const projectDirectory = path.join(process.cwd(), "src/data/projects");
 
@@ -78,10 +79,7 @@ export function getAllProjects() {
   return getProjectPostSlugs()
     .map(getProjectPostBySlug)
     .filter(Boolean)
-    .sort(
-      (a, b) =>
-        new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 /* ----------------------------------------
@@ -91,45 +89,65 @@ export function getProjectStatusTags() {
   return ["Working", "Building"];
 }
 
-
 export function getProjectNavigation(currentSlug) {
   // Find current project in config
-  const currentProjectIndex = projects.findIndex((project) => project.projectsDetailsPageSlug === `/projects/${currentSlug}`)
+  const currentProjectIndex = projects.findIndex(
+    (project) => project.projectsDetailsPageSlug === `/projects/${currentSlug}`
+  );
 
-  if(currentProjectIndex === -1) {
-    return { previous: null, next: null }
+  if (currentProjectIndex === -1) {
+    return { previous: null, next: null };
   }
 
-  const previousProject = currentProjectIndex > 0 ? projects[currentProjectIndex -1]: null
-  const nextProject = currentProjectIndex < projects.length - 1 ? projects[currentProjectIndex + 1] : null
+  const previousProject =
+    currentProjectIndex > 0 ? projects[currentProjectIndex - 1] : null;
+  const nextProject =
+    currentProjectIndex < projects.length - 1
+      ? projects[currentProjectIndex + 1]
+      : null;
 
   return {
-    previous: previousProject ? {
-      title: previousProject.title,
-      slug: previousProject.projectsDetailsPageSlug.replace('/projects/', '')
-    } : null,
-    next: nextProject ? {
-      title: nextProject.title,
-      slug: nextProject.projectsDetailsPageSlug.replace('/projects/', '')
-    } : null,
-  }
+    previous: previousProject
+      ? {
+          title: previousProject.title,
+          slug: previousProject.projectsDetailsPageSlug.replace(
+            "/projects/",
+            ""
+          ),
+        }
+      : null,
+    next: nextProject
+      ? {
+          title: nextProject.title,
+          slug: nextProject.projectsDetailsPageSlug.replace("/projects/", ""),
+        }
+      : null,
+  };
 }
 
 export function getRelatedProjectPosts(currentSlug, maxProjects = 2) {
-  const currentPost = getProjectPostBySlug(currentSlug)
-  if(!currentPost || !currentPost.isPublished) return []
+  const currentPost = getProjectPostBySlug(currentSlug);
+  if (!currentPost || !currentPost.isPublished) return [];
 
-  const allPosts = getPublishedProjectPosts()
-  const currentTechnologies = currentPost.technologies.map((tech) => tech.toLowerCase())
+  const allPosts = getPublishedProjectPosts();
+  const currentTechnologies = currentPost.technologies.map((tech) =>
+    tech.toLowerCase()
+  );
 
-  const postWithScore = allPosts.filter((post) => post.slug !== currentSlug).map((post) => {
-    const sharedTechnologies = post.technologies.filter((tech) => currentTechnologies.includes(tech.toLowerCase()))
+  const postWithScore = allPosts
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      const sharedTechnologies = post.technologies.filter((tech) =>
+        currentTechnologies.includes(tech.toLowerCase())
+      );
 
-    return {
-      post, score: sharedTechnologies.length
-    }
-  })
-  .filter((item) => item.score > 0).sort((a,b) => b.score - a.score)
+      return {
+        post,
+        score: sharedTechnologies.length,
+      };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score);
 
-  return postWithScore.slice(0, maxProjects).map((item) => item.post)
+  return postWithScore.slice(0, maxProjects).map((item) => item.post);
 }

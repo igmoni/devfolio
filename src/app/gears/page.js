@@ -1,51 +1,65 @@
-import Container from "@/components/common/Container"
-import Monitor from "@/svgs/devices/Monitor"
-import { Separator } from "@/components/ui/separator"
-import { devices, webExtensions, software, vsCodeExtensions } from "@/config/Gears"
-import {Link} from "next-view-transitions"
-import { generateMetaData as getMetadata } from "@/config/Meta"
-import ArrowUpRight from "@/svgs/ArrowUpRight"
-import { Puzzle } from "lucide-react"
+import { Link } from "next-view-transitions";
+
+import { Puzzle } from "lucide-react";
+
+import Container from "@/components/common/Container";
+import { Separator } from "@/components/ui/separator";
+import {
+  devices,
+  software,
+  vsCodeExtensions,
+  webExtensions,
+} from "@/config/Gears";
+import { generateMetaData as getMetadata } from "@/config/Meta";
+import ArrowUpRight from "@/svgs/ArrowUpRight";
+import Monitor from "@/svgs/devices/Monitor";
 
 export const metadata = {
-  ...getMetadata('/gears'),
+  ...getMetadata("/gears"),
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
 
 const page = () => {
   return (
-    <Container className={'py-16 px-5'}>
-      <div className="space-y-8 mt-20">
+    <Container className={"px-5 py-16"}>
+      <div className="mt-20 space-y-8">
         <div className="space-y-4 text-center">
-          <h1 className="bg-linear-to-t from-primary to-secondary pb-3 dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-7xl">
+          <h1 className="from-primary to-secondary bg-linear-to-t bg-clip-text pb-3 text-4xl font-semibold tracking-tight text-transparent lg:text-7xl dark:from-neutral-600 dark:to-white">
             Gears
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              My gears and tools i use to get my work done.
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+            My gears and tools i use to get my work done.
           </p>
         </div>
-        <Separator/>
+        <Separator />
         {/* Devices */}
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Devices</h2>
           <div className="flex flex-col flex-wrap gap-4">
             {devices.map((device) => (
               <div key={device.name} className="flex items-center gap-4">
-                <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736f70] dark:border-white/10">{device.icon}</div>
+                <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736f70] dark:border-white/10">
+                  {device.icon}
+                </div>
                 <div className="flex items-center gap-1">
-                  <Link href={device.href} className="text-secondary hover:underline underline-offset-2 text-sm">{device.name}</Link>
-                  
-                    <ArrowUpRight className="size-4" />
+                  <Link
+                    href={device.href}
+                    className="text-secondary text-sm underline-offset-2 hover:underline"
+                  >
+                    {device.name}
+                  </Link>
+
+                  <ArrowUpRight className="size-4" />
                 </div>
               </div>
             ))}
@@ -67,7 +81,7 @@ const page = () => {
                   <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 px-2 py-1 text-[#736F70] dark:border-white/10">
                     <span className="text-secondary text-sm">{index + 1}</span>
                   </div>
-                  <h3 className="text-secondary ml-4 flex hover:underline underline-offset-2 items-center gap-1 text-sm">
+                  <h3 className="text-secondary ml-4 flex items-center gap-1 text-sm underline-offset-2 hover:underline">
                     <Link target="_blank" href={extension.href}>
                       {extension.name}
                     </Link>
@@ -79,8 +93,8 @@ const page = () => {
           </div>
         </div>
 
-          {/* Softwares */}
-            <div className="space-y-4 pt-10">
+        {/* Softwares */}
+        <div className="space-y-4 pt-10">
           <div className="flex items-center gap-4">
             <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">
               <Monitor className="size-4" />
@@ -96,7 +110,7 @@ const page = () => {
                       {(index + 1).toString()}
                     </span>
                   </div>
-                  <h3 className="text-secondary hover:underline underline-offset-2 ml-4 flex items-center gap-1 text-sm">
+                  <h3 className="text-secondary ml-4 flex items-center gap-1 text-sm underline-offset-2 hover:underline">
                     <Link target="_blank" href={app.href}>
                       {app.name}
                     </Link>
@@ -107,13 +121,15 @@ const page = () => {
             ))}
           </div>
         </div>
-          
-      <div className="space-y-4 pt-10">
+
+        <div className="space-y-4 pt-10">
           <div className="flex items-center gap-4">
             <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">
               <Puzzle className="size-4" />
             </div>
-            <h2 className="text-2xl font-semibold">VS Code/Cursor Extensions</h2>
+            <h2 className="text-2xl font-semibold">
+              VS Code/Cursor Extensions
+            </h2>
           </div>
           <div className="mt-8 flex flex-col flex-wrap gap-4">
             {vsCodeExtensions.map((extension, index) => (
@@ -122,7 +138,7 @@ const page = () => {
                   <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 px-2 py-1 text-[#736F70] dark:border-white/10">
                     <span className="text-secondary text-sm">{index + 1}</span>
                   </div>
-                  <h3 className="text-secondary ml-4 flex hover:underline underline-offset-2 items-center gap-1 text-sm">
+                  <h3 className="text-secondary ml-4 flex items-center gap-1 text-sm underline-offset-2 hover:underline">
                     <Link target="_blank" href={extension.href}>
                       {extension.name}
                     </Link>
@@ -135,7 +151,7 @@ const page = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default page
+export default page;

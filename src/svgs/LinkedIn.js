@@ -1,5 +1,5 @@
-"use client"
-import { motion } from "motion/react"
+"use client";
+import { motion } from "motion/react";
 
 export default function LinkedIn() {
   return (
@@ -63,5 +63,5 @@ export default function LinkedIn() {
         d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10"
       />
     </motion.svg>
-  )
+  );
 }

@@ -1,6 +1,7 @@
-"use client"
-import { motion } from "motion/react"
-import React from "react"
+"use client";
+import React from "react";
+
+import { motion } from "motion/react";
 
 export default function Medium() {
   return (
@@ -30,5 +31,5 @@ export default function Medium() {
         }}
       />
     </motion.svg>
-  )
+  );
 }

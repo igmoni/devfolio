@@ -1,5 +1,5 @@
-"use client"
-import { motion } from "motion/react"
+"use client";
+import { motion } from "motion/react";
 
 export default function Website({ className }) {
   return (
@@ -27,7 +27,7 @@ export default function Website({ className }) {
         <motion.path
           variants={{
             rest: { scale: 1, stroke: "currentColor" },
-            hover: {  scale: 1.20, stroke: "#fff" },
+            hover: { scale: 1.2, stroke: "#fff" },
           }}
           transition={{
             type: "spring",
@@ -40,8 +40,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: {  scale: 1, stroke: "currentColor" },
-            hover: {  scale: 1.20, stroke: "#fff" },
+            rest: { scale: 1, stroke: "currentColor" },
+            hover: { scale: 1.2, stroke: "#fff" },
           }}
           transition={{
             type: "spring",
@@ -54,8 +54,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: {  scale: 1, stroke: "currentColor" },
-            hover: {  scale: 1.20, stroke: "#fff" },
+            rest: { scale: 1, stroke: "currentColor" },
+            hover: { scale: 1.2, stroke: "#fff" },
           }}
           transition={{
             type: "spring",
@@ -68,8 +68,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: {  scale: 1, stroke: "currentColor" },
-            hover: {  scale: 1.20, stroke: "#fff" },
+            rest: { scale: 1, stroke: "currentColor" },
+            hover: { scale: 1.2, stroke: "#fff" },
           }}
           transition={{
             type: "spring",
@@ -82,8 +82,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: {  scale: 1, stroke: "currentColor" },
-            hover: {  scale: 1.20, stroke: "#fff" },
+            rest: { scale: 1, stroke: "currentColor" },
+            hover: { scale: 1.2, stroke: "#fff" },
           }}
           transition={{
             type: "spring",
@@ -95,5 +95,5 @@ export default function Website({ className }) {
         />
       </g>
     </motion.svg>
-  )
+  );
 }

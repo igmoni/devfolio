@@ -9,17 +9,17 @@ export const devices = [
   {
     name: "Asus TUF F15 Gaming Laptop 16GB 512GB",
     icon: <Laptop className="size-4" />,
-    href: "https://www.flipkart.com/asus-tuf-gaming-f15-ai-powered-intel-core-i5-11th-gen-11260h-8-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-70-tgp-fx506hf-hn075w-laptop/p/itmbd858702e076f?pid=COMGS2AJESZQCMRT&lid=LSTCOMGS2AJESZQCMRTZVTWT2&marketplace=FLIPKART&q=asus+tuf+f15&store=6bo%2Fb5g&srno=s_1_7&otracker=search&otracker1=search&fm=organic&iid=024aae02-1841-43ac-a74b-82a35b9de8d7.COMGS2AJESZQCMRT.SEARCH&ppt=hp&ppn=homepage&ssid=3pxadt9jnk0000001769408843876&qH=5dc9ce75c3155017"
+    href: "https://www.flipkart.com/asus-tuf-gaming-f15-ai-powered-intel-core-i5-11th-gen-11260h-8-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-70-tgp-fx506hf-hn075w-laptop/p/itmbd858702e076f?pid=COMGS2AJESZQCMRT&lid=LSTCOMGS2AJESZQCMRTZVTWT2&marketplace=FLIPKART&q=asus+tuf+f15&store=6bo%2Fb5g&srno=s_1_7&otracker=search&otracker1=search&fm=organic&iid=024aae02-1841-43ac-a74b-82a35b9de8d7.COMGS2AJESZQCMRT.SEARCH&ppt=hp&ppn=homepage&ssid=3pxadt9jnk0000001769408843876&qH=5dc9ce75c3155017",
   },
   {
     name: "Oneplus 13R (256GB)",
     icon: <Phone className="size-4" />,
-    href: "https://www.flipkart.com/oneplus-13r-5g-astral-trail-256-gb/p/itmff6561809fab8?pid=MOBH8EVKZHTE7A32&lid=LSTMOBH8EVKZHTE7A32A5T0T4&marketplace=FLIPKART&q=oneplus+13r&store=tyy%2F4io&srno=s_1_2&otracker=search&otracker1=search&fm=organic&iid=8d0b5c64-8208-446b-86c8-da68e990d74c.MOBH8EVKZHTE7A32.SEARCH&ppt=pp&ppn=pp&ssid=febdohvt5c0000001769408908244&qH=451f55dc23582ad5"
+    href: "https://www.flipkart.com/oneplus-13r-5g-astral-trail-256-gb/p/itmff6561809fab8?pid=MOBH8EVKZHTE7A32&lid=LSTMOBH8EVKZHTE7A32A5T0T4&marketplace=FLIPKART&q=oneplus+13r&store=tyy%2F4io&srno=s_1_2&otracker=search&otracker1=search&fm=organic&iid=8d0b5c64-8208-446b-86c8-da68e990d74c.MOBH8EVKZHTE7A32.SEARCH&ppt=pp&ppn=pp&ssid=febdohvt5c0000001769408908244&qH=451f55dc23582ad5",
   },
   {
     name: "Boat Rockerz 450",
     icon: <Headphones className="size-4" />,
-    href: "https://www.flipkart.com/boat-450-pro-upto-70-hours-playback-bluetooth/p/itm575777beb2c09?pid=ACCGYUVXVVMZJRHF&lid=LSTACCGYUVXVVMZJRHFLBRF8N&marketplace=FLIPKART&q=boat+headphones+rockerz+450&store=0pm%2Ffcn%2Fgc3&srno=s_1_1&otracker=AS_Query_OrganicAutoSuggest_3_20_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_3_20_na_na_na&fm=organic&iid=en_vU5C_kNn6MG43j1eF0HNLUUpXPJvXJJYQ3oQeVp-lHyU8ACM_oB0aHYF-jz0XuFF_HFPDcHXEIDqsLUkOQ22ZA%3D%3D&ppt=pp&ppn=pp&ssid=oopbgzcvqo0000001769408936153&qH=9900aa6cb9c9c2a1"
+    href: "https://www.flipkart.com/boat-450-pro-upto-70-hours-playback-bluetooth/p/itm575777beb2c09?pid=ACCGYUVXVVMZJRHF&lid=LSTACCGYUVXVVMZJRHFLBRF8N&marketplace=FLIPKART&q=boat+headphones+rockerz+450&store=0pm%2Ffcn%2Fgc3&srno=s_1_1&otracker=AS_Query_OrganicAutoSuggest_3_20_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_3_20_na_na_na&fm=organic&iid=en_vU5C_kNn6MG43j1eF0HNLUUpXPJvXJJYQ3oQeVp-lHyU8ACM_oB0aHYF-jz0XuFF_HFPDcHXEIDqsLUkOQ22ZA%3D%3D&ppt=pp&ppn=pp&ssid=oopbgzcvqo0000001769408936153&qH=9900aa6cb9c9c2a1",
   },
 ];
 

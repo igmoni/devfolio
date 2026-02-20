@@ -1,5 +1,5 @@
-"use client"
-import { motion } from "motion/react"
+"use client";
+import { motion } from "motion/react";
 
 export default function YouTubeIcon() {
   return (
@@ -43,5 +43,5 @@ export default function YouTubeIcon() {
         d="M10 9l5 3l-5 3l0 -6"
       />
     </motion.svg>
-  )
+  );
 }

@@ -1,6 +1,11 @@
 "use client";
+import { useEffect, useState } from "react";
+import React from "react";
+
+import { useTheme } from "next-themes";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+
 import {
   AnimatePresence,
   motion,
@@ -8,12 +13,11 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
-import { ThemeToggleButton } from "./ThemeSwitch";
+
 import Menu from "@/svgs/Menu";
-import React from "react";
+
 import { Button } from "../ui/button";
+import { ThemeToggleButton } from "./ThemeSwitch";
 
 const Navbar = () => {
   // ---------------- HOOKS MUST BE AT TOP ----------------
@@ -27,26 +31,24 @@ const Navbar = () => {
   const { theme } = useTheme();
   const { scrollY } = useScroll();
 
-
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-  
+
       if (width < 480) setScreen("small");
       else if (width < 768) setScreen("medium");
       else if (width < 1024) setScreen("tablet");
-      else if (width >= 2560) setScreen("ultrawide"); // ✅ moved up
+      else if (width >= 2560)
+        setScreen("ultrawide"); // ✅ moved up
       else if (width === 1024) setScreen("small-laptop");
       else setScreen("desktop");
     };
-  
+
     handleResize();
     window.addEventListener("resize", handleResize);
-  
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
-
 
   const width = useTransform(
     scrollY,
@@ -55,25 +57,24 @@ const Navbar = () => {
       switch (screen) {
         case "small":
           return ["100%", "97%", "94%"];
-  
+
         case "medium":
           return ["100%", "92%", "85%"];
-  
+
         case "tablet":
           return ["100%", "85%", "75%"];
-  
+
         case "small-laptop":
           return ["100%", "85%", "70%"];
-  
+
         case "ultrawide":
           return ["100%", "70%", "50%"];
-  
+
         default:
           return ["100%", "70%", "50%"];
       }
     })()
   );
-  
 
   const y = useTransform(scrollY, [0, 100], [0, 10]);
 
@@ -87,7 +88,7 @@ const Navbar = () => {
   useEffect(() => {
     const interval = setInterval(
       () => setIndex((prev) => (prev + 1) % professions.length),
-      2000,
+      2000
     );
     return () => clearInterval(interval);
   }, []);
@@ -117,23 +118,22 @@ const Navbar = () => {
           borderRadius: scrolled ? "50px" : "0",
         }}
         transition={{ duration: 0.3, ease: "linear" }}
-        className="w-full bg-transparent  backdrop-blur-lg fixed top-0 inset-x-0 z-50 
-        max-w-5xl mx-auto flex items-center justify-between px-3 py-2 "
+        className="fixed inset-x-0 top-0 z-50 mx-auto flex w-full max-w-5xl items-center justify-between bg-transparent px-3 py-2 backdrop-blur-lg"
       >
         {/* LEFT */}
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <Link
             href="/"
-            className={`${scrolled ? "rounded-full" : "rounded-lg"} transition-all duration-200 h-full w-full  dark:bg-[#EEDA66] bg-[#8EC0E8]`}
+            className={`${scrolled ? "rounded-full" : "rounded-lg"} h-full w-full bg-[#8EC0E8] transition-all duration-200 dark:bg-[#EEDA66]`}
           >
             <Image
               src={"/assets/logo.png"}
               height={100}
               width={100}
               alt="Avatar"
-              className={`h-12 w-12 shrink-0 object-cover aspect-square ${
+              className={`aspect-square h-12 w-12 shrink-0 object-cover ${
                 scrolled ? "rounded-full" : "rounded-lg"
-              } hover:scale-95 transition-all duration-200   shadow-acternity dark:shadow-acternity-white`}
+              } shadow-acternity dark:shadow-acternity-white transition-all duration-200 hover:scale-95`}
             />
           </Link>
 
@@ -141,14 +141,13 @@ const Navbar = () => {
             <h1
               className={`${
                 scrolled ? "hidden" : "block"
-              } lg:block font-semibold text-[18px] lg:text-[20px] tracking-tighter 
-              text-primary dark:text-white`}
+              } text-primary text-[18px] font-semibold tracking-tighter lg:block lg:text-[20px] dark:text-white`}
             >
               Mohan
             </h1>
 
             <div
-              className="overflow-hidden h-6 w-[170px] transition duration-300 hidden md:block"
+              className="hidden h-6 w-[170px] overflow-hidden transition duration-300 md:block"
               style={{ display: scrolled ? "none" : "" }}
             >
               <AnimatePresence mode="wait">
@@ -158,7 +157,7 @@ const Navbar = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -10, opacity: 0 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}
-                  className="text-base tracking-tight text-secondary"
+                  className="text-secondary text-base tracking-tight"
                 >
                   {professions[index]}
                 </motion.p>
@@ -168,24 +167,23 @@ const Navbar = () => {
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden lg:flex rounded-md items-center">
+        <div className="hidden items-center rounded-md lg:flex">
           {navItems.map((item, idx) => (
             <Link
               href={item.href}
               key={item.title}
-              className="text-sm relative px-2 py-1"
+              className="relative px-2 py-1 text-sm"
               onMouseEnter={() => setHover(idx)}
               onMouseLeave={() => setHover(null)}
             >
               {hover === idx && (
                 <motion.span
                   layoutId="hovered-span"
-                  className="h-full w-full shadow-acternity dark:shadow-acternity-white absolute inset-0 rounded-md 
-                  bg-neutral-100 dark:bg-primary"
+                  className="shadow-acternity dark:shadow-acternity-white dark:bg-primary absolute inset-0 h-full w-full rounded-md bg-neutral-100"
                 />
               )}
 
-              <span className="text-primary text-base dark:text-white relative z-10">
+              <span className="text-primary relative z-10 text-base dark:text-white">
                 {item.title}
               </span>
             </Link>
@@ -193,19 +191,18 @@ const Navbar = () => {
         </div>
 
         {/* RIGHT */}
-        <div className="flex gap-2 md:gap-5 items-center">
+        <div className="flex items-center gap-2 md:gap-5">
           {/* SEARCH BUTTON */}
           <button
             onClick={() =>
               window.dispatchEvent(
-                new KeyboardEvent("keydown", { key: "k", ctrlKey: true }),
+                new KeyboardEvent("keydown", { key: "k", ctrlKey: true })
               )
             }
-            className="hidden cursor-pointer lg:flex items-center gap-2 text-sm px-3 h-10 
-            rounded-md bg-transparent shadow-[inset_0_1px_4px_rgba(0,0,0,0.3)] dark:shadow-[inset_0_2px_4px_0_rgba(255,255,255,0.3)] transition font-medium"
+            className="hidden h-10 cursor-pointer items-center gap-2 rounded-md bg-transparent px-3 text-sm font-medium shadow-[inset_0_1px_4px_rgba(0,0,0,0.3)] transition lg:flex dark:shadow-[inset_0_2px_4px_0_rgba(255,255,255,0.3)]"
           >
             <span>Search</span>
-            <span className="flex items-center gap-1 border px-1.5 py-0.5 rounded text-[10px]">
+            <span className="flex items-center gap-1 rounded border px-1.5 py-0.5 text-[10px]">
               Ctrl <span className="text-[10px]">+</span> K
             </span>
           </button>
@@ -216,8 +213,7 @@ const Navbar = () => {
             variant="outline"
             size="icon"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden bg-transparent size-10 cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] 
-            flex items-center justify-center rounded-md"
+            className="flex size-10 cursor-pointer items-center justify-center rounded-md bg-transparent shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] lg:hidden"
           >
             <Menu className="size-6" />
           </Button>
@@ -227,7 +223,7 @@ const Navbar = () => {
             variant="circle"
             start="center"
             blur
-            className={`shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all bg-transparent duration-300 ${
+            className={`bg-transparent shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-300 ${
               scrolled ? "rounded-full" : ""
             }`}
           />
@@ -242,23 +238,20 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
-            className="fixed w-40 top-20 right-4 bg-white dark:bg-primary shadow-acternity 
-            border border-secondary/20 rounded-lg p-4 flex flex-col gap-3 
-            lg:hidden z-60"
+            className="dark:bg-primary shadow-acternity border-secondary/20 fixed top-20 right-4 z-60 flex w-40 flex-col gap-3 rounded-lg border bg-white p-4 lg:hidden"
           >
             {navItems.map((item, idx) => (
               <React.Fragment key={item.title}>
                 <Link
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-primary dark:text-white text-base px-2 py-1 
-                  rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
+                  className="text-primary rounded-md px-2 py-1 text-base transition hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700"
                 >
                   {item.title}
                 </Link>
 
                 {idx !== navItems.length - 1 && (
-                  <div className="h-px w-full bg-neutral-300 dark:bg-neutral-700 opacity-60" />
+                  <div className="h-px w-full bg-neutral-300 opacity-60 dark:bg-neutral-700" />
                 )}
               </React.Fragment>
             ))}

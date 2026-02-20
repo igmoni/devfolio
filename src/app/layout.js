@@ -1,17 +1,20 @@
-import { Poppins } from "next/font/google";
-import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import { ThemeProvider } from "@/components/common/ThemeProvider";
-import Navbar from "@/components/common/Navbar";
-import Footer from "@/components/common/Footer";
-import Quote from "@/components/common/Quote";
+import { Poppins } from "next/font/google";
+
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
+
 import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
-import VisitorCount from "@/components/common/VisitorCount";
-import OnekoCat from "@/components/common/OnekoCat";
-import ShootingStar from "@/components/common/ShootingStar";
+import Footer from "@/components/common/Footer";
 import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
-import { Analytics } from "@vercel/analytics/next"
+import Navbar from "@/components/common/Navbar";
+import OnekoCat from "@/components/common/OnekoCat";
+import Quote from "@/components/common/Quote";
+import ShootingStar from "@/components/common/ShootingStar";
+import { ThemeProvider } from "@/components/common/ThemeProvider";
+import VisitorCount from "@/components/common/VisitorCount";
+
+import "./globals.css";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -66,7 +69,6 @@ export const metadata = {
   },
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
@@ -74,7 +76,7 @@ export default function RootLayout({ children }) {
         <head>
           <link rel="icon" href="/favicon.ico" />
         </head>
-        <body className={`${poppins.className}  min-h-[200vh]  antialiased`}>
+        <body className={`${poppins.className} min-h-[200vh] antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -84,10 +86,10 @@ export default function RootLayout({ children }) {
             <Toaster richColors position="top-center" />
             <KeyboardShortcutsLayer />
             <Navbar />
-            <ShootingStar/>
+            <ShootingStar />
             {children}
             <VisitorCount />
-            <OnekoCat/>
+            <OnekoCat />
             <Quote />
             <Footer />
             <Analytics />

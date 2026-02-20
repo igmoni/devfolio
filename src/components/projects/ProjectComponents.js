@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { Badge } from "../ui/badge";
-import JavaScript from "../technologies/JavaScript";
-import ReactIcon from "../technologies/ReactIcon";
-import NodeJs from "../technologies/NodeJs";
-import NextJs from "../technologies/NextJs";
-import TypeScript from "../technologies/TypeScript";
+
 import CodeCopyButton from "../blog/CodeCopyButton";
+import JavaScript from "../technologies/JavaScript";
+import NextJs from "../technologies/NextJs";
+import NodeJs from "../technologies/NodeJs";
+import ReactIcon from "../technologies/ReactIcon";
+import TypeScript from "../technologies/TypeScript";
+import { Badge } from "../ui/badge";
 
 const technologyComponent = {
   "Next.js": NextJs,
@@ -25,7 +26,7 @@ const Technology = ({ name }) => {
     technologyComponent[name] || technologyComponent[name.toLowerCase()];
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-full bg-muted/50 px-3 py-1.5 text-sm font-medium">
+    <div className="bg-muted/50 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium">
       {TechComponent && <TechComponent />}
       <span>{name}</span>
     </div>
@@ -34,7 +35,7 @@ const Technology = ({ name }) => {
 
 const TechStack = ({ technologies }) => {
   return (
-    <div className="my-6 rounded-lg border bg-muted/20 p-4">
+    <div className="bg-muted/20 my-6 rounded-lg border p-4">
       <h4 className="mb-3 text-lg font-semibold">Technology Stack</h4>
       <div className="flex flex-wrap gap-2">
         {technologies.map((tech) => (
@@ -47,10 +48,10 @@ const TechStack = ({ technologies }) => {
 
 const ProjectMeta = ({ timeline, role, team, status }) => {
   return (
-    <div className="my-6 grid gap-4 rounded-lg border bg-muted/20 p-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="bg-muted/20 my-6 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
       {timeline && (
         <div>
-          <h5 className="text-sm font-semibold text-muted-foreground">
+          <h5 className="text-muted-foreground text-sm font-semibold">
             Timeline
           </h5>
           <p className="text-sm">{timeline}</p>
@@ -58,19 +59,19 @@ const ProjectMeta = ({ timeline, role, team, status }) => {
       )}
       {role && (
         <div>
-          <h5 className="text-sm font-semibold text-muted-foreground">Role</h5>
+          <h5 className="text-muted-foreground text-sm font-semibold">Role</h5>
           <p className="text-sm">{role}</p>
         </div>
       )}
       {team && (
         <div>
-          <h5 className="text-sm font-semibold text-muted-foreground">Team</h5>
+          <h5 className="text-muted-foreground text-sm font-semibold">Team</h5>
           <p className="text-sm">{team}</p>
         </div>
       )}
       {status && (
         <div>
-          <h5 className="text-sm font-semibold text-muted-foreground">
+          <h5 className="text-muted-foreground text-sm font-semibold">
             Status
           </h5>
           <Badge
@@ -78,8 +79,8 @@ const ProjectMeta = ({ timeline, role, team, status }) => {
               status === "completed"
                 ? "default"
                 : status === "in-progress"
-                ? "secondary"
-                : "outline"
+                  ? "secondary"
+                  : "outline"
             }
           >
             {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -92,7 +93,7 @@ const ProjectMeta = ({ timeline, role, team, status }) => {
 
 const Challenges = ({ challenges }) => {
   return (
-    <div className="my-6 rounded-lg border boredr-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
+    <div className="boredr-yellow-200 my-6 rounded-lg border bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
       <h4 className="mb-3 text-lg font-semibold text-yellow-800 dark:text-yellow-200">
         Key Challenges
       </h4>
@@ -124,7 +125,7 @@ const Learnings = ({ learnings }) => {
             key={idx}
             className="flex items-start gap-2 text-sm text-green-700 dark:text-green-300"
           >
-            <span className="mt-1 block size-1.5 rounded-full bg-green- dark:bg-green-400">
+            <span className="bg-green- mt-1 block size-1.5 rounded-full dark:bg-green-400">
               {learning}
             </span>
           </li>
@@ -153,19 +154,19 @@ export const ProjectComponents = {
   ),
 
   h2: ({ children, ...props }) => (
-    <h2 className="mb-4 mt-8 text-3xl font-semibold" {...props}>
+    <h2 className="mt-8 mb-4 text-3xl font-semibold" {...props}>
       {children}
     </h2>
   ),
 
   h3: ({ children, ...props }) => (
-    <h3 className="mb-3 mt-6 text-2xl font-medium" {...props}>
+    <h3 className="mt-6 mb-3 text-2xl font-medium" {...props}>
       {children}
     </h3>
   ),
 
   p: ({ children, ...props }) => (
-    <p className="mb-4 leading-7 text-muted-foreground" {...props}>
+    <p className="text-muted-foreground mb-4 leading-7" {...props}>
       {children}
     </p>
   ),
@@ -183,7 +184,7 @@ export const ProjectComponents = {
   ),
 
   li: ({ children, ...props }) => (
-    <li className="leading-7 text-muted-foreground" {...props}>
+    <li className="text-muted-foreground leading-7" {...props}>
       {children}
     </li>
   ),
@@ -207,7 +208,7 @@ export const ProjectComponents = {
     return (
       <div className="group relative mb-4">
         <pre
-          className="overflow-x-auto rounded-lg border bg-muted/30 p-4 text-sm [&>code]:bg-transparent [&>code]:p-0"
+          className="bg-muted/30 overflow-x-auto rounded-lg border p-4 text-sm [&>code]:bg-transparent [&>code]:p-0"
           {...props}
         >
           {children}
@@ -227,7 +228,7 @@ export const ProjectComponents = {
     }
 
     return (
-      <code className="rounded px-2 py-1 text-sm font-mono" {...props}>
+      <code className="rounded px-2 py-1 font-mono text-sm" {...props}>
         {children}
       </code>
     );
@@ -235,7 +236,7 @@ export const ProjectComponents = {
 
   blockquote: ({ children, ...props }) => (
     <blockquote
-      className="mb-4 border-l-4 border-primary pl-4 italic text-muted-foreground"
+      className="border-primary text-muted-foreground mb-4 border-l-4 pl-4 italic"
       {...props}
     >
       {children}

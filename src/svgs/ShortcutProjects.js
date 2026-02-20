@@ -2,11 +2,7 @@
 
 export default function ShortcutProjects(props) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <rect
         x="3.75"
         y="6.75"
@@ -37,5 +33,3 @@ export default function ShortcutProjects(props) {
     </svg>
   );
 }
-
-

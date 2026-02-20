@@ -2,11 +2,7 @@
 
 export default function ShortcutEmail(props) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <rect
         x="3.5"
         y="6"
@@ -32,5 +28,3 @@ export default function ShortcutEmail(props) {
     </svg>
   );
 }
-
-

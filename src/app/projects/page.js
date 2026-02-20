@@ -1,10 +1,17 @@
+import { Suspense } from "react";
+
 import Container from "@/components/common/Container";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllProjects, getAllTags, getProjectStatusTags, getPublishedProjectPosts } from "@/lib/projects";
-import { Suspense } from "react";
-import ProjectPageClient from "./ProjectPageClient";
 import { generateMetaData as getMetaData } from "@/config/Meta";
+import {
+  getAllProjects,
+  getAllTags,
+  getProjectStatusTags,
+  getPublishedProjectPosts,
+} from "@/lib/projects";
+
+import ProjectPageClient from "./ProjectPageClient";
 
 export async function generateMetadata() {
   return getMetaData("/projects");
@@ -15,8 +22,8 @@ function ProjectPageLoading() {
     <Container className={"py-16"}>
       <div className="space-y-8">
         <div className="space-y-4 text-center">
-          <Skeleton className={"h-12 w-32 mx-auto"} />
-          <Skeleton className={"h-6 w-96 mx-auto"} />
+          <Skeleton className={"mx-auto h-12 w-32"} />
+          <Skeleton className={"mx-auto h-6 w-96"} />
         </div>
 
         <Separator />

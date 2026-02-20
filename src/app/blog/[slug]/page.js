@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+import { Link } from "next-view-transitions";
+import { notFound } from "next/navigation";
+
+import BackButton from "@/components/blog/BackButton";
+import BlogContent from "@/components/blog/BlogContent";
 import BlogList from "@/components/blog/BlogList";
 import Container from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
@@ -5,15 +11,9 @@ import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/Meta";
 import {
   getBlogPostBySlug,
-  getRelatedPosts,
   getBlogPostSlug,
+  getRelatedPosts,
 } from "@/lib/blog";
-import { Metadata } from "next";
-import { Link } from "next-view-transitions";
-
-import { notFound } from "next/navigation";
-import BlogContent from "@/components/blog/BlogContent";
-import BackButton from "@/components/blog/BackButton";
 
 export async function generateStaticParams() {
   const slugs = getBlogPostSlug();
@@ -63,7 +63,7 @@ const page = async ({ params }) => {
   const relatedPosts = await getRelatedPosts(slug, 3);
   return (
     <>
-      <Container className="py-24 px-5 md:px-0 max-w-4xl">
+      <Container className="max-w-4xl px-5 py-24 md:px-0">
         <div className="space-y-12">
           {/* Back Button */}
           <BackButton />

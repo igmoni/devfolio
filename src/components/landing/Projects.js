@@ -1,12 +1,14 @@
 import { Link } from "next-view-transitions";
-import SectionHeading from "../common/SectionHeading";
-import { Button } from "../ui/button";
-import Container from "../common/Container";
-import ProjectList from "../projects/ProjectList";
+
 import { getAllProjects } from "@/lib/projects";
 
+import Container from "../common/Container";
+import SectionHeading from "../common/SectionHeading";
+import ProjectList from "../projects/ProjectList";
+import { Button } from "../ui/button";
+
 const Projects = () => {
-  const projects = getAllProjects()
+  const projects = getAllProjects();
 
   return (
     <Container className={"mt-20 px-5"}>

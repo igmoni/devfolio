@@ -1,18 +1,14 @@
-import RadarStats from "./RadarStats";
-import ProgressStats from "./ProgressStats";
 import Container from "../common/Container";
 import SectionHeading from "../common/SectionHeading";
+import ProgressStats from "./ProgressStats";
+import RadarStats from "./RadarStats";
 
 const SideQuests = () => {
   return (
-    <Container
-      className="
-        rounded-xl px-5 pt-20
-      "
-    >
+    <Container className="rounded-xl px-5 pt-20">
       <SectionHeading heading={"Side Quests"} subHeading={"Featured"} />
 
-      <div className="grid grid-cols-1 gap-10 items-center py-10 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-center gap-10 py-10 md:grid-cols-2">
         <RadarStats />
         <ProgressStats />
       </div>

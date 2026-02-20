@@ -1,12 +1,13 @@
-import { cn } from "@/lib/utils";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 export default function Coffee({ className }) {
   return (
@@ -25,8 +26,8 @@ export default function Coffee({ className }) {
               width={100}
               height={100}
               className={cn(
-                "size-10 rounded-md dark:shadow-acternity-white",
-                className,
+                "dark:shadow-acternity-white size-10 rounded-md",
+                className
               )}
             />
           </Link>

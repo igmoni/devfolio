@@ -1,16 +1,16 @@
-import TypeScript from "@/components/technologies/TypeScript";
-import ReactIcon from "@/components/technologies/ReactIcon";
-import NodeJs from "@/components/technologies/NodeJs";
-import NextJs from "@/components/technologies/NextJs";
-import JavaScript from "@/components/technologies/JavaScript";
 import Figma from "@/components/technologies/Figma";
+import Java from "@/components/technologies/Java";
+import JavaScript from "@/components/technologies/JavaScript";
+import NextJs from "@/components/technologies/NextJs";
+import NodeJs from "@/components/technologies/NodeJs";
+import Python from "@/components/technologies/Python";
+import ReactIcon from "@/components/technologies/ReactIcon";
 import TailwindCss from "@/components/technologies/TailwindCss";
+import TypeScript from "@/components/technologies/TypeScript";
 import Code from "@/svgs/Code";
+import Conversion from "@/svgs/Conversion";
 import Database from "@/svgs/Database";
 import Mentor from "@/svgs/Mentor";
-import Conversion from "@/svgs/Conversion";
-import Python from "@/components/technologies/Python";
-import Java from "@/components/technologies/Java";
 
 export const mySkills = [
   <ReactIcon key="react" />,
@@ -20,8 +20,8 @@ export const mySkills = [
   <JavaScript key="javascript" />,
   <TailwindCss key="tailwindcss" />,
   <Figma key="figma" />,
-  <Python key="python"/>,
-  <Java key="java" />
+  <Python key="python" />,
+  <Java key="java" />,
 ];
 
 export const about = {

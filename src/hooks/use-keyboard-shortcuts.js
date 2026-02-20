@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
-import { keyboardShortcuts } from "@/config/KeyboardShortcut";
-import {coverVideos, heroConfig, socialLinks } from "@/config/Hero";
-import { githubConfig } from "@/config/Github";
 
+import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
+
+import { githubConfig } from "@/config/Github";
+import { coverVideos, heroConfig, socialLinks } from "@/config/Hero";
+import { keyboardShortcuts } from "@/config/KeyboardShortcut";
 
 const EMAIL_LINK =
   socialLinks.find((link) => link.name === "Email")?.href ??
@@ -107,7 +108,7 @@ export function useKeyboardShortcuts() {
       const title =
         typeof document !== "undefined"
           ? document.title
-          : heroConfig?.title ?? "Mohan - Devfolio";
+          : (heroConfig?.title ?? "Mohan - Devfolio");
 
       if (navigator.share) {
         try {
@@ -150,7 +151,6 @@ export function useKeyboardShortcuts() {
     const toggleCoverVideo = () => {
       window.dispatchEvent(new CustomEvent("toggle-cover-video"));
     };
-    
 
     const groups = keyboardShortcuts({
       goTo,

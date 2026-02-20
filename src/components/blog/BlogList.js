@@ -1,6 +1,6 @@
 import BlogCard from "./BlogCard";
 
-const BlogList = ({ posts, className = '' }) => {
+const BlogList = ({ posts, className = "" }) => {
   if (posts.length === 0) {
     return (
       <div className="flex min-h-[400px] flex-col items-center justify-center space-y-4 text-center">
@@ -9,7 +9,7 @@ const BlogList = ({ posts, className = '' }) => {
           Check back later for new content!
         </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -18,7 +18,7 @@ const BlogList = ({ posts, className = '' }) => {
         <BlogCard key={post.slug} post={post} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default BlogList
+export default BlogList;

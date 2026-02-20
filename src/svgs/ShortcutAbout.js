@@ -22,15 +22,7 @@ export default function ShortcutAbout(props) {
         strokeWidth="1.6"
         strokeLinecap="round"
       />
-      <circle
-        cx="12"
-        cy="16.5"
-        r="0.8"
-        className="fill-current"
-      />
+      <circle cx="12" cy="16.5" r="0.8" className="fill-current" />
     </svg>
   );
 }
-
-
-

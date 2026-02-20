@@ -1,6 +1,7 @@
-"use client"
-import React from "react"
-import { motion } from "motion/react"
+"use client";
+import React from "react";
+
+import { motion } from "motion/react";
 
 export default function Mail() {
   return (
@@ -38,5 +39,5 @@ export default function Mail() {
         />
       </g>
     </motion.svg>
-  )
+  );
 }

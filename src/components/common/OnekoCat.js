@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { catConfig } from "@/config/Cat";
 
 export default function OnekoCat() {

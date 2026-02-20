@@ -1,12 +1,15 @@
 "use client";
+import { useEffect, useState } from "react";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
+import { motion } from "motion/react";
+
 import BlogList from "@/components/blog/BlogList";
 import Container from "@/components/common/Container";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useHapticFeedback } from "@/hooks/use-haptic-feedback";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
-import { motion } from 'motion/react'
 
 const getBlogPostsByTagClient = (posts, tag) => {
   return posts.filter((post) =>
@@ -62,20 +65,23 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
   };
 
   return (
-    <Container className={"py-16 px-5"}>
-      <div className="space-y-8 mt-20 ">
+    <Container className={"relative px-5 py-16"}>
+      <div className="mt-20 space-y-8">
         <div className="flex flex-col gap-5 text-center">
-          <h1 className="bg-linear-to-t from-primary to-secondary pb-3 dark:from-neutral-600 dark:to-white bg-clip-text text-transparent   text-4xl font-semibold tracking-tight lg:text-7xl">
+          <h1 className="from-primary to-secondary bg-linear-to-t bg-clip-text pb-3 text-4xl font-semibold tracking-tight text-transparent lg:text-7xl dark:from-neutral-600 dark:to-white">
             Blogs
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             A collection of thoughts, tips & tutorials on engineering &
             programming.
           </p>
         </div>
-        <motion.div initial={{opacity: 0, width: '1px'}} animate={{ opacity: 1, width: '100%'}} transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.2}}>
-
-        <Separator  />
+        <motion.div
+          initial={{ opacity: 0, width: "1px" }}
+          animate={{ opacity: 1, width: "100%" }}
+          transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}
+        >
+          <Separator />
         </motion.div>
 
         {initialTags.length > 0 && (
@@ -85,7 +91,7 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
               {selectedTag && (
                 <button
                   onClick={() => handleTagClick(selectedTag)}
-                  className="text-sm text-muted-foreground hover:text-foreground underline"
+                  className="text-muted-foreground hover:text-foreground text-sm underline"
                 >
                   Clear filter
                 </button>
@@ -104,7 +110,7 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
                     <Badge
                       variant={isSelected ? "default" : "outline"}
                       className={
-                        "capitalize cursor-pointer hover:bg-accent rounded-sm hover:text-accent-foreground  tag-inner-shadow"
+                        "hover:bg-accent hover:text-accent-foreground tag-inner-shadow cursor-pointer rounded-sm capitalize"
                       }
                     >
                       {tag} {postCount}
@@ -121,7 +127,7 @@ const BlogPageClient = ({ initialPosts, initialTags }) => {
             <h2 className="text-2xl font-semibold">
               {selectedTag ? `Posts tagged "${selectedTag}"` : "Latest Posts"}
               {filteredPosts.length > 0 && (
-                <span className="ml-2 text-sm font-normal text-muted-foreground">
+                <span className="text-muted-foreground ml-2 text-sm font-normal">
                   ({filteredPosts.length}{" "}
                   {filteredPosts.length === 1 ? "post" : "posts"})
                 </span>

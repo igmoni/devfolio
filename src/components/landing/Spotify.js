@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Container from "../common/Container";
-import Image from "next/image";
+
 import { Link } from "next-view-transitions";
+import Image from "next/image";
+
+import Container from "../common/Container";
 
 const Spotify = () => {
   const [song, setSong] = useState(null);
@@ -48,17 +50,17 @@ const Spotify = () => {
           alt="Spotify"
           width={48}
           height={48}
-          className="rounded-md shrink-0"
+          className="shrink-0 rounded-md"
         />
 
-        <div className="flex flex-col min-w-0">
-          <p className="text-secondary font-semibold text-sm truncate">
+        <div className="flex min-w-0 flex-col">
+          <p className="text-secondary truncate text-sm font-semibold">
             Offline
           </p>
-          <p className="text-secondary text-xs truncate">
+          <p className="text-secondary truncate text-xs">
             Not currently listening
           </p>
-          <p className="text-secondary text-xs truncate">
+          <p className="text-secondary truncate text-xs">
             Music Activity unavailable
           </p>
         </div>
@@ -74,10 +76,10 @@ const Spotify = () => {
           alt={song.album}
           width={50}
           height={50}
-          className="size-15 rounded-md shrink-0"
+          className="size-15 shrink-0 rounded-md"
         />
-        <div className="flex flex-col gap-1 min-w-0">
-          <p className="text-gray-400 flex items-center gap-1 text-xs truncate">
+        <div className="flex min-w-0 flex-col gap-1">
+          <p className="flex items-center gap-1 truncate text-xs text-gray-400">
             <span className="">
               <Image
                 width={15}
@@ -88,8 +90,8 @@ const Spotify = () => {
             </span>{" "}
             Currently listening
           </p>
-          <p className="font-semibold text-sm truncate">{song.title}</p>
-          <p className="text-gray-400 text-xs truncate">by {song.artist}</p>
+          <p className="truncate text-sm font-semibold">{song.title}</p>
+          <p className="truncate text-xs text-gray-400">by {song.artist}</p>
         </div>
       </Container>
     </Link>

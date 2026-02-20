@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { parseWakaTime, formatDuration } from "@/lib/wakatimeStats";
+
 import Image from "next/image";
+
+import { formatDuration, parseWakaTime } from "@/lib/wakatimeStats";
 
 const STORAGE_KEY = "wakatime-cache";
 
@@ -70,7 +72,7 @@ export default function WakaTimeText() {
   // 🟢 ONLINE
   if (data.status === "online") {
     return (
-      <div className="text-sm text-primary dark:text-white space-y-1">
+      <div className="text-primary space-y-1 text-sm dark:text-white">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <span>Currently coding in</span>
 
@@ -92,17 +94,17 @@ export default function WakaTimeText() {
 
         {/* LINE 2 */}
         {data.project && data.file ? (
-          <div className=" text-muted-foreground  text-sm">
+          <div className="text-muted-foreground text-sm">
             Working on{" "}
-            <span className="font-medium text-primary dark:text-white">
+            <span className="text-primary font-medium dark:text-white">
               {data.project}
               <span className="font-normal"> & editing file:</span> {data.file}
             </span>
           </div>
         ) : (
-          <div className="text-primary dark:text-white text-sm">
+          <div className="text-primary text-sm dark:text-white">
             Thinking &amp; coding. &nbsp; &amp; editing file{" "}
-            <span className="font-medium text-accent">Coding</span>
+            <span className="text-accent font-medium">Coding</span>
           </div>
         )}
       </div>
@@ -112,7 +114,7 @@ export default function WakaTimeText() {
   // 🔴 OFFLINE
   return (
     <span className="text-sm text-neutral-500 dark:text-neutral-400">
-      <span className="font-semibold text-primary dark:text-white flex gap-1">
+      <span className="text-primary flex gap-1 font-semibold dark:text-white">
         Offline in{" "}
         <Image
           src="/assets/cursor.png"
@@ -123,9 +125,8 @@ export default function WakaTimeText() {
         />
         Cursor
       </span>{" "}
-      
       Yesterday worked{" "}
-      <span className="text-primary dark:text-white font-semibold">
+      <span className="text-primary font-semibold dark:text-white">
         {" "}
         {data.yesterdayTime}
       </span>

@@ -1,20 +1,23 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { githubConfig } from "@/config/Github";
+
 import { useTheme } from "next-themes";
-import dynamic from "next/dynamic";
 import { Link } from "next-view-transitions";
-import Container from "../common/Container";
-import GithubIcon from "@/svgs/Github";
-import { Button } from "../ui/button";
-import WakaTimeText from "./WakaTimeText";
-import { instrumentSerif } from "./Hero";
+import dynamic from "next/dynamic";
+
+import { githubConfig } from "@/config/Github";
 import ArrowUpRight from "@/svgs/ArrowUpRight";
+import GithubIcon from "@/svgs/Github";
+
+import Container from "../common/Container";
+import { Button } from "../ui/button";
+import { instrumentSerif } from "./Hero";
+import WakaTimeText from "./WakaTimeText";
 
 const ActivityCalendar = dynamic(
   () => import("react-activity-calendar").then((mod) => mod.ActivityCalendar),
-  { ssr: false },
+  { ssr: false }
 );
 
 /* ---------- helpers ---------- */
@@ -64,7 +67,7 @@ const Github = () => {
         setHasError(false);
 
         const res = await fetch(
-          `${githubConfig.apiUrl}/${githubConfig.username}.json`,
+          `${githubConfig.apiUrl}/${githubConfig.username}.json`
         );
         const data = await res.json();
 
@@ -90,7 +93,7 @@ const Github = () => {
               typeof item === "object" &&
               "date" in item &&
               "contributionCount" in item &&
-              "contributionLevel" in item,
+              "contributionLevel" in item
           )
           .map((item) => ({
             date: String(item.date),
@@ -122,9 +125,9 @@ const Github = () => {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h2 className="text-2xl font-bold flex justify-between items-center text-foreground">
+          <h2 className="text-foreground flex items-center justify-between text-2xl font-bold">
             <p>
-              <span className={`${instrumentSerif.className} italic text-3xl`}>
+              <span className={`${instrumentSerif.className} text-3xl italic`}>
                 Github
               </span>{" "}
               Activity
@@ -132,22 +135,22 @@ const Github = () => {
             <Link
               href={githubConfig.githubLink}
               target="_blank"
-              className="group relative inline-flex items-center gap-1 text-[12px] md:text-lg font-medium"
+              className="group relative inline-flex items-center gap-1 text-[12px] font-medium md:text-lg"
             >
-              <span className="relative ">
+              <span className="relative">
                 View Profile
-                <span className="absolute left-0 -bottom-1 h-0.5 w-full bg-current scale-x-0 origin-right transition-all duration-200 ease-out group-hover:scale-x-100 group-hover:origin-left" />
+                <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-right scale-x-0 bg-current transition-all duration-200 ease-out group-hover:origin-left group-hover:scale-x-100" />
               </span>
-              <ArrowUpRight className="size-3 md:size-4 transform group-hover:scale-150 transition-all duration-300 ease-out group-hover:translate-x-1 " />
+              <ArrowUpRight className="size-3 transform transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:scale-150 md:size-4" />
             </Link>
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             <b>{githubConfig.username}</b>'s {githubConfig.subtitle}
           </p>
 
           {!isLoading && !hasError && totalContributions > 0 && (
-            <div className="flex md:flex-row flex-col gap-5  md:items-center justify-between">
-              <p className="text-sm text-primary dark:text-white font-medium mt-1">
+            <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
+              <p className="text-primary mt-1 text-sm font-medium dark:text-white">
                 Total:{" "}
                 <span className="font-black">
                   {totalContributions.toLocaleString()}
@@ -163,8 +166,8 @@ const Github = () => {
         {isLoading && (
           <div className="flex items-center justify-center py-16">
             <div className="text-center">
-              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-              <p className="text-sm text-muted-foreground">
+              <div className="border-primary mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-2 border-t-transparent" />
+              <p className="text-muted-foreground text-sm">
                 {githubConfig.loadingState.desc}
               </p>
             </div>
@@ -173,18 +176,18 @@ const Github = () => {
 
         {/* Error */}
         {!isLoading && (hasError || contributions.length === 0) && (
-          <div className="p-8 text-center text-muted-foreground border-2 border-dashed border-border rounded-xl">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
-              <GithubIcon className="w-8 h-8" />
+          <div className="text-muted-foreground border-border rounded-xl border-2 border-dashed p-8 text-center">
+            <div className="bg-muted mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <GithubIcon className="h-8 w-8" />
             </div>
-            <p className="font-medium mb-2">{githubConfig.errorState.title}</p>
-            <p className="text-sm mb-4">{githubConfig.errorState.desc}</p>
+            <p className="mb-2 font-medium">{githubConfig.errorState.title}</p>
+            <p className="mb-4 text-sm">{githubConfig.errorState.desc}</p>
             <Button variant="outline" asChild>
               <Link
                 href={`https://github.com/${githubConfig.username}`}
                 className="inline-flex items-center gap-2"
               >
-                <GithubIcon className="w-4 h-4" />
+                <GithubIcon className="h-4 w-4" />
                 {githubConfig.errorState.buttontext}
               </Link>
             </Button>
@@ -194,7 +197,7 @@ const Github = () => {
         {/* Calendar */}
         {!isLoading && !hasError && contributions.length > 0 && (
           <div className="relative overflow-hidden">
-            <div className="relative bg-background/50 backdrop-blur-sm rounded-lg border border-dashed dark:border-white/10 border-black/20 p-6">
+            <div className="bg-background/50 relative rounded-lg border border-dashed border-black/20 p-6 backdrop-blur-sm dark:border-white/10">
               <div className="w-full overflow-x-auto">
                 <ActivityCalendar
                   data={contributions}

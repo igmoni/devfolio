@@ -1,16 +1,16 @@
 "use client";
 
 import React from "react";
-import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
+
 import {
   CommandDialog,
-  CommandInput,
-  CommandList,
   CommandEmpty,
   CommandGroup,
+  CommandInput,
   CommandItem,
-  CommandShortcut,
+  CommandList,
   CommandSeparator,
+  CommandShortcut,
 } from "@/components/ui/command";
 import {
   Dialog,
@@ -19,24 +19,24 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
+import ShortcutAbout from "@/svgs/ShortcutAbout";
+import ShortcutBlog from "@/svgs/ShortcutBlog";
+import ShortcutChat from "@/svgs/ShortcutChat";
+import ShortcutCode from "@/svgs/ShortcutCode";
+import ShortcutContact from "@/svgs/ShortcutContact";
+import ShortcutEmail from "@/svgs/ShortcutEmail";
+import ShortcutGithub from "@/svgs/ShortcutGithub";
 // Dedicated shortcut icons (do not reuse existing icons)
 import ShortcutHome from "@/svgs/ShortcutHome";
-import ShortcutAbout from "@/svgs/ShortcutAbout";
-import ShortcutProjects from "@/svgs/ShortcutProjects";
-import ShortcutBlog from "@/svgs/ShortcutBlog";
-import ShortcutContact from "@/svgs/ShortcutContact";
-import ShortcutTheme from "@/svgs/ShortcutTheme";
+import ShortcutOnekoAvatar from "@/svgs/ShortcutOnekoAvatar";
+import ShortcutOnekoSleep from "@/svgs/ShortcutOnekoSleep";
 import ShortcutPalette from "@/svgs/ShortcutPalette";
+import ShortcutProjects from "@/svgs/ShortcutProjects";
 import ShortcutScrollTop from "@/svgs/ShortcutScrollTop";
 import ShortcutShare from "@/svgs/ShortcutShare";
-import ShortcutCode from "@/svgs/ShortcutCode";
 import ShortcutSpotify from "@/svgs/ShortcutSpotify";
-import ShortcutOnekoSleep from "@/svgs/ShortcutOnekoSleep";
-import ShortcutOnekoAvatar from "@/svgs/ShortcutOnekoAvatar";
-import ShortcutChat from "@/svgs/ShortcutChat";
-import ShortcutGithub from "@/svgs/ShortcutGithub";
-import ShortcutEmail from "@/svgs/ShortcutEmail";
+import ShortcutTheme from "@/svgs/ShortcutTheme";
 
 const iconMap = {
   home: ShortcutHome,
@@ -59,20 +59,12 @@ const iconMap = {
 
 function ShortcutIcon({ name }) {
   const IconComponent = name && iconMap[name] ? iconMap[name] : ShortcutPalette;
-  return <IconComponent className="size-4 shrink-0 text-muted-foreground" />;
+  return <IconComponent className="text-muted-foreground size-4 shrink-0" />;
 }
 
 function ShortcutChip({ label }) {
   return (
-    <kbd
-      className="
-        inline-flex items-center justify-center
-        rounded border border-border/60
-        bg-background px-1.5 py-0.5
-        font-mono text-[11px] leading-none
-        text-foreground
-      "
-    >
+    <kbd className="border-border/60 bg-background text-foreground inline-flex items-center justify-center rounded border px-1.5 py-0.5 font-mono text-[11px] leading-none">
       {label}
     </kbd>
   );
@@ -90,15 +82,12 @@ function ShortcutRow({ shortcut, onRun }) {
       <ShortcutIcon name={shortcut.icon} />
       <div className="flex flex-col gap-0.5">
         <span className="text-sm font-medium">{shortcut.name}</span>
-        <span className="text-[11px] text-muted-foreground">
+        <span className="text-muted-foreground text-[11px]">
           {shortcut.desc}
         </span>
       </div>
       <CommandShortcut>
-        <ShortcutChip
-          label={shortcut.keybind}
-          className="ml-auto"
-        />
+        <ShortcutChip label={shortcut.keybind} className="ml-auto" />
       </CommandShortcut>
     </CommandItem>
   );
@@ -186,7 +175,7 @@ export default function KeyboardShortcutsLayer() {
 
       {/* Keyboard Shortcuts Help */}
       <Dialog open={isHelpOpen} onOpenChange={setIsHelpOpen}>
-        <DialogContent className="w-0 md:min-w-2xl  p-0">
+        <DialogContent className="w-0 p-0 md:min-w-2xl">
           <div className="flex max-h-[80vh] flex-col">
             <DialogHeader className="space-y-1 px-6 pt-6 pb-3">
               <DialogTitle>Keyboard Shortcuts</DialogTitle>
@@ -200,23 +189,23 @@ export default function KeyboardShortcutsLayer() {
               {/* Shortcuts grouped by type */}
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                     Navigation
                   </h3>
-                  <div className="divide-y divide-border overflow-hidden rounded-md border border-border/70 bg-muted/30">
+                  <div className="divide-border border-border/70 bg-muted/30 divide-y overflow-hidden rounded-md border">
                     {(shortcuts.navigation || []).map((shortcut) => (
                       <button
                         key={`help-nav-${shortcut.name}-${shortcut.keybind}`}
                         type="button"
                         onClick={() => runShortcut(shortcut)}
-                        className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-background/80"
+                        className="hover:bg-background/80 flex w-full items-center gap-3 px-3 py-2 text-left"
                       >
                         <ShortcutIcon name={shortcut.icon} />
                         <div className="flex flex-1 flex-col gap-0.5">
                           <span className="text-sm font-medium">
                             {shortcut.name}
                           </span>
-                          <span className="text-[11px] text-muted-foreground">
+                          <span className="text-muted-foreground text-[11px]">
                             {shortcut.desc}
                           </span>
                         </div>
@@ -227,23 +216,23 @@ export default function KeyboardShortcutsLayer() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                     Features
                   </h3>
-                  <div className="divide-y divide-border overflow-hidden rounded-md border border-border/70 bg-muted/30">
+                  <div className="divide-border border-border/70 bg-muted/30 divide-y overflow-hidden rounded-md border">
                     {(shortcuts.features || []).map((shortcut) => (
                       <button
                         key={`help-feat-${shortcut.name}-${shortcut.keybind}`}
                         type="button"
                         onClick={() => runShortcut(shortcut)}
-                        className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-background/80"
+                        className="hover:bg-background/80 flex w-full items-center gap-3 px-3 py-2 text-left"
                       >
                         <ShortcutIcon name={shortcut.icon} />
                         <div className="flex flex-1 flex-col gap-0.5">
                           <span className="text-sm font-medium">
                             {shortcut.name}
                           </span>
-                          <span className="text-[11px] text-muted-foreground">
+                          <span className="text-muted-foreground text-[11px]">
                             {shortcut.desc}
                           </span>
                         </div>
@@ -254,10 +243,10 @@ export default function KeyboardShortcutsLayer() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                     Actions & Help
                   </h3>
-                  <div className="divide-y divide-border overflow-hidden rounded-md border border-border/70 bg-muted/30">
+                  <div className="divide-border border-border/70 bg-muted/30 divide-y overflow-hidden rounded-md border">
                     {[
                       ...(shortcuts.actions || []),
                       ...(shortcuts.help || []),
@@ -266,14 +255,14 @@ export default function KeyboardShortcutsLayer() {
                         key={`help-act-${shortcut.name}-${shortcut.keybind}`}
                         type="button"
                         onClick={() => runShortcut(shortcut)}
-                        className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-background/80"
+                        className="hover:bg-background/80 flex w-full items-center gap-3 px-3 py-2 text-left"
                       >
                         <ShortcutIcon name={shortcut.icon} />
                         <div className="flex flex-1 flex-col gap-0.5">
                           <span className="text-sm font-medium">
                             {shortcut.name}
                           </span>
-                          <span className="text-[11px] text-muted-foreground">
+                          <span className="text-muted-foreground text-[11px]">
                             {shortcut.desc}
                           </span>
                         </div>
@@ -285,10 +274,10 @@ export default function KeyboardShortcutsLayer() {
               </div>
 
               {/* Tips at the bottom */}
-              <div className="space-y-2 rounded-md border border-border/60 p-4">
-                <h3 className="text-sm font-semibold text-foreground">Tips</h3>
+              <div className="border-border/60 space-y-2 rounded-md border p-4">
+                <h3 className="text-foreground text-sm font-semibold">Tips</h3>
 
-                <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                <ul className="text-muted-foreground list-disc space-y-2 pl-4 text-sm">
                   <li>
                     <span className="flex items-start gap-2">
                       Press <ShortcutChip label="Ctrl + K" /> to open the

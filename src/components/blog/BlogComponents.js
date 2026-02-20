@@ -1,5 +1,7 @@
 import React from "react";
+
 import Image from "next/image";
+
 import CodeCopyButton from "./CodeCopyButton";
 
 const BlogComponents = {
@@ -9,7 +11,7 @@ const BlogComponents = {
       alt={alt}
       width={800}
       height={400}
-      className="rounded-lg mx-auto"
+      className="mx-auto rounded-lg"
       {...props}
     />
   ),
@@ -21,19 +23,19 @@ const BlogComponents = {
   ),
 
   h2: ({ children, ...props }) => (
-    <h2 className="mb-4 mt-8 text-3xl font-semibold" {...props}>
+    <h2 className="mt-8 mb-4 text-3xl font-semibold" {...props}>
       {children}
     </h2>
   ),
 
   h3: ({ children, ...props }) => (
-    <h3 className="mb-3 mt-6 text-2xl font-medium" {...props}>
+    <h3 className="mt-6 mb-3 text-2xl font-medium" {...props}>
       {children}
     </h3>
   ),
 
   p: ({ children, ...props }) => (
-    <p className="mb-4 leading-7 text-muted-foreground" {...props}>
+    <p className="text-muted-foreground mb-4 leading-7" {...props}>
       {children}
     </p>
   ),
@@ -51,7 +53,7 @@ const BlogComponents = {
   ),
 
   li: ({ children, ...props }) => (
-    <li className="leading-7 text-muted-foreground" {...props}>
+    <li className="text-muted-foreground leading-7" {...props}>
       {children}
     </li>
   ),
@@ -61,7 +63,11 @@ const BlogComponents = {
       if (typeof node === "string" || typeof node === "number") {
         return String(node);
       }
-      if (React.isValidElement(node) && node.props && typeof node.props === "object") {
+      if (
+        React.isValidElement(node) &&
+        node.props &&
+        typeof node.props === "object"
+      ) {
         return getTextContent(node.props.children);
       }
       if (Array.isArray(node)) {
@@ -74,16 +80,16 @@ const BlogComponents = {
 
     return (
       <div className="group relative mb-4">
-        <div className="border p-1 dark:shadow-[inset_0_0_3px_rgba(255,255,255,0.5)] shadow-[inset_0_0_2px_rgba(0,0,0,0.3)] rounded-3xl">
-
-        <pre style={{ margin: 0 }}
-          className="overflow-x-auto rounded-[18px] border bg-[#171717] p-4 text-sm [&>code]:bg-transparent [&>code]:p-0 my-0"
-          {...props}
+        <div className="rounded-3xl border p-1 shadow-[inset_0_0_2px_rgba(0,0,0,0.3)] dark:shadow-[inset_0_0_3px_rgba(255,255,255,0.5)]">
+          <pre
+            style={{ margin: 0 }}
+            className="my-0 overflow-x-auto rounded-[18px] border bg-[#171717] p-4 text-sm [&>code]:bg-transparent [&>code]:p-0"
+            {...props}
           >
-          {children}
-        </pre>
-        <CodeCopyButton code={codeText} />
-          </div>
+            {children}
+          </pre>
+          <CodeCopyButton code={codeText} />
+        </div>
       </div>
     );
   },
@@ -98,7 +104,7 @@ const BlogComponents = {
     }
 
     return (
-      <code className="rounded px-2 py-1 text-sm font-mono" {...props}>
+      <code className="rounded px-2 py-1 font-mono text-sm" {...props}>
         {children}
       </code>
     );
@@ -106,7 +112,7 @@ const BlogComponents = {
 
   blockquote: ({ children, ...props }) => (
     <blockquote
-      className="mb-4 border-l-4 border-primary pl-4 italic text-muted-foreground"
+      className="border-primary text-muted-foreground mb-4 border-l-4 pl-4 italic"
       {...props}
     >
       {children}

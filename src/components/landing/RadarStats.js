@@ -2,23 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Radar } from "react-chartjs-2";
-import { useInView } from "framer-motion";
+
 import {
   Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
   Filler,
+  LineElement,
+  PointElement,
+  RadialLinearScale,
   Tooltip,
 } from "chart.js";
+import { useInView } from "framer-motion";
 
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip
-);
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
 // ---- CONFIG ----
 const labels = ["Bench", "Squat", "Leg Press", "Shoulder", "Deadlift"];
@@ -26,9 +21,7 @@ const labels = ["Bench", "Squat", "Leg Press", "Shoulder", "Deadlift"];
 const rawValues = [45, 50, 80, 35, 80];
 const maxValues = [100, 100, 150, 85, 150];
 
-const normalizedValues = rawValues.map(
-  (v, i) => (v / maxValues[i]) * 100
-);
+const normalizedValues = rawValues.map((v, i) => (v / maxValues[i]) * 100);
 
 export default function RadarStats() {
   const [isDark, setIsDark] = useState(false);
@@ -87,14 +80,10 @@ export default function RadarStats() {
         max: 100,
         ticks: { display: false },
         grid: {
-          color: isDark
-            ? "rgba(255,255,255,0.15)"
-            : "rgba(0,0,0,0.1)",
+          color: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)",
         },
         angleLines: {
-          color: isDark
-            ? "rgba(255,255,255,0.15)"
-            : "rgba(0,0,0,0.1)",
+          color: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.1)",
         },
         pointLabels: {
           color: isDark ? "#e5e7eb" : "#6b7280",

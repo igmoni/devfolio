@@ -1,8 +1,11 @@
-'use client'
+"use client";
 import React from "react";
-import { Button } from "../ui/button";
+
 import { Link } from "next-view-transitions";
+
 import ArrowLeft from "@/svgs/ArrowLeft";
+
+import { Button } from "../ui/button";
 
 const BackButton = () => {
   return (

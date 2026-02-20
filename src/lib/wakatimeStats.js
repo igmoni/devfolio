@@ -6,8 +6,6 @@ export function normalizeEditor(name) {
   return name;
 }
 
-
-
 export function formatDuration(totalSeconds = 0) {
   const secs = Math.max(0, Math.floor(totalSeconds));
 
@@ -21,8 +19,6 @@ export function formatDuration(totalSeconds = 0) {
 
   return `${m} min ${s} sec`;
 }
-
-
 
 export function parseWakaTime(apiData) {
   const heartbeats = apiData?.heartbeats?.data ?? [];
@@ -39,23 +35,18 @@ export function parseWakaTime(apiData) {
 
   // Find latest heartbeat safely
   const latestHeartbeat = heartbeats.reduce((latest, hb) => {
-    const latestTime =
-      latest.time
-        ? latest.time * 1000
-        : new Date(latest.created_at).getTime();
+    const latestTime = latest.time
+      ? latest.time * 1000
+      : new Date(latest.created_at).getTime();
 
-    const hbTime =
-      hb.time
-        ? hb.time * 1000
-        : new Date(hb.created_at).getTime();
+    const hbTime = hb.time ? hb.time * 1000 : new Date(hb.created_at).getTime();
 
     return hbTime > latestTime ? hb : latest;
   });
 
-  const lastBeatTime =
-    latestHeartbeat.time
-      ? latestHeartbeat.time * 1000
-      : new Date(latestHeartbeat.created_at).getTime();
+  const lastBeatTime = latestHeartbeat.time
+    ? latestHeartbeat.time * 1000
+    : new Date(latestHeartbeat.created_at).getTime();
 
   const now = Date.now();
 
@@ -83,4 +74,3 @@ export function parseWakaTime(apiData) {
     totalSeconds: today?.grand_total?.total_seconds ?? 0,
   };
 }
-

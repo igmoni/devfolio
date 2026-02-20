@@ -56,7 +56,7 @@ export async function GET() {
     return Response.json({
       isPlaying: player.is_playing,
       title: player.item.name,
-      artist: player.item.artists.map(a => a.name).join(", "),
+      artist: player.item.artists.map((a) => a.name).join(", "),
       album: player.item.album.name,
       albumImageUrl: player.item.album.images[0].url,
       spotifyUrl: player.item.external_urls.spotify,

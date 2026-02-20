@@ -1,15 +1,15 @@
+import Figma from "@/components/technologies/Figma";
+import NextJs from "@/components/technologies/NextJs";
+import ReactIcon from "@/components/technologies/ReactIcon";
+import TypeScript from "@/components/technologies/TypeScript";
 import Github from "@/svgs/Github";
+import Instagram from "@/svgs/Instagram";
 import LinkedIn from "@/svgs/LinkedIn";
 import Mail from "@/svgs/Mail";
-import X from "@/svgs/X";
-import Instagram from "@/svgs/Instagram";
-import YouTube from "@/svgs/YouTube";
-import Pinterest from "@/svgs/Pinterest";
 import Medium from "@/svgs/Medium";
-import NextJs from "@/components/technologies/NextJs";
-import TypeScript from "@/components/technologies/TypeScript";
-import ReactIcon from "@/components/technologies/ReactIcon";
-import Figma from "@/components/technologies/Figma";
+import Pinterest from "@/svgs/Pinterest";
+import X from "@/svgs/X";
+import YouTube from "@/svgs/YouTube";
 
 export const heroConfig = {
   name: "Mohan",
@@ -17,19 +17,19 @@ export const heroConfig = {
 
   skills: [
     {
-      name: 'Typescript',
-      href: 'https://www.typescriptlang.org/',
-      component: 'TypeScript',
+      name: "Typescript",
+      href: "https://www.typescriptlang.org/",
+      component: "TypeScript",
     },
     {
-      name: 'React',
-      href: 'https://react.dev/',
-      component: 'ReactIcon',
+      name: "React",
+      href: "https://react.dev/",
+      component: "ReactIcon",
     },
     {
-      name: 'Next.js',
-      href: 'https://nextjs.org/',
-      component: 'NextJs',
+      name: "Next.js",
+      href: "https://nextjs.org/",
+      component: "NextJs",
     },
   ],
 
@@ -99,32 +99,31 @@ export const socialLinks = [
 ];
 
 export const coverVideos = [
-  '/assets/sukuna.mp4',
-  'assets/onePiece.mp4',
-  'assets/jjk.mp4',
-  'assets/bleach.mp4',
-]
-
+  "/assets/sukuna.mp4",
+  "assets/onePiece.mp4",
+  "assets/jjk.mp4",
+  "assets/bleach.mp4",
+];
 
 export const links = [
   {
     name: "Typescript",
-    link: 'https://www.typescriptlang.org/',
-    icon: <TypeScript />
+    link: "https://www.typescriptlang.org/",
+    icon: <TypeScript />,
   },
   {
     name: "React",
-    link: 'https://react.dev/',
-    icon: <ReactIcon />
+    link: "https://react.dev/",
+    icon: <ReactIcon />,
   },
   {
     name: "Next.js",
-    link:  'https://nextjs.org/',
-    icon: <NextJs />
+    link: "https://nextjs.org/",
+    icon: <NextJs />,
   },
   {
     name: "Figma",
-    link: 'https://www.figma.com/',
-    icon: <Figma />
-  }
-]
+    link: "https://www.figma.com/",
+    icon: <Figma />,
+  },
+];

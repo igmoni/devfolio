@@ -1,8 +1,10 @@
-import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
 import Link from "next/link";
+
 import ArrowLeft from "@/svgs/ArrowLeft";
 import ArrowUUpRight from "@/svgs/ArrowUUpRight";
+
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 
 const ProjectNavigation = ({ previous, next }) => {
   if (!previous && !next) return null;
@@ -26,7 +28,7 @@ const ProjectNavigation = ({ previous, next }) => {
                     }
                   />
                   <div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       Previous Project
                     </div>
                     <div className="font-medium">{previous.title}</div>
@@ -44,12 +46,12 @@ const ProjectNavigation = ({ previous, next }) => {
             <Button
               variant={"outline"}
               asChild
-              className={"group h-auto w-full  justify-end text-right"}
+              className={"group h-auto w-full justify-end text-right"}
             >
               <Link href={`/projects/${next.slug}`}>
                 <div className="flex items-center gap-3">
                   <div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       Next Project
                     </div>
                     <div className="font-medium">{next.title}</div>

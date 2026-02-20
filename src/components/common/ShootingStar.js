@@ -1,7 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import { usePathname } from "next/navigation";
 
 export default function ShootingStar() {
   const pathname = usePathname();
@@ -11,26 +12,14 @@ export default function ShootingStar() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // ⛔ prevents hydration mismatch
-
+  if (!mounted) return null;
+  
   return (
     <div
       key={pathname}
-      className="fixed inset-0 -z-10 pointer-events-none isolate"
+      className="pointer-events-none fixed inset-0 isolate -z-10"
     >
-      <div
-        className="
-          absolute top-0 right-0
-          md:w-[800px] w-[300px] h-5
-          bg-linear-to-l
-          dark:from-white/80 dark:via-white/50
-          blur-2xl
-          opacity-60
-          dark:shadow-[0_0_40px_12px_rgba(255,255,255,0.6)]
-          md:animate-[shooting-once_1.6s_ease-out_forwards]
-          animate-[shooting-once-mobile_1s_ease-out_forwards]
-        "
-      />
+      <div className="absolute top-0 right-0 h-5 w-[300px] animate-[shooting-once-mobile_1s_ease-out_forwards] bg-linear-to-l opacity-60 blur-2xl md:w-[800px] md:animate-[shooting-once_1.6s_ease-out_forwards] dark:from-white/80 dark:via-white/50 dark:shadow-[0_0_40px_12px_rgba(255,255,255,0.6)]" />
     </div>
   );
 }

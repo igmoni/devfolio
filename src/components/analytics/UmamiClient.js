@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 
@@ -9,8 +10,7 @@ export default function UmamiClient() {
   const searchParams = useSearchParams();
 
   const websiteId = process.env.NEXT_PUBLIC_UMAMI_ID;
-  const scriptUrl =
-    process.env.NEXT_PUBLIC_UMAMI_SRC; // e.g. https://analytics.yourdomain.com/script.js
+  const scriptUrl = process.env.NEXT_PUBLIC_UMAMI_SRC; 
 
   useEffect(() => {
     if (window.umami) {

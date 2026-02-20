@@ -1,9 +1,9 @@
 ---
 title: "JavaScript Isn't Hard — You're Learning It Wrong"
-desc: 'A practical, beginner-friendly guide that breaks down core JavaScript concepts, clears up common misconceptions, and shows a smarter path to mastering the language through real understanding instead of memorization.'
-image: '/blog/javaScript.png'
-tags: ['frontend', 'web development', 'javascript']
-date: '2026-02-16'
+desc: "A practical, beginner-friendly guide that breaks down core JavaScript concepts, clears up common misconceptions, and shows a smarter path to mastering the language through real understanding instead of memorization."
+image: "/blog/javaScript.png"
+tags: ["frontend", "web development", "javascript"]
+date: "2026-02-16"
 isPublished: true
 ---
 
@@ -64,16 +64,16 @@ Let’s start with some basics:-
 // This is a comment - the computer ignores this text
 
 // Printing to the console
-console.log('Hello, World!');
+console.log("Hello, World!");
 
 // Basic math operations
 console.log(50 + 10); // Output: 60
 console.log(10 - 50); // Output: -40
-console.log(5 * 5);  // Output: 25
+console.log(5 * 5); // Output: 25
 console.log(10 / 20); // Output: 0.5
 ```
 
-The console is your teacher - it’s where you can see output from your code and  can learn from your mistakes and test things out while learning.
+The console is your teacher - it’s where you can see output from your code and can learn from your mistakes and test things out while learning.
 
 ## Variables & Data Types
 
@@ -93,14 +93,13 @@ const age = 19; // Use const when the value won't change
 var oldWay = "not used"; // Older way of declaring variables (avoided now)
 
 // Basic Data Types
-const myString = 'Hello'; // Text (string)
+const myString = "Hello"; // Text (string)
 const myNumber = 42; // Number
 const isAwesome = true; // Boolean (true/false)
 const nothing = null; // Explicitly nothing
 const notDefined = undefined; // Value not assigned
 const myArray = [1, 2, 3]; // Array (collection of values)
-const myObject = { name: 'Book' }; // Object (collection of key-value pairs)
-
+const myObject = { name: "Book" }; // Object (collection of key-value pairs)
 ```
 
 Always use **`const`** when possible, and **`let`** when you need to change the value later. This makes your code more predictable!
@@ -134,7 +133,7 @@ The `=` does **not** mean “equal”.
 
 It means → **put the value on the right into the variable on the left.**
 
-**Short Assignment** 
+**Short Assignment**
 
 A very common professional pattern.
 
@@ -151,10 +150,10 @@ score += 10;
 Other versions are:-
 
 ```js
-score -= 5;  // subtract
-score *= 2;  // multiply
-score /= 3;  // divide
-score %= 2;  // remainder
+score -= 5; // subtract
+score *= 2; // multiply
+score /= 3; // divide
+score %= 2; // remainder
 ```
 
 ---
@@ -168,7 +167,7 @@ Used to perform mathematical operations.
 - **Multiplication (`*`)** – Multiplies values.
 - **Division (`/`)** – Divides one value by another.
 - **Modulus (`%`)** – Gives the remainder after division.
-- **Exponentiation (`**`)** – Raises a value to a power.
+- **Exponentiation (`**`)\*\* – Raises a value to a power.
 - **Increment (`++`)** – Increases a value by one.
 - **Decrement (`-`)** – Decreases a value by one.
 
@@ -186,15 +185,14 @@ Used to compare 2 or more values together:-
 - **Less than or equal to (`<=`)** – True if the left value is smaller than or equal to the right.
 
 ```js
-
-console.log(5 == "5");        // true
-console.log(5 != "5");        // false
-console.log(5 === "5");       // fals
-console.log(5 !== "5");       // true
-console.log(10 > 5);          // true
-console.log(10 >= 10);        // true
-console.log(3 < 5);           // true
-console.log(5 <= 5);          // true
+console.log(5 == "5"); // true
+console.log(5 != "5"); // false
+console.log(5 === "5"); // fals
+console.log(5 !== "5"); // true
+console.log(10 > 5); // true
+console.log(10 >= 10); // true
+console.log(3 < 5); // true
+console.log(5 <= 5); // true
 ```
 
 ---
@@ -206,11 +204,11 @@ Functions are reusable block of code. Think of them sub-tasks to complete major 
 ```js
 // Basic function declaration
 function greetings(name) {
-  return 'Hello, ' + name + '!';
+  return "Hello, " + name + "!";
 }
 
 // Using the function
-console.log(greetings('Alex')); // Output: "Hello, Alex!"
+console.log(greetings("Alex")); // Output: "Hello, Alex!"
 
 // Function that adds two numbers
 function add(a, b) {
@@ -245,12 +243,12 @@ console.log(add(3, 5)); // Output: 8
 
 // For multiple lines, use curly braces and 'return'
 const greet = (name) => {
-  const message = 'Hello, ' + name + '!';
+  const message = "Hello, " + name + "!";
   return message;
 };
 ```
 
-Arrow functions are not just shorter - they also handle the `this`  keyword differently, which becomes important when you start working with objects and events.
+Arrow functions are not just shorter - they also handle the `this` keyword differently, which becomes important when you start working with objects and events.
 
 ## Scope
 
@@ -258,19 +256,19 @@ Scope determines the accessibility of the variables. JS has 3 types of scope.
 
 ```js
 // global scope
-const x = 1; 
+const x = 1;
 
-console.log(x) // can acces anywhere
+console.log(x); // can acces anywhere
 
 // Function scope
-const greetings = () => { 
-	let name = "Luffy"; 
-	return "Yo " + name // can only access inside a function
-}
+const greetings = () => {
+  let name = "Luffy";
+  return "Yo " + name; // can only access inside a function
+};
 
 // block scope
 {
-	let y = 10; // only accessible inside this block
+  let y = 10; // only accessible inside this block
 }
 // can't access here
 ```
@@ -289,14 +287,14 @@ Arrays are ordered collections of values. Whose index starts from 0.
 
 ```js
 // Creating an array
-const fruits = ['apple', 'banana', 'orange'];
+const fruits = ["apple", "banana", "orange"];
 
 // Accessing items (starting from zero)
 console.log(fruits[0]); // Output: "apple"
 console.log(fruits[1]); // Output: "banana"
 
 // Adding to the end of an array
-fruits.push('mango');
+fruits.push("mango");
 console.log(fruits); // Output: ["apple", "banana", "orange", "mango"]
 
 // Common array methods
@@ -318,20 +316,20 @@ Objects store data in key-value pairs.
 ```js
 // Creating an object
 const person = {
-  firstName: 'Emma',
-  lastName: 'Watson',
+  firstName: "Emma",
+  lastName: "Watson",
   age: 35,
-  city: 'Berlin',
-  hobbies: ['reading', 'hiking'],
+  city: "Berlin",
+  hobbies: ["reading", "hiking"],
 };
 
 // Accessing properties
 console.log(person.firstName); // Output: "Emma"
-console.log(person['age']); // Output: 35 (alternative way)
+console.log(person["age"]); // Output: 35 (alternative way)
 
 // Adding or changing properties
-person.job = 'Developer';
-person.city = 'New York';
+person.job = "Developer";
+person.city = "New York";
 
 console.log(person);
 // Output: {firstName: "Emma", lastName: "Watson", age: 29, city: "New York", hobbies: ["reading", "hiking"], job: "Developer"}
@@ -352,37 +350,37 @@ const age = 20;
 
 // Basic if statement
 if (age >= 18) {
-  console.log('Eligible to vote');
+  console.log("Eligible to vote");
 } else {
-  console.log('Not eligible to vote');
+  console.log("Not eligible to vote");
 }
 
 // Multiple conditions
 const score = 85;
 
 if (score >= 90) {
-  console.log('Grade: A');
+  console.log("Grade: A");
 } else if (score >= 80) {
-  console.log('Grade: B');
+  console.log("Grade: B");
 } else if (score >= 70) {
-  console.log('Grade: C');
+  console.log("Grade: C");
 } else {
-  console.log('Grade: F');
+  console.log("Grade: F");
 }
 
 // Logical operators
-const isLoggedIn= true;
+const isLoggedIn = true;
 const isAdmin = true;
 
 if (isLoggedIn && isAdmin) {
-  console.log('Welcome Admin!');
+  console.log("Welcome Admin!");
 }
 
 const isMember = false;
 const hasFreeTrial = true;
 
 if (isMember || hasFreeTrial) {
-  console.log('You can access this content');
+  console.log("You can access this content");
 }
 ```
 
@@ -407,9 +405,9 @@ while(i <= 10) {
 }
 
 // do-while loop - post-tested loop
-let i = 1; 
+let i = 1;
 do {
-	console.log(i); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 
+	console.log(i); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 	i++;
 }while(i <= 10);
 
@@ -427,7 +425,7 @@ arr.forEach((item) => {
 // for-in loop - traverse through objects
 const person = { firstName: "Luffy" , age: 30 };
 for(const key in person) {
-	console.log(key + ":" + person[key}); //  "firstName: John", "age: 30"	
+	console.log(key + ":" + person[key}); //  "firstName: John", "age: 30"
 }
 
 // for-of loop - traverse through arrays
@@ -477,7 +475,7 @@ Destructuring is a coinvent way to extract values from arrays or objects.
 ### Array Destructuring
 
 ```js
-const colors = ['red', 'green', 'blue'];
+const colors = ["red", "green", "blue"];
 
 // Without destructuring
 const firstColor = colors[0];
@@ -537,15 +535,13 @@ Destructuring makes your code cleaner and more readable, especially when working
 
 Template literals are a better way to work with string in JS. It’s a easier way of writing variables and text together.
 
- 
-
 ```js
-const name = 'Luffy';
+const name = "Luffy";
 const age = 30;
 
 // Old way of combining strings
 const greeting1 =
-  'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
+  "Hello, my name is " + name + " and I am " + age + " years old.";
 
 // Using template literals
 const greeting2 = `Hello, my name is ${name} and I am ${age} years old.`;
@@ -602,7 +598,7 @@ console.log(second); // Output: 2
 console.log(others); // Output: [3, 4, 5]
 
 // Rest in object destructuring
-const person = { name: 'Alex', age: 25, city: 'Paris', job: 'Developer' };
+const person = { name: "Alex", age: 25, city: "Paris", job: "Developer" };
 const { name, age, ...otherDetails } = person;
 
 console.log(name); // Output: "Alex"
@@ -630,8 +626,8 @@ console.log(original); // Output: [1, 2, 3] (unchanged)
 console.log(copy); // Output: [1, 2, 3, 4]
 
 // Spreading objects
-const defaults = { theme: 'light', fontSize: 12, cache: true };
-const userPrefs = { theme: 'dark', notifications: false };
+const defaults = { theme: "light", fontSize: 12, cache: true };
+const userPrefs = { theme: "dark", notifications: false };
 
 const settings = { ...defaults, ...userPrefs };
 
@@ -649,11 +645,11 @@ Optional Chaining helps prevent errors when accessing nested properties that mig
 
 ```js
 const user = {
-  name: 'Alex',
+  name: "Alex",
   details: {
     age: 30,
     preferences: {
-      theme: 'dark',
+      theme: "dark",
     },
   },
 };
@@ -672,7 +668,7 @@ const country = user?.details?.location?.country;
 console.log(country); // Output: undefined (no error!)
 
 // With arrays
-const users = [{ name: 'Alex', role: 'admin' }, { name: 'Sarah' }];
+const users = [{ name: "Alex", role: "admin" }, { name: "Sarah" }];
 
 console.log(users[0]?.role); // Output: "admin"
 console.log(users[1]?.role); // Output: undefined (no error)
@@ -707,7 +703,7 @@ If JavaScript is the brain, the DOM is the body it controls.
 
 ---
 
-## What the DOM Looks Like 
+## What the DOM Looks Like
 
 Every tag becomes a node that JavaScript can talk to.
 
@@ -788,7 +784,6 @@ Returns elements by tag.
     </script>
   </body>
 </html>
-
 ```
 
 ---
@@ -840,8 +835,8 @@ const paras = document.getElementsByClassName("para");
 You must pick:
 
 ```js
-paras[0]
-paras[1]
+paras[0];
+paras[1];
 ```
 
 Forgetting this is a classic beginner bug.
@@ -853,8 +848,8 @@ Forgetting this is a classic beginner bug.
 Modern development mostly prefers:
 
 ```js
-document.querySelector()
-document.querySelectorAll()
+document.querySelector();
+document.querySelectorAll();
 ```
 
 Because they are flexible and work like CSS.
@@ -884,10 +879,10 @@ User does something → event fires → handler runs → UI updates.
 
 <button id="btn">Click Me</button>
 <script>
-	const btn = document.getElementById("btn");
-	btn.addEventListener("click", () => {
-		console.log("Button Clicked!");
-	});
+  const btn = document.getElementById("btn");
+  btn.addEventListener("click", () => {
+    console.log("Button Clicked!");
+  });
 </script>
 
 <!-- Example 2: Change Text on Click -->
@@ -968,7 +963,7 @@ Exception handling prevents the application from crashing and allows us to respo
 
 We place risky code inside `try`
 
-If something fails, controls moves to `catch` 
+If something fails, controls moves to `catch`
 
 ```js
 try {
@@ -1066,11 +1061,11 @@ Before async/await existed, this was the main way.
 
 ```js
 fetch("/api/user")
-  .then(res => res.json())
-  .then(data => {
+  .then((res) => res.json())
+  .then((data) => {
     console.log(data);
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });
 ```
@@ -1090,7 +1085,6 @@ async function loadUser() {
   const data = await res.json();
   console.log(data);
 }
-
 ```
 
 `await` pauses **inside the function**, not the whole program. Other things can still run.
@@ -1195,7 +1189,7 @@ Excellent fundamentals.
         }
 
         /* --- Password Toggle Specific Styles --- */
-        
+
         /* We need `position: relative` here so the icon can be positioned absolutely within it */
         .password-wrapper {
             position: relative;
@@ -1214,7 +1208,7 @@ Excellent fundamentals.
             font-size: 1.2rem;
             user-select: none; /* Prevents highlighting the emoji icon */
         }
-        
+
         .toggle-password-icon:hover {
             color: #333;
         }
@@ -1243,7 +1237,7 @@ Excellent fundamentals.
     <div class="login-container">
         <h2>Login</h2>
         <form action="#" method="post">
-            
+
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
@@ -1268,21 +1262,21 @@ Excellent fundamentals.
 
         // 2. Add a click event listener to the eye icon
         toggleIcon.addEventListener('click', function () {
-            
+
             // Check the current type attribute of the password field
             const currentType = passwordInput.getAttribute('type');
 
             if (currentType === 'password') {
                 // Switch to text to show password
                 passwordInput.setAttribute('type', 'text');
-                
+
                 // Change the icon to a "crossed out eye" (or equivalent) to indicate hiding
-                this.textContent = '🙈'; 
+                this.textContent = '🙈';
                 this.setAttribute('title', 'Hide Password');
             } else {
                 // Switch back to password to hide it
                 passwordInput.setAttribute('type', 'password');
-                
+
                 // Change the icon back to the normal eye
                 this.textContent = '👁️';
                 this.setAttribute('title', 'Show Password');
@@ -1350,6 +1344,6 @@ You’re not replacing JavaScript.
 
 You’re strengthening it.
 
-**Next:** *Writing Safer JavaScript with TypeScript.*
+**Next:** _Writing Safer JavaScript with TypeScript._
 
 Happy coding 🚀

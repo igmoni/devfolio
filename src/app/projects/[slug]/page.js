@@ -1,19 +1,19 @@
+import { Link } from "next-view-transitions";
+import { notFound } from "next/navigation";
+
 import Container from "@/components/common/Container";
 import ProjectContent from "@/components/projects/ProjectContent";
 import ProjectNavigation from "@/components/projects/ProjectNavigation";
-import ArrowLeft from "@/svgs/ArrowLeft";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { siteConfig } from "@/config/Meta";
 import {
-  getProjectPostSlugs,
-  getProjectPostBySlug,
   getProjectNavigation,
-  getRelatedProjectPosts
+  getProjectPostBySlug,
+  getProjectPostSlugs,
+  getRelatedProjectPosts,
 } from "@/lib/projects";
-
-import { Link } from "next-view-transitions";
-import { notFound } from "next/navigation";
+import ArrowLeft from "@/svgs/ArrowLeft";
 
 export async function generateStaticParams() {
   const slugs = getProjectPostSlugs();
@@ -29,28 +29,27 @@ export async function generateMetadata({ params }) {
     return { title: "Project Not Found" };
   }
   const { title, desc, image } = post;
-  
-  
+
   return {
-  metadataBase: new URL(siteConfig.url),
-  title: `${title} - Project Case Study`,
-  alternates: {
+    metadataBase: new URL(siteConfig.url),
+    title: `${title} - Project Case Study`,
+    alternates: {
       canonical: `https://monxdev.vercel.app/projects/${params.slug}`,
     },
-  desc,
-  openGraph: {
+    desc,
+    openGraph: {
       title: `${title} - Project Case Study`,
       desc,
       images: [image],
       type: "article",
     },
     twitter: {
-        card: "summary_large_image",
-        title: `${title} - Project Case Study`,
-    desc,
-    images: [image],
-  },
-};
+      card: "summary_large_image",
+      title: `${title} - Project Case Study`,
+      desc,
+      images: [image],
+    },
+  };
 }
 const page = async ({ params }) => {
   const { slug } = await params;
@@ -64,7 +63,7 @@ const page = async ({ params }) => {
   const relatedProjects = await getRelatedProjectPosts(slug, 2);
 
   return (
-    <Container className={"py-24 px-5 max-w-4xl"}>
+    <Container className={"max-w-4xl px-5 py-24"}>
       <div className="space-y-8">
         <div>
           <Button variant={"outline"} asChild className={"group"}>
@@ -96,7 +95,7 @@ const page = async ({ params }) => {
                     <Link href={`/projects/${project.slug}`}>
                       <div className="space-y-3">
                         <div className="flex items-end gap-2">
-                          <h3 className="group-hover:text-primary dark:group-hover:text-white text-muted-foreground   text-lg font-semibold">
+                          <h3 className="group-hover:text-primary text-muted-foreground text-lg font-semibold dark:group-hover:text-white">
                             {project.shortTitle}
                           </h3>
                           <div className="text-xs">
@@ -105,13 +104,12 @@ const page = async ({ params }) => {
                                 project.status === "completed"
                                   ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
                                   : project.status === "in-progress"
-                                  ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"
-                                  : "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400"
+                                    ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"
+                                    : "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400"
                               }`}
                             >
-                              {project.status
-                                .charAt(0)
-                                .toUpperCase() + project.status.slice(1)}
+                              {project.status.charAt(0).toUpperCase() +
+                                project.status.slice(1)}
                             </div>
                           </div>
                         </div>
@@ -119,9 +117,8 @@ const page = async ({ params }) => {
                           {project.desc}
                         </p>
                         <div className="flex flex-wrap gap-1">
-                          {project.technologies.length > 0 && project.technologies
-                            .slice(0.3)
-                            .map((tech) => (
+                          {project.technologies.length > 0 &&
+                            project.technologies.slice(0.3).map((tech) => (
                               <span
                                 className="bg-muted rounded px-2 py-1 text-xs"
                                 key={tech}
