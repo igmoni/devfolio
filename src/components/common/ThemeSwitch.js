@@ -114,20 +114,34 @@ export const ThemeToggleButton = ({
   const { isDark, toggleTheme } = useThemeToggle({ variant, start, blur });
 
   return (
-    <Button
-      type="button"
-      variant="outline"
-      size="icon"
-      className={cn(
-        "size-10 cursor-pointer group relative p-0 transition-all duration-300 active:scale-95",
-        className,
-      )}
-      onClick={toggleTheme}
-      aria-label="Toggle theme"
+   <Button
+  type="button"
+  variant="outline"
+  size="icon"
+  onClick={toggleTheme}
+  aria-label="Toggle theme"
+  className={cn(
+    "size-10 cursor-pointer relative p-0 transition-all duration-300 active:scale-95 shadow-aceternity dark:shadow-aceternity-white backdrop-blur-sm",
+    className
+  )}
+>
+  <AnimatePresence mode="wait" initial={false}>
+    <motion.span
+      key={isDark ? "sun" : "moon"}
+      initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+      animate={{ opacity: 1, rotate: 0, scale: 1 }}
+      exit={{ opacity: 0, rotate: 90, scale: 0.2 }}
+      transition={{delay: 0.2, duration: 0.25, ease: "easeOut" }}
+      className="absolute inset-0 flex items-center justify-center"
     >
-      <Sun className="size-4 absolute inset-0 shrink-0 scale-0 dark:scale-100 dark:rotate-45 transition-transform ease-in-out duration-600 m-auto delay-500 group-hover:text-orange-500" />
-      <Moon className="size-4 absolute inset-0 shrink-0 scale-100 dark:scale-0 rotate-0 dark:rotate-45 transition-transform ease-in-out duration-600 m-auto delay-500 group-hover:text-cyan-500" />
-    </Button>
+      {isDark ? (
+        <Sun className="size-[18px] text-orange-500" />
+      ) : (
+        <Moon className="size-[18px] text-sky-500" />
+      )}
+    </motion.span>
+  </AnimatePresence>
+</Button>
   );
 };
 

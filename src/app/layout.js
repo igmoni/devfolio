@@ -79,7 +79,7 @@ export default function RootLayout({ children }) {
             attribute="class"
             defaultTheme="system"
             enableSystem
-            disableTransitionChange
+            disableTransitionOnChange
           >
             <Toaster richColors position="top-center" />
             <KeyboardShortcutsLayer />

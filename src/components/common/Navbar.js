@@ -182,7 +182,7 @@ const Navbar = () => {
                   layoutId="hovered-span"
                   className="h-full w-full shadow-acternity dark:shadow-acternity-white absolute inset-0 rounded-md 
                   bg-neutral-100 dark:bg-primary"
-                ></motion.span>
+                />
               )}
 
               <span className="text-primary text-base dark:text-white relative z-10">
