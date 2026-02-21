@@ -86,7 +86,7 @@ const CardCon = ({ project }) => {
                 href={String(project.live)}
                 target="_blank"
               >
-                <Website />
+                <Website className={"size-10"} />
               </Link>
             </TooltipTrigger>
             <TooltipContent>

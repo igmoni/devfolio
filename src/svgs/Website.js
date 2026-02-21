@@ -10,10 +10,10 @@ export default function Website({ className }) {
       viewBox="0 0 256 256"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`icon icon-tabler icons-tabler-outline icon-tabler-world ${className}`}
+      className={` ${className}`}
       whileHover="hover"
       animate="rest"
       style={{

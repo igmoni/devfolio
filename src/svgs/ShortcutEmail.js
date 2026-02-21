@@ -10,7 +10,7 @@ export default function ShortcutEmail(props) {
         height="12"
         rx="2"
         className="fill-none stroke-current"
-        strokeWidth="1.6"
+        strokeWidth="1.5"
       />
       <path
         d="M6 9.25 12 13l6-3.75"
