@@ -22,8 +22,8 @@ export default function Instagram() {
       {/* Outer frame */}
       <motion.path
         variants={{
-          rest: { pathLength: 1, stroke: "currentColor" },
-          hover: { pathLength: [0, 1], stroke: "#fff" },
+          rest: { pathLength: 1 },
+          hover: { pathLength: [0, 1] },
         }}
         transition={{ duration: 0.35 }}
         d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8"
@@ -32,8 +32,8 @@ export default function Instagram() {
       {/* Lens */}
       <motion.path
         variants={{
-          rest: { scale: 1, stroke: "currentColor" },
-          hover: { scale: 1.12, stroke: "#fff" },
+          rest: { scale: 1 },
+          hover: { scale: 1.12},
         }}
         transition={{ type: "spring", stiffness: 260, damping: 18 }}
         style={{
@@ -44,11 +44,7 @@ export default function Instagram() {
       />
 
       {/* Dot */}
-      <motion.path
-        variants={{
-          rest: { stroke: "currentColor" },
-          hover: { stroke: "#fff" },
-        }}
+      <path
         d="M16.5 7.5v.01"
       />
     </motion.svg>

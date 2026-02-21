@@ -23,7 +23,7 @@ export default function Setup() {
       <div className="mt-8 flex flex-col gap-4">
         {setup.map((item) => (
           <Link className="group" href={item.href} key={item.name}>
-            <Card className="flex flex-row items-center justify-between gap-4 px-4 py-2">
+            <Card className="flex flex-row items-center justify-between gap-4  px-4 py-2">
               <div className="bg-muted flex items-center justify-center rounded-md p-2">
                 {item.icon}
               </div>
@@ -33,7 +33,7 @@ export default function Setup() {
                   {item.description}
                 </p>
               </div>
-              <ArrowRight className="hidden size-4 transition-all duration-300 group-hover:block" />
+              <ArrowRight className=" size-4 transition-all duration-300 group-hover:translate-x-1" />
             </Card>
           </Link>
         ))}

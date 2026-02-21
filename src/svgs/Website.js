@@ -26,8 +26,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: { scale: 1, stroke: "currentColor" },
-            hover: { scale: 1.2, stroke: "#fff" },
+            rest: { scale: 1 },
+            hover: { scale: 1.2},
           }}
           transition={{
             type: "spring",
@@ -40,8 +40,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: { scale: 1, stroke: "currentColor" },
-            hover: { scale: 1.2, stroke: "#fff" },
+            rest: { scale: 1},
+            hover: { scale: 1.2 },
           }}
           transition={{
             type: "spring",
@@ -54,8 +54,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: { scale: 1, stroke: "currentColor" },
-            hover: { scale: 1.2, stroke: "#fff" },
+            rest: { scale: 1 },
+            hover: { scale: 1.2 },
           }}
           transition={{
             type: "spring",
@@ -68,8 +68,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: { scale: 1, stroke: "currentColor" },
-            hover: { scale: 1.2, stroke: "#fff" },
+            rest: { scale: 1 },
+            hover: { scale: 1.2},
           }}
           transition={{
             type: "spring",
@@ -82,8 +82,8 @@ export default function Website({ className }) {
 
         <motion.path
           variants={{
-            rest: { scale: 1, stroke: "currentColor" },
-            hover: { scale: 1.2, stroke: "#fff" },
+            rest: { scale: 1 },
+            hover: { scale: 1.2 },
           }}
           transition={{
             type: "spring",

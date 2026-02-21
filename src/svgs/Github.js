@@ -28,8 +28,8 @@ export default function GithubIcon({ className }) {
           transformBox: "fill-box",
         }}
         variants={{
-          rest: { rotate: 0, scale: 1, stroke: "currentColor" },
-          hover: { rotate: -10, scale: 1.18, stroke: "#fff" },
+          rest: { rotate: 0, scale: 1},
+          hover: { rotate: -10, scale: 1.18 },
         }}
         transition={{
           type: "spring",

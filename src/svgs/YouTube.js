@@ -22,8 +22,8 @@ export default function YouTubeIcon() {
       {/* Outer box */}
       <motion.path
         variants={{
-          rest: { pathLength: 1, stroke: "currentColor" },
-          hover: { pathLength: [0, 1], stroke: "#fff" },
+          rest: { pathLength: 1 },
+          hover: { pathLength: [0, 1] },
         }}
         transition={{ duration: 0.4 }}
         d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8"
@@ -32,8 +32,8 @@ export default function YouTubeIcon() {
       {/* Play */}
       <motion.path
         variants={{
-          rest: { scale: 1, stroke: "currentColor" },
-          hover: { scale: [1.15, 1], stroke: "#fff" },
+          rest: { scale: 1 },
+          hover: { scale: [1.15, 1] },
         }}
         transition={{ duration: 0.2 }}
         style={{

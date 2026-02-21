@@ -86,7 +86,7 @@ const CardCon = ({ project }) => {
                 href={String(project.live)}
                 target="_blank"
               >
-                <Website className={"size-10"} />
+                <Website className={"size-10 hover:text-accent-foreground"} />
               </Link>
             </TooltipTrigger>
             <TooltipContent>
@@ -99,7 +99,7 @@ const CardCon = ({ project }) => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
-                  className="text-secondary flex size-6 items-center justify-center"
+                  className="text-secondary hover:text-accent-foreground flex size-6 items-center justify-center"
                   href={String(project.github)}
                   target="_blank"
                 >

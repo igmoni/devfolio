@@ -176,10 +176,10 @@ const Hero = () => {
                   <Link
                     href={link.href}
                     target="_blank"
-                    className="text-secondary flex items-center gap-2"
+                    className=" flex items-center gap-2"
                   >
                     {/* 👇 EACH ICON IS A STAGGERED CHILD */}
-                    <motion.span variants={child} className="size-7">
+                    <motion.span variants={child} className="size-7 text-secondary hover:text-accent-foreground">
                       {link.icon}
                     </motion.span>
                   </Link>

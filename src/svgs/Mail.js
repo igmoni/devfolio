@@ -21,18 +21,14 @@ export default function Mail() {
       <g transform="scale(10.6667)">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 
-        <motion.path
-          variants={{
-            rest: { stroke: "currentColor" },
-            hover: { stroke: "#fff" },
-          }}
+        <path
           d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"
         />
 
         <motion.path
           variants={{
-            rest: { pathLength: 1, stroke: "currentColor" },
-            hover: { pathLength: [0, 1], stroke: "#fff" },
+            rest: { pathLength: 1},
+            hover: { pathLength: [0, 1] },
           }}
           transition={{ duration: 0.3 }}
           d="M3 7l9 6l9 -6"

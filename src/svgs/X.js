@@ -22,7 +22,7 @@ export default function X() {
       <motion.path
         variants={{
           rest: { pathLength: 1, stroke: "currentColor" },
-          hover: { pathLength: [0, 1], stroke: "#fff" },
+          hover: { pathLength: [0, 1],  },
         }}
         transition={{ duration: 0.3 }}
         d="M4 4l11.733 16h4.267l-11.733 -16l-4.267 0"
@@ -30,8 +30,8 @@ export default function X() {
 
       <motion.path
         variants={{
-          rest: { opacity: 1, pathLength: 1, stroke: "currentColor" },
-          hover: { opacity: [0, 1], pathLength: [0, 1], stroke: "#fff" },
+          rest: { opacity: 1, pathLength: 1,  },
+          hover: { opacity: [0, 1], pathLength: [0, 1], },
         }}
         transition={{ duration: 0.3, delay: 0.3 }}
         d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"
