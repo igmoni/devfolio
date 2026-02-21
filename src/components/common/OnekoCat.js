@@ -13,7 +13,7 @@ export default function OnekoCat() {
     window.__ONEKO_LOADED__ = true;
 
     const script = document.createElement("script");
-    script.src = "/oneko/oneko.js";
+    script.src = "/oneko/Oneko.js";
     script.async = true;
 
     document.body.appendChild(script);
