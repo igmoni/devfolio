@@ -34,4 +34,14 @@ export const quotes = [
     quote: "Arise, awake, and stop not till the goal is reached.",
     author: "Katha Upanishad",
   },
+  {
+    quote:
+      "The first pricncriple is that you must not fool your self - and you are the easiest person to fool.",
+    author: "Richard Feyman",
+  },
+  {
+    quote:
+      "Lock yourself in a room & study until you collapse, true brillance, comes from obsession.",
+    author: "Isaac Newton",
+  },
 ];
