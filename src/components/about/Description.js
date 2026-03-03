@@ -16,7 +16,7 @@ const Description = () => {
             width={200}
             height={600}
             alt="Mohan"
-            className={`min-h-[350px] w-2xs rounded-lg`}
+            className={`min-h-[350px] w-2xs rounded-md`}
           />
         </div>
 

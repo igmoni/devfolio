@@ -47,7 +47,7 @@ export const education = [
   {
     period: "2023 - 2026",
     course: "Bachelor's of Computer Applications",
-    college: "Government First Grade College",
+    college: "Bengaluru University",
   },
   {
     period: "2017 - 2021",
