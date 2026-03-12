@@ -1,8 +1,12 @@
+import ExpressJs from "@/components/technologies/ExpressJs";
 import Figma from "@/components/technologies/Figma";
 import Java from "@/components/technologies/Java";
 import JavaScript from "@/components/technologies/JavaScript";
 import NextJs from "@/components/technologies/NextJs";
 import NodeJs from "@/components/technologies/NodeJs";
+import Postman from "@/components/technologies/PostMan";
+import Prisma from "@/components/technologies/Prisma";
+import PostgreSQL from "@/components/technologies/PSQL";
 import Python from "@/components/technologies/Python";
 import ReactIcon from "@/components/technologies/ReactIcon";
 import TailwindCss from "@/components/technologies/TailwindCss";
@@ -15,10 +19,14 @@ import Mentor from "@/svgs/Mentor";
 export const mySkills = [
   <ReactIcon key="react" />,
   <NextJs key="nextjs" />,
+  <TailwindCss key="tailwindcss" />,
   <NodeJs key="nodejs" />,
   <TypeScript key="typescript" />,
   <JavaScript key="javascript" />,
-  <TailwindCss key="tailwindcss" />,
+  <Prisma key={"prisma"} />,
+  <Postman key={"postman"} />,
+  <ExpressJs key={"expressJs"} />,
+  <PostgreSQL key={"postgreSQL"} />,
   <Figma key="figma" />,
   <Python key="python" />,
   <Java key="java" />,
