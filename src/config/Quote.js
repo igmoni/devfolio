@@ -14,11 +14,11 @@ export const quotes = [
   },
   {
     quote: "Believe it!",
-    author: "Naruto Uzumaki",
+    author: "Uzumaki Naruto",
   },
   {
     quote: "Throughout the heaven and earth, I alone am the honored one!",
-    author: "Gojo Satoru",
+    author: "Satoru Gojo",
   },
   {
     quote:
@@ -43,5 +43,10 @@ export const quotes = [
     quote:
       "Lock yourself in a room & study until you collapse, true brillance, comes from obsession.",
     author: "Isaac Newton",
+  },
+  {
+    quote:
+      "If you don't like your destiny, don't accept it. Instead, have the courage to change it the way you want it to be.",
+    author: "Uzumaki Naruto",
   },
 ];
