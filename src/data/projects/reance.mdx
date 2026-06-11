@@ -1,0 +1,359 @@
+---
+title: "Reance - A Freelance Marketplace"
+shortTitle: "Reance"
+desc: "Reance is a modern full-stack freelance marketplace built to connect businesses with skilled independent professionals."
+image: "/projects/reance.webp"
+technologies: ["Next.js", "Tailwind CSS", "Express.js"]
+github: "https://github.com/igmoni/reance"
+live: ""
+timeline: "2026"
+role: "Full Stack Developer"
+team: "Solo"
+status: "Working"
+featured: true
+challenges:
+  ["Wireframing", "Building Services", "Integrating backend and frontend"]
+learnings: ["Backend Development", "Designing Web Pages", "Rapid Development"]
+isPublished: true
+tags: ["Working", "Building"]
+date: "2026-05-10"
+---
+
+# Reance: Full-Stack Freelance Marketplace Platform
+
+## Overview
+
+Reance is a modern full-stack freelance marketplace built to connect businesses with skilled independent professionals. The platform enables clients to post projects, hire freelancers, manage contracts, communicate in real time, and securely process payments through an escrow-based workflow.
+
+Designed as a scalable SaaS platform, Reance combines a high-performance Next.js frontend with a robust Express and PostgreSQL backend to provide a seamless experience for clients, freelancers, and platform administrators.
+
+## What Users Can Do
+
+### For Clients
+
+- Create and manage projects
+- Receive and review freelancer proposals
+- Hire freelancers directly
+- Fund project milestones through escrow
+- Track project progress
+- Communicate with freelancers in real time
+- Approve deliverables and release payments
+- Leave ratings and reviews
+
+### For Freelancers (Independent)
+
+- Create a professional freelancer profile
+- Browse available projects
+- Submit proposals and bids
+- Save interesting projects
+- Manage contracts and milestones
+- Upload project deliverables
+- Receive secure payouts
+- Build reputation through reviews
+
+### For Platform Administrators
+
+- Monitor platform activity
+- View marketplace analytics
+- Manage projects and users
+- Resolve disputes
+- Configure platform settings
+- Monitor payments and transactions
+- Oversee contract workflows
+
+## Why We Built This
+
+Traditional freelancing platforms often suffer from high fees, poor user experiences, and complicated workflows.
+
+Reance was built to:
+
+- Simplify the hiring process
+- Create trust between clients and freelancers
+- Provide transparent escrow-based payments
+- Improve project communication
+- Reduce disputes through milestone tracking
+- Offer a modern and intuitive experience
+- Enable secure contract management
+- Build a scalable freelance ecosystem
+
+## Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Shadcn UI
+- Radix UI
+- React Hook Form
+- Zod Validation
+- Motion
+- Sonner
+- Next Themes
+- Socket.io Client
+
+### Backend
+
+- Node.js
+- Express 5
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+- Passport.js
+- Google OAuth
+- GitHub OAuth
+
+### Payments & Finance
+
+- Razorpay
+- Razorpay Escrow Workflow
+- RazorpayX Payouts
+- Stripe Integration
+- Milestone-Based Payments
+- Automated Fund Release
+
+### File Storage & Media
+
+- Cloudinary
+- Multer
+
+### Communication
+
+- Socket.io
+- Nodemailer
+- Resend Email Service
+
+### Infrastructure
+
+- PostgreSQL
+- Environment-Based Configuration
+- REST APIs
+- Background Jobs
+
+## Core Features
+
+### Authentication System
+
+- Email and password authentication
+- Google OAuth login
+- GitHub OAuth login
+- Role-based onboarding
+- JWT session management
+- Protected routes
+
+### Marketplace System
+
+- Project posting
+- Proposal submission
+- Freelancer discovery
+- Category filtering
+- Saved projects
+- Saved freelancers
+- Contract creation
+- Review system
+
+### Dashboard Experience
+
+- Client Dashboard
+- Freelancer Dashboard
+- Admin Dashboard
+- Activity Tracking
+- Notification Center
+- Settings Management
+
+### Real-Time Communication
+
+- Live messaging
+- Instant notifications
+- Contract updates
+- Proposal status updates
+- Payment alerts
+
+## Backend Architecture
+
+### Modular API Structure
+
+The backend follows a modular architecture where each business domain contains its own:
+
+- Routes
+- Controllers
+- Services
+- Validation
+- Database operations
+
+Key modules include:
+
+- Authentication
+- Users
+- Clients
+- Freelancers
+- Projects
+- Proposals
+- Contracts
+- Payments
+- Reviews
+- Messages
+- Notifications
+- Disputes
+- Admin
+
+### Database Design
+
+PostgreSQL and Prisma power the data layer.
+
+Core entities include:
+
+- User
+- ClientProfile
+- FreelancerProfile
+- Project
+- Proposal
+- Contract
+- Milestone
+- Transaction
+- Review
+- Dispute
+- Conversation
+- Message
+- Notification
+
+The schema was designed around relational integrity, scalability, and marketplace workflows.
+
+## Escrow & Payment Workflow
+
+### Milestone Lifecycle
+
+1. Client creates project
+2. Freelancer submits proposal
+3. Proposal accepted
+4. Contract created
+5. Client funds milestone
+6. Funds enter escrow
+7. Freelancer submits work
+8. Client reviews deliverables
+9. Payment released
+10. Freelancer receives payout
+
+### Benefits
+
+- Increased trust
+- Reduced payment risk
+- Clear milestone tracking
+- Automated payment release
+- Dispute handling support
+
+## Real-Time Features
+
+### Messaging System
+
+- One-to-one conversations
+- Live message delivery
+- Contract-based communication
+- Socket.io architecture
+
+### Notification System
+
+Users receive notifications for:
+
+- Proposal updates
+- Project invitations
+- Contract changes
+- Payment events
+- Reviews
+- Administrative actions
+
+## Building Experience
+
+### Full-Stack Development
+
+This project required ownership of both frontend and backend systems, including:
+
+- API development
+- Database architecture
+- Authentication flows
+- Payment integration
+- Real-time communication
+- Dashboard development
+
+### Problem Solving
+
+Key challenges solved during development:
+
+- Escrow payment workflow design
+- Real-time messaging implementation
+- Role-based authorization
+- File upload management
+- Marketplace scalability
+- Complex relational database modeling
+
+### Software Architecture
+
+The platform was designed using modular principles to ensure:
+
+- Maintainability
+- Scalability
+- Reusability
+- Easier future expansion
+
+## Impact & Results
+
+- Successfully developed a complete freelance marketplace platform
+- Implemented secure escrow payment workflows
+- Built scalable PostgreSQL data architecture
+- Enabled real-time communication between users
+- Created separate experiences for clients, freelancers, and administrators
+- Established a production-ready foundation for future growth
+
+## Future Enhancements
+
+### AI-Powered Features
+
+- Smart freelancer recommendations
+- Proposal quality analysis
+- Automated project categorization
+- AI-assisted project matching
+
+### Marketplace Expansion
+
+- Team hiring
+- Agency profiles
+- Subscription plans
+- Advanced analytics
+
+### Mobile Ecosystem
+
+- Native mobile applications
+- Push notifications
+- Mobile-first communication tools
+
+## Key Learnings
+
+- Full-Stack System Design
+- Next.js App Router Architecture
+- PostgreSQL Data Modeling
+- Prisma ORM Best Practices
+- Authentication & Authorization
+- OAuth Integrations
+- Payment Gateway Integration
+- Escrow Workflow Design
+- Socket.io Real-Time Systems
+- Cloud Storage Management
+- SaaS Architecture
+- Production Deployment
+- Large-Scale Project Planning
+- Freelance Client Collaboration
+
+## Project Highlights
+
+- Built as a complete freelance marketplace
+- Full-stack architecture using Next.js and Express
+- PostgreSQL-powered relational database
+- Real-time messaging with Socket.io
+- Escrow-based payment workflow
+- Multi-role dashboard system
+- OAuth authentication support
+- Cloudinary file management
+- Scalable modular backend architecture
+- Production-ready SaaS foundation

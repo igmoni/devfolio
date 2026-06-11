@@ -6,8 +6,7 @@ import Image from "next/image";
 
 import { motion } from "motion/react";
 
-import { projects as PROJECTS_CONFIG } from "@/config/Projects";
-import { cn } from "@/lib/utils";
+import { resolveTechnologies } from "@/lib/technologies";
 import ArrowRight from "@/svgs/ArrowRight";
 import Github from "@/svgs/Github";
 import Website from "@/svgs/Website";
@@ -63,9 +62,9 @@ const ProjectCard = ({ project }) => {
 export default ProjectCard;
 
 const CardCon = ({ project }) => {
-  const { slug, shortTitle } = project;
+  const { slug } = project;
+  const technologies = resolveTechnologies(project.technologies);
 
-  const matchedProject = PROJECTS_CONFIG.find((p) => p.title === shortTitle);
   return (
     <CardContent className={"flex flex-col gap-4 px-6"}>
       <div className="flex items-center justify-between gap-4">
@@ -86,7 +85,7 @@ const CardCon = ({ project }) => {
                 href={String(project.live)}
                 target="_blank"
               >
-                <Website className={"size-10 hover:text-accent-foreground"} />
+                <Website className={"hover:text-accent-foreground size-10"} />
               </Link>
             </TooltipTrigger>
             <TooltipContent>
@@ -123,9 +122,9 @@ const CardCon = ({ project }) => {
         </h4>
 
         <div className="flex items-center pl-3 hover:pl-5">
-          {matchedProject?.technologies?.map((tech, index) => (
+          {technologies.map(({ name, Icon }, index) => (
             <motion.div
-              key={index}
+              key={`${name}-${index}`}
               layout
               variants={{
                 initial: { marginLeft: -12 }, // -ml-5
@@ -166,10 +165,10 @@ const CardCon = ({ project }) => {
                 <motion.span
                   variants={{ animate: { paddingRight: 8 } }}
                   transition={{ type: "spring" }}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center "
                 >
                   <span className="flex h-7 w-7 items-center justify-center">
-                    {tech.icon}
+                    {Icon && <Icon />}
                   </span>
                 </motion.span>
 
@@ -188,7 +187,7 @@ const CardCon = ({ project }) => {
                   }}
                   className="text-primary overflow-hidden text-xs whitespace-nowrap opacity-100 dark:text-white"
                 >
-                  {tech.name}
+                  {name}
                 </motion.span>
               </motion.div>
             </motion.div>
