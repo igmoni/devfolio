@@ -78,13 +78,15 @@ const CardCon = ({ project }) => {
 
         <div className="flex items-center gap-4">
           {/* Website */}
+          {project.live &&
           <Tooltip>
             <TooltipTrigger asChild>
+
               <Link
                 className="text-secondary flex size-6 items-center justify-center"
                 href={String(project.live)}
                 target="_blank"
-              >
+                >
                 <Website className={"hover:text-accent-foreground size-10"} />
               </Link>
             </TooltipTrigger>
@@ -92,6 +94,7 @@ const CardCon = ({ project }) => {
               <p>View Website</p>
             </TooltipContent>
           </Tooltip>
+              }
 
           {/* GitHub */}
           {project.github && (
@@ -113,7 +116,7 @@ const CardCon = ({ project }) => {
         </div>
       </div>
 
-      <p className="text-secondary line-clamp-3">{project.desc}</p>
+      <p className="text-secondary line-clamp-2">{project.desc}</p>
 
       {/* Added 'group/tech' for technologies section */}
       <div className="group/tech mt-3">
@@ -165,7 +168,7 @@ const CardCon = ({ project }) => {
                 <motion.span
                   variants={{ animate: { paddingRight: 8 } }}
                   transition={{ type: "spring" }}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center "
+                  className="flex h-10 w-10 shrink-0 items-center justify-center"
                 >
                   <span className="flex h-7 w-7 items-center justify-center">
                     {Icon && <Icon />}

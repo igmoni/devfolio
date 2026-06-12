@@ -21,7 +21,7 @@ export const mySkills = [
   <NextJs key="nextjs" />,
   <TailwindCss key="tailwindcss" />,
   <NodeJs key="nodejs" />,
-  <TypeScript key="typescript" />,
+  <TypeScript key="typescript" className={"rounded-none"} />,
   <JavaScript key="javascript" />,
   <Prisma key={"prisma"} />,
   <Postman key={"postman"} />,

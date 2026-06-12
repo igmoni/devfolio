@@ -109,7 +109,7 @@ export const links = [
   {
     name: "Typescript",
     link: "https://www.typescriptlang.org/",
-    icon: <TypeScript />,
+    icon: <TypeScript className={"rounded-none"} />,
   },
   {
     name: "React",
