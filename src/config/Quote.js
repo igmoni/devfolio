@@ -49,4 +49,9 @@ export const quotes = [
       "If you don't like your destiny, don't accept it. Instead, have the courage to change it the way you want it to be.",
     author: "Uzumaki Naruto",
   },
+  {
+    quote:
+      "As long as I'm alive, there are infinite chances!",
+    author: "Monkey D. Luffy",
+  },
 ];
