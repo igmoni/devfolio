@@ -1,0 +1,689 @@
+---
+title: "Git & GitHub: Beginner's Guide to Version Control"
+desc: "A complete beginner's guide covering Git, GitHub, version control, branching, merging, pull requests, and essential Git commands."
+image: "/blog/github.png"
+tags: ["git", "github", "web development"]
+date: "2026-07-21"
+isPublished: true
+---
+
+Software development isn't just about writing code - it's about managing change. Whether you're building a personal project, collaborating with a team, or contributing to open source, you'll constantly make changes to your codebase. Some changes improve your application, while others introduce bugs. Imagine losing weeks of work because you accidentally deleted a file or overwrote important code. This is exactly the problem Git was created to solve.
+
+In this guide, you'll learn what Git and GitHub are, how they work, the essential commands every developer should know, and the best practices used by professional software engineers.
+
+---
+
+# What is Version Control?
+
+Version Control is a system that records changes made to files over
+time, allowing developers to track modifications, restore previous
+versions, and collaborate without overwriting each other's work.
+
+Think of it as a **time machine for your code**.
+
+Instead of saving files like:
+
+- project_final
+- project_final_v2
+- project_final_latest
+- project_final_latest2
+
+Version control keeps a complete history of your project while
+maintaining only one organized project folder.
+
+## Why Version Control Matters
+
+- Losing important code after making mistakes
+- Difficulty identifying when a bug was introduced
+- Multiple developers overwriting each other's work
+- No easy way to return to a stable version
+- Poor collaboration and project management
+
+Version control solves all these issues by maintaining a structured
+history of every change.
+
+---
+
+# Types of Version Control Systems
+
+## 1. Local Version Control
+
+Everything is stored on a single computer.
+
+**Advantages** - Simple - Fast
+
+**Disadvantages** - No collaboration - Data can be lost if the computer
+fails
+
+## 2. Centralized Version Control
+
+A central server stores all project history.
+
+Examples: - SVN: Subversion - CVS: Concurrent Versions System
+
+**Advantages** - Easy collaboration - Central backup
+
+**Disadvantages** -If the server goes down, work stops - Single point of failure
+
+## 3. Distributed Version Control
+
+Every developer has a complete copy of the repository, including its
+history.
+
+Git belongs to this category.
+
+**Advantages** - Work offline - Faster operations - Better
+collaboration - Full project backup
+
+---
+
+# What is Git?
+
+Git is a free, open-source Distributed Version Control System created by
+**Linus Torvalds** in 2005.
+
+Its primary purpose is to help developers track changes in source code while enabling multiple people to work on the same project efficiently.
+
+Git keeps snapshots of your project over time rather than storing multiple copies of the same files.
+
+Every snapshot is called a **commit**.
+
+Each commit contains:
+
+- A unique ID
+- Author information
+- Timestamp
+- Commit message
+- Changes made
+
+This allows you to travel back to any point in your project's history.
+
+---
+
+# What is GitHub?
+
+Many beginners confuse Git and GitHub, but they are different.
+
+Git is the version control software that runs on your computer.
+
+GitHub is a cloud platform that hosts Git repositories online.
+
+GitHub provides features such as:
+
+- Cloud backup
+- Team collaboration
+- Pull Requests
+- Code Reviews
+- Issues
+- Project Management
+- Open-source contribution
+
+Think of Git as Microsoft Word and GitHub as Google Drive.
+
+One helps you create and manage files, while the other stores and shares them online.
+
+---
+
+# Git vs GitHub
+
+Although they're often mentioned together, Git and GitHub serve different purposes.
+
+- **Git** → A distributed version control system that tracks changes in your code.
+- **GitHub** → A cloud-based platform that hosts Git repositories and enables collaboration.
+
+### Key Differences
+
+- **Git** is installed and runs on your local machine, while **GitHub** is accessed through the web.
+- **Git** tracks changes in your project, whereas **GitHub** stores and manages Git repositories online.
+- **Git** works completely offline, while **GitHub** requires an internet connection to sync your work.
+- **Git** is primarily a command-line tool (though GUI clients exist), whereas **GitHub** provides a web interface along with collaboration features.
+- **Git** focuses on version control, while **GitHub** adds Pull Requests, Issues, Code Reviews, Discussions, and Project Management.
+
+> **Think of it this way:** Git is the engine that powers version control, and GitHub is the platform that lets you store, share, and collaborate on Git repositories.
+
+---
+
+# Understanding Git Terminology
+
+Before writing commands, let's understand some important concepts.
+
+## Repository (Repo)
+
+A repository is your project along with its complete version history.
+
+It contains:
+
+- Source code
+- Commit history
+- Branches
+- Configuration
+
+---
+
+## Commit
+
+A commit is a saved snapshot of your project.
+
+Each commit records what changed and why it changed.
+
+Good commit messages are descriptive.
+
+Example:
+
+```bash
+git commit -m "Add authentication"
+```
+
+```bash
+git commit -m "Fix login validation bug"
+```
+
+Avoid messges like:
+
+```bash
+git commit -m "Update"
+```
+
+```bash
+git commit -m "Changes"
+```
+
+---
+
+## Working Directory
+
+The Working Directory contains the files you're currently editing.
+
+Nothing here is tracked until you tell Git to track it.
+
+---
+
+## Staging Area
+
+The staging area acts like a preparation zone.
+
+It lets you decide which changes should be included in the next commit.
+
+---
+
+## Local Repository
+
+The local repository stores all commits on your computer.
+
+Even without internet, Git continues working perfectly.
+
+---
+
+## Remote Repository
+
+A remote repository lives on platforms like GitHub.
+
+It allows multiple developers to collaborate.
+
+---
+
+## Branch
+
+A branch is an independent line of development.
+
+Instead of modifying the main codebase directly, developers create branches for new features.
+
+---
+
+## Merge
+
+Merging combines changes from one branch into another.
+
+---
+
+## Clone
+
+Cloning creates a complete copy of a remote repository on your computer.
+
+---
+
+## Fork
+
+A fork creates your own copy of someone else's repository under your GitHub account.
+
+This is common in open-source development.
+
+---
+
+# Installing Git
+
+Download Git for your operating system from the official website.
+
+Install -> [Git](https://git-scm.com/install/)
+
+After installation, verify it using:
+
+```bash
+git --version
+```
+
+Configure Git with your identity:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+Verify your configuration:
+
+```bash
+git config --list
+```
+
+---
+
+# Creating Your First Repository
+
+Navigate to your project folder:
+
+```bash
+cd my-project
+```
+
+Initialize Git:
+
+```bash
+git init
+```
+
+Git creates a hidden `.git` directory containing all version history.
+Check the repository status:
+
+```bash
+git status
+```
+
+---
+
+# Understanding the Git Workflow
+
+Git follows a simple workflow.
+
+```text
+Working Directory
+      ↓
+   git add
+      ↓
+ Staging Area
+      ↓
+ git commit
+      ↓
+Local Repository
+      ↓
+  git push
+      ↓
+Remote Repository
+```
+
+This flow is the foundation of Git.
+
+---
+
+# Essential Git Commands
+
+## Check Repository Status
+
+```bash
+git status
+```
+
+Shows modified, staged, and untracked files.
+
+---
+
+## Add Files
+
+Add one file:
+
+```bash
+git add index.js
+```
+
+Add everything:
+
+```bash
+git add .
+```
+
+---
+
+## Commit Changes
+
+```bash
+git commit -m "Add login feature"
+```
+
+---
+
+## View Commit History
+
+```bash
+git log
+```
+
+Compact version:
+
+```bash
+git log --oneline
+```
+
+---
+
+## Compare Changes
+
+```bash
+git diff
+```
+
+---
+
+## Restore Changes
+
+Discard changes:
+
+```bash
+git restore filename
+```
+
+---
+
+## Remove Files
+
+```bash
+git rm filename
+```
+
+## Rename Files
+
+```bash
+git mv oldname newname
+```
+
+---
+
+# Connecting Git to GitHub
+
+Create a repository on GitHub.
+
+Connect your local repository:
+
+```bash
+git remote add origin https://github.com/username/project.git
+```
+
+Push your code:
+
+```bash
+git push -u origin main
+```
+
+Download updates:
+
+```bash
+git pull origin main
+```
+
+Fetch updates without merging:
+
+```bash
+git fetch origin
+```
+
+---
+
+# Branching in Git
+
+Professional developers rarely work directly on the `main` branch.
+
+Instead, they create feature branches.
+
+Create a branch:
+
+```bash
+git branch feature-login
+```
+
+Switch to it:
+
+```bash
+git checkout feature-login
+```
+
+Or using the newer command:
+
+```bash
+git switch feature-login
+```
+
+Create and switch simultaneously:
+
+```bash
+git switch -c feature-login
+```
+
+List branches:
+
+```bash
+git branch
+```
+
+Merge:
+
+```bash
+git merge feature-login
+```
+
+Delete branch:
+
+```bash
+git branch -d feature-login
+```
+
+---
+
+# Merge Conflicts
+
+Sometimes two developers edit the same section of a file.
+
+Git cannot automatically decide which version is correct.
+
+This results in a merge conflict.
+
+To resolve it:
+
+1. Open the conflicted file.
+2. Decide which code to keep.
+3. Remove conflict markers.
+4. Save the file.
+5. Stage it.
+6. Commit the resolution.
+
+Merge conflicts are normal and become easier to handle with experience.
+
+---
+
+# Collaborating with GitHub
+
+GitHub enables developers worldwide to work together.
+
+Common collaboration workflow:
+
+1. Clone repository
+2. Create a branch
+3. Write code
+4. Commit changes
+5. Push branch
+6. Open Pull Request
+7. Review code
+8. Merge into `main`
+
+# Pull Requests
+
+A Pull Request (PR) lets teammates review code, suggest improvements, detect bugs, and approve changes before merging.
+
+It allows teammates to:
+
+- Review code
+- Suggest improvements
+- Detect bugs
+- Approve changes
+
+PRs are one of GitHub's most valuable collaboration features.
+
+---
+
+# Undoing Mistakes
+
+Git offers several ways to undo changes.
+Restore uncommitted changes:
+
+```bash
+git restore file.txt
+```
+
+Undo a commit while preserving changes:
+
+```bash
+git reset --soft HEAD~1
+```
+
+Undo commit permanently:
+
+```bash
+git reset --hard HEAD~1
+```
+
+Create a new commit that reverses an older commit:
+
+```bash
+git revert <commit-hash>
+```
+
+Use `git reset --hard` carefully because it permanently discards changes.
+
+---
+
+# Useful Git Commands
+
+## Stash
+
+Temporarily save unfinished work.
+
+```bash
+git stash
+```
+
+Restore it:
+
+```bash
+git stash pop
+```
+
+---
+
+## Tags
+
+Mark important versions such as releases.
+
+```bash
+git tag v1.0
+```
+
+---
+
+## Cherry-pick
+
+Copy a specific commit from another branch.
+
+```bash
+git cherry-pick <commit-hash>
+```
+
+---
+
+## Rebase
+
+Rebase rewrites commit history by moving your branch onto another branch. It creates a cleaner, more linear history than frequent merge commits.
+
+```bash
+git rebase main
+```
+
+Use rebase with care, especially on branches that others are using.
+
+---
+
+# Best Practices
+
+Following good Git practices makes collaboration easier and project history cleaner.
+
+- Commit frequently.
+- Keep commits focused.
+- Write meaningful commit messages.
+- Use feature branches.
+- Pull before pushing changes.
+- Never commit passwords, API keys or secrets.
+- Use `.gitignore` file to exclude unnecessary files.
+- Review changes before committing.
+- Keep `main` branch stable.
+
+---
+
+# A Real-World Git Workflow
+
+Let's see how a typical feature is developed.
+
+1. Clone the repository.
+2. Create a new feature branch.
+3. Implement the feature.
+4. Test the changes locally.
+5. Stage the modified files.
+6. Commit with a descriptive message.
+7. Push the branch to GitHub.
+8. Open a Pull Request.
+9. Address review comments if any.
+10. Merge into the main branch.
+11. Delete the feature branch.
+12. Pull the latest changes before starting your next task.
+    This workflow is followed by startups, software companies, and open-source communities around the world.
+
+---
+
+# Git Cheat Sheet
+
+- **`git init`** — Initialize a repository.
+- **`git status`** — Check repository status.
+- **`git add .`** — Stage all changes.
+- **`git commit -m "message"`** — Save a snapshot.
+- **`git log`** — View commit history.
+- **`git diff`** — Compare changes.
+- **`git branch`** — List branches.
+- **`git switch -c branch-name`** — Create and switch to a branch.
+- **`git merge branch-name`** — Merge a branch.
+- **`git pull`** — Download and merge updates.
+- **`git push`** — Upload commits to GitHub.
+- **`git fetch`** — Download updates without merging.
+- **`git clone <repository-url>`** — Copy a remote repository.
+- **`git stash`** — Temporarily save changes.
+- **`git restore <file>`** — Discard local changes.
+- **`git tag v1.0`** — Create a version tag.
+- **`git revert <commit-hash>`** — Reverse a commit safely.
+
+---
+
+# Conclusion
+
+Git is more than just a tool - it's an essential skill for every software developer. From tracking changes and recovering lost work to enabling seamless collaboration across teams, Git forms the foundation of modern software development.
+
+GitHub complements Git by providing a platform where developers can store repositories, review code, collaborate through Pull Requests, manage projects, and contribute to open-source software.
+
+Learning Git may feel overwhelming at first because of the many commands and concepts, but the key is consistent practice. Start with the basics - creating repositories, making commits, working with branches, and pushing code to GitHub. As you gain confidence, explore advanced topics such as rebasing, cherry-picking, GitHub Actions, and continuous integration.
+
+Mastering Git and GitHub won't just make you a better programmer - it will make you a more effective collaborator and prepare you for real-world software development.
+
+Happy coding!
