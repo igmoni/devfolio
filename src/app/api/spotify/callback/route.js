@@ -9,7 +9,8 @@ export async function GET(req) {
   const params = new URLSearchParams({
     grant_type: "authorization_code",
     code,
-    redirect_uri: "http://127.0.0.1:8888/callback",
+    // redirect_uri: "http://127.0.0.1:8888/callback",
+    redirect_uri: "https://monxdev.vercel.app/api/spotify/callback",
   });
 
   const res = await fetch("https://accounts.spotify.com/api/token", {
