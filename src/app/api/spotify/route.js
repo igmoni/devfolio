@@ -29,7 +29,10 @@ async function getAccessToken() {
   });
 
   const data = await res.json();
-  if (!res.ok) throw new Error("Token refresh failed");
+
+  if (!res.ok) {
+    throw new Error("Refresh token failed or expired");
+  }
 
   return data.access_token;
 }
