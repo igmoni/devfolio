@@ -10,7 +10,7 @@ export async function GET(req) {
     grant_type: "authorization_code",
     code,
     // redirect_uri: "http://127.0.0.1:8888/callback",
-    redirect_uri: "https://monxdev.vercel.app/api/spotify/callback",
+    redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
   });
 
   const res = await fetch("https://accounts.spotify.com/api/token", {
