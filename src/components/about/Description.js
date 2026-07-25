@@ -1,12 +1,10 @@
 "use client";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 
 import Container from "../common/Container";
 import { Separator } from "../ui/separator";
 
 const Description = () => {
-  const { theme } = useTheme();
   return (
     <Container className={"py-16 md:py-20"}>
       <div className="flex flex-col items-center justify-center gap-5 md:flex-row">
@@ -49,7 +47,6 @@ const Description = () => {
           </p>
         </div>
       </div>
-      <Separator className={"mt-5"} />
 
       <div className="py-10">
         <h2 className="text-primary text-3xl font-semibold dark:text-white">
@@ -59,6 +56,7 @@ const Description = () => {
           Full-Stack Web Developer - Bengaluru, India
         </p>
       </div>
+      <Separator className={"mt-5"} />
     </Container>
   );
 };

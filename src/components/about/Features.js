@@ -1,17 +1,30 @@
 "use client";
 import React from "react";
 
+import { Instrument_Serif } from "next/font/google";
+
 import { motion } from "motion/react";
 
 import { features } from "@/config/About";
 
 import Container from "../common/Container";
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
+
 const Features = () => {
   return (
     <Container className="md:py-16">
       <h2 className="from-primary to-secondary w-full bg-linear-to-t bg-clip-text py-5 text-4xl font-medium text-transparent sm:text-6xl md:min-w-3xl lg:text-7xl dark:from-neutral-600 dark:to-white">
-        Services that acclerate your business growth.
+        Services that{" "}
+        <span className={`${instrumentSerif.className} font-bold italic`}>
+          accelerate
+        </span>{" "}
+        your business growth.
       </h2>
 
       <div className="grid grid-cols-1 gap-5 py-16 lg:grid-cols-2">

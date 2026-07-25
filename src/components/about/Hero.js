@@ -1,5 +1,14 @@
 "use client";
+import { Instrument_Serif } from "next/font/google";
+
 import { motion } from "motion/react";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
 
 export default function HeroHeading() {
   return (
@@ -12,12 +21,9 @@ export default function HeroHeading() {
         style={{ filter: "blur(0px)", opacity: 1, transform: "none" }}
       >
         Building{" "}
-        <span className="font-extrabold">
-          <span className="absolute text-[rgba(10,10,10,0.4)] blur-sm dark:text-gray-400/40">
-            Solutions
-          </span>
-          <span className="">Solutions</span>
-        </span>{" "}
+        <span className={`${instrumentSerif.className} font-bold italic`}>
+          Solutions
+        </span>
       </motion.h2>
       <motion.h2
         initial={{ y: 5, opacity: 0 }}
@@ -26,7 +32,10 @@ export default function HeroHeading() {
         className="from-primary mx-auto w-auto max-w-none bg-linear-to-t to-[#383838] bg-clip-text text-4xl text-transparent sm:text-6xl lg:text-8xl xl:w-280 dark:from-neutral-600 dark:to-white"
         style={{ filter: "blur(0px)", opacity: 1, transform: "none" }}
       >
-        that build the future.
+        that build the{" "}
+        <span className={`${instrumentSerif.className} font-bold italic`}>
+          future.
+        </span>
       </motion.h2>
     </div>
   );
