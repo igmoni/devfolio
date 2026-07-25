@@ -1,36 +1,176 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+# DevFolio
 
-First, run the development server:
+### A modern developer portfolio built with Next.js
+
+A fast, responsive, and minimal portfolio showcasing my projects, technical blogs, skills, and journey as a Full Stack Developer.
+
+**Live Website:** https://monxdev.vercel.app
+
+</div>
+
+---
+
+## 🚀 About
+
+DevFolio is my personal portfolio where I document my work, share projects, write technical blogs, and showcase everything I'm building as a developer.
+
+The goal wasn't just to create another portfolio—it was to build something that reflects who I am as a programmer while keeping performance, clean UI, and developer experience in mind.
+
+---
+
+## ✨ Features
+
+- 🎨 Modern responsive design
+- ⚡ Built with Next.js
+- 📱 Mobile-first experience
+- 🌙 Dark UI
+- 📝 Technical blog section
+- 💼 Project showcase
+- 🛠 Skills & technology stack
+- 📄 Resume download
+- 📬 Contact section
+- 🔍 SEO optimized
+- 🚀 Fast loading performance
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### Deployment
+
+- Vercel
+
+### Tools
+
+- Git
+- GitHub
+- VS Code
+- Figma
+
+---
+
+## 📂 Project Structure
+
+```text
+.
+├── app/
+├── components/
+├── data/
+├── hooks/
+├── lib/
+├── public/
+├── styles/
+└── ...
+```
+
+---
+
+## 🖥 Running Locally
+
+Clone the repository
+
+```bash
+git clone https://github.com/igmoni/devfolio.git
+```
+
+Go inside the project
+
+```bash
+cd devfolio
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📸 Sections
 
-To learn more about Next.js, take a look at the following resources:
+- Hero
+- About
+- Skills
+- Experience
+- Projects
+- Blogs
+- Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 Why I Built This
 
-## Deploy on Vercel
+I wanted a portfolio that is:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Simple but memorable
+- Fast and accessible
+- Easy to maintain
+- A place to showcase projects and blogs
+- A representation of my growth as a developer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📈 Future Improvements
+
+- [ ] Multi-language support
+- [ ] Project filtering
+- [ ] Search for blogs
+- [ ] CMS integration
+- [ ] Animations improvements
+- [ ] Visitor analytics
+- [ ] Reading time for blogs
+- [ ] Project case studies
+
+---
+
+## 🤝 Connect With Me
+
+Portfolio  
+👉 https://monxdev.vercel.app
+
+GitHub  
+👉 https://github.com/igmoni
+
+LinkedIn  
+👉 https://linkedin.com/in/igmoni
+
+Email  
+👉 mohansp119@gmail.com
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
+
+It motivates me to build more open-source projects.
+
+---
+
+<div align="center">
+
+Made with ❤️ using Next.js
+
+</div>
