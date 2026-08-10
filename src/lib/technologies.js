@@ -4,10 +4,12 @@ import NextJs from "@/components/technologies/NextJs";
 import NodeJs from "@/components/technologies/NodeJs";
 import Prisma from "@/components/technologies/Prisma";
 import PostgreSQL from "@/components/technologies/PSQL";
+import Python from "@/components/technologies/Python";
 import ReactIcon from "@/components/technologies/ReactIcon";
 import Shadcn from "@/components/technologies/Shadcn";
 import TailwindCss from "@/components/technologies/TailwindCss";
 import TypeScript from "@/components/technologies/TypeScript";
+
 
 const TECHNOLOGY_ICONS = {
   "next.js": NextJs,
@@ -21,6 +23,7 @@ const TECHNOLOGY_ICONS = {
   prisma: Prisma,
   postgresql: PostgreSQL,
   postgres: PostgreSQL,
+  python: Python
 };
 
 function normalizeTechnologyName(name) {
