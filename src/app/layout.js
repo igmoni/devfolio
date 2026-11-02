@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
   
-import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
 import Footer from "@/components/common/Footer";
 import KeyboardShortcutsLayer from "@/components/common/KeyboardShortcutsLayer";
 import Navbar from "@/components/common/Navbar";
@@ -94,7 +93,6 @@ export default function RootLayout({ children }) {
             <Quote />
             <Footer />
             <Analytics />
-            <UmamiAnalytics />
           </ThemeProvider>
           <SpeedInsights />
         </body>

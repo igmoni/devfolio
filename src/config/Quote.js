@@ -50,8 +50,7 @@ export const quotes = [
     author: "Uzumaki Naruto",
   },
   {
-    quote:
-      "As long as I'm alive, there are infinite chances!",
+    quote: "As long as I'm alive, there are infinite chances!",
     author: "Monkey D. Luffy",
   },
 ];

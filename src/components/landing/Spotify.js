@@ -30,11 +30,11 @@ const Spotify = () => {
     fetchNowPlaying();
 
     // refresh every 5 seconds
-    const interval = setInterval(fetchNowPlaying, 15000);
+    // const interval = setInterval(fetchNowPlaying, 15000);
 
     return () => {
       isMounted = false;
-      clearInterval(interval);
+      // clearInterval(interval);
     };
   }, []);
 

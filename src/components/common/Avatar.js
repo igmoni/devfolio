@@ -46,7 +46,7 @@ export default function Avatar() {
           width={100}
           height={100}
           priority
-          className="border-primary size-24 rounded-full border-3 sm:size-28 md:size-36 dark:border-white"
+          className={`border-primary size-24 rounded-full border-3 sm:size-28 md:size-36 dark:border-white ${image.includes("mohan1") ? "scale-130 object-bottom" : ""}`}
         />
       </div>
 
